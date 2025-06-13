@@ -1692,7 +1692,2283 @@ biblical_events:
     references:
       - ACT.28.11-31.KJV
 
-# Location References
+  # Additional Old Testament Events
+  - id: CAIN_BUILDS_CITY
+    name: Cain Builds First City
+    date: "~3800 BC"
+    location: EARTH
+    description: "Cain builds the first city and names it after his son Enoch"
+    participants:
+      - CAIN
+    references:
+      - GEN.4.17.KJV
+
+  - id: SONS_OF_GOD_MARRY
+    name: Sons of God Marry Daughters of Men
+    date: "~3000 BC"
+    location: EARTH
+    description: "The sons of God take wives from the daughters of men, leading to corruption"
+    participants:
+      - GOD_FATHER
+    references:
+      - GEN.6.1-4.KJV
+
+  - id: GOD_GRIEVES
+    name: God Grieves Over Man's Wickedness
+    date: "~2400 BC"
+    location: EARTH
+    description: "God sees the wickedness of man and grieves that He made man on earth"
+    participants:
+      - GOD_FATHER
+    references:
+      - GEN.6.5-7.KJV
+
+  - id: NOAH_ANIMALS_ENTER_ARK
+    name: Animals Enter the Ark
+    date: "~2348 BC"
+    location: EARTH
+    description: "God brings animals to Noah and they enter the ark two by two and seven by seven"
+    participants:
+      - NOAH
+      - GOD_FATHER
+    references:
+      - GEN.7.1-16.KJV
+
+  - id: FLOOD_WATERS_RECEDE
+    name: Flood Waters Recede
+    date: "~2347 BC"
+    location: MOUNT_ARARAT
+    description: "The flood waters recede and the ark rests on Mount Ararat"
+    participants:
+      - NOAH
+    references:
+      - GEN.8.1-4.KJV
+
+  - id: NOAH_SENDS_DOVE
+    name: Noah Sends Out the Dove
+    date: "~2347 BC"
+    location: MOUNT_ARARAT
+    description: "Noah sends out a dove to see if the waters have receded from the earth"
+    participants:
+      - NOAH
+    references:
+      - GEN.8.8-12.KJV
+
+  - id: NOAH_ALTAR
+    name: Noah Builds an Altar
+    date: "~2347 BC"
+    location: MOUNT_ARARAT
+    description: "Noah builds an altar and offers burnt offerings to the Lord"
+    participants:
+      - NOAH
+      - GOD_FATHER
+    references:
+      - GEN.8.20-22.KJV
+
+  - id: NOAH_DRUNK
+    name: Noah's Drunkenness
+    date: "~2340 BC"
+    location: CANAAN
+    description: "Noah becomes drunk and Ham sees his nakedness, leading to a curse on Canaan"
+    participants:
+      - NOAH
+      - HAM
+      - SHEM
+      - JAPHETH
+    references:
+      - GEN.9.20-27.KJV
+
+  - id: BABEL_LANGUAGES_CONFUSED
+    name: Languages Confused at Babel
+    date: "~2247 BC"
+    location: BABYLON
+    description: "God confuses the languages and scatters the people across the earth"
+    participants:
+      - GOD_FATHER
+    references:
+      - GEN.11.1-9.KJV
+
+  - id: ABRAHAM_EGYPT
+    name: Abraham Goes to Egypt
+    date: "~2085 BC"
+    location: EGYPT
+    description: "Abraham goes to Egypt due to famine and tells them Sarah is his sister"
+    participants:
+      - ABRAHAM
+      - SARAH
+    references:
+      - GEN.12.10-20.KJV
+
+  - id: ABRAHAM_LOT_SEPARATE
+    name: Abraham and Lot Separate
+    date: "~2083 BC"
+    location: CANAAN
+    description: "Abraham and Lot separate due to strife between their herdsmen"
+    participants:
+      - ABRAHAM
+      - LOT
+    references:
+      - GEN.13.1-18.KJV
+
+  - id: ABRAHAM_RESCUES_LOT
+    name: Abraham Rescues Lot
+    date: "~2082 BC"
+    location: CANAAN
+    description: "Abraham rescues Lot from the kings who captured him in battle"
+    participants:
+      - ABRAHAM
+      - LOT
+    references:
+      - GEN.14.1-16.KJV
+
+  - id: MELCHIZEDEK_BLESSES
+    name: Melchizedek Blesses Abraham
+    date: "~2082 BC"
+    location: JERUSALEM
+    description: "Melchizedek, king of Salem and priest of God, blesses Abraham"
+    participants:
+      - ABRAHAM
+      - MELCHIZEDEK
+    references:
+      - GEN.14.17-24.KJV
+
+  - id: HAGAR_FLEES
+    name: Hagar Flees from Sarah
+    date: "~2080 BC"
+    location: WILDERNESS
+    description: "Hagar flees from Sarah's harsh treatment and encounters an angel"
+    participants:
+      - HAGAR
+      - SARAH
+      - GOD_FATHER
+    references:
+      - GEN.16.1-16.KJV
+
+  - id: BIRTH_OF_ISHMAEL
+    name: Birth of Ishmael
+    date: "~2080 BC"
+    location: CANAAN
+    description: "Hagar gives birth to Ishmael when Abraham is 86 years old"
+    participants:
+      - ABRAHAM
+      - HAGAR
+      - ISHMAEL
+    references:
+      - GEN.16.15-16.KJV
+
+  - id: CIRCUMCISION_COVENANT
+    name: Covenant of Circumcision
+    date: "~2067 BC"
+    location: CANAAN
+    description: "God establishes circumcision as the sign of His covenant with Abraham"
+    participants:
+      - GOD_FATHER
+      - ABRAHAM
+    references:
+      - GEN.17.9-14.KJV
+
+  - id: THREE_VISITORS
+    name: Three Visitors Promise Isaac
+    date: "~2067 BC"
+    location: HEBRON
+    description: "Three visitors promise Abraham that Sarah will have a son within a year"
+    participants:
+      - ABRAHAM
+      - SARAH
+      - GOD_FATHER
+    references:
+      - GEN.18.1-15.KJV
+
+  - id: ABRAHAM_INTERCEDES
+    name: Abraham Intercedes for Sodom
+    date: "~2067 BC"
+    location: HEBRON
+    description: "Abraham intercedes with God for the righteous in Sodom and Gomorrah"
+    participants:
+      - ABRAHAM
+      - GOD_FATHER
+    references:
+      - GEN.18.16-33.KJV
+
+  - id: ANGELS_VISIT_LOT
+    name: Angels Visit Lot
+    date: "~2067 BC"
+    location: SODOM_AND_GOMORRAH
+    description: "Two angels visit Lot in Sodom to warn him of the coming destruction"
+    participants:
+      - LOT
+      - GOD_FATHER
+    references:
+      - GEN.19.1-14.KJV
+
+  - id: LOTS_WIFE_SALT
+    name: Lot's Wife Becomes Salt
+    date: "~2067 BC"
+    location: SODOM_AND_GOMORRAH
+    description: "Lot's wife looks back at the burning cities and becomes a pillar of salt"
+    participants:
+      - LOT
+    references:
+      - GEN.19.15-26.KJV
+
+  - id: ABRAHAM_ABIMELECH
+    name: Abraham and Abimelech
+    date: "~2066 BC"
+    location: GERAR
+    description: "Abraham tells Abimelech that Sarah is his sister; God protects Sarah"
+    participants:
+      - ABRAHAM
+      - SARAH
+    references:
+      - GEN.20.1-18.KJV
+
+  - id: HAGAR_ISHMAEL_EXPELLED
+    name: Hagar and Ishmael Expelled
+    date: "~2063 BC"
+    location: WILDERNESS
+    description: "Sarah demands that Abraham send away Hagar and Ishmael"
+    participants:
+      - ABRAHAM
+      - SARAH
+      - HAGAR
+      - ISHMAEL
+    references:
+      - GEN.21.8-21.KJV
+
+  - id: ABRAHAM_COVENANT_ABIMELECH
+    name: Abraham's Covenant with Abimelech
+    date: "~2063 BC"
+    location: BEERSHEBA
+    description: "Abraham makes a covenant with Abimelech over the well at Beersheba"
+    participants:
+      - ABRAHAM
+    references:
+      - GEN.21.22-34.KJV
+
+  - id: ISAAC_WELLS
+    name: Isaac Digs Wells
+    date: "~1990 BC"
+    location: GERAR
+    description: "Isaac digs wells in the valley of Gerar and has disputes with the Philistines"
+    participants:
+      - ISAAC
+    references:
+      - GEN.26.12-33.KJV
+
+  - id: ESAU_MARRIAGES
+    name: Esau's Marriages
+    date: "~1966 BC"
+    location: CANAAN
+    description: "Esau marries Hittite women, causing grief to Isaac and Rebekah"
+    participants:
+      - ESAU
+      - ISAAC
+      - REBEKAH
+    references:
+      - GEN.26.34-35.KJV
+
+  - id: JACOB_FLEES_ESAU
+    name: Jacob Flees from Esau
+    date: "~1929 BC"
+    location: CANAAN
+    description: "Jacob flees to Haran to escape Esau's anger over the stolen blessing"
+    participants:
+      - JACOB
+      - ISAAC
+      - REBEKAH
+    references:
+      - GEN.27.41-28.5.KJV
+
+  - id: JACOB_SERVES_LABAN
+    name: Jacob Serves Laban
+    date: "~1922-1909 BC"
+    location: HARAN
+    description: "Jacob serves Laban for 20 years, 14 years for his wives and 6 for cattle"
+    participants:
+      - JACOB
+      - LABAN
+    references:
+      - GEN.29.15-30.43.KJV
+
+  - id: RACHEL_STEALS_IDOLS
+    name: Rachel Steals Household Gods
+    date: "~1909 BC"
+    location: HARAN
+    description: "Rachel steals her father's household gods when Jacob's family leaves"
+    participants:
+      - RACHEL
+      - LABAN
+      - JACOB
+    references:
+      - GEN.31.14-35.KJV
+
+  - id: LABAN_PURSUES_JACOB
+    name: Laban Pursues Jacob
+    date: "~1909 BC"
+    location: GILEAD
+    description: "Laban pursues Jacob for seven days but God warns him in a dream"
+    participants:
+      - LABAN
+      - JACOB
+      - GOD_FATHER
+    references:
+      - GEN.31.22-42.KJV
+
+  - id: JACOB_ESAU_RECONCILE
+    name: Jacob and Esau Reconcile
+    date: "~1909 BC"
+    location: PENIEL
+    description: "Jacob and Esau meet and reconcile after 20 years of separation"
+    participants:
+      - JACOB
+      - ESAU
+    references:
+      - GEN.33.1-20.KJV
+
+  - id: DINAH_DEFILED
+    name: Dinah Defiled by Shechem
+    date: "~1908 BC"
+    location: SHECHEM
+    description: "Shechem defiles Dinah; Simeon and Levi take revenge on the city"
+    participants:
+      - DINAH
+      - SIMEON
+      - LEVI
+      - JACOB
+    references:
+      - GEN.34.1-31.KJV
+
+  - id: DEATH_OF_RACHEL
+    name: Death of Rachel
+    date: "~1888 BC"
+    location: BETHLEHEM
+    description: "Rachel dies giving birth to Benjamin near Bethlehem"
+    participants:
+      - RACHEL
+      - JACOB
+      - BENJAMIN
+    references:
+      - GEN.35.16-20.KJV
+
+  - id: DEATH_OF_ISAAC
+    name: Death of Isaac
+    date: "~1886 BC"
+    location: HEBRON
+    description: "Isaac dies at age 180; Jacob and Esau bury him"
+    participants:
+      - ISAAC
+      - JACOB
+      - ESAU
+    references:
+      - GEN.35.27-29.KJV
+
+  - id: JOSEPH_DREAMS
+    name: Joseph's Dreams
+    date: "~1898 BC"
+    location: CANAAN
+    description: "Joseph dreams that his sheaves and stars bow down to him"
+    participants:
+      - JOSEPH
+      - JACOB
+    references:
+      - GEN.37.5-11.KJV
+
+  - id: JUDAH_TAMAR
+    name: Judah and Tamar
+    date: "~1888 BC"
+    location: CANAAN
+    description: "Tamar disguises herself and bears twins to Judah"
+    participants:
+      - JUDAH
+      - TAMAR
+      - PHAREZ
+      - ZARAH
+    references:
+      - GEN.38.1-30.KJV
+
+  - id: JOSEPH_POTIPHARS_WIFE
+    name: Joseph and Potiphar's Wife
+    date: "~1885 BC"
+    location: EGYPT
+    description: "Potiphar's wife tries to seduce Joseph; he refuses and is falsely accused"
+    participants:
+      - JOSEPH
+    references:
+      - GEN.39.6-20.KJV
+
+  - id: JOSEPH_BUTLER_BAKER
+    name: Joseph Interprets Dreams in Prison
+    date: "~1887 BC"
+    location: EGYPT
+    description: "Joseph interprets the dreams of Pharaoh's butler and baker"
+    participants:
+      - JOSEPH
+    references:
+      - GEN.40.1-23.KJV
+
+  - id: JOSEPH_SECOND_IN_COMMAND
+    name: Joseph Made Second in Command
+    date: "~1885 BC"
+    location: EGYPT
+    description: "Pharaoh makes Joseph second in command over all Egypt"
+    participants:
+      - JOSEPH
+    references:
+      - GEN.41.37-44.KJV
+
+  - id: SEVEN_YEARS_PLENTY
+    name: Seven Years of Plenty Begin
+    date: "~1884 BC"
+    location: EGYPT
+    description: "Seven years of great abundance begin in Egypt under Joseph's management"
+    participants:
+      - JOSEPH
+    references:
+      - GEN.41.47-49.KJV
+
+  - id: JOSEPH_MARRIES_ASENATH
+    name: Joseph Marries Asenath
+    date: "~1884 BC"
+    location: EGYPT
+    description: "Joseph marries Asenath, daughter of the priest of On"
+    participants:
+      - JOSEPH
+      - ASENATH
+    references:
+      - GEN.41.45.KJV
+
+  - id: BIRTH_OF_MANASSEH
+    name: Birth of Manasseh
+    date: "~1883 BC"
+    location: EGYPT
+    description: "Joseph's first son Manasseh is born to Asenath"
+    participants:
+      - JOSEPH
+      - ASENATH
+      - MANASSEH
+    references:
+      - GEN.41.50-51.KJV
+
+  - id: BIRTH_OF_EPHRAIM
+    name: Birth of Ephraim
+    date: "~1882 BC"
+    location: EGYPT
+    description: "Joseph's second son Ephraim is born to Asenath"
+    participants:
+      - JOSEPH
+      - ASENATH
+      - EPHRAIM
+    references:
+      - GEN.41.52.KJV
+
+  - id: SEVEN_YEARS_FAMINE
+    name: Seven Years of Famine Begin
+    date: "~1877 BC"
+    location: EGYPT
+    description: "Seven years of severe famine begin throughout all lands"
+    participants:
+      - JOSEPH
+    references:
+      - GEN.41.53-57.KJV
+
+  - id: BROTHERS_FIRST_TRIP
+    name: Joseph's Brothers' First Trip to Egypt
+    date: "~1876 BC"
+    location: EGYPT
+    description: "Ten of Joseph's brothers come to Egypt to buy grain; Joseph tests them"
+    participants:
+      - JOSEPH
+      - REUBEN
+      - SIMEON
+      - LEVI
+      - JUDAH
+      - DAN
+      - NAPHTALI
+      - GAD
+      - ASHER
+      - ISSACHAR
+      - ZEBULUN
+    references:
+      - GEN.42.1-38.KJV
+
+  - id: BROTHERS_SECOND_TRIP
+    name: Joseph's Brothers' Second Trip to Egypt
+    date: "~1875 BC"
+    location: EGYPT
+    description: "The brothers return to Egypt with Benjamin; Joseph reveals himself"
+    participants:
+      - JOSEPH
+      - BENJAMIN
+      - JUDAH
+    references:
+      - GEN.43.1-45.28.KJV
+
+  - id: ISRAEL_BLESSES_PHARAOH
+    name: Israel Blesses Pharaoh
+    date: "~1876 BC"
+    location: EGYPT
+    description: "Jacob blesses Pharaoh when he is presented to him"
+    participants:
+      - JACOB
+    references:
+      - GEN.47.7-10.KJV
+
+  - id: JACOB_BLESSES_SONS
+    name: Jacob Blesses His Sons
+    date: "~1859 BC"
+    location: EGYPT
+    description: "Jacob gives prophetic blessings to each of his twelve sons"
+    participants:
+      - JACOB
+      - REUBEN
+      - SIMEON
+      - LEVI
+      - JUDAH
+      - ZEBULUN
+      - ISSACHAR
+      - DAN
+      - GAD
+      - ASHER
+      - NAPHTALI
+      - JOSEPH
+      - BENJAMIN
+    references:
+      - GEN.49.1-28.KJV
+
+  - id: JACOB_BURIED_CANAAN
+    name: Jacob Buried in Canaan
+    date: "~1859 BC"
+    location: HEBRON
+    description: "Joseph and his brothers bury Jacob in the cave of Machpelah in Canaan"
+    participants:
+      - JOSEPH
+      - JACOB
+    references:
+      - GEN.50.1-14.KJV
+
+  - id: ISRAELITES_MULTIPLY
+    name: Israelites Multiply in Egypt
+    date: "~1805-1580 BC"
+    location: EGYPT
+    description: "The children of Israel multiply greatly and become mighty in Egypt"
+    participants: []
+    references:
+      - EXO.1.7.KJV
+
+  - id: NEW_PHARAOH_OPPRESSION
+    name: New Pharaoh Oppresses Israel
+    date: "~1580 BC"
+    location: EGYPT
+    description: "A new pharaoh who doesn't know Joseph begins to oppress the Israelites"
+    participants: []
+    references:
+      - EXO.1.8-14.KJV
+
+  - id: HEBREW_MIDWIVES_DISOBEY
+    name: Hebrew Midwives Disobey Pharaoh
+    date: "~1575 BC"
+    location: EGYPT
+    description: "Hebrew midwives fear God and refuse to kill Hebrew male babies"
+    participants: []
+    references:
+      - EXO.1.15-21.KJV
+
+  - id: MOSES_HIDDEN_RIVER
+    name: Moses Hidden in the River
+    date: "~1571 BC"
+    location: EGYPT
+    description: "Moses' mother hides him in a basket in the river; Pharaoh's daughter finds him"
+    participants:
+      - MOSES
+      - JOCHEBED
+      - MIRIAM
+    references:
+      - EXO.2.1-10.KJV
+
+  - id: MOSES_KILLS_EGYPTIAN
+    name: Moses Kills an Egyptian
+    date: "~1531 BC"
+    location: EGYPT
+    description: "Moses kills an Egyptian who was beating a Hebrew slave"
+    participants:
+      - MOSES
+    references:
+      - EXO.2.11-15.KJV
+
+  - id: MOSES_MEETS_ZIPPORAH
+    name: Moses Meets Zipporah
+    date: "~1531 BC"
+    location: MIDIAN
+    description: "Moses helps Jethro's daughters at a well and marries Zipporah"
+    participants:
+      - MOSES
+      - ZIPPORAH
+      - JETHRO
+    references:
+      - EXO.2.16-22.KJV
+
+  - id: GOD_REMEMBERS_COVENANT
+    name: God Remembers His Covenant
+    date: "~1491 BC"
+    location: HEAVEN
+    description: "God hears the groaning of Israel and remembers His covenant"
+    participants:
+      - GOD_FATHER
+    references:
+      - EXO.2.23-25.KJV
+
+  - id: MOSES_COMMISSIONED
+    name: Moses Commissioned by God
+    date: "~1491 BC"
+    location: MOUNT_HOREB
+    description: "God commissions Moses to deliver Israel from Egyptian bondage"
+    participants:
+      - GOD_FATHER
+      - MOSES
+    references:
+      - EXO.3.10-4.17.KJV
+
+  - id: MOSES_AARON_MEET
+    name: Moses and Aaron Meet
+    date: "~1491 BC"
+    location: MOUNT_HOREB
+    description: "God sends Aaron to meet Moses in the wilderness"
+    participants:
+      - MOSES
+      - AARON
+    references:
+      - EXO.4.27-31.KJV
+
+  - id: FIRST_MEETING_PHARAOH
+    name: First Meeting with Pharaoh
+    date: "~1491 BC"
+    location: EGYPT
+    description: "Moses and Aaron first approach Pharaoh to request Israel's release"
+    participants:
+      - MOSES
+      - AARON
+    references:
+      - EXO.5.1-23.KJV
+
+  - id: ISRAELITES_MAKE_BRICKS
+    name: Israelites Must Make Bricks Without Straw
+    date: "~1491 BC"
+    location: EGYPT
+    description: "Pharaoh increases Israel's burden by requiring bricks without providing straw"
+    participants:
+      - MOSES
+      - AARON
+    references:
+      - EXO.5.6-21.KJV
+
+  - id: PLAGUE_OF_BLOOD
+    name: First Plague - Water Turned to Blood
+    date: "~1491 BC"
+    location: EGYPT
+    description: "Aaron strikes the Nile with his rod and all water in Egypt turns to blood"
+    participants:
+      - MOSES
+      - AARON
+    references:
+      - EXO.7.14-25.KJV
+
+  - id: PLAGUE_OF_FROGS
+    name: Second Plague - Frogs
+    date: "~1491 BC"
+    location: EGYPT
+    description: "God sends frogs to cover the land of Egypt"
+    participants:
+      - MOSES
+      - AARON
+    references:
+      - EXO.8.1-15.KJV
+
+  - id: PLAGUE_OF_LICE
+    name: Third Plague - Lice
+    date: "~1491 BC"
+    location: EGYPT
+    description: "Aaron strikes the dust and it becomes lice throughout Egypt"
+    participants:
+      - MOSES
+      - AARON
+    references:
+      - EXO.8.16-19.KJV
+
+  - id: PLAGUE_OF_FLIES
+    name: Fourth Plague - Flies
+    date: "~1491 BC"
+    location: EGYPT
+    description: "God sends swarms of flies but spares the land of Goshen where Israel dwells"
+    participants:
+      - MOSES
+      - AARON
+    references:
+      - EXO.8.20-32.KJV
+
+  - id: PLAGUE_OF_LIVESTOCK
+    name: Fifth Plague - Death of Livestock
+    date: "~1491 BC"
+    location: EGYPT
+    description: "God kills all Egyptian livestock but spares the livestock of Israel"
+    participants:
+      - MOSES
+      - AARON
+    references:
+      - EXO.9.1-7.KJV
+
+  - id: PLAGUE_OF_BOILS
+    name: Sixth Plague - Boils
+    date: "~1491 BC"
+    location: EGYPT
+    description: "Moses throws ashes toward heaven and painful boils break out on Egyptians"
+    participants:
+      - MOSES
+      - AARON
+    references:
+      - EXO.9.8-12.KJV
+
+  - id: PLAGUE_OF_HAIL
+    name: Seventh Plague - Hail
+    date: "~1491 BC"
+    location: EGYPT
+    description: "God sends devastating hail mixed with fire upon Egypt"
+    participants:
+      - MOSES
+      - AARON
+    references:
+      - EXO.9.13-35.KJV
+
+  - id: PLAGUE_OF_LOCUSTS
+    name: Eighth Plague - Locusts
+    date: "~1491 BC"
+    location: EGYPT
+    description: "God brings locusts that devour everything remaining after the hail"
+    participants:
+      - MOSES
+      - AARON
+    references:
+      - EXO.10.1-20.KJV
+
+  - id: PLAGUE_OF_DARKNESS
+    name: Ninth Plague - Darkness
+    date: "~1491 BC"
+    location: EGYPT
+    description: "God brings thick darkness over Egypt for three days"
+    participants:
+      - MOSES
+      - AARON
+    references:
+      - EXO.10.21-29.KJV
+
+  - id: TENTH_PLAGUE_ANNOUNCED
+    name: Tenth Plague Announced
+    date: "~1491 BC"
+    location: EGYPT
+    description: "Moses announces that all firstborn in Egypt will die at midnight"
+    participants:
+      - MOSES
+    references:
+      - EXO.11.1-10.KJV
+
+  - id: PASSOVER_INSTITUTED
+    name: Passover Instituted
+    date: "~1491 BC"
+    location: EGYPT
+    description: "God institutes the Passover meal and commands Israel to mark their doorposts"
+    participants:
+      - GOD_FATHER
+      - MOSES
+    references:
+      - EXO.12.1-28.KJV
+
+  - id: FIRSTBORN_SLAIN
+    name: Firstborn of Egypt Slain
+    date: "~1491 BC"
+    location: EGYPT
+    description: "At midnight God strikes down all firstborn in Egypt but passes over Israel"
+    participants:
+      - GOD_FATHER
+    references:
+      - EXO.12.29-30.KJV
+
+  - id: ISRAEL_PLUNDERS_EGYPT
+    name: Israel Plunders Egypt
+    date: "~1491 BC"
+    location: EGYPT
+    description: "Egyptians give Israel silver, gold, and clothing as they leave"
+    participants:
+      - MOSES
+    references:
+      - EXO.12.35-36.KJV
+
+  - id: PHARAOH_PURSUES
+    name: Pharaoh Pursues Israel
+    date: "~1491 BC"
+    location: EGYPT
+    description: "Pharaoh changes his mind and pursues Israel with his army"
+    participants:
+      - MOSES
+    references:
+      - EXO.14.5-9.KJV
+
+  - id: ISRAEL_FEARS_EGYPTIANS
+    name: Israel Fears the Egyptians
+    date: "~1491 BC"
+    location: RED_SEA
+    description: "Israel sees the Egyptian army approaching and fears greatly"
+    participants:
+      - MOSES
+    references:
+      - EXO.14.10-14.KJV
+
+  - id: PILLAR_OF_CLOUD
+    name: Pillar of Cloud Protects Israel
+    date: "~1491 BC"
+    location: RED_SEA
+    description: "The pillar of cloud moves between Israel and the Egyptian army"
+    participants:
+      - GOD_FATHER
+      - MOSES
+    references:
+      - EXO.14.19-20.KJV
+
+  - id: EGYPTIAN_ARMY_DESTROYED
+    name: Egyptian Army Destroyed
+    date: "~1491 BC"
+    location: RED_SEA
+    description: "The sea returns and destroys Pharaoh's entire army"
+    participants:
+      - GOD_FATHER
+      - MOSES
+    references:
+      - EXO.14.26-31.KJV
+
+  - id: SONG_OF_MOSES
+    name: Song of Moses and Miriam
+    date: "~1491 BC"
+    location: RED_SEA
+    description: "Moses and Miriam lead Israel in a song of victory"
+    participants:
+      - MOSES
+      - MIRIAM
+    references:
+      - EXO.15.1-21.KJV
+
+  - id: BITTER_WATERS_MARAH
+    name: Bitter Waters at Marah
+    date: "~1491 BC"
+    location: MARAH
+    description: "Israel finds bitter water at Marah; God makes it sweet"
+    participants:
+      - MOSES
+      - GOD_FATHER
+    references:
+      - EXO.15.22-27.KJV
+
+  - id: TWELVE_WELLS_ELIM
+    name: Twelve Wells at Elim
+    date: "~1491 BC"
+    location: ELIM
+    description: "Israel camps at Elim where there are twelve wells and seventy palm trees"
+    participants:
+      - MOSES
+    references:
+      - EXO.15.27.KJV
+
+  - id: ISRAEL_MURMURS_FOOD
+    name: Israel Murmurs for Food
+    date: "~1491 BC"
+    location: WILDERNESS_OF_SIN
+    description: "Israel complains about lack of food and remembers the meat of Egypt"
+    participants:
+      - MOSES
+      - AARON
+    references:
+      - EXO.16.1-12.KJV
+
+  - id: QUAILS_PROVIDED
+    name: Quails Provided
+    date: "~1491 BC"
+    location: WILDERNESS_OF_SIN
+    description: "God provides quails in the evening to satisfy Israel's desire for meat"
+    participants:
+      - GOD_FATHER
+      - MOSES
+    references:
+      - EXO.16.13.KJV
+
+  - id: SABBATH_MANNA
+    name: Sabbath and Manna Rules
+    date: "~1491 BC"
+    location: WILDERNESS_OF_SIN
+    description: "God establishes the Sabbath through the provision of manna"
+    participants:
+      - GOD_FATHER
+      - MOSES
+    references:
+      - EXO.16.22-30.KJV
+
+  - id: MANNA_PRESERVED
+    name: Manna Preserved in Golden Pot
+    date: "~1491 BC"
+    location: WILDERNESS
+    description: "Aaron places a pot of manna before the Testimony to be kept"
+    participants:
+      - AARON
+      - MOSES
+    references:
+      - EXO.16.32-36.KJV
+
+  - id: ISRAEL_MURMURS_WATER
+    name: Israel Murmurs for Water
+    date: "~1491 BC"
+    location: REPHIDIM
+    description: "Israel complains about lack of water and tempts the Lord"
+    participants:
+      - MOSES
+    references:
+      - EXO.17.1-7.KJV
+
+  - id: AMALEK_ATTACKS
+    name: Amalek Attacks Israel
+    date: "~1491 BC"
+    location: REPHIDIM
+    description: "Amalek attacks Israel; Joshua leads the battle while Moses holds up his hands"
+    participants:
+      - MOSES
+      - JOSHUA
+      - AARON
+    references:
+      - EXO.17.8-16.KJV
+
+  - id: JETHRO_VISITS
+    name: Jethro Visits Moses
+    date: "~1490 BC"
+    location: MOUNT_SINAI
+    description: "Jethro brings Moses' wife and sons and advises him about delegation"
+    participants:
+      - MOSES
+      - JETHRO
+      - ZIPPORAH
+    references:
+      - EXO.18.1-27.KJV
+
+  - id: ISRAEL_ARRIVES_SINAI
+    name: Israel Arrives at Mount Sinai
+    date: "~1490 BC"
+    location: MOUNT_SINAI
+    description: "Israel arrives at Mount Sinai exactly three months after leaving Egypt"
+    participants:
+      - MOSES
+    references:
+      - EXO.19.1-2.KJV
+
+  - id: GOD_PROPOSES_COVENANT
+    name: God Proposes Covenant with Israel
+    date: "~1490 BC"
+    location: MOUNT_SINAI
+    description: "God offers to make Israel a kingdom of priests and holy nation"
+    participants:
+      - GOD_FATHER
+      - MOSES
+    references:
+      - EXO.19.3-8.KJV
+
+  - id: ISRAEL_PREPARES
+    name: Israel Prepares to Meet God
+    date: "~1490 BC"
+    location: MOUNT_SINAI
+    description: "Moses sanctifies the people for three days to prepare to meet God"
+    participants:
+      - MOSES
+    references:
+      - EXO.19.9-15.KJV
+
+  - id: GOD_DESCENDS_SINAI
+    name: God Descends on Mount Sinai
+    date: "~1490 BC"
+    location: MOUNT_SINAI
+    description: "God descends on Mount Sinai in fire, smoke, and earthquake"
+    participants:
+      - GOD_FATHER
+      - MOSES
+    references:
+      - EXO.19.16-25.KJV
+
+  - id: TEN_COMMANDMENTS_SPOKEN
+    name: Ten Commandments Spoken
+    date: "~1490 BC"
+    location: MOUNT_SINAI
+    description: "God speaks the Ten Commandments directly to all Israel"
+    participants:
+      - GOD_FATHER
+      - MOSES
+    references:
+      - EXO.20.1-21.KJV
+
+  - id: CIVIL_LAWS_GIVEN
+    name: Civil Laws Given
+    date: "~1490 BC"
+    location: MOUNT_SINAI
+    description: "God gives Moses detailed civil and ceremonial laws"
+    participants:
+      - GOD_FATHER
+      - MOSES
+    references:
+      - EXO.21.1-23.33.KJV
+
+  - id: COVENANT_RATIFIED
+    name: Covenant Ratified with Blood
+    date: "~1490 BC"
+    location: MOUNT_SINAI
+    description: "Moses ratifies the covenant by sprinkling blood on the people"
+    participants:
+      - MOSES
+      - AARON
+    references:
+      - EXO.24.1-11.KJV
+
+  - id: MOSES_FORTY_DAYS
+    name: Moses on Mountain Forty Days
+    date: "~1490 BC"
+    location: MOUNT_SINAI
+    description: "Moses goes up on the mountain for forty days and nights"
+    participants:
+      - MOSES
+      - GOD_FATHER
+    references:
+      - EXO.24.12-18.KJV
+
+  - id: TABERNACLE_INSTRUCTIONS
+    name: Tabernacle Instructions Given
+    date: "~1490 BC"
+    location: MOUNT_SINAI
+    description: "God gives Moses detailed instructions for building the tabernacle"
+    participants:
+      - GOD_FATHER
+      - MOSES
+    references:
+      - EXO.25.1-31.18.KJV
+
+  - id: GOLDEN_CALF_MADE
+    name: Golden Calf Made
+    date: "~1490 BC"
+    location: MOUNT_SINAI
+    description: "While Moses is on the mountain, the people make a golden calf to worship"
+    participants:
+      - AARON
+    references:
+      - EXO.32.1-6.KJV
+
+  - id: MOSES_BREAKS_TABLETS
+    name: Moses Breaks the Stone Tablets
+    date: "~1490 BC"
+    location: MOUNT_SINAI
+    description: "Moses breaks the stone tablets when he sees the golden calf"
+    participants:
+      - MOSES
+    references:
+      - EXO.32.15-20.KJV
+
+  - id: LEVITES_SLAY_IDOLATERS
+    name: Levites Slay the Idolaters
+    date: "~1490 BC"
+    location: MOUNT_SINAI
+    description: "The Levites kill about 3,000 men who worshipped the golden calf"
+    participants:
+      - MOSES
+      - LEVI
+    references:
+      - EXO.32.25-29.KJV
+
+  - id: MOSES_INTERCEDES
+    name: Moses Intercedes for Israel
+    date: "~1490 BC"
+    location: MOUNT_SINAI
+    description: "Moses intercedes for Israel and God spares the nation from destruction"
+    participants:
+      - MOSES
+      - GOD_FATHER
+    references:
+      - EXO.32.30-35.KJV
+
+  - id: NEW_TABLETS_WRITTEN
+    name: New Tablets Written
+    date: "~1489 BC"
+    location: MOUNT_SINAI
+    description: "Moses makes new stone tablets and God writes the commandments again"
+    participants:
+      - MOSES
+      - GOD_FATHER
+    references:
+      - EXO.34.1-28.KJV
+
+  - id: MOSES_FACE_SHINES
+    name: Moses' Face Shines
+    date: "~1489 BC"
+    location: MOUNT_SINAI
+    description: "Moses' face shines with God's glory; he must wear a veil"
+    participants:
+      - MOSES
+    references:
+      - EXO.34.29-35.KJV
+
+  # Conquest Period Events
+  - id: DEATH_OF_MOSES
+    name: Death of Moses
+    date: "~1451 BC"
+    location: MOUNT_NEBO
+    description: "Moses dies after viewing the promised land from Mount Nebo"
+    participants:
+      - MOSES
+      - GOD_FATHER
+      - JOSHUA
+    references:
+      - DEU.34.1-12.KJV
+
+  - id: JOSHUA_COMMISSIONED
+    name: Joshua Commissioned as Leader
+    date: "~1451 BC"
+    location: PLAINS_OF_MOAB
+    description: "God commissions Joshua to lead Israel into the promised land"
+    participants:
+      - JOSHUA
+      - GOD_FATHER
+    references:
+      - JOS.1.1-9.KJV
+
+  - id: CROSSING_JORDAN
+    name: Crossing the Jordan River
+    date: "~1451 BC"
+    location: JORDAN_RIVER
+    description: "God parts the Jordan River for Israel to cross into the promised land"
+    participants:
+      - JOSHUA
+      - RAHAB
+    references:
+      - JOS.3.1-17.KJV
+
+  - id: FALL_OF_JERICHO
+    name: Fall of Jericho
+    date: "~1451 BC"
+    location: JERICHO
+    description: "The walls of Jericho fall down after Israel marches around the city"
+    participants:
+      - JOSHUA
+      - RAHAB
+    references:
+      - JOS.6.1-27.KJV
+
+  - id: BATTLE_OF_AI
+    name: Battle of Ai
+    date: "~1450 BC"
+    location: AI
+    description: "Israel defeats Ai after dealing with Achan's sin"
+    participants:
+      - JOSHUA
+    references:
+      - JOS.7.1-8.35.KJV
+
+  - id: CONQUEST_OF_CANAAN
+    name: Conquest of Canaan
+    date: "~1451-1444 BC"
+    location: CANAAN
+    description: "Joshua leads Israel in conquering the promised land"
+    participants:
+      - JOSHUA
+      - CALEB
+    references:
+      - JOS.11.23.KJV
+      - JOS.21.43-45.KJV
+
+  - id: DEATH_OF_JOSHUA
+    name: Death of Joshua
+    date: "~1427 BC"
+    location: EPHRAIM_TERRITORY
+    description: "Joshua dies at age 110 after leading Israel's conquest"
+    participants:
+      - JOSHUA
+    references:
+      - JOS.24.29-30.KJV
+
+  # Judges Period Events
+  - id: FIRST_APOSTASY
+    name: Israel's First Apostasy
+    date: "~1425 BC"
+    location: CANAAN
+    description: "Israel begins cycle of sin, serving other gods after Joshua's death"
+    participants: []
+    references:
+      - JDG.2.10-19.KJV
+
+  - id: OTHNIEL_JUDGES
+    name: Othniel Becomes First Judge
+    date: "~1374 BC"
+    location: CANAAN
+    description: "Othniel delivers Israel from Mesopotamian oppression"
+    participants: []
+    references:
+      - JDG.3.7-11.KJV
+
+  - id: EHUD_ASSASSINATES_EGLON
+    name: Ehud Assassinates King Eglon
+    date: "~1316 BC"
+    location: MOAB
+    description: "Left-handed judge Ehud kills Moabite king Eglon and delivers Israel"
+    participants: []
+    references:
+      - JDG.3.12-30.KJV
+
+  - id: DEBORAH_AND_BARAK
+    name: Deborah and Barak Defeat Sisera
+    date: "~1256 BC"
+    location: MOUNT_TABOR
+    description: "Prophetess Deborah and Barak defeat Canaanite general Sisera"
+    participants:
+      - DEBORAH
+      - BARAK
+      - JAEL
+    references:
+      - JDG.4.1-24.KJV
+
+  - id: GIDEON_CALLS
+    name: Gideon Called by Angel
+    date: "~1169 BC"
+    location: OPHRAH
+    description: "An angel calls Gideon to deliver Israel from Midianite oppression"
+    participants:
+      - GIDEON
+    references:
+      - JDG.6.11-24.KJV
+
+  - id: GIDEON_THREE_HUNDRED
+    name: Gideon's 300 Warriors
+    date: "~1169 BC"
+    location: VALLEY_OF_JEZREEL
+    description: "Gideon defeats vast Midianite army with only 300 men using trumpets and torches"
+    participants:
+      - GIDEON
+    references:
+      - JDG.7.1-25.KJV
+
+  - id: ABIMELECH_USURPS
+    name: Abimelech's Usurpation
+    date: "~1129 BC"
+    location: SHECHEM
+    description: "Gideon's son Abimelech kills his brothers and becomes king"
+    participants: []
+    references:
+      - JDG.9.1-57.KJV
+
+  - id: JEPHTHAH_VOW
+    name: Jephthah's Tragic Vow
+    date: "~1088 BC"
+    location: GILEAD
+    description: "Jephthah makes a rash vow and sacrifices his daughter after defeating Ammonites"
+    participants: []
+    references:
+      - JDG.11.29-40.KJV
+
+  - id: SAMSON_BIRTH
+    name: Birth of Samson
+    date: "~1075 BC"
+    location: ZORAH
+    description: "Angel announces birth of Samson to Manoah and his wife"
+    participants:
+      - MANOAH
+      - SAMSON
+    references:
+      - JDG.13.2-25.KJV
+
+  - id: SAMSON_STRENGTH
+    name: Samson's Great Strength
+    date: "~1055 BC"
+    location: PHILISTINE_TERRITORY
+    description: "Samson demonstrates supernatural strength against the Philistines"
+    participants:
+      - SAMSON
+    references:
+      - JDG.14.1-15.20.KJV
+
+  - id: SAMSON_DELILAH
+    name: Samson and Delilah
+    date: "~1045 BC"
+    location: VALLEY_OF_SOREK
+    description: "Delilah betrays Samson to the Philistines by cutting his hair"
+    participants:
+      - SAMSON
+      - DELILAH
+    references:
+      - JDG.16.4-22.KJV
+
+  - id: SAMSON_DEATH
+    name: Death of Samson
+    date: "~1045 BC"
+    location: GAZA
+    description: "Samson destroys Philistine temple, killing himself and many enemies"
+    participants:
+      - SAMSON
+    references:
+      - JDG.16.23-31.KJV
+
+  # Samuel and Transition to Monarchy
+  - id: BIRTH_OF_SAMUEL
+    name: Birth of Samuel
+    date: "~1100 BC"
+    location: RAMAH
+    description: "Hannah gives birth to Samuel after praying for a son"
+    participants:
+      - HANNAH
+      - ELKANAH
+      - SAMUEL
+    references:
+      - 1SA.1.19-20.KJV
+
+  - id: SAMUEL_CALLED
+    name: God Calls Samuel
+    date: "~1090 BC"
+    location: SHILOH
+    description: "God calls young Samuel to be a prophet while serving under Eli"
+    participants:
+      - SAMUEL
+      - ELI
+      - GOD_FATHER
+    references:
+      - 1SA.3.1-21.KJV
+
+  - id: ARK_CAPTURED
+    name: Ark of Covenant Captured
+    date: "~1075 BC"
+    location: APHEK
+    description: "Philistines capture the ark; Eli dies upon hearing the news"
+    participants:
+      - ELI
+      - HOPHNI
+      - PHINEHAS_SON_OF_ELI
+    references:
+      - 1SA.4.1-22.KJV
+
+  - id: ARK_RETURNED
+    name: Ark Returned by Philistines
+    date: "~1068 BC"
+    location: BETH_SHEMESH
+    description: "Philistines return the ark after seven months of plagues"
+    participants:
+      - SAMUEL
+    references:
+      - 1SA.6.1-21.KJV
+
+  - id: ISRAEL_DEMANDS_KING
+    name: Israel Demands a King
+    date: "~1043 BC"
+    location: RAMAH
+    description: "Elders of Israel ask Samuel to appoint a king to rule over them"
+    participants:
+      - SAMUEL
+    references:
+      - 1SA.8.1-22.KJV
+
+  # United Kingdom Period
+  - id: SAUL_ANOINTED
+    name: Saul Anointed as King
+    date: "~1043 BC"
+    location: RAMAH
+    description: "Samuel secretly anoints Saul as Israel's first king"
+    participants:
+      - SAUL
+      - SAMUEL
+    references:
+      - 1SA.9.1-10.16.KJV
+
+  - id: SAUL_CONFIRMED_KING
+    name: Saul Confirmed as King
+    date: "~1043 BC"
+    location: MIZPAH
+    description: "Saul is publicly chosen as king by lot before all Israel"
+    participants:
+      - SAUL
+      - SAMUEL
+    references:
+      - 1SA.10.17-27.KJV
+
+  - id: SAUL_DEFEATS_AMMONITES
+    name: Saul Defeats Ammonites
+    date: "~1042 BC"
+    location: JABESH_GILEAD
+    description: "Saul's first victory, rescuing Jabesh-gilead from Ammonite siege"
+    participants:
+      - SAUL
+    references:
+      - 1SA.11.1-15.KJV
+
+  - id: SAUL_REJECTED
+    name: Saul Rejected by God
+    date: "~1025 BC"
+    location: GILGAL
+    description: "God rejects Saul as king for disobedience in not waiting for Samuel"
+    participants:
+      - SAUL
+      - SAMUEL
+      - GOD_FATHER
+    references:
+      - 1SA.13.1-15.KJV
+
+  - id: DAVID_ANOINTED
+    name: David Anointed by Samuel
+    date: "~1025 BC"
+    location: BETHLEHEM
+    description: "Samuel secretly anoints young David as future king of Israel"
+    participants:
+      - DAVID
+      - SAMUEL
+      - JESSE
+    references:
+      - 1SA.16.1-13.KJV
+
+  - id: DAVID_GOLIATH
+    name: David Defeats Goliath
+    date: "~1020 BC"
+    location: VALLEY_OF_ELAH
+    description: "Young David kills giant Goliath with a stone from his sling"
+    participants:
+      - DAVID
+    references:
+      - 1SA.17.1-58.KJV
+
+  - id: DAVID_JONATHAN_COVENANT
+    name: David and Jonathan's Covenant
+    date: "~1019 BC"
+    location: GIBEAH
+    description: "Jonathan and David make a covenant of friendship"
+    participants:
+      - DAVID
+      - JONATHAN
+    references:
+      - 1SA.18.1-4.KJV
+
+  - id: SAUL_PURSUES_DAVID
+    name: Saul Pursues David
+    date: "~1018-1011 BC"
+    location: WILDERNESS
+    description: "Saul spends years trying to kill David out of jealousy"
+    participants:
+      - SAUL
+      - DAVID
+      - JONATHAN
+    references:
+      - 1SA.19.1-26.25.KJV
+
+  - id: DEATH_OF_SAUL
+    name: Death of Saul and Jonathan
+    date: "~1010 BC"
+    location: MOUNT_GILBOA
+    description: "Saul and Jonathan die in battle against the Philistines"
+    participants:
+      - SAUL
+      - JONATHAN
+      - MALCHISHUA
+      - ABINADAB_SON_OF_SAUL
+    references:
+      - 1SA.31.1-13.KJV
+
+  - id: DAVID_KING_JUDAH
+    name: David Becomes King of Judah
+    date: "~1010 BC"
+    location: HEBRON
+    description: "David is anointed king over the tribe of Judah"
+    participants:
+      - DAVID
+    references:
+      - 2SA.2.1-7.KJV
+
+  - id: DAVID_KING_ALL_ISRAEL
+    name: David Becomes King of All Israel
+    date: "~1003 BC"
+    location: HEBRON
+    description: "All tribes of Israel anoint David as king over united Israel"
+    participants:
+      - DAVID
+    references:
+      - 2SA.5.1-5.KJV
+
+  - id: DAVID_CAPTURES_JERUSALEM
+    name: David Captures Jerusalem
+    date: "~1003 BC"
+    location: JERUSALEM
+    description: "David conquers Jerusalem from the Jebusites, making it his capital"
+    participants:
+      - DAVID
+    references:
+      - 2SA.5.6-10.KJV
+
+  - id: ARK_TO_JERUSALEM
+    name: Ark Brought to Jerusalem
+    date: "~1000 BC"
+    location: JERUSALEM
+    description: "David brings the ark of the covenant to Jerusalem with great celebration"
+    participants:
+      - DAVID
+    references:
+      - 2SA.6.1-23.KJV
+
+  - id: DAVIDIC_COVENANT
+    name: God's Covenant with David
+    date: "~1000 BC"
+    location: JERUSALEM
+    description: "God promises David an eternal dynasty through the prophet Nathan"
+    participants:
+      - DAVID
+      - NATHAN_PROPHET
+      - GOD_FATHER
+    references:
+      - 2SA.7.1-29.KJV
+
+  - id: DAVID_BATHSHEBA
+    name: David's Sin with Bathsheba
+    date: "~995 BC"
+    location: JERUSALEM
+    description: "David commits adultery with Bathsheba and arranges Uriah's death"
+    participants:
+      - DAVID
+      - BATHSHEBA
+    references:
+      - 2SA.11.1-27.KJV
+
+  - id: NATHAN_CONFRONTS_DAVID
+    name: Nathan Confronts David
+    date: "~995 BC"
+    location: JERUSALEM
+    description: "Prophet Nathan confronts David about his sin using parable of the lamb"
+    participants:
+      - DAVID
+      - NATHAN_PROPHET
+    references:
+      - 2SA.12.1-25.KJV
+
+  - id: ABSALOM_REBELLION
+    name: Absalom's Rebellion
+    date: "~980 BC"
+    location: JERUSALEM
+    description: "David's son Absalom rebels against him and temporarily takes the throne"
+    participants:
+      - DAVID
+      - ABSALOM
+    references:
+      - 2SA.15.1-18.33.KJV
+
+  - id: DEATH_OF_DAVID
+    name: Death of King David
+    date: "~970 BC"
+    location: JERUSALEM
+    description: "David dies after reigning 40 years, leaving throne to Solomon"
+    participants:
+      - DAVID
+      - SOLOMON
+    references:
+      - 1KI.2.1-12.KJV
+
+  - id: SOLOMON_CROWNED
+    name: Solomon Crowned King
+    date: "~970 BC"
+    location: JERUSALEM
+    description: "Solomon is anointed king and begins his reign over Israel"
+    participants:
+      - SOLOMON
+      - DAVID
+    references:
+      - 1KI.1.28-53.KJV
+
+  - id: SOLOMONS_WISDOM
+    name: God Grants Solomon Wisdom
+    date: "~969 BC"
+    location: GIBEON
+    description: "God appears to Solomon in a dream and grants him great wisdom"
+    participants:
+      - SOLOMON
+      - GOD_FATHER
+    references:
+      - 1KI.3.1-28.KJV
+
+  - id: TEMPLE_CONSTRUCTION_BEGINS
+    name: Temple Construction Begins
+    date: "~966 BC"
+    location: JERUSALEM
+    description: "Solomon begins building the temple on Mount Moriah"
+    participants:
+      - SOLOMON
+    references:
+      - 1KI.6.1.KJV
+      - 2CH.3.1-2.KJV
+
+  - id: TEMPLE_DEDICATED
+    name: Temple Dedicated
+    date: "~959 BC"
+    location: JERUSALEM
+    description: "Solomon dedicates the completed temple with great ceremony"
+    participants:
+      - SOLOMON
+    references:
+      - 1KI.8.1-66.KJV
+
+  - id: QUEEN_OF_SHEBA
+    name: Visit of Queen of Sheba
+    date: "~950 BC"
+    location: JERUSALEM
+    description: "Queen of Sheba visits Solomon to test his wisdom"
+    participants:
+      - SOLOMON
+    references:
+      - 1KI.10.1-13.KJV
+
+  - id: SOLOMONS_APOSTASY
+    name: Solomon's Apostasy
+    date: "~940 BC"
+    location: JERUSALEM
+    description: "Solomon's foreign wives turn his heart to worship other gods"
+    participants:
+      - SOLOMON
+    references:
+      - 1KI.11.1-13.KJV
+
+  - id: DEATH_OF_SOLOMON
+    name: Death of Solomon
+    date: "~930 BC"
+    location: JERUSALEM
+    description: "Solomon dies after 40 years of reign, kingdom passes to Rehoboam"
+    participants:
+      - SOLOMON
+      - REHOBOAM
+    references:
+      - 1KI.11.41-43.KJV
+
+  # Divided Kingdom Period
+  - id: KINGDOM_DIVIDES
+    name: Kingdom Divides
+    date: "~930 BC"
+    location: SHECHEM
+    description: "Israel splits into northern and southern kingdoms after Rehoboam's harsh response"
+    participants:
+      - REHOBOAM
+      - JEROBOAM_I
+    references:
+      - 1KI.12.1-24.KJV
+
+  - id: JEROBOAM_GOLDEN_CALVES
+    name: Jeroboam Makes Golden Calves
+    date: "~930 BC"
+    location: BETHEL
+    description: "King Jeroboam sets up golden calves at Dan and Bethel to prevent worship in Jerusalem"
+    participants:
+      - JEROBOAM_I
+    references:
+      - 1KI.12.25-33.KJV
+
+  - id: AHAB_BECOMES_KING
+    name: Ahab Becomes King of Israel
+    date: "~874 BC"
+    location: SAMARIA
+    description: "Ahab becomes king of northern Israel and marries Jezebel"
+    participants:
+      - AHAB
+      - JEZEBEL
+    references:
+      - 1KI.16.28-33.KJV
+
+  - id: ELIJAH_DROUGHT
+    name: Elijah Declares Drought
+    date: "~863 BC"
+    location: SAMARIA
+    description: "Elijah announces three-year drought as judgment on Ahab and Israel"
+    participants:
+      - ELIJAH
+      - AHAB
+    references:
+      - 1KI.17.1.KJV
+
+  - id: ELIJAH_CARMEL
+    name: Elijah's Contest on Mount Carmel
+    date: "~860 BC"
+    location: MOUNT_CARMEL
+    description: "Elijah defeats 450 prophets of Baal in contest proving God's power"
+    participants:
+      - ELIJAH
+    references:
+      - 1KI.18.16-46.KJV
+
+  - id: ELIJAH_STILL_VOICE
+    name: God Speaks to Elijah in Still Small Voice
+    date: "~860 BC"
+    location: MOUNT_HOREB
+    description: "God speaks to discouraged Elijah not in wind, earthquake, or fire, but in still small voice"
+    participants:
+      - ELIJAH
+      - GOD_FATHER
+    references:
+      - 1KI.19.9-18.KJV
+
+  - id: ELIJAH_CALLS_ELISHA
+    name: Elijah Calls Elisha
+    date: "~855 BC"
+    location: ABEL_MEHOLAH
+    description: "Elijah calls Elisha to be his successor by casting his mantle on him"
+    participants:
+      - ELIJAH
+      - ELISHA
+    references:
+      - 1KI.19.19-21.KJV
+
+  - id: ELIJAH_TRANSLATED
+    name: Translation of Elijah
+    date: "~848 BC"
+    location: JORDAN_RIVER
+    description: "Elijah is taken up to heaven in a whirlwind with chariots of fire"
+    participants:
+      - ELIJAH
+      - ELISHA
+    references:
+      - 2KI.2.1-18.KJV
+
+  - id: ELISHA_DOUBLE_PORTION
+    name: Elisha Receives Double Portion
+    date: "~848 BC"
+    location: JORDAN_RIVER
+    description: "Elisha receives Elijah's mantle and begins his prophetic ministry"
+    participants:
+      - ELISHA
+    references:
+      - 2KI.2.9-25.KJV
+
+  - id: FALL_OF_SAMARIA
+    name: Fall of Samaria
+    date: "~722 BC"
+    location: SAMARIA
+    description: "Assyria conquers northern kingdom of Israel, ending it forever"
+    participants: []
+    references:
+      - 2KI.17.1-23.KJV
+
+  - id: HEZEKIAH_REFORMS
+    name: Hezekiah's Reforms
+    date: "~715 BC"
+    location: JERUSALEM
+    description: "King Hezekiah destroys idols and restores true worship in Judah"
+    participants:
+      - HEZEKIAH
+    references:
+      - 2KI.18.1-8.KJV
+
+  - id: SENNACHERIB_INVASION
+    name: Sennacherib Invades Judah
+    date: "~701 BC"
+    location: JERUSALEM
+    description: "Assyrian king Sennacherib besieges Jerusalem but God delivers the city"
+    participants:
+      - HEZEKIAH
+      - ISAIAH
+    references:
+      - 2KI.18.13-19.37.KJV
+
+  - id: JOSIAH_REFORMS
+    name: Josiah's Reforms
+    date: "~621 BC"
+    location: JERUSALEM
+    description: "King Josiah discovers Book of Law and leads great religious reformation"
+    participants:
+      - JOSIAH
+    references:
+      - 2KI.22.1-23.30.KJV
+
+  - id: JERUSALEM_FALLS
+    name: Fall of Jerusalem
+    date: "~586 BC"
+    location: JERUSALEM
+    description: "Babylonians destroy Jerusalem and temple, taking people into exile"
+    participants:
+      - JEREMIAH
+    references:
+      - 2KI.25.1-21.KJV
+
+  # Exile and Return Period
+  - id: DANIEL_TRAINING
+    name: Daniel's Training in Babylon
+    date: "~605 BC"
+    location: BABYLON
+    description: "Daniel and friends are taken to Babylon and trained in royal court"
+    participants:
+      - DANIEL
+      - SHADRACH
+      - MESHACH
+      - ABEDNEGO
+    references:
+      - DAN.1.1-21.KJV
+
+  - id: FIERY_FURNACE
+    name: Fiery Furnace
+    date: "~589 BC"
+    location: BABYLON
+    description: "Shadrach, Meshach, and Abednego refuse to bow to image and are delivered from furnace"
+    participants:
+      - SHADRACH
+      - MESHACH
+      - ABEDNEGO
+    references:
+      - DAN.3.1-30.KJV
+
+  - id: DANIEL_LIONS_DEN
+    name: Daniel in Lions' Den
+    date: "~539 BC"
+    location: BABYLON
+    description: "Daniel continues praying despite decree and is delivered from lions"
+    participants:
+      - DANIEL
+    references:
+      - DAN.6.1-28.KJV
+
+  - id: CYRUS_DECREE
+    name: Cyrus' Decree
+    date: "~538 BC"
+    location: BABYLON
+    description: "Persian king Cyrus allows Jews to return and rebuild temple"
+    participants:
+      - EZRA
+    references:
+      - EZR.1.1-11.KJV
+
+  - id: TEMPLE_FOUNDATION
+    name: Temple Foundation Laid
+    date: "~536 BC"
+    location: JERUSALEM
+    description: "Returning exiles lay foundation of second temple"
+    participants:
+      - ZERUBBABEL
+    references:
+      - EZR.3.8-13.KJV
+
+  - id: TEMPLE_COMPLETED
+    name: Second Temple Completed
+    date: "~516 BC"
+    location: JERUSALEM
+    description: "Second temple is completed and dedicated after delays"
+    participants:
+      - ZERUBBABEL
+    references:
+      - EZR.6.13-22.KJV
+
+  - id: EZRA_RETURNS
+    name: Ezra Returns to Jerusalem
+    date: "~458 BC"
+    location: JERUSALEM
+    description: "Ezra leads second group of exiles back to Jerusalem with religious reforms"
+    participants:
+      - EZRA
+    references:
+      - EZR.7.1-10.KJV
+
+  - id: NEHEMIAH_RETURNS
+    name: Nehemiah Returns
+    date: "~444 BC"
+    location: JERUSALEM
+    description: "Nehemiah returns as governor to rebuild Jerusalem's walls"
+    participants:
+      - NEHEMIAH
+    references:
+      - NEH.2.1-20.KJV
+
+  - id: WALLS_COMPLETED
+    name: Jerusalem Walls Completed
+    date: "~444 BC"
+    location: JERUSALEM
+    description: "Jerusalem's walls are rebuilt in 52 days despite opposition"
+    participants:
+      - NEHEMIAH
+    references:
+      - NEH.6.15-16.KJV
+
+  - id: ESTHER_QUEEN
+    name: Esther Becomes Queen
+    date: "~479 BC"
+    location: SUSA
+    description: "Esther is chosen as queen by Persian king Ahasuerus"
+    participants:
+      - ESTHER
+      - MORDECAI
+    references:
+      - EST.2.1-18.KJV
+
+  - id: PURIM_DELIVERANCE
+    name: Purim Deliverance
+    date: "~473 BC"
+    location: SUSA
+    description: "Esther and Mordecai save Jews from Haman's plot to destroy them"
+    participants:
+      - ESTHER
+      - MORDECAI
+    references:
+      - EST.7.1-10.3.KJV
+
+  # New Testament Era
+  - id: BIRTH_OF_JOHN_BAPTIST
+    name: Birth of John the Baptist
+    date: "~6 BC"
+    location: JUDEA_PROVINCE
+    description: "John the Baptist is born to Zacharias and Elisabeth"
+    participants:
+      - JOHN_THE_BAPTIST
+      - ZACHARIAS
+      - ELISABETH
+    references:
+      - LUK.1.57-80.KJV
+
+  - id: BIRTH_OF_JESUS
+    name: Birth of Jesus Christ
+    date: "~4 BC"
+    location: BETHLEHEM
+    description: "Jesus is born to Mary in Bethlehem during Roman census"
+    participants:
+      - JESUS
+      - MARY_MOTHER_OF_JESUS
+      - JOSEPH_HUSBAND_OF_MARY
+    references:
+      - MAT.1.18-25.KJV
+      - LUK.2.1-20.KJV
+
+  - id: JESUS_PRESENTATION
+    name: Presentation of Jesus
+    date: "~4 BC"
+    location: JERUSALEM
+    description: "Jesus is presented at the temple; Simeon and Anna recognize him"
+    participants:
+      - JESUS
+      - MARY_MOTHER_OF_JESUS
+      - JOSEPH_HUSBAND_OF_MARY
+    references:
+      - LUK.2.21-38.KJV
+
+  - id: WISE_MEN_VISIT
+    name: Visit of Wise Men
+    date: "~3 BC"
+    location: BETHLEHEM
+    description: "Wise men from the east come to worship infant Jesus"
+    participants:
+      - JESUS
+    references:
+      - MAT.2.1-12.KJV
+
+  - id: FLIGHT_TO_EGYPT
+    name: Flight to Egypt
+    date: "~3 BC"
+    location: EGYPT
+    description: "Joseph and Mary flee to Egypt with Jesus to escape Herod"
+    participants:
+      - JESUS
+      - MARY_MOTHER_OF_JESUS
+      - JOSEPH_HUSBAND_OF_MARY
+    references:
+      - MAT.2.13-18.KJV
+
+  - id: JESUS_BOY_TEMPLE
+    name: Boy Jesus at Temple
+    date: "~8 AD"
+    location: JERUSALEM
+    description: "12-year-old Jesus stays behind at temple, amazing teachers with his understanding"
+    participants:
+      - JESUS
+      - MARY_MOTHER_OF_JESUS
+      - JOSEPH_HUSBAND_OF_MARY
+    references:
+      - LUK.2.41-52.KJV
+
+  - id: JOHN_BAPTIST_MINISTRY
+    name: John Baptist Begins Ministry
+    date: "~26 AD"
+    location: JORDAN_RIVER
+    description: "John the Baptist begins preaching repentance and baptizing"
+    participants:
+      - JOHN_THE_BAPTIST
+    references:
+      - MAT.3.1-12.KJV
+
+  - id: BAPTISM_OF_JESUS
+    name: Baptism of Jesus
+    date: "~27 AD"
+    location: JORDAN_RIVER
+    description: "Jesus is baptized by John; Holy Spirit descends like dove"
+    participants:
+      - JESUS
+      - JOHN_THE_BAPTIST
+    references:
+      - MAT.3.13-17.KJV
+
+  - id: TEMPTATION_OF_JESUS
+    name: Temptation of Jesus
+    date: "~27 AD"
+    location: WILDERNESS
+    description: "Jesus is tempted by Satan in wilderness for 40 days"
+    participants:
+      - JESUS
+    references:
+      - MAT.4.1-11.KJV
+
+  - id: CALLING_DISCIPLES
+    name: Calling of First Disciples
+    date: "~27 AD"
+    location: GALILEE
+    description: "Jesus calls Peter, Andrew, James, and John to follow him"
+    participants:
+      - JESUS
+      - PETER
+      - ANDREW
+      - JAMES_SON_OF_ZEBEDEE
+      - JOHN_THE_APOSTLE
+    references:
+      - MAT.4.18-22.KJV
+
+  - id: SERMON_ON_MOUNT
+    name: Sermon on the Mount
+    date: "~28 AD"
+    location: GALILEE
+    description: "Jesus preaches the Beatitudes and other teachings"
+    participants:
+      - JESUS
+    references:
+      - MAT.5.1-7.29.KJV
+
+  - id: FEEDING_FIVE_THOUSAND
+    name: Feeding the Five Thousand
+    date: "~29 AD"
+    location: GALILEE
+    description: "Jesus miraculously feeds 5000 people with five loaves and two fish"
+    participants:
+      - JESUS
+    references:
+      - MAT.14.13-21.KJV
+
+  - id: TRANSFIGURATION
+    name: Transfiguration of Jesus
+    date: "~29 AD"
+    location: MOUNT_OF_TRANSFIGURATION
+    description: "Jesus is transfigured before Peter, James, and John"
+    participants:
+      - JESUS
+      - PETER
+      - JAMES_SON_OF_ZEBEDEE
+      - JOHN_THE_APOSTLE
+    references:
+      - MAT.17.1-13.KJV
+
+  - id: TRIUMPHAL_ENTRY
+    name: Triumphal Entry
+    date: "~30 AD"
+    location: JERUSALEM
+    description: "Jesus enters Jerusalem riding on donkey as crowds shout 'Hosanna'"
+    participants:
+      - JESUS
+    references:
+      - MAT.21.1-11.KJV
+
+  - id: CLEANSING_TEMPLE
+    name: Cleansing of Temple
+    date: "~30 AD"
+    location: JERUSALEM
+    description: "Jesus drives money changers from temple, saying 'My house is house of prayer'"
+    participants:
+      - JESUS
+    references:
+      - MAT.21.12-17.KJV
+
+  - id: LAST_SUPPER
+    name: Last Supper
+    date: "~30 AD"
+    location: JERUSALEM
+    description: "Jesus institutes communion at Passover meal with disciples"
+    participants:
+      - JESUS
+      - PETER
+      - JOHN_THE_APOSTLE
+      - JUDAS_ISCARIOT
+    references:
+      - MAT.26.17-30.KJV
+
+  - id: GETHSEMANE_PRAYER
+    name: Prayer in Gethsemane
+    date: "~30 AD"
+    location: GETHSEMANE
+    description: "Jesus prays in agony, sweating drops of blood before crucifixion"
+    participants:
+      - JESUS
+    references:
+      - MAT.26.36-46.KJV
+
+  - id: ARREST_OF_JESUS
+    name: Arrest of Jesus
+    date: "~30 AD"
+    location: GETHSEMANE
+    description: "Jesus is betrayed by Judas and arrested by temple guards"
+    participants:
+      - JESUS
+      - JUDAS_ISCARIOT
+    references:
+      - MAT.26.47-56.KJV
+
+  - id: CRUCIFIXION
+    name: Crucifixion of Jesus
+    date: "~30 AD"
+    location: GOLGOTHA
+    description: "Jesus is crucified on cross, dying for sins of the world"
+    participants:
+      - JESUS
+    references:
+      - MAT.27.32-56.KJV
+
+  - id: RESURRECTION
+    name: Resurrection of Jesus
+    date: "~30 AD"
+    location: JERUSALEM
+    description: "Jesus rises from the dead on third day, conquering death"
+    participants:
+      - JESUS
+      - MARY_MAGDALENE
+    references:
+      - MAT.28.1-10.KJV
+
+  - id: ASCENSION
+    name: Ascension of Jesus
+    date: "~30 AD"
+    location: MOUNT_OF_OLIVES
+    description: "Jesus ascends to heaven after 40 days, promising to return"
+    participants:
+      - JESUS
+    references:
+      - ACT.1.9-11.KJV
+
+  - id: PENTECOST
+    name: Day of Pentecost
+    date: "~30 AD"
+    location: JERUSALEM
+    description: "Holy Spirit comes upon apostles; Peter preaches and 3000 are saved"
+    participants:
+      - PETER
+    references:
+      - ACT.2.1-47.KJV
+
+  - id: STEPHEN_MARTYRED
+    name: Martyrdom of Stephen
+    date: "~34 AD"
+    location: JERUSALEM
+    description: "Stephen becomes first Christian martyr, stoned by Jewish leaders"
+    participants:
+      - STEPHEN
+      - PAUL
+    references:
+      - ACT.7.54-60.KJV
+
+  - id: PAUL_CONVERSION
+    name: Conversion of Paul
+    date: "~35 AD"
+    location: DAMASCUS_ROAD
+    description: "Saul is converted on road to Damascus, becoming apostle Paul"
+    participants:
+      - PAUL
+      - JESUS
+    references:
+      - ACT.9.1-19.KJV
+
+  - id: PETER_CORNELIUS
+    name: Peter and Cornelius
+    date: "~40 AD"
+    location: CAESAREA
+    description: "Peter receives vision and preaches to Gentile Cornelius"
+    participants:
+      - PETER
+    references:
+      - ACT.10.1-48.KJV
+
+  - id: PAUL_FIRST_JOURNEY
+    name: Paul's First Missionary Journey
+    date: "~46-48 AD"
+    location: ASIA_MINOR
+    description: "Paul and Barnabas take gospel to Cyprus and Asia Minor"
+    participants:
+      - PAUL
+      - BARNABAS
+    references:
+      - ACT.13.1-14.28.KJV
+
+  - id: JERUSALEM_COUNCIL
+    name: Jerusalem Council
+    date: "~50 AD"
+    location: JERUSALEM
+    description: "Apostles decide Gentiles don't need to be circumcised to be Christians"
+    participants:
+      - PAUL
+      - PETER
+      - BARNABAS
+    references:
+      - ACT.15.1-35.KJV
+
+  - id: PAUL_SECOND_JOURNEY
+    name: Paul's Second Missionary Journey
+    date: "~50-52 AD"
+    location: GREECE
+    description: "Paul takes gospel to Macedonia and Greece, establishing churches"
+    participants:
+      - PAUL
+      - SILAS
+      - TIMOTHY
+    references:
+      - ACT.15.36-18.22.KJV
+
+  - id: PAUL_THIRD_JOURNEY
+    name: Paul's Third Missionary Journey
+    date: "~53-57 AD"
+    location: ASIA_MINOR
+    description: "Paul strengthens churches and ministers in Ephesus for three years"
+    participants:
+      - PAUL
+    references:
+      - ACT.18.23-21.17.KJV
+
+  - id: PAUL_ARRESTED
+    name: Paul Arrested in Jerusalem
+    date: "~57 AD"
+    location: JERUSALEM
+    description: "Paul is arrested in temple and begins series of trials"
+    participants:
+      - PAUL
+    references:
+      - ACT.21.27-23.35.KJV
+
+  - id: PAUL_APPEALS_CAESAR
+    name: Paul Appeals to Caesar
+    date: "~59 AD"
+    location: CAESAREA
+    description: "Paul exercises right as Roman citizen to appeal to Caesar"
+    participants:
+      - PAUL
+    references:
+      - ACT.25.10-12.KJV
+
+  - id: PAUL_SHIPWRECKED
+    name: Paul Shipwrecked
+    date: "~60 AD"
+    location: MALTA
+    description: "Paul is shipwrecked on way to Rome but survives and ministers"
+    participants:
+      - PAUL
+    references:
+      - ACT.27.1-28.10.KJV
+
+  - id: PAUL_ROME
+    name: Paul Reaches Rome
+    date: "~60 AD"
+    location: ROME
+    description: "Paul arrives in Rome and preaches under house arrest"
+    participants:
+      - PAUL
+    references:
+      - ACT.28.11-31.KJV
+
+  # Location References
 locations:
   EARTH: "The world created by God"
   GARDEN_OF_EDEN: "Paradise where Adam and Eve were placed"

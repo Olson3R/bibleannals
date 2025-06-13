@@ -46,6 +46,8 @@ biblical_persons:
         reference: 1TI.4.10.KJV
       - name: Son of the living God
         reference: MAT.16.16.KJV
+    birth_date: "~4 BC"
+    death_date: "~30 AD"
     parents:
       - MARY_MOTHER_OF_JESUS
     foster_father: JOSEPH_HUSBAND_OF_MARY
@@ -58,6 +60,8 @@ biblical_persons:
     name: Adam
     gender: male
     age: 930y
+    birth_date: "~4004 BC"
+    death_date: "~3074 BC"
     created: true
     references:
       - GEN.1.27.KJV
@@ -172,6 +176,8 @@ biblical_persons:
     name: Noah
     gender: male
     age: 950y
+    birth_date: "~2948 BC"
+    death_date: "~1998 BC"
     parents:
       - LAMECH_FATHER_OF_NOAH
     spouses:
@@ -300,6 +306,8 @@ biblical_persons:
         reference: GEN.11.26.KJV
     gender: male
     age: 175y
+    birth_date: "~2166 BC"
+    death_date: "~1991 BC"
     parents:
       - TERAH
     spouses:
@@ -343,6 +351,8 @@ biblical_persons:
     name: Isaac
     gender: male
     age: 180y
+    birth_date: "~2066 BC"
+    death_date: "~1886 BC"
     parents:
       - ABRAHAM
       - SARAH
@@ -425,6 +435,8 @@ biblical_persons:
         reference: GEN.32.28.KJV
     gender: male
     age: 147y
+    birth_date: "~2006 BC"
+    death_date: "~1859 BC"
     parents:
       - ISAAC
       - REBEKAH
@@ -763,6 +775,9 @@ biblical_persons:
   - id: DAVID
     name: David
     gender: male
+    birth_date: "~1040 BC"
+    death_date: "~970 BC"
+    age: 70y
     parents:
       - JESSE
     spouses:
@@ -848,6 +863,9 @@ biblical_persons:
   - id: SOLOMON
     name: Solomon
     gender: male
+    birth_date: "~990 BC"
+    death_date: "~930 BC"
+    age: 60y
     parents:
       - DAVID
       - BATHSHEBA
@@ -1086,6 +1104,9 @@ biblical_persons:
   - id: MOSES
     name: Moses
     gender: male
+    birth_date: "~1571 BC"
+    death_date: "~1451 BC"
+    age: 120y
     parents:
       - AMRAM
       - JOCHEBED
@@ -1671,6 +1692,8 @@ biblical_persons:
       - name: Cephas
         reference: JHN.1.42.KJV
     gender: male
+    birth_date: "~1 BC"
+    death_date: "~64 AD"
     references:
       - MAT.4.18.KJV
 
@@ -1802,6 +1825,8 @@ biblical_persons:
       - name: Saul
         reference: ACT.7.58.KJV
     gender: male
+    birth_date: "~5 AD"
+    death_date: "~67 AD"
     references:
       - ACT.13.9.KJV
 
@@ -1935,10 +1960,168 @@ biblical_persons:
   - id: NIMROD
     name: Nimrod
     gender: male
+    birth_date: "~2800 BC"
+    death_date: "~2700 BC"
     parents:
       - CUSH
     references:
       - GEN.10.8.KJV
+
+  # Additional Old Testament Figures
+  - id: CALEB
+    name: Caleb
+    gender: male
+    birth_date: "~1530 BC"
+    death_date: "~1425 BC"
+    age: 85y
+    references:
+      - NUM.13.6.KJV
+      - JOS.14.10.KJV
+
+  - id: JOSHUA
+    name: Joshua
+    names:
+      - name: Hoshea
+        reference: NUM.13.8.KJV
+    gender: male
+    birth_date: "~1530 BC"
+    death_date: "~1400 BC"
+    age: 110y
+    parents:
+      - NUN
+    references:
+      - NUM.13.8.KJV
+      - JOS.24.29.KJV
+
+  - id: NUN
+    name: Nun
+    gender: male
+    references:
+      - NUM.13.8.KJV
+
+  - id: BARAK
+    name: Barak
+    gender: male
+    birth_date: "~1250 BC"
+    death_date: "~1170 BC"
+    references:
+      - JDG.4.6.KJV
+
+  - id: JAEL
+    name: Jael
+    gender: female
+    birth_date: "~1230 BC"
+    death_date: "~1150 BC"
+    references:
+      - JDG.4.17.KJV
+
+  # Kings of Israel (Northern Kingdom)
+  - id: JEROBOAM_I
+    name: Jeroboam I
+    gender: male
+    birth_date: "~980 BC"
+    death_date: "~910 BC"
+    references:
+      - 1KI.11.26.KJV
+
+  - id: AHAB
+    name: Ahab
+    gender: male
+    birth_date: "~910 BC"
+    death_date: "~853 BC"
+    parents:
+      - OMRI
+    spouses:
+      - JEZEBEL
+    references:
+      - 1KI.16.28.KJV
+
+  - id: JEZEBEL
+    name: Jezebel
+    gender: female
+    birth_date: "~900 BC"
+    death_date: "~841 BC"
+    spouses:
+      - AHAB
+    references:
+      - 1KI.16.31.KJV
+
+  # Additional Prophets
+  - id: NATHAN_PROPHET
+    name: Nathan
+    gender: male
+    birth_date: "~1080 BC"
+    death_date: "~980 BC"
+    references:
+      - 2SA.7.2.KJV
+
+  - id: HULDAH
+    name: Huldah
+    gender: female
+    birth_date: "~670 BC"
+    death_date: "~590 BC"
+    references:
+      - 2KI.22.14.KJV
+
+  # Additional New Testament Figures
+  - id: MARY_MAGDALENE
+    name: Mary Magdalene
+    gender: female
+    birth_date: "~5 BC"
+    death_date: "~65 AD"
+    references:
+      - MAT.27.56.KJV
+
+  - id: MARTHA
+    name: Martha
+    gender: female
+    birth_date: "~10 BC"
+    death_date: "~70 AD"
+    references:
+      - LUK.10.38.KJV
+
+  - id: MARY_OF_BETHANY
+    name: Mary of Bethany
+    gender: female
+    birth_date: "~5 BC"
+    death_date: "~65 AD"
+    references:
+      - LUK.10.39.KJV
+
+  - id: LAZARUS
+    name: Lazarus
+    gender: male
+    birth_date: "~8 BC"
+    death_date: "~68 AD"
+    references:
+      - JHN.11.1.KJV
+
+  - id: STEPHEN
+    name: Stephen
+    gender: male
+    birth_date: "~5 AD"
+    death_date: "~34 AD"
+    references:
+      - ACT.6.5.KJV
+
+  - id: MARK
+    name: Mark
+    names:
+      - name: John Mark
+        reference: ACT.12.12.KJV
+    gender: male
+    birth_date: "~12 AD"
+    death_date: "~82 AD"
+    references:
+      - ACT.12.12.KJV
+
+  - id: LUKE
+    name: Luke
+    gender: male
+    birth_date: "~15 AD"
+    death_date: "~85 AD"
+    references:
+      - COL.4.14.KJV
 
   # Japheth's Descendants
   - id: GOMER

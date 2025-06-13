@@ -2,6 +2,7 @@ import Image from "next/image";
 import { promises as fs } from 'fs';
 import yaml from 'js-yaml';
 import path from 'path';
+import { PersonPopover } from './components/PersonPopover';
 
 interface BiblicalPerson {
   id: string;
@@ -9,6 +10,8 @@ interface BiblicalPerson {
   names?: { name: string; reference: string }[];
   gender?: string;
   age?: string;
+  birth_date?: string;
+  death_date?: string;
   parents?: string[];
   spouses?: string[];
   references?: string[];
@@ -77,7 +80,8 @@ function getRegionStudyUrl(regionName: string): string {
   return `https://www.bible.com/search/bible?q=${searchTerm}`;
 }
 
-function PersonCard({ person }: { person: BiblicalPerson }) {
+
+function PersonCard({ person, allPersons }: { person: BiblicalPerson; allPersons: BiblicalPerson[] }) {
   const getColorScheme = (person: BiblicalPerson) => {
     if (['GOD_FATHER', 'JESUS'].includes(person.id)) {
       return { bg: 'bg-yellow-200', border: 'border-yellow-400', text: 'text-yellow-800' };
@@ -104,46 +108,46 @@ function PersonCard({ person }: { person: BiblicalPerson }) {
   const initials = person.name.split(' ').map(n => n[0]).join('').slice(0, 2);
   
   return (
-    <div className="inline-flex items-center mr-2 mb-1" title={person.references ? `References: ${person.references.slice(0, 2).join(', ')}` : undefined}>
-      <div className={`w-8 h-8 ${colors.bg} rounded-full flex items-center justify-center border ${colors.border} shadow-sm`}>
-        <span className={`text-xs font-bold ${colors.text}`}>
-          {initials}
+    <PersonPopover person={person} allPersons={allPersons}>
+      <div className="inline-flex items-center mr-2 mb-1 cursor-pointer">
+        <div className={`w-8 h-8 ${colors.bg} rounded-full flex items-center justify-center border ${colors.border} shadow-sm`}>
+          <span className={`text-xs font-bold ${colors.text}`}>
+            {initials}
+          </span>
+        </div>
+        <span className="ml-1 text-sm font-medium text-gray-700">
+          {person.references && person.references.length > 0 ? (
+            <a 
+              href={getBibleUrl(person.references[0])}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-700 hover:text-blue-600 hover:underline"
+            >
+              {person.name}
+            </a>
+          ) : (
+            person.name
+          )}
         </span>
+        {person.created && <span className="ml-1 text-xs text-orange-600" title="Created by God">⭐</span>}
+        {person.translated && <span className="ml-1 text-xs text-cyan-600" title="Translated (taken up without death)">↗️</span>}
       </div>
-      <span className="ml-1 text-sm font-medium text-gray-700">
-        {person.references && person.references.length > 0 ? (
-          <a 
-            href={getBibleUrl(person.references[0])}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-700 hover:text-blue-600 hover:underline"
-          >
-            {person.name}
-          </a>
-        ) : (
-          person.name
-        )}
-      </span>
-      {person.created && <span className="ml-1 text-xs text-orange-600" title="Created by God">⭐</span>}
-      {person.translated && <span className="ml-1 text-xs text-cyan-600" title="Translated (taken up without death)">↗️</span>}
-    </div>
+    </PersonPopover>
   );
 }
 
 function TimelinePeriodCard({ 
   period, 
   events, 
-  persons, 
   regions, 
   getPersonById, 
-  getRegionById 
+  allPersons
 }: { 
   period: { name: string; dateRange: string; color: string; description: string };
   events: BiblicalEvent[];
-  persons: BiblicalPerson[];
   regions: BiblicalRegion[];
   getPersonById: (id: string) => BiblicalPerson | undefined;
-  getRegionById: (id: string) => BiblicalRegion | undefined;
+  allPersons: BiblicalPerson[];
 }) {
   const periodEvents = events.filter(event => {
     // Parse event date
@@ -215,7 +219,7 @@ function TimelinePeriodCard({
         <div>
           <h4 className="font-bold text-gray-800 mb-3 text-lg">📅 Key Events</h4>
           <div className="space-y-3">
-            {periodEvents.map((event, index) => (
+            {periodEvents.map((event) => (
               <div key={event.id} className="bg-white bg-opacity-80 rounded-lg p-3 border border-gray-200">
                 <h5 className="font-semibold text-gray-800 text-sm mb-1">{event.name}</h5>
                 <p className="text-xs text-gray-600 mb-2">{event.date}</p>
@@ -247,7 +251,7 @@ function TimelinePeriodCard({
                       const person = getPersonById(participantId);
                       return person ? (
                         <div key={participantId} className="transform scale-75 -ml-1">
-                          <PersonCard person={person} />
+                          <PersonCard person={person} allPersons={allPersons} />
                         </div>
                       ) : null;
                     })}
@@ -269,7 +273,7 @@ function TimelinePeriodCard({
               {Array.from(allParticipants).slice(0, 12).map(participantId => {
                 const person = getPersonById(participantId);
                 return person ? (
-                  <PersonCard key={participantId} person={person} />
+                  <PersonCard key={participantId} person={person} allPersons={allPersons} />
                 ) : null;
               })}
               {allParticipants.size > 12 && (
@@ -303,7 +307,7 @@ function TimelinePeriodCard({
                       const person = getPersonById(personId);
                       return person ? (
                         <div key={personId} className="transform scale-75 -ml-1">
-                          <PersonCard person={person} />
+                          <PersonCard person={person} allPersons={allPersons} />
                         </div>
                       ) : null;
                     })}
@@ -328,7 +332,6 @@ function BiblicalTimeline({
   regions: BiblicalRegion[];
 }) {
   const getPersonById = (id: string) => persons.find(p => p.id === id);
-  const getRegionById = (id: string) => regions.find(r => r.id === id);
 
   const timelinePeriods = [
     {
@@ -399,7 +402,7 @@ function BiblicalTimeline({
         <h1 className="text-5xl font-bold text-gray-800 mb-4">Biblical Timeline</h1>
         <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
           A comprehensive journey through biblical history, from Creation to the early church, 
-          showcasing key events, influential people, and significant locations that shaped God's plan for humanity.
+          showcasing key events, influential people, and significant locations that shaped God&apos;s plan for humanity.
         </p>
       </div>
 
@@ -440,10 +443,9 @@ function BiblicalTimeline({
               <TimelinePeriodCard
                 period={period}
                 events={events}
-                persons={persons}
                 regions={regions}
                 getPersonById={getPersonById}
-                getRegionById={getRegionById}
+                allPersons={persons}
               />
             </div>
           </div>
