@@ -1,0 +1,801 @@
+# Biblical Regions from the King James Version
+# This file documents regions, populations, periods of power, and notable people
+
+biblical_regions:
+  # Pre-Flood World
+  - id: EDEN
+    name: Garden of Eden
+    description: Paradise where humanity was created
+    location: "East of Eden, near rivers Pishon, Gihon, Hiddekel, Euphrates"
+    time_period: "Creation to Fall"
+    estimated_dates: "~4004 BC"
+    population_estimate: "2 people"
+    government_type: "Divine rule"
+    notable_people:
+      - ADAM
+      - EVE
+    key_features:
+      - Tree of Life
+      - Tree of Knowledge of Good and Evil
+      - Four rivers
+      - Perfect environment
+    references:
+      - GEN.2.8-14.KJV
+      - GEN.3.23-24.KJV
+
+  - id: LAND_OF_NOD
+    name: Land of Nod
+    description: "Land of wandering, east of Eden where Cain dwelt"
+    location: "East of Eden"
+    time_period: "After Cain's murder of Abel"
+    estimated_dates: "~3900 BC onwards"
+    population_estimate: "Growing from Cain's family"
+    government_type: "Tribal/family"
+    notable_people:
+      - CAIN
+    key_features:
+      - First city built by Cain
+      - Named after son Enoch
+    references:
+      - GEN.4.16-17.KJV
+
+  # Post-Flood Nations
+  - id: ARARAT
+    name: Mountains of Ararat
+    description: "Where Noah's ark rested after the flood"
+    location: "Armenia/Turkey region"
+    time_period: "Post-flood settlement"
+    estimated_dates: "~2348 BC"
+    population_estimate: "8 people (Noah's family)"
+    government_type: "Patriarchal"
+    notable_people:
+      - NOAH
+      - NOAH_WIFE
+      - SHEM
+      - HAM
+      - JAPHETH
+    key_features:
+      - Ark's resting place
+      - First post-flood altar
+      - Rainbow covenant
+    references:
+      - GEN.8.4.KJV
+      - GEN.9.1-17.KJV
+
+  - id: SHINAR
+    name: Land of Shinar
+    description: "Plain where Tower of Babel was built"
+    location: "Mesopotamia/Babylonia"
+    time_period: "Early post-flood period"
+    estimated_dates: "~2247 BC"
+    population_estimate: "Descendants of Noah"
+    government_type: "Unified humanity"
+    notable_people:
+      - NIMROD
+    key_features:
+      - Tower of Babel
+      - Confusion of languages
+      - Scattering of peoples
+    references:
+      - GEN.11.1-9.KJV
+      - GEN.10.10.KJV
+
+  # Mesopotamian Regions
+  - id: UR_CHALDEES
+    name: Ur of the Chaldees
+    description: "Abraham's birthplace and early home"
+    location: "Southern Mesopotamia"
+    time_period: "Patriarchal period"
+    estimated_dates: "~2100-2000 BC"
+    population_estimate: "Major city"
+    government_type: "City-state/kingdom"
+    notable_people:
+      - ABRAHAM
+      - TERAH
+      - NAHOR_GRANDFATHER_OF_ABRAHAM
+    key_features:
+      - Advanced civilization
+      - Idol worship
+      - Commercial center
+    references:
+      - GEN.11.28-31.KJV
+      - ACT.7.2-4.KJV
+
+  - id: HARAN
+    name: Haran
+    description: "City where Terah settled and died"
+    location: "Northern Mesopotamia"
+    time_period: "Patriarchal period"
+    estimated_dates: "~2100-1900 BC"
+    population_estimate: "Significant city"
+    government_type: "City-state"
+    notable_people:
+      - TERAH
+      - ABRAHAM
+      - NAHOR_BROTHER_OF_ABRAHAM
+      - LABAN
+      - REBEKAH
+      - LEAH
+      - RACHEL
+    key_features:
+      - Crossroads of trade
+      - Family connections
+      - Jacob's 20-year residence
+    references:
+      - GEN.11.31-32.KJV
+      - GEN.24.10.KJV
+      - GEN.29.4.KJV
+
+  - id: PADANARAM
+    name: Padanaram
+    description: "Region where Abraham's family lived"
+    location: "Mesopotamia/Syria"
+    time_period: "Patriarchal period"
+    estimated_dates: "~2100-1700 BC"
+    population_estimate: "Extended family groups"
+    government_type: "Tribal/family"
+    notable_people:
+      - BETHUEL
+      - LABAN
+      - REBEKAH
+      - LEAH
+      - RACHEL
+      - JACOB
+    key_features:
+      - Source of patriarchal wives
+      - Jacob's exile location
+      - Pastoral society
+    references:
+      - GEN.25.20.KJV
+      - GEN.28.2-7.KJV
+
+  # Canaan and Surrounding Regions
+  - id: CANAAN
+    name: Land of Canaan
+    description: "The Promised Land given to Abraham's descendants"
+    location: "Between Mediterranean and Jordan River"
+    time_period: "Patriarchal period through conquest"
+    estimated_dates: "~2000-1400 BC"
+    population_estimate: "Multiple tribes and nations"
+    government_type: "City-states and tribal kingdoms"
+    notable_people:
+      - ABRAHAM
+      - ISAAC
+      - JACOB
+      - JOSEPH
+      - MELCHIZEDEK
+    key_features:
+      - Land of promise
+      - Multiple Canaanite peoples
+      - Strategic location
+    peoples:
+      - Canaanites
+      - Hittites
+      - Hivites
+      - Perizzites
+      - Girgashites
+      - Amorites
+      - Jebusites
+    references:
+      - GEN.12.5-7.KJV
+      - GEN.15.18-21.KJV
+
+  - id: HEBRON
+    name: Hebron
+    description: "Abraham's main dwelling place in Canaan"
+    location: "Hill country of Judah"
+    time_period: "Patriarchal period onwards"
+    estimated_dates: "~1900 BC onwards"
+    population_estimate: "City with surrounding area"
+    government_type: "Hittite city-state, later Israelite"
+    notable_people:
+      - ABRAHAM
+      - SARAH
+      - ISAAC
+      - REBEKAH
+      - JACOB
+      - DAVID
+    key_features:
+      - Cave of Machpelah
+      - Patriarchal burial place
+      - David's first capital
+    references:
+      - GEN.13.18.KJV
+      - GEN.23.2-20.KJV
+      - 2SA.2.11.KJV
+
+  - id: BEERSHEBA
+    name: Beersheba
+    description: "Southern boundary of promised land"
+    location: "Southern Canaan/Negev"
+    time_period: "Patriarchal period onwards"
+    estimated_dates: "~1900 BC onwards"
+    population_estimate: "Small city/settlement"
+    government_type: "Patriarchal territory"
+    notable_people:
+      - ABRAHAM
+      - ISAAC
+      - JACOB
+    key_features:
+      - Well of the oath
+      - Southern boundary
+      - Covenant location
+    references:
+      - GEN.21.31-33.KJV
+      - GEN.26.23-33.KJV
+
+  - id: BETHEL
+    name: Bethel
+    description: "House of God, where Jacob saw the ladder"
+    location: "Central Canaan"
+    time_period: "Patriarchal period onwards"
+    estimated_dates: "~1764 BC onwards"
+    population_estimate: "Small town"
+    government_type: "Canaanite city, later Israelite"
+    notable_people:
+      - JACOB
+    key_features:
+      - Jacob's ladder dream
+      - Sacred pillar
+      - House of God
+    references:
+      - GEN.28.10-22.KJV
+      - GEN.35.1-15.KJV
+
+  - id: SHECHEM
+    name: Shechem
+    description: "Central Canaanite city"
+    location: "Central Canaan"
+    time_period: "Patriarchal period onwards"
+    estimated_dates: "~1900 BC onwards"
+    population_estimate: "Significant city"
+    government_type: "Hivite city-state"
+    notable_people:
+      - ABRAHAM
+      - JACOB
+      - DINAH
+    key_features:
+      - First altar in Canaan
+      - Dinah incident
+      - Commercial center
+    references:
+      - GEN.12.6-7.KJV
+      - GEN.33.18-20.KJV
+      - GEN.34.1-31.KJV
+
+  - id: SODOM_AND_GOMORRAH
+    name: Sodom and Gomorrah
+    description: "Cities of the plain destroyed for wickedness"
+    location: "Jordan valley/Dead Sea region"
+    time_period: "Patriarchal period"
+    estimated_dates: "~2000-1905 BC"
+    population_estimate: "Major cities"
+    government_type: "City-states with kings"
+    notable_people:
+      - LOT
+    key_features:
+      - Extreme wickedness
+      - Divine destruction
+      - Lot's rescue
+    references:
+      - GEN.13.10-13.KJV
+      - GEN.19.1-29.KJV
+
+  # Egypt
+  - id: EGYPT
+    name: Egypt
+    description: "Land of the Nile, place of bondage and refuge"
+    location: "Northeast Africa along Nile River"
+    time_period: "Throughout biblical history"
+    estimated_dates: "~2000 BC - 400 AD"
+    population_estimate: "Millions"
+    government_type: "Pharaonic kingdom/empire"
+    notable_people:
+      - JOSEPH
+      - MOSES
+      - AARON
+      - MIRIAM
+    key_features:
+      - Nile River
+      - Pyramids and temples
+      - Advanced civilization
+      - Place of bondage
+    regions:
+      - Goshen
+      - On (Heliopolis)
+      - Memphis
+      - Thebes
+    references:
+      - GEN.12.10.KJV
+      - EXO.1.1-14.KJV
+
+  - id: GOSHEN
+    name: Land of Goshen
+    description: "Region where Israelites settled in Egypt"
+    location: "Eastern Nile Delta"
+    time_period: "Joseph's time through Exodus"
+    estimated_dates: "~1706-1491 BC"
+    population_estimate: "70 to 2+ million Israelites"
+    government_type: "Egyptian province"
+    notable_people:
+      - JACOB
+      - JOSEPH
+      - MOSES
+    key_features:
+      - Best of Egypt
+      - Israelite settlement
+      - Pastoral land
+    references:
+      - GEN.45.10.KJV
+      - GEN.47.1-6.KJV
+      - EXO.8.22.KJV
+
+  # Wilderness Regions
+  - id: SINAI_WILDERNESS
+    name: Wilderness of Sinai
+    description: "Desert region where law was given"
+    location: "Sinai Peninsula"
+    time_period: "Exodus wanderings"
+    estimated_dates: "~1491-1451 BC"
+    population_estimate: "2+ million Israelites"
+    government_type: "Theocracy under Moses"
+    notable_people:
+      - MOSES
+      - AARON
+      - JOSHUA
+    key_features:
+      - Mount Sinai
+      - Giving of the Law
+      - Tabernacle construction
+    references:
+      - EXO.19.1-2.KJV
+      - NUM.1.1.KJV
+
+  - id: KADESH_BARNEA
+    name: Kadesh-barnea
+    description: "Oasis where Israel camped and spied the land"
+    location: "Northern Sinai/southern Canaan border"
+    time_period: "Wilderness wanderings"
+    estimated_dates: "~1490-1452 BC"
+    population_estimate: "2+ million Israelites"
+    government_type: "Theocracy"
+    notable_people:
+      - MOSES
+      - AARON
+      - JOSHUA
+    key_features:
+      - Spy mission launch
+      - Rebellion and judgment
+      - Long encampment
+    references:
+      - NUM.13.26.KJV
+      - NUM.20.1.KJV
+      - DEU.1.19-46.KJV
+
+  # Promised Land Regions
+  - id: JERICHO
+    name: Jericho
+    description: "First city conquered in Canaan"
+    location: "Jordan Valley"
+    time_period: "Conquest period"
+    estimated_dates: "~1451 BC"
+    population_estimate: "Fortified city"
+    government_type: "Canaanite city-state"
+    notable_people:
+      - JOSHUA
+      - RAHAB
+    key_features:
+      - Walls fell down
+      - Rahab's faith
+      - City of palm trees
+    references:
+      - JOS.6.1-27.KJV
+      - JOS.2.1-24.KJV
+
+  - id: JERUSALEM
+    name: Jerusalem
+    description: "City of David, spiritual center of Israel"
+    location: "Central hill country"
+    time_period: "Jebusite city to New Testament"
+    estimated_dates: "~2000 BC - 70 AD"
+    population_estimate: "Growing from thousands to hundreds of thousands"
+    government_type: "City-state, then Israelite capital"
+    notable_people:
+      - MELCHIZEDEK
+      - DAVID
+      - SOLOMON
+      - JESUS
+    key_features:
+      - Temple Mount
+      - City of David
+      - Holy City
+    names:
+      - Salem
+      - Jebus
+      - Zion
+    references:
+      - GEN.14.18.KJV
+      - 2SA.5.6-9.KJV
+      - 1KI.8.1.KJV
+
+  # Tribal Territories
+  - id: JUDAH_TERRITORY
+    name: Territory of Judah
+    description: "Southern tribal territory, largest tribe"
+    location: "Southern Canaan"
+    time_period: "Conquest through exile"
+    estimated_dates: "~1400-586 BC"
+    population_estimate: "Hundreds of thousands"
+    government_type: "Tribal, then kingdom"
+    notable_people:
+      - JUDAH
+      - DAVID
+      - SOLOMON
+      - REHOBOAM
+    key_features:
+      - Royal lineage
+      - Temple location
+      - Largest territory
+    cities:
+      - Jerusalem
+      - Hebron
+      - Bethlehem
+    references:
+      - JOS.15.1-63.KJV
+      - 1KI.12.20.KJV
+
+  - id: BENJAMIN_TERRITORY
+    name: Territory of Benjamin
+    description: "Small but strategic tribal territory"
+    location: "Central Canaan"
+    time_period: "Conquest through exile"
+    estimated_dates: "~1400-586 BC"
+    population_estimate: "Medium-sized tribe"
+    government_type: "Tribal"
+    notable_people:
+      - BENJAMIN
+      - SAUL
+    key_features:
+      - Jerusalem border
+      - Saul's tribe
+      - Strategic location
+    references:
+      - JOS.18.11-28.KJV
+      - 1SA.9.1-2.KJV
+
+  - id: EPHRAIM_TERRITORY
+    name: Territory of Ephraim
+    description: "Joseph's son, powerful northern tribe"
+    location: "Central hill country"
+    time_period: "Conquest through exile"
+    estimated_dates: "~1400-722 BC"
+    population_estimate: "Large tribe"
+    government_type: "Tribal, leading northern kingdom"
+    notable_people:
+      - EPHRAIM
+      - JOSHUA
+      - SAMUEL
+    key_features:
+      - Joshua's tribe
+      - Leading northern tribe
+      - Fertile hill country
+    cities:
+      - Shiloh
+      - Shechem
+    references:
+      - JOS.16.5-10.KJV
+      - JOS.24.30.KJV
+
+  - id: MANASSEH_TERRITORY
+    name: Territory of Manasseh
+    description: "Joseph's firstborn, divided territory"
+    location: "Central Canaan and east of Jordan"
+    time_period: "Conquest through exile"
+    estimated_dates: "~1400-722 BC"
+    population_estimate: "Large tribe"
+    government_type: "Tribal"
+    notable_people:
+      - MANASSEH
+    key_features:
+      - Divided territory
+      - East and west of Jordan
+      - Large land area
+    references:
+      - JOS.17.1-18.KJV
+      - NUM.32.39-42.KJV
+
+  # Northern Regions
+  - id: GALILEE
+    name: Galilee
+    description: "Northern region, Jesus' ministry area"
+    location: "Northern Palestine"
+    time_period: "Throughout biblical history"
+    estimated_dates: "~1400 BC - 100 AD"
+    population_estimate: "Mixed populations"
+    government_type: "Tribal territories, later Roman province"
+    notable_people:
+      - JESUS
+      - PETER
+      - ANDREW
+      - JAMES_SON_OF_ZEBEDEE
+      - JOHN_THE_APOSTLE
+    key_features:
+      - Sea of Galilee
+      - Jesus' ministry
+      - Gentile influence
+    regions:
+      - Upper Galilee
+      - Lower Galilee
+    references:
+      - ISA.9.1.KJV
+      - MAT.4.12-25.KJV
+
+  - id: SAMARIA
+    name: Samaria
+    description: "Central region, northern kingdom capital"
+    location: "Central Palestine"
+    time_period: "Conquest through New Testament"
+    estimated_dates: "~1400 BC - 100 AD"
+    population_estimate: "Mixed Israelite and foreign"
+    government_type: "Tribal, kingdom capital, Roman province"
+    notable_people:
+      - OMRI
+      - AHAB
+    key_features:
+      - Northern kingdom capital
+      - Mixed population
+      - Samaritan religion
+    references:
+      - 1KI.16.24.KJV
+      - JHN.4.4-42.KJV
+
+  # Eastern Regions
+  - id: TRANSJORDAN
+    name: Transjordan
+    description: "Land east of Jordan River"
+    location: "East of Jordan River"
+    time_period: "Conquest period onwards"
+    estimated_dates: "~1400 BC onwards"
+    population_estimate: "2.5 tribes of Israel plus others"
+    government_type: "Tribal territories"
+    notable_people:
+      - REUBEN
+      - GAD
+      - MANASSEH
+    key_features:
+      - Pastoral land
+      - 2.5 tribes settled
+      - Strategic location
+    regions:
+      - Gilead
+      - Bashan
+    references:
+      - NUM.32.1-42.KJV
+      - DEU.3.12-20.KJV
+
+  - id: MOAB
+    name: Land of Moab
+    description: "Territory of Moabites, east of Dead Sea"
+    location: "East of Dead Sea"
+    time_period: "Throughout Old Testament"
+    estimated_dates: "~1500-400 BC"
+    population_estimate: "Moabite nation"
+    government_type: "Kingdom"
+    notable_people:
+      - RUTH
+    key_features:
+      - Descended from Lot
+      - Often at war with Israel
+      - Ruth's homeland
+    references:
+      - GEN.19.37.KJV
+      - RUT.1.1-4.KJV
+      - 2KI.3.4-27.KJV
+
+  - id: EDOM
+    name: Land of Edom
+    description: "Territory of Esau's descendants"
+    location: "Southeast of Dead Sea"
+    time_period: "Throughout Old Testament"
+    estimated_dates: "~1500-400 BC"
+    population_estimate: "Edomite nation"
+    government_type: "Kingdom"
+    notable_people:
+      - ESAU
+    key_features:
+      - Descendants of Esau
+      - Rocky mountainous region
+      - Trade routes
+    references:
+      - GEN.36.1-43.KJV
+      - OBA.1.1-21.KJV
+
+  # Major Empires
+  - id: ASSYRIAN_EMPIRE
+    name: Assyrian Empire
+    description: "Mesopotamian empire that conquered northern Israel"
+    location: "Mesopotamia with wide conquests"
+    time_period: "Period of the Kings"
+    estimated_dates: "~900-609 BC"
+    population_estimate: "Millions across empire"
+    government_type: "Empire"
+    notable_people:
+      - HEZEKIAH
+      - ISAIAH
+    key_features:
+      - Conquered northern kingdom
+      - Siege of Jerusalem
+      - Deportation policies
+    capitals:
+      - Nineveh
+      - Asshur
+    references:
+      - 2KI.17.1-23.KJV
+      - 2KI.18.13-19.37.KJV
+
+  - id: BABYLONIAN_EMPIRE
+    name: Babylonian Empire
+    description: "Neo-Babylonian empire that conquered Judah"
+    location: "Mesopotamia"
+    time_period: "Period of exile"
+    estimated_dates: "~626-539 BC"
+    population_estimate: "Millions"
+    government_type: "Empire"
+    notable_people:
+      - DANIEL
+      - EZEKIEL
+      - JEREMIAH
+      - EZRA
+    key_features:
+      - Conquered Judah
+      - Destroyed first temple
+      - Babylonian exile
+    references:
+      - 2KI.24.1-25.30.KJV
+      - DAN.1.1-12.13.KJV
+
+  - id: PERSIAN_EMPIRE
+    name: Persian Empire
+    description: "Empire that allowed Jewish return from exile"
+    location: "From India to Ethiopia"
+    time_period: "Post-exilic period"
+    estimated_dates: "~539-331 BC"
+    population_estimate: "Millions across vast empire"
+    government_type: "Empire"
+    notable_people:
+      - EZRA
+      - NEHEMIAH
+      - ESTHER
+      - MORDECAI
+    key_features:
+      - Allowed return from exile
+      - Rebuilt temple
+      - Tolerant of local customs
+    references:
+      - EZR.1.1-11.KJV
+      - NEH.2.1-20.KJV
+      - EST.1.1-10.3.KJV
+
+  # New Testament Regions
+  - id: ROMAN_EMPIRE
+    name: Roman Empire
+    description: "Empire ruling during New Testament period"
+    location: "Mediterranean world"
+    time_period: "New Testament period"
+    estimated_dates: "~63 BC - 400 AD"
+    population_estimate: "50+ million across empire"
+    government_type: "Empire"
+    notable_people:
+      - JESUS
+      - PAUL
+      - PETER
+    key_features:
+      - Ruled during Jesus' time
+      - Roman roads and law
+      - Crucifixion of Jesus
+      - Spread of Christianity
+    provinces:
+      - Judea
+      - Galilee
+      - Syria
+      - Asia
+    references:
+      - LUK.2.1.KJV
+      - ACT.25.10-12.KJV
+
+  - id: JUDEA_PROVINCE
+    name: Judea
+    description: "Roman province in southern Palestine"
+    location: "Southern Palestine"
+    time_period: "New Testament period"
+    estimated_dates: "~6-135 AD"
+    population_estimate: "Hundreds of thousands"
+    government_type: "Roman province"
+    notable_people:
+      - JESUS
+      - JOHN_THE_BAPTIST
+      - MARY_MOTHER_OF_JESUS
+      - JOSEPH_HUSBAND_OF_MARY
+    key_features:
+      - Jesus' birth region
+      - Jerusalem and temple
+      - Jewish religious center
+    references:
+      - MAT.2.1.KJV
+      - LUK.1.39.KJV
+
+  - id: NAZARETH
+    name: Nazareth
+    description: "Jesus' hometown in Galilee"
+    location: "Lower Galilee"
+    time_period: "New Testament period"
+    estimated_dates: "1st century AD"
+    population_estimate: "Small town"
+    government_type: "Roman jurisdiction"
+    notable_people:
+      - JESUS
+      - MARY_MOTHER_OF_JESUS
+      - JOSEPH_HUSBAND_OF_MARY
+    key_features:
+      - Jesus' childhood home
+      - Despised location
+      - Rejected Jesus
+    references:
+      - MAT.2.23.KJV
+      - LUK.4.16-30.KJV
+      - JHN.1.46.KJV
+
+  - id: BETHLEHEM
+    name: Bethlehem
+    description: "City of David, Jesus' birthplace"
+    location: "Judea, south of Jerusalem"
+    time_period: "Throughout biblical history"
+    estimated_dates: "~1400 BC - 100 AD"
+    population_estimate: "Small town"
+    government_type: "Davidic city, Roman jurisdiction"
+    notable_people:
+      - DAVID
+      - RUTH
+      - BOAZ
+      - JESUS
+    key_features:
+      - David's birthplace
+      - Jesus' birthplace
+      - House of Bread
+    references:
+      - RUT.1.19.KJV
+      - 1SA.16.1.KJV
+      - MIC.5.2.KJV
+      - MAT.2.1.KJV
+
+# Regional Relationships and Conflicts
+regional_conflicts:
+  - participants: [ISRAEL, PHILISTINES]
+    time_period: "Judges and Kings period"
+    description: "Ongoing conflicts over coastal plain"
+    
+  - participants: [ISRAEL, MOAB]
+    time_period: "Various periods"
+    description: "Border disputes and wars"
+    
+  - participants: [JUDAH, ISRAEL]
+    time_period: "Divided kingdom"
+    description: "Civil war between north and south"
+    
+  - participants: [ISRAEL, SYRIA]
+    time_period: "Kings period"
+    description: "Northern border conflicts"
+
+# Trade Routes and Strategic Locations
+trade_routes:
+  - name: "Via Maris"
+    description: "Way of the Sea - coastal trade route"
+    regions: [EGYPT, CANAAN, SYRIA, MESOPOTAMIA]
+    
+  - name: "King's Highway"
+    description: "Eastern trade route through Transjordan"
+    regions: [EGYPT, EDOM, MOAB, SYRIA]
+    
+  - name: "Ridge Route"
+    description: "Central mountain route through Palestine"
+    regions: [JUDEA, SAMARIA, GALILEE]

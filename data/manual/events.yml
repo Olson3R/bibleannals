@@ -1,0 +1,22 @@
+events:
+  - id: FIRST-SIN
+    
+  - id: ABELS-MURDER
+    
+  - id: FLOOD
+    name: The Flood
+
+    people:
+      - id: NOAH
+        text: Noah was 600.
+        reference: GEN.7.6.KJV
+      - id: SHEM
+        text: Son of Noah.
+        reference: GEN.10.1.KJV
+      - id: JAPHETH
+        text: Son of Noah.
+        reference: GEN.10.1.KJV
+      - id: HAM
+        text: Son of Noah.
+        reference: GEN.10.1.KJV
+    references:

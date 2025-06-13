@@ -1,0 +1,427 @@
+people:
+  - id: JESUS
+    name: Jesus
+    names:
+      - name: Alpha and Omega
+        reference: REV.1.8.KJV
+      - name: Bread of Life
+        reference: JHN.6.35.KJV
+      - name: Christ
+      - name: Creator
+        reference: ISA.40.28.KJV
+      - name: Emmanuel
+        reference: ISA.7.14.KJV
+      - name: Good Shepherd
+      - name: Lamb of God
+      - name: Light of the World
+      - name: Lord
+        reference: JHN.21.7.KJV
+      - name: Messiah
+      - name: Redeemer
+        reference: JOB.19.25.KJV
+      - name: Savior
+        reference: 1TI.4.10.KJV
+      - name: Son of the living God
+        reference: MAT.16.16.KJV
+
+  - id: ADAM
+    name: Adam
+    gender: male
+    age: 930y
+    dob?: 3924BC
+    references:
+    - GEN.1.27.KJV
+    - GEN.2.20.KJV
+  - id: EVE
+    name: Eve
+    gender: female
+    spouses:
+    - ADAM
+  - id: ABEL
+    name: Abel
+    gender: male
+    parents:
+    - ADAM
+    - EVE
+    references:
+      GEN.4.2.KJV
+  - id: CAIN
+    name: Cain
+    gender: male
+    parents:
+    - ADAM
+    - EVE
+    references:
+    - GEN.4.1.KJV
+  - id: SETH
+    name: Seth
+    gender: male
+    age: 912
+    dob?: 3794BC
+    parents:
+    - ADAM
+    - EVE
+    references:
+    - GEN.4.25.KJV
+    - GEN.5.8.KJV
+  - id: ENOCH-CAIN
+    name: Enoch
+    gender: male
+    parents:
+    - CAIN
+    references:
+    - GEN.4.17.KJV
+  - id: IRAD
+    name: Irad
+    gender: male
+    parents:
+    - ENOCH-CAIN
+    references:
+    - GEN.4.18.KJV
+  - id: MEHUJAEL
+    name: Mehujael
+    gender: male
+    parents:
+    - IRAD
+    references:
+    - GEN.4.18.KJV
+  - id: METHUSHAEL
+    name: Methushael
+    gender: male
+    parents:
+    - MEHUJAEL
+    references:
+    - GEN.4.18.KJV
+  - id: LAMECH-METHUSHAEL
+    name: Lamech
+    gender: male
+    parents:
+    - METHUSHAEL
+    references:
+    - GEN.4.18.KJV
+  - id: ADAH
+    name: Adah
+    gender: female
+    references:
+    - GEN.4.19.KJV
+  - id: ZILLAH
+    name: Zillah
+    gender: female
+    references:
+    - GEN.4.19.KJV
+  - id: JABAL
+    name: Jabal
+    gender: male
+    parents:
+    - CAIN
+    - ADAH
+    references:
+    - GEN.4.20.KJV
+  - id: JABAL
+    name: Jabal
+    gender: male
+    parents:
+    - CAIN
+    - ADAH
+    references:
+    - GEN.4.20.KJV
+    ?remarks:
+      - text: Father of such as dwell in tents, and of such as have cattle.
+        reference: GEN.4.20.KJV
+  - id: JUBAL
+    name: Jubal
+    gender: male
+    parents:
+    - CAIN
+    - ADAH
+    references:
+    - GEN.4.20.KJV
+    ?remarks:
+      - text: Father of all such as handle the harp and organ.
+        reference: GEN.4.21.KJV
+  - id: TUBALCAIN
+    name: Tubal-cain
+    gender: male
+    parents:
+    - CAIN
+    - ZILLAH
+    references:
+    - GEN.4.21.KJV
+    ?remarks:
+      - text: Instructer of every artificer in brass and iron.
+        reference: GEN.4.22.KJV
+  - id: NAAMAH
+    name: Naamah
+    gender: female
+    parents:
+    - CAIN
+    - ZILLAH
+    references:
+    - GEN.4.22.KJV
+      
+  - id: ENOS
+    name: Enos
+    gender: male
+    age: 905y
+    dob?: 3689BC
+    parents:
+    - SETH
+    references:
+    - GEN.4.26.KJV
+    - GEN.5.11.KJV
+  - id: KENAN
+    name: Kenan
+    gender: male
+    age: 905y
+    dob?: 3689BC
+    parents:
+    - ENOS
+    references:
+    - GEN.4.26.KJV
+    - GEN.5.14.KJV
+  - id: MAHALALEL
+    name: Mahalalel
+    gender: male
+    age: 895y
+    dob?: 3529BC
+    parents:
+    - KENAN
+    references:
+    - GEN.5.12.KJV
+    - GEN.5.17.KJV
+  - id: JARED
+    name: Jered
+    gender: male
+    age: 962y
+    dob?: 3464BC
+    parents:
+    - MAHALALEL
+    references:
+    - GEN.5.15.KJV
+    - GEN.5.20.KJV
+  - id: ENOCH-JARED
+    name: Enoch
+    gender: male
+    age: 365y
+    dob?: 3302BC
+    parents:
+    - JARED
+    references:
+    - GEN.5.15.KJV
+    - GEN.5.23.KJV
+  - id: METHUSELAH
+    name: Methuselah
+    gender: male
+    age: 969y
+    dob?: 3237BC
+    parents:
+    - ENOCH-JARED
+    references:
+    - GEN.5.21.KJV
+    - GEN.5.27.KJV
+  - id: LAMECH-METHUSELAH
+    name: Lamech
+    gender: male
+    age: 777y
+    dob?: 3050BC
+    parents:
+    - ENOCH-JARED
+    references:
+    - GEN.5.25.KJV
+    - GEN.5.31.KJV
+  - id: NOAH
+    name: Noah
+    gender: male
+    age: 950y
+    dob?: 2868BC
+    parents:
+    - LAMECH-METHUSELAH
+    references:
+    - GEN.5.28-29.KJV
+    - GEN.9.29.KJV
+  - id: SHEM
+    name: Shem
+    gender: male
+    age: 600y
+    dob?: 2366BC
+    parents:
+    - NOAH
+    references:
+    - GEN.5.32.KJV
+    - GEN.11.10-11.KJV
+  - id: JAPHETH
+    name: Japheth
+    gender: male
+    dob?: 2368BC
+    parents:
+    - NOAH
+    references:
+    - GEN.5.32.KJV
+  - id: HAM
+    name: Ham
+    gender: male
+    parents:
+    - NOAH
+    references:
+    - GEN.5.32.KJV
+  - id: ELAM
+    name: Elam
+    gender: male
+    parents:
+    - SHEM
+    references:
+    - GEN.10.22.KJV
+  - id: ASSHUR
+    name: Asshur
+    gender: male
+    parents:
+    - SHEM
+    references:
+    - GEN.10.22.KJV
+  - id: ARPHAXAD
+    name: Arphaxad
+    gender: male
+    parents:
+    - SHEM
+    references:
+    - GEN.10.22.KJV
+  - id: LUD
+    name: Lud
+    gender: male
+    parents:
+    - SHEM
+    references:
+    - GEN.10.22.KJV
+  - id: ARAM
+    name: Aram
+    gender: male
+    parents:
+    - SHEM
+    references:
+    - GEN.10.22.KJV
+  - id: GOMER
+    name: Gomer
+    gender: male
+    parents:
+    - JAPHETH
+    references:
+    - GEN.10.2.KJV
+  - id: MAGOG
+    name: Magog
+    gender: male
+    parents:
+    - JAPHETH
+    references:
+    - GEN.10.2.KJV
+  - id: MADAI
+    name: Madai
+    gender: male
+    parents:
+    - JAPHETH
+    references:
+    - GEN.10.2.KJV
+  - id: JAVAN
+    name: Javan
+    gender: male
+    parents:
+    - JAPHETH
+    references:
+    - GEN.10.2.KJV
+  - id: TUBAL
+    name: Tubal
+    gender: male
+    parents:
+    - JAPHETH
+    references:
+    - GEN.10.2.KJV
+  - id: MESHECH
+    name: Meshech
+    gender: male
+    parents:
+    - JAPHETH
+    references:
+    - GEN.10.2.KJV
+  - id: TIRAS
+    name: Tiras
+    gender: male
+    parents:
+    - JAPHETH
+    references:
+    - GEN.10.2.KJV
+  - id: ASHKENAZ
+    name: Ashkenaz
+    gender: male
+    parents:
+    - GOMER
+    references:
+    - GEN.10.3.KJV
+  - id: RIPHATH
+    name: Riphath
+    gender: male
+    parents:
+    - GOMER
+    references:
+    - GEN.10.3.KJV
+  - id: TOGARMAH
+    name: Togarmah
+    gender: male
+    parents:
+    - GOMER
+    references:
+    - GEN.10.3.KJV
+  - id: ELISHAH
+    name: Elishah
+    gender: male
+    parents:
+    - JAVAN
+    references:
+    - GEN.10.4.KJV
+  - id: TARSHISH
+    name: Tarshish
+    gender: male
+    parents:
+    - JAVAN
+    references:
+    - GEN.10.4.KJV
+  - id: KITTIM
+    name: Kittim
+    gender: male
+    parents:
+    - JAVAN
+    references:
+    - GEN.10.4.KJV
+  - id: DODANIM
+    name: Dodanim
+    gender: male
+    parents:
+    - JAVAN
+    references:
+    - GEN.10.4.KJV
+  - id: CUSH
+    name: Cush
+    gender: male
+    parents:
+    - HAM
+    references:
+    - GEN.10.6.KJV
+  - id: MIZRAIM
+    name: Mizraim
+    gender: male
+    parents:
+    - HAM
+    references:
+    - GEN.10.6.KJV
+  - id: PHUT
+    name: Phut
+    gender: male
+    parents:
+    - HAM
+    references:
+    - GEN.10.6.KJV
+  - id: CANAAN
+    name: Canaan
+    gender: male
+    parents:
+    - HAM
+    references:
+    - GEN.10.6.KJV

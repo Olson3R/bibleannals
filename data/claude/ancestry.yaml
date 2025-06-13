@@ -1,0 +1,2090 @@
+# Biblical Ancestry from the King James Version
+# This file documents the genealogical relationships found in the KJV Bible
+
+biblical_persons:
+  # Divine/Messianic Figures
+  - id: GOD_FATHER
+    name: God the Father
+    names:
+      - name: Almighty
+        reference: GEN.17.1.KJV
+      - name: Creator
+        reference: GEN.1.1.KJV
+      - name: Father
+        reference: MAT.6.9.KJV
+      - name: I AM
+        reference: EXO.3.14.KJV
+      - name: Jehovah
+        reference: PSA.83.18.KJV
+      - name: Lord
+        reference: GEN.2.4.KJV
+
+  - id: JESUS
+    name: Jesus
+    names:
+      - name: Alpha and Omega
+        reference: REV.1.8.KJV
+      - name: Bread of Life
+        reference: JHN.6.35.KJV
+      - name: Christ
+        reference: MAT.1.16.KJV
+      - name: Emmanuel
+        reference: ISA.7.14.KJV
+      - name: Good Shepherd
+        reference: JHN.10.11.KJV
+      - name: Lamb of God
+        reference: JHN.1.29.KJV
+      - name: Light of the World
+        reference: JHN.8.12.KJV
+      - name: Lord
+        reference: JHN.21.7.KJV
+      - name: Messiah
+        reference: JHN.1.41.KJV
+      - name: Redeemer
+        reference: JOB.19.25.KJV
+      - name: Savior
+        reference: 1TI.4.10.KJV
+      - name: Son of the living God
+        reference: MAT.16.16.KJV
+    parents:
+      - MARY_MOTHER_OF_JESUS
+    foster_father: JOSEPH_HUSBAND_OF_MARY
+    references:
+      - MAT.1.16.KJV
+      - LUK.3.23.KJV
+
+  # Pre-Flood Genealogy
+  - id: ADAM
+    name: Adam
+    gender: male
+    age: 930y
+    created: true
+    references:
+      - GEN.1.27.KJV
+      - GEN.2.20.KJV
+      - GEN.5.3.KJV
+
+  - id: EVE
+    name: Eve
+    gender: female
+    spouses:
+      - ADAM
+    created: true
+    references:
+      - GEN.2.22.KJV
+      - GEN.3.20.KJV
+
+  - id: CAIN
+    name: Cain
+    gender: male
+    parents:
+      - ADAM
+      - EVE
+    references:
+      - GEN.4.1.KJV
+
+  - id: ABEL
+    name: Abel
+    gender: male
+    parents:
+      - ADAM
+      - EVE
+    references:
+      - GEN.4.2.KJV
+
+  - id: SETH
+    name: Seth
+    gender: male
+    age: 912y
+    parents:
+      - ADAM
+      - EVE
+    references:
+      - GEN.4.25.KJV
+      - GEN.5.6.KJV
+
+  - id: ENOS
+    name: Enos
+    gender: male
+    age: 905y
+    parents:
+      - SETH
+    references:
+      - GEN.5.9.KJV
+
+  - id: CAINAN
+    name: Cainan
+    gender: male
+    age: 910y
+    parents:
+      - ENOS
+    references:
+      - GEN.5.12.KJV
+
+  - id: MAHALALEEL
+    name: Mahalaleel
+    gender: male
+    age: 895y
+    parents:
+      - CAINAN
+    references:
+      - GEN.5.15.KJV
+
+  - id: JARED
+    name: Jared
+    gender: male
+    age: 962y
+    parents:
+      - MAHALALEEL
+    references:
+      - GEN.5.18.KJV
+
+  - id: ENOCH
+    name: Enoch
+    gender: male
+    age: 365y
+    parents:
+      - JARED
+    translated: true
+    references:
+      - GEN.5.21.KJV
+      - GEN.5.24.KJV
+
+  - id: METHUSELAH
+    name: Methuselah
+    gender: male
+    age: 969y
+    parents:
+      - ENOCH
+    references:
+      - GEN.5.25.KJV
+
+  - id: LAMECH_FATHER_OF_NOAH
+    name: Lamech
+    gender: male
+    age: 777y
+    parents:
+      - METHUSELAH
+    references:
+      - GEN.5.28.KJV
+
+  - id: NOAH
+    name: Noah
+    gender: male
+    age: 950y
+    parents:
+      - LAMECH_FATHER_OF_NOAH
+    spouses:
+      - NOAH_WIFE
+    references:
+      - GEN.5.32.KJV
+      - GEN.6.8.KJV
+
+  - id: NOAH_WIFE
+    name: Noah's Wife
+    gender: female
+    spouses:
+      - NOAH
+    references:
+      - GEN.7.7.KJV
+
+  - id: SHEM
+    name: Shem
+    gender: male
+    age: 600y
+    parents:
+      - NOAH
+      - NOAH_WIFE
+    references:
+      - GEN.5.32.KJV
+      - GEN.11.10.KJV
+
+  - id: HAM
+    name: Ham
+    gender: male
+    parents:
+      - NOAH
+      - NOAH_WIFE
+    references:
+      - GEN.5.32.KJV
+      - GEN.9.22.KJV
+
+  - id: JAPHETH
+    name: Japheth
+    gender: male
+    parents:
+      - NOAH
+      - NOAH_WIFE
+    references:
+      - GEN.5.32.KJV
+      - GEN.10.21.KJV
+
+  # Post-Flood Genealogy (Shem's Line)
+  - id: ARPHAXAD
+    name: Arphaxad
+    gender: male
+    age: 438y
+    parents:
+      - SHEM
+    references:
+      - GEN.11.12.KJV
+
+  - id: SALAH
+    name: Salah
+    gender: male
+    age: 433y
+    parents:
+      - ARPHAXAD
+    references:
+      - GEN.11.14.KJV
+
+  - id: EBER
+    name: Eber
+    gender: male
+    age: 464y
+    parents:
+      - SALAH
+    references:
+      - GEN.11.16.KJV
+
+  - id: PELEG
+    name: Peleg
+    gender: male
+    age: 239y
+    parents:
+      - EBER
+    references:
+      - GEN.11.18.KJV
+
+  - id: REU
+    name: Reu
+    gender: male
+    age: 239y
+    parents:
+      - PELEG
+    references:
+      - GEN.11.20.KJV
+
+  - id: SERUG
+    name: Serug
+    gender: male
+    age: 230y
+    parents:
+      - REU
+    references:
+      - GEN.11.22.KJV
+
+  - id: NAHOR_GRANDFATHER_OF_ABRAHAM
+    name: Nahor
+    gender: male
+    age: 148y
+    parents:
+      - SERUG
+    references:
+      - GEN.11.24.KJV
+
+  - id: TERAH
+    name: Terah
+    gender: male
+    age: 205y
+    parents:
+      - NAHOR_GRANDFATHER_OF_ABRAHAM
+    references:
+      - GEN.11.26.KJV
+
+  # Patriarchs
+  - id: ABRAHAM
+    name: Abraham
+    names:
+      - name: Abram
+        reference: GEN.11.26.KJV
+    gender: male
+    age: 175y
+    parents:
+      - TERAH
+    spouses:
+      - SARAH
+      - HAGAR
+      - KETURAH
+    references:
+      - GEN.11.26.KJV
+      - GEN.17.5.KJV
+
+  - id: SARAH
+    name: Sarah
+    names:
+      - name: Sarai
+        reference: GEN.11.29.KJV
+    gender: female
+    age: 127y
+    spouses:
+      - ABRAHAM
+    references:
+      - GEN.11.29.KJV
+      - GEN.17.15.KJV
+
+  - id: HAGAR
+    name: Hagar
+    gender: female
+    spouses:
+      - ABRAHAM
+    references:
+      - GEN.16.1.KJV
+
+  - id: KETURAH
+    name: Keturah
+    gender: female
+    spouses:
+      - ABRAHAM
+    references:
+      - GEN.25.1.KJV
+
+  - id: ISAAC
+    name: Isaac
+    gender: male
+    age: 180y
+    parents:
+      - ABRAHAM
+      - SARAH
+    spouses:
+      - REBEKAH
+    references:
+      - GEN.21.3.KJV
+      - GEN.25.26.KJV
+
+  - id: ISHMAEL
+    name: Ishmael
+    gender: male
+    age: 137y
+    parents:
+      - ABRAHAM
+      - HAGAR
+    references:
+      - GEN.16.11.KJV
+      - GEN.25.17.KJV
+
+  - id: REBEKAH
+    name: Rebekah
+    gender: female
+    spouses:
+      - ISAAC
+    parents:
+      - BETHUEL
+    references:
+      - GEN.22.23.KJV
+      - GEN.24.15.KJV
+
+  - id: BETHUEL
+    name: Bethuel
+    gender: male
+    parents:
+      - NAHOR_BROTHER_OF_ABRAHAM
+      - MILCAH
+    references:
+      - GEN.22.22.KJV
+
+  - id: NAHOR_BROTHER_OF_ABRAHAM
+    name: Nahor
+    gender: male
+    parents:
+      - TERAH
+    spouses:
+      - MILCAH
+    references:
+      - GEN.11.26.KJV
+      - GEN.22.20.KJV
+
+  - id: MILCAH
+    name: Milcah
+    gender: female
+    spouses:
+      - NAHOR_BROTHER_OF_ABRAHAM
+    references:
+      - GEN.11.29.KJV
+
+  - id: HARAN
+    name: Haran
+    gender: male
+    parents:
+      - TERAH
+    references:
+      - GEN.11.26.KJV
+
+  - id: LOT
+    name: Lot
+    gender: male
+    parents:
+      - HARAN
+    references:
+      - GEN.11.27.KJV
+
+  - id: JACOB
+    name: Jacob
+    names:
+      - name: Israel
+        reference: GEN.32.28.KJV
+    gender: male
+    age: 147y
+    parents:
+      - ISAAC
+      - REBEKAH
+    spouses:
+      - LEAH
+      - RACHEL
+      - BILHAH
+      - ZILPAH
+    references:
+      - GEN.25.26.KJV
+      - GEN.32.28.KJV
+
+  - id: ESAU
+    name: Esau
+    names:
+      - name: Edom
+        reference: GEN.25.30.KJV
+    gender: male
+    parents:
+      - ISAAC
+      - REBEKAH
+    references:
+      - GEN.25.25.KJV
+
+  - id: LABAN
+    name: Laban
+    gender: male
+    parents:
+      - BETHUEL
+    references:
+      - GEN.24.29.KJV
+
+  - id: LEAH
+    name: Leah
+    gender: female
+    parents:
+      - LABAN
+    spouses:
+      - JACOB
+    references:
+      - GEN.29.16.KJV
+
+  - id: RACHEL
+    name: Rachel
+    gender: female
+    parents:
+      - LABAN
+    spouses:
+      - JACOB
+    references:
+      - GEN.29.16.KJV
+
+  - id: BILHAH
+    name: Bilhah
+    gender: female
+    spouses:
+      - JACOB
+    references:
+      - GEN.29.29.KJV
+
+  - id: ZILPAH
+    name: Zilpah
+    gender: female
+    spouses:
+      - JACOB
+    references:
+      - GEN.29.24.KJV
+
+  # Twelve Sons of Jacob
+  - id: REUBEN
+    name: Reuben
+    gender: male
+    parents:
+      - JACOB
+      - LEAH
+    references:
+      - GEN.29.32.KJV
+
+  - id: SIMEON
+    name: Simeon
+    gender: male
+    parents:
+      - JACOB
+      - LEAH
+    references:
+      - GEN.29.33.KJV
+
+  - id: LEVI
+    name: Levi
+    gender: male
+    parents:
+      - JACOB
+      - LEAH
+    references:
+      - GEN.29.34.KJV
+
+  - id: JUDAH
+    name: Judah
+    gender: male
+    parents:
+      - JACOB
+      - LEAH
+    spouses:
+      - TAMAR
+    references:
+      - GEN.29.35.KJV
+      - GEN.38.6.KJV
+
+  - id: DAN
+    name: Dan
+    gender: male
+    parents:
+      - JACOB
+      - BILHAH
+    references:
+      - GEN.30.6.KJV
+
+  - id: NAPHTALI
+    name: Naphtali
+    gender: male
+    parents:
+      - JACOB
+      - BILHAH
+    references:
+      - GEN.30.8.KJV
+
+  - id: GAD
+    name: Gad
+    gender: male
+    parents:
+      - JACOB
+      - ZILPAH
+    references:
+      - GEN.30.11.KJV
+
+  - id: ASHER
+    name: Asher
+    gender: male
+    parents:
+      - JACOB
+      - ZILPAH
+    references:
+      - GEN.30.13.KJV
+
+  - id: ISSACHAR
+    name: Issachar
+    gender: male
+    parents:
+      - JACOB
+      - LEAH
+    references:
+      - GEN.30.18.KJV
+
+  - id: ZEBULUN
+    name: Zebulun
+    gender: male
+    parents:
+      - JACOB
+      - LEAH
+    references:
+      - GEN.30.20.KJV
+
+  - id: JOSEPH
+    name: Joseph
+    gender: male
+    parents:
+      - JACOB
+      - RACHEL
+    spouses:
+      - ASENATH
+    references:
+      - GEN.30.24.KJV
+      - GEN.41.45.KJV
+
+  - id: BENJAMIN
+    name: Benjamin
+    gender: male
+    parents:
+      - JACOB
+      - RACHEL
+    references:
+      - GEN.35.18.KJV
+
+  - id: DINAH
+    name: Dinah
+    gender: female
+    parents:
+      - JACOB
+      - LEAH
+    references:
+      - GEN.30.21.KJV
+
+  # Joseph's Family
+  - id: ASENATH
+    name: Asenath
+    gender: female
+    spouses:
+      - JOSEPH
+    references:
+      - GEN.41.45.KJV
+
+  - id: MANASSEH
+    name: Manasseh
+    gender: male
+    parents:
+      - JOSEPH
+      - ASENATH
+    references:
+      - GEN.41.51.KJV
+
+  - id: EPHRAIM
+    name: Ephraim
+    gender: male
+    parents:
+      - JOSEPH
+      - ASENATH
+    references:
+      - GEN.41.52.KJV
+
+  # Judah's Line
+  - id: TAMAR
+    name: Tamar
+    gender: female
+    spouses:
+      - JUDAH
+    references:
+      - GEN.38.6.KJV
+
+  - id: PHAREZ
+    name: Pharez
+    gender: male
+    parents:
+      - JUDAH
+      - TAMAR
+    references:
+      - GEN.38.29.KJV
+
+  - id: ZARAH
+    name: Zarah
+    gender: male
+    parents:
+      - JUDAH
+      - TAMAR
+    references:
+      - GEN.38.30.KJV
+
+  - id: HEZRON
+    name: Hezron
+    gender: male
+    parents:
+      - PHAREZ
+    references:
+      - 1CH.2.5.KJV
+
+  - id: RAM
+    name: Ram
+    gender: male
+    parents:
+      - HEZRON
+    references:
+      - 1CH.2.9.KJV
+
+  - id: AMMINADAB
+    name: Amminadab
+    gender: male
+    parents:
+      - RAM
+    references:
+      - 1CH.2.10.KJV
+
+  - id: NAHSHON
+    name: Nahshon
+    gender: male
+    parents:
+      - AMMINADAB
+    references:
+      - 1CH.2.10.KJV
+
+  - id: SALMON
+    name: Salmon
+    gender: male
+    parents:
+      - NAHSHON
+    spouses:
+      - RAHAB
+    references:
+      - 1CH.2.11.KJV
+      - MAT.1.5.KJV
+
+  - id: RAHAB
+    name: Rahab
+    gender: female
+    spouses:
+      - SALMON
+    references:
+      - MAT.1.5.KJV
+
+  - id: BOAZ
+    name: Boaz
+    gender: male
+    parents:
+      - SALMON
+      - RAHAB
+    spouses:
+      - RUTH
+    references:
+      - RUT.2.1.KJV
+      - MAT.1.5.KJV
+
+  - id: RUTH
+    name: Ruth
+    gender: female
+    spouses:
+      - BOAZ
+    references:
+      - RUT.1.4.KJV
+
+  - id: OBED
+    name: Obed
+    gender: male
+    parents:
+      - BOAZ
+      - RUTH
+    references:
+      - RUT.4.17.KJV
+
+  - id: JESSE
+    name: Jesse
+    gender: male
+    parents:
+      - OBED
+    references:
+      - RUT.4.17.KJV
+      - 1SA.16.1.KJV
+
+  - id: DAVID
+    name: David
+    gender: male
+    parents:
+      - JESSE
+    spouses:
+      - MICHAL
+      - ABIGAIL
+      - AHINOAM
+      - MAACAH
+      - HAGGITH
+      - ABITAL
+      - EGLAH
+      - BATHSHEBA
+    references:
+      - 1SA.16.13.KJV
+      - 2SA.5.4.KJV
+
+  # David's Wives
+  - id: MICHAL
+    name: Michal
+    gender: female
+    spouses:
+      - DAVID
+    parents:
+      - SAUL
+    references:
+      - 1SA.18.27.KJV
+
+  - id: ABIGAIL
+    name: Abigail
+    gender: female
+    spouses:
+      - DAVID
+    references:
+      - 1SA.25.42.KJV
+
+  - id: AHINOAM
+    name: Ahinoam
+    gender: female
+    spouses:
+      - DAVID
+    references:
+      - 1SA.25.43.KJV
+
+  - id: MAACAH
+    name: Maacah
+    gender: female
+    spouses:
+      - DAVID
+    references:
+      - 2SA.3.3.KJV
+
+  - id: HAGGITH
+    name: Haggith
+    gender: female
+    spouses:
+      - DAVID
+    references:
+      - 2SA.3.4.KJV
+
+  - id: ABITAL
+    name: Abital
+    gender: female
+    spouses:
+      - DAVID
+    references:
+      - 2SA.3.4.KJV
+
+  - id: EGLAH
+    name: Eglah
+    gender: female
+    spouses:
+      - DAVID
+    references:
+      - 2SA.3.5.KJV
+
+  - id: BATHSHEBA
+    name: Bathsheba
+    gender: female
+    spouses:
+      - DAVID
+    references:
+      - 2SA.11.3.KJV
+
+  - id: SOLOMON
+    name: Solomon
+    gender: male
+    parents:
+      - DAVID
+      - BATHSHEBA
+    references:
+      - 2SA.12.24.KJV
+      - 1KI.1.13.KJV
+
+  - id: AMNON
+    name: Amnon
+    gender: male
+    parents:
+      - DAVID
+      - AHINOAM
+    references:
+      - 2SA.3.2.KJV
+
+  - id: CHILEAB
+    name: Chileab
+    gender: male
+    parents:
+      - DAVID
+      - ABIGAIL
+    references:
+      - 2SA.3.3.KJV
+
+  - id: ABSALOM
+    name: Absalom
+    gender: male
+    parents:
+      - DAVID
+      - MAACAH
+    references:
+      - 2SA.3.3.KJV
+
+  - id: ADONIJAH
+    name: Adonijah
+    gender: male
+    parents:
+      - DAVID
+      - HAGGITH
+    references:
+      - 2SA.3.4.KJV
+
+  - id: SHEPHATIAH
+    name: Shephatiah
+    gender: male
+    parents:
+      - DAVID
+      - ABITAL
+    references:
+      - 2SA.3.4.KJV
+
+  - id: ITHREAM
+    name: Ithream
+    gender: male
+    parents:
+      - DAVID
+      - EGLAH
+    references:
+      - 2SA.3.5.KJV
+
+  # Kings of Judah (Solomon's Line)
+  - id: REHOBOAM
+    name: Rehoboam
+    gender: male
+    parents:
+      - SOLOMON
+    references:
+      - 1KI.11.43.KJV
+
+  - id: ABIJAM
+    name: Abijam
+    gender: male
+    parents:
+      - REHOBOAM
+    references:
+      - 1KI.14.31.KJV
+
+  - id: ASA
+    name: Asa
+    gender: male
+    parents:
+      - ABIJAM
+    references:
+      - 1KI.15.8.KJV
+
+  - id: JEHOSHAPHAT
+    name: Jehoshaphat
+    gender: male
+    parents:
+      - ASA
+    references:
+      - 1KI.15.24.KJV
+
+  - id: JEHORAM_KING_OF_JUDAH
+    name: Jehoram
+    gender: male
+    parents:
+      - JEHOSHAPHAT
+    references:
+      - 1KI.22.50.KJV
+
+  - id: AHAZIAH_KING_OF_JUDAH
+    name: Ahaziah
+    gender: male
+    parents:
+      - JEHORAM_KING_OF_JUDAH
+    references:
+      - 2KI.8.24.KJV
+
+  - id: JOASH_KING_OF_JUDAH
+    name: Joash
+    gender: male
+    parents:
+      - AHAZIAH_KING_OF_JUDAH
+    references:
+      - 2KI.11.2.KJV
+
+  - id: AMAZIAH
+    name: Amaziah
+    gender: male
+    parents:
+      - JOASH_KING_OF_JUDAH
+    references:
+      - 2KI.12.21.KJV
+
+  - id: AZARIAH
+    name: Azariah
+    names:
+      - name: Uzziah
+        reference: 2CH.26.1.KJV
+    gender: male
+    parents:
+      - AMAZIAH
+    references:
+      - 2KI.14.21.KJV
+
+  - id: JOTHAM
+    name: Jotham
+    gender: male
+    parents:
+      - AZARIAH
+    references:
+      - 2KI.15.7.KJV
+
+  - id: AHAZ
+    name: Ahaz
+    gender: male
+    parents:
+      - JOTHAM
+    references:
+      - 2KI.15.38.KJV
+
+  - id: HEZEKIAH
+    name: Hezekiah
+    gender: male
+    parents:
+      - AHAZ
+    references:
+      - 2KI.16.20.KJV
+
+  - id: MANASSEH_KING_OF_JUDAH
+    name: Manasseh
+    gender: male
+    parents:
+      - HEZEKIAH
+    references:
+      - 2KI.20.21.KJV
+
+  - id: AMON
+    name: Amon
+    gender: male
+    parents:
+      - MANASSEH_KING_OF_JUDAH
+    references:
+      - 2KI.21.18.KJV
+
+  - id: JOSIAH
+    name: Josiah
+    gender: male
+    parents:
+      - AMON
+    references:
+      - 2KI.21.24.KJV
+
+  - id: JEHOAHAZ
+    name: Jehoahaz
+    gender: male
+    parents:
+      - JOSIAH
+    references:
+      - 2KI.23.30.KJV
+
+  - id: JEHOIAKIM
+    name: Jehoiakim
+    gender: male
+    parents:
+      - JOSIAH
+    references:
+      - 2KI.23.34.KJV
+
+  - id: JEHOIACHIN
+    name: Jehoiachin
+    gender: male
+    parents:
+      - JEHOIAKIM
+    references:
+      - 2KI.24.6.KJV
+
+  - id: ZEDEKIAH
+    name: Zedekiah
+    gender: male
+    parents:
+      - JOSIAH
+    references:
+      - 2KI.24.17.KJV
+
+  # Exile and Return
+  - id: SHEALTIEL
+    name: Shealtiel
+    gender: male
+    parents:
+      - JEHOIACHIN
+    references:
+      - 1CH.3.17.KJV
+
+  - id: ZERUBBABEL
+    name: Zerubbabel
+    gender: male
+    parents:
+      - SHEALTIEL
+    references:
+      - 1CH.3.19.KJV
+
+  # Moses and Aaron's Family
+  - id: MOSES
+    name: Moses
+    gender: male
+    parents:
+      - AMRAM
+      - JOCHEBED
+    spouses:
+      - ZIPPORAH
+    references:
+      - EXO.6.20.KJV
+      - EXO.2.21.KJV
+
+  - id: AARON
+    name: Aaron
+    gender: male
+    parents:
+      - AMRAM
+      - JOCHEBED
+    spouses:
+      - ELISHEBA
+    references:
+      - EXO.6.20.KJV
+      - EXO.6.23.KJV
+
+  - id: MIRIAM
+    name: Miriam
+    gender: female
+    parents:
+      - AMRAM
+      - JOCHEBED
+    references:
+      - NUM.26.59.KJV
+
+  - id: AMRAM
+    name: Amram
+    gender: male
+    parents:
+      - KOHATH
+    spouses:
+      - JOCHEBED
+    references:
+      - EXO.6.18.KJV
+
+  - id: JOCHEBED
+    name: Jochebed
+    gender: female
+    spouses:
+      - AMRAM
+    references:
+      - EXO.6.20.KJV
+
+  - id: KOHATH
+    name: Kohath
+    gender: male
+    parents:
+      - LEVI
+    references:
+      - EXO.6.16.KJV
+
+  - id: ZIPPORAH
+    name: Zipporah
+    gender: female
+    parents:
+      - JETHRO
+    spouses:
+      - MOSES
+    references:
+      - EXO.2.21.KJV
+
+  - id: JETHRO
+    name: Jethro
+    names:
+      - name: Reuel
+        reference: EXO.2.18.KJV
+    gender: male
+    references:
+      - EXO.3.1.KJV
+
+  - id: ELISHEBA
+    name: Elisheba
+    gender: female
+    spouses:
+      - AARON
+    references:
+      - EXO.6.23.KJV
+
+  - id: NADAB
+    name: Nadab
+    gender: male
+    parents:
+      - AARON
+      - ELISHEBA
+    references:
+      - EXO.6.23.KJV
+
+  - id: ABIHU
+    name: Abihu
+    gender: male
+    parents:
+      - AARON
+      - ELISHEBA
+    references:
+      - EXO.6.23.KJV
+
+  - id: ELEAZAR
+    name: Eleazar
+    gender: male
+    parents:
+      - AARON
+      - ELISHEBA
+    references:
+      - EXO.6.23.KJV
+
+  - id: ITHAMAR
+    name: Ithamar
+    gender: male
+    parents:
+      - AARON
+      - ELISHEBA
+    references:
+      - EXO.6.23.KJV
+
+  # Saul's Family
+  - id: SAUL
+    name: Saul
+    gender: male
+    parents:
+      - KISH
+    references:
+      - 1SA.9.1.KJV
+
+  - id: KISH
+    name: Kish
+    gender: male
+    parents:
+      - ABIEL
+    references:
+      - 1SA.9.1.KJV
+
+  - id: ABIEL
+    name: Abiel
+    gender: male
+    references:
+      - 1SA.9.1.KJV
+
+  - id: JONATHAN
+    name: Jonathan
+    gender: male
+    parents:
+      - SAUL
+    references:
+      - 1SA.14.1.KJV
+
+  - id: ISHBOSHETH
+    name: Ishbosheth
+    names:
+      - name: Eshbaal
+        reference: 1CH.8.33.KJV
+    gender: male
+    parents:
+      - SAUL
+    references:
+      - 2SA.2.8.KJV
+
+  - id: MALCHISHUA
+    name: Malchishua
+    gender: male
+    parents:
+      - SAUL
+    references:
+      - 1SA.31.2.KJV
+
+  - id: ABINADAB_SON_OF_SAUL
+    name: Abinadab
+    gender: male
+    parents:
+      - SAUL
+    references:
+      - 1SA.31.2.KJV
+
+  # Samuel's Family
+  - id: SAMUEL
+    name: Samuel
+    gender: male
+    parents:
+      - ELKANAH
+      - HANNAH
+    references:
+      - 1SA.1.20.KJV
+
+  - id: ELKANAH
+    name: Elkanah
+    gender: male
+    spouses:
+      - HANNAH
+      - PENINNAH
+    references:
+      - 1SA.1.1.KJV
+
+  - id: HANNAH
+    name: Hannah
+    gender: female
+    spouses:
+      - ELKANAH
+    references:
+      - 1SA.1.2.KJV
+
+  - id: PENINNAH
+    name: Peninnah
+    gender: female
+    spouses:
+      - ELKANAH
+    references:
+      - 1SA.1.2.KJV
+
+  - id: ELI
+    name: Eli
+    gender: male
+    references:
+      - 1SA.1.9.KJV
+
+  - id: HOPHNI
+    name: Hophni
+    gender: male
+    parents:
+      - ELI
+    references:
+      - 1SA.1.3.KJV
+
+  - id: PHINEHAS_SON_OF_ELI
+    name: Phinehas
+    gender: male
+    parents:
+      - ELI
+    references:
+      - 1SA.1.3.KJV
+
+  # New Testament Genealogies
+  - id: JOSEPH_HUSBAND_OF_MARY
+    name: Joseph
+    gender: male
+    parents:
+      - JACOB_FATHER_OF_JOSEPH
+    spouses:
+      - MARY_MOTHER_OF_JESUS
+    references:
+      - MAT.1.16.KJV
+
+  - id: JACOB_FATHER_OF_JOSEPH
+    name: Jacob
+    gender: male
+    parents:
+      - MATTHAN
+    references:
+      - MAT.1.15.KJV
+
+  - id: MATTHAN
+    name: Matthan
+    gender: male
+    parents:
+      - ELEAZAR_NT
+    references:
+      - MAT.1.15.KJV
+
+  - id: ELEAZAR_NT
+    name: Eleazar
+    gender: male
+    parents:
+      - ELIUD
+    references:
+      - MAT.1.15.KJV
+
+  - id: ELIUD
+    name: Eliud
+    gender: male
+    parents:
+      - ACHIM
+    references:
+      - MAT.1.14.KJV
+
+  - id: ACHIM
+    name: Achim
+    gender: male
+    parents:
+      - SADOC
+    references:
+      - MAT.1.14.KJV
+
+  - id: SADOC
+    name: Sadoc
+    gender: male
+    parents:
+      - AZOR
+    references:
+      - MAT.1.14.KJV
+
+  - id: AZOR
+    name: Azor
+    gender: male
+    parents:
+      - ELIAKIM
+    references:
+      - MAT.1.13.KJV
+
+  - id: ELIAKIM
+    name: Eliakim
+    gender: male
+    parents:
+      - ABIUD
+    references:
+      - MAT.1.13.KJV
+
+  - id: ABIUD
+    name: Abiud
+    gender: male
+    parents:
+      - ZERUBBABEL
+    references:
+      - MAT.1.13.KJV
+
+  - id: MARY_MOTHER_OF_JESUS
+    name: Mary
+    gender: female
+    spouses:
+      - JOSEPH_HUSBAND_OF_MARY
+    references:
+      - MAT.1.16.KJV
+      - LUK.1.27.KJV
+
+  # Luke's Genealogy (Different from Matthew's)
+  - id: HELI
+    name: Heli
+    gender: male
+    references:
+      - LUK.3.23.KJV
+
+  - id: MATTHAT
+    name: Matthat
+    gender: male
+    parents:
+      - HELI
+    references:
+      - LUK.3.24.KJV
+
+  - id: LEVI_LUKE_GENEALOGY
+    name: Levi
+    gender: male
+    parents:
+      - MATTHAT
+    references:
+      - LUK.3.24.KJV
+
+  - id: MELCHI
+    name: Melchi
+    gender: male
+    parents:
+      - LEVI_LUKE_GENEALOGY
+    references:
+      - LUK.3.24.KJV
+
+  - id: JANNA
+    name: Janna
+    gender: male
+    parents:
+      - MELCHI
+    references:
+      - LUK.3.24.KJV
+
+  - id: JOSEPH_LUKE_GENEALOGY
+    name: Joseph
+    gender: male
+    parents:
+      - JANNA
+    references:
+      - LUK.3.24.KJV
+
+  # John the Baptist's Family
+  - id: JOHN_THE_BAPTIST
+    name: John the Baptist
+    gender: male
+    parents:
+      - ZACHARIAS
+      - ELISABETH
+    references:
+      - LUK.1.13.KJV
+
+  - id: ZACHARIAS
+    name: Zacharias
+    gender: male
+    spouses:
+      - ELISABETH
+    references:
+      - LUK.1.5.KJV
+
+  - id: ELISABETH
+    name: Elisabeth
+    gender: female
+    spouses:
+      - ZACHARIAS
+    references:
+      - LUK.1.5.KJV
+
+  # Other Notable Figures
+  - id: MELCHIZEDEK
+    name: Melchizedek
+    gender: male
+    references:
+      - GEN.14.18.KJV
+      - HEB.7.1.KJV
+
+  - id: JOB
+    name: Job
+    gender: male
+    references:
+      - JOB.1.1.KJV
+
+  - id: DANIEL
+    name: Daniel
+    gender: male
+    references:
+      - DAN.1.6.KJV
+
+  - id: SHADRACH
+    name: Shadrach
+    names:
+      - name: Hananiah
+        reference: DAN.1.7.KJV
+    gender: male
+    references:
+      - DAN.1.7.KJV
+
+  - id: MESHACH
+    name: Meshach
+    names:
+      - name: Mishael
+        reference: DAN.1.7.KJV
+    gender: male
+    references:
+      - DAN.1.7.KJV
+
+  - id: ABEDNEGO
+    name: Abednego
+    names:
+      - name: Azariah
+        reference: DAN.1.7.KJV
+    gender: male
+    references:
+      - DAN.1.7.KJV
+
+  - id: EZRA
+    name: Ezra
+    gender: male
+    references:
+      - EZR.7.1.KJV
+
+  - id: NEHEMIAH
+    name: Nehemiah
+    gender: male
+    references:
+      - NEH.1.1.KJV
+
+  - id: ESTHER
+    name: Esther
+    names:
+      - name: Hadassah
+        reference: EST.2.7.KJV
+    gender: female
+    references:
+      - EST.2.7.KJV
+
+  - id: MORDECAI
+    name: Mordecai
+    gender: male
+    references:
+      - EST.2.5.KJV
+
+  # Prophets
+  - id: ELIJAH
+    name: Elijah
+    gender: male
+    references:
+      - 1KI.17.1.KJV
+
+  - id: ELISHA
+    name: Elisha
+    gender: male
+    references:
+      - 1KI.19.16.KJV
+
+  - id: ISAIAH
+    name: Isaiah
+    gender: male
+    references:
+      - ISA.1.1.KJV
+
+  - id: JEREMIAH
+    name: Jeremiah
+    gender: male
+    references:
+      - JER.1.1.KJV
+
+  - id: EZEKIEL
+    name: Ezekiel
+    gender: male
+    references:
+      - EZE.1.3.KJV
+
+  - id: HOSEA
+    name: Hosea
+    gender: male
+    references:
+      - HOS.1.1.KJV
+
+  - id: JOEL
+    name: Joel
+    gender: male
+    references:
+      - JOE.1.1.KJV
+
+  - id: AMOS
+    name: Amos
+    gender: male
+    references:
+      - AMO.1.1.KJV
+
+  - id: OBADIAH
+    name: Obadiah
+    gender: male
+    references:
+      - OBA.1.1.KJV
+
+  - id: JONAH
+    name: Jonah
+    gender: male
+    references:
+      - JON.1.1.KJV
+
+  - id: MICAH
+    name: Micah
+    gender: male
+    references:
+      - MIC.1.1.KJV
+
+  - id: NAHUM
+    name: Nahum
+    gender: male
+    references:
+      - NAH.1.1.KJV
+
+  - id: HABAKKUK
+    name: Habakkuk
+    gender: male
+    references:
+      - HAB.1.1.KJV
+
+  - id: ZEPHANIAH
+    name: Zephaniah
+    gender: male
+    references:
+      - ZEP.1.1.KJV
+
+  - id: HAGGAI
+    name: Haggai
+    gender: male
+    references:
+      - HAG.1.1.KJV
+
+  - id: ZECHARIAH_PROPHET
+    name: Zechariah
+    gender: male
+    references:
+      - ZEC.1.1.KJV
+
+  - id: MALACHI
+    name: Malachi
+    gender: male
+    references:
+      - MAL.1.1.KJV
+
+  # Apostles
+  - id: PETER
+    name: Peter
+    names:
+      - name: Simon
+        reference: MAT.4.18.KJV
+      - name: Cephas
+        reference: JHN.1.42.KJV
+    gender: male
+    references:
+      - MAT.4.18.KJV
+
+  - id: ANDREW
+    name: Andrew
+    gender: male
+    parents:
+      - JONAS
+    references:
+      - MAT.4.18.KJV
+
+  - id: JONAS
+    name: Jonas
+    gender: male
+    references:
+      - JHN.21.15.KJV
+
+  - id: JAMES_SON_OF_ZEBEDEE
+    name: James
+    gender: male
+    parents:
+      - ZEBEDEE
+    references:
+      - MAT.4.21.KJV
+
+  - id: JOHN_THE_APOSTLE
+    name: John
+    gender: male
+    parents:
+      - ZEBEDEE
+    references:
+      - MAT.4.21.KJV
+
+  - id: ZEBEDEE
+    name: Zebedee
+    gender: male
+    references:
+      - MAT.4.21.KJV
+
+  - id: PHILIP_APOSTLE
+    name: Philip
+    gender: male
+    references:
+      - JHN.1.43.KJV
+
+  - id: BARTHOLOMEW
+    name: Bartholomew
+    names:
+      - name: Nathanael
+        reference: JHN.1.45.KJV
+    gender: male
+    references:
+      - MAT.10.3.KJV
+
+  - id: MATTHEW
+    name: Matthew
+    names:
+      - name: Levi
+        reference: MAR.2.14.KJV
+    gender: male
+    references:
+      - MAT.9.9.KJV
+
+  - id: THOMAS
+    name: Thomas
+    names:
+      - name: Didymus
+        reference: JHN.11.16.KJV
+    gender: male
+    references:
+      - MAT.10.3.KJV
+
+  - id: JAMES_SON_OF_ALPHAEUS
+    name: James
+    gender: male
+    parents:
+      - ALPHAEUS
+    references:
+      - MAT.10.3.KJV
+
+  - id: ALPHAEUS
+    name: Alphaeus
+    gender: male
+    references:
+      - MAT.10.3.KJV
+
+  - id: THADDAEUS
+    name: Thaddaeus
+    names:
+      - name: Judas
+        reference: LUK.6.16.KJV
+    gender: male
+    references:
+      - MAT.10.3.KJV
+
+  - id: SIMON_THE_CANAANITE
+    name: Simon the Canaanite
+    names:
+      - name: Simon Zelotes
+        reference: LUK.6.15.KJV
+    gender: male
+    references:
+      - MAT.10.4.KJV
+
+  - id: JUDAS_ISCARIOT
+    name: Judas Iscariot
+    gender: male
+    parents:
+      - SIMON_ISCARIOT
+    references:
+      - MAT.10.4.KJV
+      - JHN.6.71.KJV
+
+  - id: SIMON_ISCARIOT
+    name: Simon Iscariot
+    gender: male
+    references:
+      - JHN.6.71.KJV
+
+  - id: MATTHIAS
+    name: Matthias
+    gender: male
+    references:
+      - ACT.1.26.KJV
+
+  - id: PAUL
+    name: Paul
+    names:
+      - name: Saul
+        reference: ACT.7.58.KJV
+    gender: male
+    references:
+      - ACT.13.9.KJV
+
+  - id: BARNABAS
+    name: Barnabas
+    names:
+      - name: Joses
+        reference: ACT.4.36.KJV
+    gender: male
+    references:
+      - ACT.4.36.KJV
+
+  - id: TIMOTHY
+    name: Timothy
+    gender: male
+    parents:
+      - EUNICE
+    references:
+      - ACT.16.1.KJV
+
+  - id: EUNICE
+    name: Eunice
+    gender: female
+    parents:
+      - LOIS
+    references:
+      - 2TI.1.5.KJV
+
+  - id: LOIS
+    name: Lois
+    gender: female
+    references:
+      - 2TI.1.5.KJV
+
+  - id: TITUS
+    name: Titus
+    gender: male
+    references:
+      - 2CO.2.13.KJV
+
+  - id: SILAS
+    name: Silas
+    names:
+      - name: Silvanus
+        reference: 1TH.1.1.KJV
+    gender: male
+    references:
+      - ACT.15.22.KJV
+
+  # Women of Note
+  - id: DEBORAH
+    name: Deborah
+    gender: female
+    references:
+      - JDG.4.4.KJV
+
+  - id: GIDEON
+    name: Gideon
+    names:
+      - name: Jerubbaal
+        reference: JDG.6.32.KJV
+    gender: male
+    references:
+      - JDG.6.11.KJV
+
+  - id: SAMSON
+    name: Samson
+    gender: male
+    parents:
+      - MANOAH
+    references:
+      - JDG.13.24.KJV
+
+  - id: MANOAH
+    name: Manoah
+    gender: male
+    references:
+      - JDG.13.2.KJV
+
+  - id: DELILAH
+    name: Delilah
+    gender: female
+    references:
+      - JDG.16.4.KJV
+
+  - id: NAOMI
+    name: Naomi
+    gender: female
+    references:
+      - RUT.1.2.KJV
+
+  - id: ORPAH
+    name: Orpah
+    gender: female
+    references:
+      - RUT.1.4.KJV
+
+  # Ham's Descendants
+  - id: CUSH
+    name: Cush
+    gender: male
+    parents:
+      - HAM
+    references:
+      - GEN.10.6.KJV
+
+  - id: MIZRAIM
+    name: Mizraim
+    gender: male
+    parents:
+      - HAM
+    references:
+      - GEN.10.6.KJV
+
+  - id: PHUT
+    name: Phut
+    gender: male
+    parents:
+      - HAM
+    references:
+      - GEN.10.6.KJV
+
+  - id: CANAAN
+    name: Canaan
+    gender: male
+    parents:
+      - HAM
+    references:
+      - GEN.10.6.KJV
+
+  - id: NIMROD
+    name: Nimrod
+    gender: male
+    parents:
+      - CUSH
+    references:
+      - GEN.10.8.KJV
+
+  # Japheth's Descendants
+  - id: GOMER
+    name: Gomer
+    gender: male
+    parents:
+      - JAPHETH
+    references:
+      - GEN.10.2.KJV
+
+  - id: MAGOG
+    name: Magog
+    gender: male
+    parents:
+      - JAPHETH
+    references:
+      - GEN.10.2.KJV
+
+  - id: MADAI
+    name: Madai
+    gender: male
+    parents:
+      - JAPHETH
+    references:
+      - GEN.10.2.KJV
+
+  - id: JAVAN
+    name: Javan
+    gender: male
+    parents:
+      - JAPHETH
+    references:
+      - GEN.10.2.KJV
+
+  - id: TUBAL
+    name: Tubal
+    gender: male
+    parents:
+      - JAPHETH
+    references:
+      - GEN.10.2.KJV
+
+  - id: MESHECH
+    name: Meshech
+    gender: male
+    parents:
+      - JAPHETH
+    references:
+      - GEN.10.2.KJV
+
+  - id: TIRAS
+    name: Tiras
+    gender: male
+    parents:
+      - JAPHETH
+    references:
+      - GEN.10.2.KJV
+
+# Tribal and Family Groups
+tribes:
+  - name: Tribe of Reuben
+    founder: REUBEN
+    territory: East of Jordan
+    references:
+      - NUM.32.1.KJV
+
+  - name: Tribe of Simeon
+    founder: SIMEON
+    territory: Southern Canaan
+    references:
+      - JOS.19.1.KJV
+
+  - name: Tribe of Levi
+    founder: LEVI
+    territory: Scattered cities (priestly tribe)
+    special_role: Priesthood
+    references:
+      - NUM.18.2.KJV
+
+  - name: Tribe of Judah
+    founder: JUDAH
+    territory: Southern Canaan
+    special_role: Royal line
+    references:
+      - GEN.49.10.KJV
+
+  - name: Tribe of Dan
+    founder: DAN
+    territory: Western coast/Northern
+    references:
+      - JOS.19.40.KJV
+
+  - name: Tribe of Naphtali
+    founder: NAPHTALI
+    territory: Northern Galilee
+    references:
+      - JOS.19.32.KJV
+
+  - name: Tribe of Gad
+    founder: GAD
+    territory: East of Jordan
+    references:
+      - NUM.32.34.KJV
+
+  - name: Tribe of Asher
+    founder: ASHER
+    territory: Northwestern coast
+    references:
+      - JOS.19.24.KJV
+
+  - name: Tribe of Issachar
+    founder: ISSACHAR
+    territory: Northern central
+    references:
+      - JOS.19.17.KJV
+
+  - name: Tribe of Zebulun
+    founder: ZEBULUN
+    territory: Northern central
+    references:
+      - JOS.19.10.KJV
+
+  - name: Tribe of Joseph (Ephraim)
+    founder: EPHRAIM
+    territory: Central hill country
+    references:
+      - JOS.16.5.KJV
+
+  - name: Tribe of Joseph (Manasseh)
+    founder: MANASSEH
+    territory: Central/East of Jordan
+    references:
+      - JOS.17.1.KJV
+
+  - name: Tribe of Benjamin
+    founder: BENJAMIN
+    territory: Central (Jerusalem area)
+    references:
+      - JOS.18.11.KJV
+
+# Notes on Genealogical Methodology
+notes:
+  - The genealogies in Matthew and Luke differ, likely representing different lineages (paternal vs maternal or legal vs biological)
+  - Ages listed are from the Hebrew text as recorded in the KJV
+  - Some relationships may be adoptive or legal rather than biological
+  - The term "begat" in Hebrew can mean immediate father-son or ancestor-descendant
+  - Gaps in genealogies were common in ancient records
+  - Women are mentioned less frequently but play crucial roles in the lineage
+  - The genealogies serve theological purposes beyond mere historical record
