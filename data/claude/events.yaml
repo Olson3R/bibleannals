@@ -3606,19 +3606,6 @@ biblical_events:
     references:
       - EST.7.1-10.3.KJV
 
-  # New Testament Era
-  - id: BIRTH_OF_JOHN_BAPTIST
-    name: Birth of John the Baptist
-    date: "~6 BC"
-    location: JUDEA_PROVINCE
-    description: "John the Baptist is born to Zacharias and Elisabeth"
-    participants:
-      - JOHN_THE_BAPTIST
-      - ZACHARIAS
-      - ELISABETH
-    references:
-      - LUK.1.57-80.KJV
-
   - id: BIRTH_OF_JESUS
     name: Birth of Jesus Christ
     date: "~4 BC"
