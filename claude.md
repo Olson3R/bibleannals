@@ -12,6 +12,7 @@
 - Keep files focused
   - Create files as needed to maintain focus, purpose, and smaller size
 - The website needs to be responsive and accessible
+- Cleanup unused code
 
 # Workflow
 - Be sure to make sure it builds when you’re done making a series of code changes

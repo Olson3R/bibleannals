@@ -7,8 +7,7 @@ export function Navigation() {
   const pathname = usePathname();
 
   const navItems = [
-    { href: '/', label: 'Biblical Timeline', description: 'Historical timeline of biblical events' },
-    { href: '/ancestry', label: 'Ancestry Timeline', description: 'Family trees and lineages' }
+    { href: '/', label: 'Biblical Timeline', description: 'Comprehensive biblical history with events, people, and regions' }
   ];
 
   return (

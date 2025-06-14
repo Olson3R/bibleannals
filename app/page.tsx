@@ -9,6 +9,7 @@ interface BiblicalPerson {
   name: string;
   names?: { name: string; reference: string }[];
   gender?: string;
+  ethnicity?: string;
   age?: string;
   birth_date?: string;
   death_date?: string;

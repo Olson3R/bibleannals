@@ -1,10 +1,11 @@
-# Biblical Ancestry from the King James Version
+# Biblical Ancestry from the King James Version with Ethnicity Information
 # This file documents the genealogical relationships found in the KJV Bible
 
 biblical_persons:
   # Divine/Messianic Figures
   - id: GOD_FATHER
     name: God the Father
+    ethnicity: "Divine"
     names:
       - name: Almighty
         reference: GEN.17.1.KJV
@@ -21,6 +22,7 @@ biblical_persons:
 
   - id: JESUS
     name: Jesus
+    ethnicity: "Jewish"
     names:
       - name: Alpha and Omega
         reference: REV.1.8.KJV
@@ -59,6 +61,7 @@ biblical_persons:
   - id: ADAM
     name: Adam
     gender: male
+    ethnicity: "Antediluvian"
     age: 930y
     birth_date: "~4004 BC"
     death_date: "~3074 BC"
@@ -71,6 +74,7 @@ biblical_persons:
   - id: EVE
     name: Eve
     gender: female
+    ethnicity: "Antediluvian"
     spouses:
       - ADAM
     created: true
@@ -81,6 +85,7 @@ biblical_persons:
   - id: CAIN
     name: Cain
     gender: male
+    ethnicity: "Antediluvian"
     parents:
       - ADAM
       - EVE
@@ -90,6 +95,7 @@ biblical_persons:
   - id: ABEL
     name: Abel
     gender: male
+    ethnicity: "Antediluvian"
     parents:
       - ADAM
       - EVE
@@ -99,6 +105,7 @@ biblical_persons:
   - id: SETH
     name: Seth
     gender: male
+    ethnicity: "Antediluvian"
     age: 912y
     parents:
       - ADAM
@@ -110,6 +117,7 @@ biblical_persons:
   - id: ENOS
     name: Enos
     gender: male
+    ethnicity: "Antediluvian"
     age: 905y
     parents:
       - SETH
@@ -119,6 +127,7 @@ biblical_persons:
   - id: CAINAN
     name: Cainan
     gender: male
+    ethnicity: "Antediluvian"
     age: 910y
     parents:
       - ENOS
@@ -128,6 +137,7 @@ biblical_persons:
   - id: MAHALALEEL
     name: Mahalaleel
     gender: male
+    ethnicity: "Antediluvian"
     age: 895y
     parents:
       - CAINAN
@@ -137,6 +147,7 @@ biblical_persons:
   - id: JARED
     name: Jared
     gender: male
+    ethnicity: "Antediluvian"
     age: 962y
     parents:
       - MAHALALEEL
@@ -146,6 +157,7 @@ biblical_persons:
   - id: ENOCH
     name: Enoch
     gender: male
+    ethnicity: "Antediluvian"
     age: 365y
     parents:
       - JARED
@@ -157,6 +169,7 @@ biblical_persons:
   - id: METHUSELAH
     name: Methuselah
     gender: male
+    ethnicity: "Antediluvian"
     age: 969y
     parents:
       - ENOCH
@@ -166,6 +179,7 @@ biblical_persons:
   - id: LAMECH_FATHER_OF_NOAH
     name: Lamech
     gender: male
+    ethnicity: "Antediluvian"
     age: 777y
     parents:
       - METHUSELAH
@@ -175,6 +189,7 @@ biblical_persons:
   - id: NOAH
     name: Noah
     gender: male
+    ethnicity: "Antediluvian"
     age: 950y
     birth_date: "~2948 BC"
     death_date: "~1998 BC"
@@ -189,6 +204,7 @@ biblical_persons:
   - id: NOAH_WIFE
     name: Noah's Wife
     gender: female
+    ethnicity: "Antediluvian"
     spouses:
       - NOAH
     references:
@@ -197,6 +213,7 @@ biblical_persons:
   - id: SHEM
     name: Shem
     gender: male
+    ethnicity: "Semitic"
     age: 600y
     parents:
       - NOAH
@@ -208,6 +225,7 @@ biblical_persons:
   - id: HAM
     name: Ham
     gender: male
+    ethnicity: "Hamitic"
     parents:
       - NOAH
       - NOAH_WIFE
@@ -218,6 +236,7 @@ biblical_persons:
   - id: JAPHETH
     name: Japheth
     gender: male
+    ethnicity: "Japhetic"
     parents:
       - NOAH
       - NOAH_WIFE
@@ -229,6 +248,7 @@ biblical_persons:
   - id: ARPHAXAD
     name: Arphaxad
     gender: male
+    ethnicity: "Semitic"
     age: 438y
     parents:
       - SHEM
@@ -238,6 +258,7 @@ biblical_persons:
   - id: SALAH
     name: Salah
     gender: male
+    ethnicity: "Semitic"
     age: 433y
     parents:
       - ARPHAXAD
@@ -247,6 +268,7 @@ biblical_persons:
   - id: EBER
     name: Eber
     gender: male
+    ethnicity: "Hebrew"
     age: 464y
     parents:
       - SALAH
@@ -256,6 +278,7 @@ biblical_persons:
   - id: PELEG
     name: Peleg
     gender: male
+    ethnicity: "Hebrew"
     age: 239y
     parents:
       - EBER
@@ -265,6 +288,7 @@ biblical_persons:
   - id: REU
     name: Reu
     gender: male
+    ethnicity: "Hebrew"
     age: 239y
     parents:
       - PELEG
@@ -274,6 +298,7 @@ biblical_persons:
   - id: SERUG
     name: Serug
     gender: male
+    ethnicity: "Hebrew"
     age: 230y
     parents:
       - REU
@@ -283,6 +308,7 @@ biblical_persons:
   - id: NAHOR_GRANDFATHER_OF_ABRAHAM
     name: Nahor
     gender: male
+    ethnicity: "Hebrew/Chaldean"
     age: 148y
     parents:
       - SERUG
@@ -292,6 +318,7 @@ biblical_persons:
   - id: TERAH
     name: Terah
     gender: male
+    ethnicity: "Hebrew/Chaldean"
     age: 205y
     parents:
       - NAHOR_GRANDFATHER_OF_ABRAHAM
@@ -305,6 +332,7 @@ biblical_persons:
       - name: Abram
         reference: GEN.11.26.KJV
     gender: male
+    ethnicity: "Hebrew"
     age: 175y
     birth_date: "~2166 BC"
     death_date: "~1991 BC"
@@ -324,6 +352,7 @@ biblical_persons:
       - name: Sarai
         reference: GEN.11.29.KJV
     gender: female
+    ethnicity: "Hebrew"
     age: 127y
     spouses:
       - ABRAHAM
@@ -334,6 +363,7 @@ biblical_persons:
   - id: HAGAR
     name: Hagar
     gender: female
+    ethnicity: "Egyptian"
     spouses:
       - ABRAHAM
     references:
@@ -342,6 +372,7 @@ biblical_persons:
   - id: KETURAH
     name: Keturah
     gender: female
+    ethnicity: "Arabian/Midianite"
     spouses:
       - ABRAHAM
     references:
@@ -350,6 +381,7 @@ biblical_persons:
   - id: ISAAC
     name: Isaac
     gender: male
+    ethnicity: "Hebrew"
     age: 180y
     birth_date: "~2066 BC"
     death_date: "~1886 BC"
@@ -365,6 +397,7 @@ biblical_persons:
   - id: ISHMAEL
     name: Ishmael
     gender: male
+    ethnicity: "Hebrew/Egyptian"
     age: 137y
     parents:
       - ABRAHAM
@@ -376,6 +409,7 @@ biblical_persons:
   - id: REBEKAH
     name: Rebekah
     gender: female
+    ethnicity: "Aramean"
     spouses:
       - ISAAC
     parents:
@@ -387,6 +421,7 @@ biblical_persons:
   - id: BETHUEL
     name: Bethuel
     gender: male
+    ethnicity: "Aramean"
     parents:
       - NAHOR_BROTHER_OF_ABRAHAM
       - MILCAH
@@ -396,6 +431,7 @@ biblical_persons:
   - id: NAHOR_BROTHER_OF_ABRAHAM
     name: Nahor
     gender: male
+    ethnicity: "Hebrew"
     parents:
       - TERAH
     spouses:
@@ -407,6 +443,7 @@ biblical_persons:
   - id: MILCAH
     name: Milcah
     gender: female
+    ethnicity: "Hebrew"
     spouses:
       - NAHOR_BROTHER_OF_ABRAHAM
     references:
@@ -415,6 +452,7 @@ biblical_persons:
   - id: HARAN
     name: Haran
     gender: male
+    ethnicity: "Hebrew"
     parents:
       - TERAH
     references:
@@ -423,6 +461,7 @@ biblical_persons:
   - id: LOT
     name: Lot
     gender: male
+    ethnicity: "Hebrew"
     parents:
       - HARAN
     references:
@@ -434,6 +473,7 @@ biblical_persons:
       - name: Israel
         reference: GEN.32.28.KJV
     gender: male
+    ethnicity: "Hebrew"
     age: 147y
     birth_date: "~2006 BC"
     death_date: "~1859 BC"
@@ -455,6 +495,7 @@ biblical_persons:
       - name: Edom
         reference: GEN.25.30.KJV
     gender: male
+    ethnicity: "Hebrew/Edomite"
     parents:
       - ISAAC
       - REBEKAH
@@ -464,6 +505,7 @@ biblical_persons:
   - id: LABAN
     name: Laban
     gender: male
+    ethnicity: "Aramean"
     parents:
       - BETHUEL
     references:
@@ -472,6 +514,7 @@ biblical_persons:
   - id: LEAH
     name: Leah
     gender: female
+    ethnicity: "Aramean"
     parents:
       - LABAN
     spouses:
@@ -482,6 +525,7 @@ biblical_persons:
   - id: RACHEL
     name: Rachel
     gender: female
+    ethnicity: "Aramean"
     parents:
       - LABAN
     spouses:
@@ -492,6 +536,7 @@ biblical_persons:
   - id: BILHAH
     name: Bilhah
     gender: female
+    ethnicity: "Aramean"
     spouses:
       - JACOB
     references:
@@ -500,6 +545,7 @@ biblical_persons:
   - id: ZILPAH
     name: Zilpah
     gender: female
+    ethnicity: "Aramean"
     spouses:
       - JACOB
     references:
@@ -509,6 +555,7 @@ biblical_persons:
   - id: REUBEN
     name: Reuben
     gender: male
+    ethnicity: "Hebrew/Israelite"
     parents:
       - JACOB
       - LEAH
@@ -518,6 +565,7 @@ biblical_persons:
   - id: SIMEON
     name: Simeon
     gender: male
+    ethnicity: "Hebrew/Israelite"
     parents:
       - JACOB
       - LEAH
@@ -527,6 +575,7 @@ biblical_persons:
   - id: LEVI
     name: Levi
     gender: male
+    ethnicity: "Hebrew/Israelite"
     parents:
       - JACOB
       - LEAH
@@ -536,6 +585,7 @@ biblical_persons:
   - id: JUDAH
     name: Judah
     gender: male
+    ethnicity: "Hebrew/Israelite"
     parents:
       - JACOB
       - LEAH
@@ -548,6 +598,7 @@ biblical_persons:
   - id: DAN
     name: Dan
     gender: male
+    ethnicity: "Hebrew/Israelite"
     parents:
       - JACOB
       - BILHAH
@@ -557,6 +608,7 @@ biblical_persons:
   - id: NAPHTALI
     name: Naphtali
     gender: male
+    ethnicity: "Hebrew/Israelite"
     parents:
       - JACOB
       - BILHAH
@@ -566,6 +618,7 @@ biblical_persons:
   - id: GAD
     name: Gad
     gender: male
+    ethnicity: "Hebrew/Israelite"
     parents:
       - JACOB
       - ZILPAH
@@ -575,6 +628,7 @@ biblical_persons:
   - id: ASHER
     name: Asher
     gender: male
+    ethnicity: "Hebrew/Israelite"
     parents:
       - JACOB
       - ZILPAH
@@ -584,6 +638,7 @@ biblical_persons:
   - id: ISSACHAR
     name: Issachar
     gender: male
+    ethnicity: "Hebrew/Israelite"
     parents:
       - JACOB
       - LEAH
@@ -593,6 +648,7 @@ biblical_persons:
   - id: ZEBULUN
     name: Zebulun
     gender: male
+    ethnicity: "Hebrew/Israelite"
     parents:
       - JACOB
       - LEAH
@@ -602,6 +658,7 @@ biblical_persons:
   - id: JOSEPH
     name: Joseph
     gender: male
+    ethnicity: "Hebrew/Israelite"
     parents:
       - JACOB
       - RACHEL
@@ -614,6 +671,7 @@ biblical_persons:
   - id: BENJAMIN
     name: Benjamin
     gender: male
+    ethnicity: "Hebrew/Israelite"
     parents:
       - JACOB
       - RACHEL
@@ -623,6 +681,7 @@ biblical_persons:
   - id: DINAH
     name: Dinah
     gender: female
+    ethnicity: "Hebrew/Israelite"
     parents:
       - JACOB
       - LEAH
@@ -633,6 +692,7 @@ biblical_persons:
   - id: ASENATH
     name: Asenath
     gender: female
+    ethnicity: "Egyptian"
     spouses:
       - JOSEPH
     references:
@@ -641,6 +701,7 @@ biblical_persons:
   - id: MANASSEH
     name: Manasseh
     gender: male
+    ethnicity: "Hebrew/Egyptian"
     parents:
       - JOSEPH
       - ASENATH
@@ -650,6 +711,7 @@ biblical_persons:
   - id: EPHRAIM
     name: Ephraim
     gender: male
+    ethnicity: "Hebrew/Egyptian"
     parents:
       - JOSEPH
       - ASENATH
@@ -660,6 +722,7 @@ biblical_persons:
   - id: TAMAR
     name: Tamar
     gender: female
+    ethnicity: "Canaanite"
     spouses:
       - JUDAH
     references:
@@ -668,6 +731,7 @@ biblical_persons:
   - id: PHAREZ
     name: Pharez
     gender: male
+    ethnicity: "Hebrew/Canaanite"
     parents:
       - JUDAH
       - TAMAR
@@ -677,6 +741,7 @@ biblical_persons:
   - id: ZARAH
     name: Zarah
     gender: male
+    ethnicity: "Hebrew/Canaanite"
     parents:
       - JUDAH
       - TAMAR
@@ -686,6 +751,7 @@ biblical_persons:
   - id: HEZRON
     name: Hezron
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - PHAREZ
     references:
@@ -694,6 +760,7 @@ biblical_persons:
   - id: RAM
     name: Ram
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - HEZRON
     references:
@@ -702,6 +769,7 @@ biblical_persons:
   - id: AMMINADAB
     name: Amminadab
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - RAM
     references:
@@ -710,6 +778,7 @@ biblical_persons:
   - id: NAHSHON
     name: Nahshon
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - AMMINADAB
     references:
@@ -718,6 +787,7 @@ biblical_persons:
   - id: SALMON
     name: Salmon
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - NAHSHON
     spouses:
@@ -729,6 +799,7 @@ biblical_persons:
   - id: RAHAB
     name: Rahab
     gender: female
+    ethnicity: "Canaanite"
     spouses:
       - SALMON
     references:
@@ -737,6 +808,7 @@ biblical_persons:
   - id: BOAZ
     name: Boaz
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - SALMON
       - RAHAB
@@ -749,6 +821,7 @@ biblical_persons:
   - id: RUTH
     name: Ruth
     gender: female
+    ethnicity: "Moabite"
     spouses:
       - BOAZ
     references:
@@ -757,6 +830,7 @@ biblical_persons:
   - id: OBED
     name: Obed
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - BOAZ
       - RUTH
@@ -766,6 +840,7 @@ biblical_persons:
   - id: JESSE
     name: Jesse
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - OBED
     references:
@@ -775,6 +850,7 @@ biblical_persons:
   - id: DAVID
     name: David
     gender: male
+    ethnicity: "Hebrew/Judean"
     birth_date: "~1040 BC"
     death_date: "~970 BC"
     age: 70y
@@ -797,6 +873,7 @@ biblical_persons:
   - id: MICHAL
     name: Michal
     gender: female
+    ethnicity: "Hebrew/Benjamite"
     spouses:
       - DAVID
     parents:
@@ -807,6 +884,7 @@ biblical_persons:
   - id: ABIGAIL
     name: Abigail
     gender: female
+    ethnicity: "Hebrew/Judean"
     spouses:
       - DAVID
     references:
@@ -815,6 +893,7 @@ biblical_persons:
   - id: AHINOAM
     name: Ahinoam
     gender: female
+    ethnicity: "Hebrew/Judean"
     spouses:
       - DAVID
     references:
@@ -823,6 +902,7 @@ biblical_persons:
   - id: MAACAH
     name: Maacah
     gender: female
+    ethnicity: "Aramean"
     spouses:
       - DAVID
     references:
@@ -831,6 +911,7 @@ biblical_persons:
   - id: HAGGITH
     name: Haggith
     gender: female
+    ethnicity: "Hebrew/Judean"
     spouses:
       - DAVID
     references:
@@ -839,6 +920,7 @@ biblical_persons:
   - id: ABITAL
     name: Abital
     gender: female
+    ethnicity: "Hebrew/Judean"
     spouses:
       - DAVID
     references:
@@ -847,6 +929,7 @@ biblical_persons:
   - id: EGLAH
     name: Eglah
     gender: female
+    ethnicity: "Hebrew/Judean"
     spouses:
       - DAVID
     references:
@@ -855,6 +938,7 @@ biblical_persons:
   - id: BATHSHEBA
     name: Bathsheba
     gender: female
+    ethnicity: "Hebrew/Judean"
     spouses:
       - DAVID
     references:
@@ -863,6 +947,7 @@ biblical_persons:
   - id: SOLOMON
     name: Solomon
     gender: male
+    ethnicity: "Hebrew/Judean"
     birth_date: "~990 BC"
     death_date: "~930 BC"
     age: 60y
@@ -876,6 +961,7 @@ biblical_persons:
   - id: AMNON
     name: Amnon
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - DAVID
       - AHINOAM
@@ -885,6 +971,7 @@ biblical_persons:
   - id: CHILEAB
     name: Chileab
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - DAVID
       - ABIGAIL
@@ -894,6 +981,7 @@ biblical_persons:
   - id: ABSALOM
     name: Absalom
     gender: male
+    ethnicity: "Hebrew/Aramean"
     parents:
       - DAVID
       - MAACAH
@@ -903,6 +991,7 @@ biblical_persons:
   - id: ADONIJAH
     name: Adonijah
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - DAVID
       - HAGGITH
@@ -912,6 +1001,7 @@ biblical_persons:
   - id: SHEPHATIAH
     name: Shephatiah
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - DAVID
       - ABITAL
@@ -921,6 +1011,7 @@ biblical_persons:
   - id: ITHREAM
     name: Ithream
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - DAVID
       - EGLAH
@@ -931,6 +1022,7 @@ biblical_persons:
   - id: REHOBOAM
     name: Rehoboam
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - SOLOMON
     references:
@@ -939,6 +1031,7 @@ biblical_persons:
   - id: ABIJAM
     name: Abijam
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - REHOBOAM
     references:
@@ -947,6 +1040,7 @@ biblical_persons:
   - id: ASA
     name: Asa
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - ABIJAM
     references:
@@ -955,6 +1049,7 @@ biblical_persons:
   - id: JEHOSHAPHAT
     name: Jehoshaphat
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - ASA
     references:
@@ -963,6 +1058,7 @@ biblical_persons:
   - id: JEHORAM_KING_OF_JUDAH
     name: Jehoram
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - JEHOSHAPHAT
     references:
@@ -971,6 +1067,7 @@ biblical_persons:
   - id: AHAZIAH_KING_OF_JUDAH
     name: Ahaziah
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - JEHORAM_KING_OF_JUDAH
     references:
@@ -979,6 +1076,7 @@ biblical_persons:
   - id: JOASH_KING_OF_JUDAH
     name: Joash
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - AHAZIAH_KING_OF_JUDAH
     references:
@@ -987,6 +1085,7 @@ biblical_persons:
   - id: AMAZIAH
     name: Amaziah
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - JOASH_KING_OF_JUDAH
     references:
@@ -998,6 +1097,7 @@ biblical_persons:
       - name: Uzziah
         reference: 2CH.26.1.KJV
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - AMAZIAH
     references:
@@ -1006,6 +1106,7 @@ biblical_persons:
   - id: JOTHAM
     name: Jotham
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - AZARIAH
     references:
@@ -1014,6 +1115,7 @@ biblical_persons:
   - id: AHAZ
     name: Ahaz
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - JOTHAM
     references:
@@ -1022,6 +1124,7 @@ biblical_persons:
   - id: HEZEKIAH
     name: Hezekiah
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - AHAZ
     references:
@@ -1030,6 +1133,7 @@ biblical_persons:
   - id: MANASSEH_KING_OF_JUDAH
     name: Manasseh
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - HEZEKIAH
     references:
@@ -1038,6 +1142,7 @@ biblical_persons:
   - id: AMON
     name: Amon
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - MANASSEH_KING_OF_JUDAH
     references:
@@ -1046,6 +1151,7 @@ biblical_persons:
   - id: JOSIAH
     name: Josiah
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - AMON
     references:
@@ -1054,6 +1160,7 @@ biblical_persons:
   - id: JEHOAHAZ
     name: Jehoahaz
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - JOSIAH
     references:
@@ -1062,6 +1169,7 @@ biblical_persons:
   - id: JEHOIAKIM
     name: Jehoiakim
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - JOSIAH
     references:
@@ -1070,6 +1178,7 @@ biblical_persons:
   - id: JEHOIACHIN
     name: Jehoiachin
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - JEHOIAKIM
     references:
@@ -1078,6 +1187,7 @@ biblical_persons:
   - id: ZEDEKIAH
     name: Zedekiah
     gender: male
+    ethnicity: "Hebrew/Judean"
     parents:
       - JOSIAH
     references:
@@ -1087,6 +1197,7 @@ biblical_persons:
   - id: SHEALTIEL
     name: Shealtiel
     gender: male
+    ethnicity: "Jewish"
     parents:
       - JEHOIACHIN
     references:
@@ -1095,6 +1206,7 @@ biblical_persons:
   - id: ZERUBBABEL
     name: Zerubbabel
     gender: male
+    ethnicity: "Jewish"
     parents:
       - SHEALTIEL
     references:
@@ -1104,6 +1216,7 @@ biblical_persons:
   - id: MOSES
     name: Moses
     gender: male
+    ethnicity: "Hebrew/Levite"
     birth_date: "~1571 BC"
     death_date: "~1451 BC"
     age: 120y
@@ -1119,6 +1232,7 @@ biblical_persons:
   - id: AARON
     name: Aaron
     gender: male
+    ethnicity: "Hebrew/Levite"
     parents:
       - AMRAM
       - JOCHEBED
@@ -1131,6 +1245,7 @@ biblical_persons:
   - id: MIRIAM
     name: Miriam
     gender: female
+    ethnicity: "Hebrew/Levite"
     parents:
       - AMRAM
       - JOCHEBED
@@ -1140,6 +1255,7 @@ biblical_persons:
   - id: AMRAM
     name: Amram
     gender: male
+    ethnicity: "Hebrew/Levite"
     parents:
       - KOHATH
     spouses:
@@ -1150,6 +1266,7 @@ biblical_persons:
   - id: JOCHEBED
     name: Jochebed
     gender: female
+    ethnicity: "Hebrew/Levite"
     spouses:
       - AMRAM
     references:
@@ -1158,6 +1275,7 @@ biblical_persons:
   - id: KOHATH
     name: Kohath
     gender: male
+    ethnicity: "Hebrew/Levite"
     parents:
       - LEVI
     references:
@@ -1166,6 +1284,7 @@ biblical_persons:
   - id: ZIPPORAH
     name: Zipporah
     gender: female
+    ethnicity: "Midianite"
     parents:
       - JETHRO
     spouses:
@@ -1179,12 +1298,14 @@ biblical_persons:
       - name: Reuel
         reference: EXO.2.18.KJV
     gender: male
+    ethnicity: "Midianite"
     references:
       - EXO.3.1.KJV
 
   - id: ELISHEBA
     name: Elisheba
     gender: female
+    ethnicity: "Hebrew/Judean"
     spouses:
       - AARON
     references:
@@ -1193,6 +1314,7 @@ biblical_persons:
   - id: NADAB
     name: Nadab
     gender: male
+    ethnicity: "Hebrew/Levite"
     parents:
       - AARON
       - ELISHEBA
@@ -1202,6 +1324,7 @@ biblical_persons:
   - id: ABIHU
     name: Abihu
     gender: male
+    ethnicity: "Hebrew/Levite"
     parents:
       - AARON
       - ELISHEBA
@@ -1211,6 +1334,7 @@ biblical_persons:
   - id: ELEAZAR
     name: Eleazar
     gender: male
+    ethnicity: "Hebrew/Levite"
     parents:
       - AARON
       - ELISHEBA
@@ -1220,6 +1344,7 @@ biblical_persons:
   - id: ITHAMAR
     name: Ithamar
     gender: male
+    ethnicity: "Hebrew/Levite"
     parents:
       - AARON
       - ELISHEBA
@@ -1230,6 +1355,7 @@ biblical_persons:
   - id: SAUL
     name: Saul
     gender: male
+    ethnicity: "Hebrew/Benjamite"
     parents:
       - KISH
     references:
@@ -1238,6 +1364,7 @@ biblical_persons:
   - id: KISH
     name: Kish
     gender: male
+    ethnicity: "Hebrew/Benjamite"
     parents:
       - ABIEL
     references:
@@ -1246,12 +1373,14 @@ biblical_persons:
   - id: ABIEL
     name: Abiel
     gender: male
+    ethnicity: "Hebrew/Benjamite"
     references:
       - 1SA.9.1.KJV
 
   - id: JONATHAN
     name: Jonathan
     gender: male
+    ethnicity: "Hebrew/Benjamite"
     parents:
       - SAUL
     references:
@@ -1263,6 +1392,7 @@ biblical_persons:
       - name: Eshbaal
         reference: 1CH.8.33.KJV
     gender: male
+    ethnicity: "Hebrew/Benjamite"
     parents:
       - SAUL
     references:
@@ -1271,6 +1401,7 @@ biblical_persons:
   - id: MALCHISHUA
     name: Malchishua
     gender: male
+    ethnicity: "Hebrew/Benjamite"
     parents:
       - SAUL
     references:
@@ -1279,6 +1410,7 @@ biblical_persons:
   - id: ABINADAB_SON_OF_SAUL
     name: Abinadab
     gender: male
+    ethnicity: "Hebrew/Benjamite"
     parents:
       - SAUL
     references:
@@ -1288,6 +1420,7 @@ biblical_persons:
   - id: SAMUEL
     name: Samuel
     gender: male
+    ethnicity: "Hebrew/Levite"
     parents:
       - ELKANAH
       - HANNAH
@@ -1297,6 +1430,7 @@ biblical_persons:
   - id: ELKANAH
     name: Elkanah
     gender: male
+    ethnicity: "Hebrew/Levite"
     spouses:
       - HANNAH
       - PENINNAH
@@ -1306,6 +1440,7 @@ biblical_persons:
   - id: HANNAH
     name: Hannah
     gender: female
+    ethnicity: "Hebrew"
     spouses:
       - ELKANAH
     references:
@@ -1314,6 +1449,7 @@ biblical_persons:
   - id: PENINNAH
     name: Peninnah
     gender: female
+    ethnicity: "Hebrew"
     spouses:
       - ELKANAH
     references:
@@ -1322,12 +1458,14 @@ biblical_persons:
   - id: ELI
     name: Eli
     gender: male
+    ethnicity: "Hebrew/Levite"
     references:
       - 1SA.1.9.KJV
 
   - id: HOPHNI
     name: Hophni
     gender: male
+    ethnicity: "Hebrew/Levite"
     parents:
       - ELI
     references:
@@ -1336,6 +1474,7 @@ biblical_persons:
   - id: PHINEHAS_SON_OF_ELI
     name: Phinehas
     gender: male
+    ethnicity: "Hebrew/Levite"
     parents:
       - ELI
     references:
@@ -1345,6 +1484,7 @@ biblical_persons:
   - id: JOSEPH_HUSBAND_OF_MARY
     name: Joseph
     gender: male
+    ethnicity: "Jewish"
     parents:
       - JACOB_FATHER_OF_JOSEPH
     spouses:
@@ -1355,6 +1495,7 @@ biblical_persons:
   - id: JACOB_FATHER_OF_JOSEPH
     name: Jacob
     gender: male
+    ethnicity: "Jewish"
     parents:
       - MATTHAN
     references:
@@ -1363,6 +1504,7 @@ biblical_persons:
   - id: MATTHAN
     name: Matthan
     gender: male
+    ethnicity: "Jewish"
     parents:
       - ELEAZAR_NT
     references:
@@ -1371,6 +1513,7 @@ biblical_persons:
   - id: ELEAZAR_NT
     name: Eleazar
     gender: male
+    ethnicity: "Jewish"
     parents:
       - ELIUD
     references:
@@ -1379,6 +1522,7 @@ biblical_persons:
   - id: ELIUD
     name: Eliud
     gender: male
+    ethnicity: "Jewish"
     parents:
       - ACHIM
     references:
@@ -1387,6 +1531,7 @@ biblical_persons:
   - id: ACHIM
     name: Achim
     gender: male
+    ethnicity: "Jewish"
     parents:
       - SADOC
     references:
@@ -1395,6 +1540,7 @@ biblical_persons:
   - id: SADOC
     name: Sadoc
     gender: male
+    ethnicity: "Jewish"
     parents:
       - AZOR
     references:
@@ -1403,6 +1549,7 @@ biblical_persons:
   - id: AZOR
     name: Azor
     gender: male
+    ethnicity: "Jewish"
     parents:
       - ELIAKIM
     references:
@@ -1411,6 +1558,7 @@ biblical_persons:
   - id: ELIAKIM
     name: Eliakim
     gender: male
+    ethnicity: "Jewish"
     parents:
       - ABIUD
     references:
@@ -1419,6 +1567,7 @@ biblical_persons:
   - id: ABIUD
     name: Abiud
     gender: male
+    ethnicity: "Jewish"
     parents:
       - ZERUBBABEL
     references:
@@ -1427,6 +1576,7 @@ biblical_persons:
   - id: MARY_MOTHER_OF_JESUS
     name: Mary
     gender: female
+    ethnicity: "Jewish"
     spouses:
       - JOSEPH_HUSBAND_OF_MARY
     references:
@@ -1437,12 +1587,14 @@ biblical_persons:
   - id: HELI
     name: Heli
     gender: male
+    ethnicity: "Jewish"
     references:
       - LUK.3.23.KJV
 
   - id: MATTHAT
     name: Matthat
     gender: male
+    ethnicity: "Jewish"
     parents:
       - HELI
     references:
@@ -1451,6 +1603,7 @@ biblical_persons:
   - id: LEVI_LUKE_GENEALOGY
     name: Levi
     gender: male
+    ethnicity: "Jewish"
     parents:
       - MATTHAT
     references:
@@ -1459,6 +1612,7 @@ biblical_persons:
   - id: MELCHI
     name: Melchi
     gender: male
+    ethnicity: "Jewish"
     parents:
       - LEVI_LUKE_GENEALOGY
     references:
@@ -1467,6 +1621,7 @@ biblical_persons:
   - id: JANNA
     name: Janna
     gender: male
+    ethnicity: "Jewish"
     parents:
       - MELCHI
     references:
@@ -1475,6 +1630,7 @@ biblical_persons:
   - id: JOSEPH_LUKE_GENEALOGY
     name: Joseph
     gender: male
+    ethnicity: "Jewish"
     parents:
       - JANNA
     references:
@@ -1484,6 +1640,7 @@ biblical_persons:
   - id: JOHN_THE_BAPTIST
     name: John the Baptist
     gender: male
+    ethnicity: "Jewish/Levite"
     parents:
       - ZACHARIAS
       - ELISABETH
@@ -1493,6 +1650,7 @@ biblical_persons:
   - id: ZACHARIAS
     name: Zacharias
     gender: male
+    ethnicity: "Jewish/Levite"
     spouses:
       - ELISABETH
     references:
@@ -1501,6 +1659,7 @@ biblical_persons:
   - id: ELISABETH
     name: Elisabeth
     gender: female
+    ethnicity: "Jewish/Levite"
     spouses:
       - ZACHARIAS
     references:
@@ -1510,6 +1669,7 @@ biblical_persons:
   - id: MELCHIZEDEK
     name: Melchizedek
     gender: male
+    ethnicity: "Canaanite/Salem"
     references:
       - GEN.14.18.KJV
       - HEB.7.1.KJV
@@ -1517,12 +1677,14 @@ biblical_persons:
   - id: JOB
     name: Job
     gender: male
+    ethnicity: "Arabian/Edomite"
     references:
       - JOB.1.1.KJV
 
   - id: DANIEL
     name: Daniel
     gender: male
+    ethnicity: "Jewish"
     references:
       - DAN.1.6.KJV
 
@@ -1532,6 +1694,7 @@ biblical_persons:
       - name: Hananiah
         reference: DAN.1.7.KJV
     gender: male
+    ethnicity: "Jewish"
     references:
       - DAN.1.7.KJV
 
@@ -1541,6 +1704,7 @@ biblical_persons:
       - name: Mishael
         reference: DAN.1.7.KJV
     gender: male
+    ethnicity: "Jewish"
     references:
       - DAN.1.7.KJV
 
@@ -1550,18 +1714,21 @@ biblical_persons:
       - name: Azariah
         reference: DAN.1.7.KJV
     gender: male
+    ethnicity: "Jewish"
     references:
       - DAN.1.7.KJV
 
   - id: EZRA
     name: Ezra
     gender: male
+    ethnicity: "Jewish/Levite"
     references:
       - EZR.7.1.KJV
 
   - id: NEHEMIAH
     name: Nehemiah
     gender: male
+    ethnicity: "Jewish"
     references:
       - NEH.1.1.KJV
 
@@ -1571,12 +1738,14 @@ biblical_persons:
       - name: Hadassah
         reference: EST.2.7.KJV
     gender: female
+    ethnicity: "Jewish"
     references:
       - EST.2.7.KJV
 
   - id: MORDECAI
     name: Mordecai
     gender: male
+    ethnicity: "Jewish/Benjamite"
     references:
       - EST.2.5.KJV
 
@@ -1584,102 +1753,119 @@ biblical_persons:
   - id: ELIJAH
     name: Elijah
     gender: male
+    ethnicity: "Hebrew/Israelite"
     references:
       - 1KI.17.1.KJV
 
   - id: ELISHA
     name: Elisha
     gender: male
+    ethnicity: "Hebrew/Israelite"
     references:
       - 1KI.19.16.KJV
 
   - id: ISAIAH
     name: Isaiah
     gender: male
+    ethnicity: "Hebrew/Judean"
     references:
       - ISA.1.1.KJV
 
   - id: JEREMIAH
     name: Jeremiah
     gender: male
+    ethnicity: "Hebrew/Judean"
     references:
       - JER.1.1.KJV
 
   - id: EZEKIEL
     name: Ezekiel
     gender: male
+    ethnicity: "Jewish/Levite"
     references:
       - EZE.1.3.KJV
 
   - id: HOSEA
     name: Hosea
     gender: male
+    ethnicity: "Hebrew/Israelite"
     references:
       - HOS.1.1.KJV
 
   - id: JOEL
     name: Joel
     gender: male
+    ethnicity: "Hebrew/Judean"
     references:
       - JOE.1.1.KJV
 
   - id: AMOS
     name: Amos
     gender: male
+    ethnicity: "Hebrew/Judean"
     references:
       - AMO.1.1.KJV
 
   - id: OBADIAH
     name: Obadiah
     gender: male
+    ethnicity: "Hebrew/Judean"
     references:
       - OBA.1.1.KJV
 
   - id: JONAH
     name: Jonah
     gender: male
+    ethnicity: "Hebrew/Israelite"
     references:
       - JON.1.1.KJV
 
   - id: MICAH
     name: Micah
     gender: male
+    ethnicity: "Hebrew/Judean"
     references:
       - MIC.1.1.KJV
 
   - id: NAHUM
     name: Nahum
     gender: male
+    ethnicity: "Hebrew/Judean"
     references:
       - NAH.1.1.KJV
 
   - id: HABAKKUK
     name: Habakkuk
     gender: male
+    ethnicity: "Hebrew/Judean"
     references:
       - HAB.1.1.KJV
 
   - id: ZEPHANIAH
     name: Zephaniah
     gender: male
+    ethnicity: "Hebrew/Judean"
     references:
       - ZEP.1.1.KJV
 
   - id: HAGGAI
     name: Haggai
     gender: male
+    ethnicity: "Jewish"
     references:
       - HAG.1.1.KJV
 
   - id: ZECHARIAH_PROPHET
     name: Zechariah
     gender: male
+    ethnicity: "Jewish/Levite"
     references:
       - ZEC.1.1.KJV
 
   - id: MALACHI
     name: Malachi
     gender: male
+    ethnicity: "Jewish"
     references:
       - MAL.1.1.KJV
 
@@ -1692,6 +1878,7 @@ biblical_persons:
       - name: Cephas
         reference: JHN.1.42.KJV
     gender: male
+    ethnicity: "Jewish"
     birth_date: "~1 BC"
     death_date: "~64 AD"
     references:
@@ -1700,6 +1887,7 @@ biblical_persons:
   - id: ANDREW
     name: Andrew
     gender: male
+    ethnicity: "Jewish"
     parents:
       - JONAS
     references:
@@ -1708,12 +1896,14 @@ biblical_persons:
   - id: JONAS
     name: Jonas
     gender: male
+    ethnicity: "Jewish"
     references:
       - JHN.21.15.KJV
 
   - id: JAMES_SON_OF_ZEBEDEE
     name: James
     gender: male
+    ethnicity: "Jewish"
     parents:
       - ZEBEDEE
     references:
@@ -1722,6 +1912,7 @@ biblical_persons:
   - id: JOHN_THE_APOSTLE
     name: John
     gender: male
+    ethnicity: "Jewish"
     parents:
       - ZEBEDEE
     references:
@@ -1730,12 +1921,14 @@ biblical_persons:
   - id: ZEBEDEE
     name: Zebedee
     gender: male
+    ethnicity: "Jewish"
     references:
       - MAT.4.21.KJV
 
   - id: PHILIP_APOSTLE
     name: Philip
     gender: male
+    ethnicity: "Jewish"
     references:
       - JHN.1.43.KJV
 
@@ -1745,6 +1938,7 @@ biblical_persons:
       - name: Nathanael
         reference: JHN.1.45.KJV
     gender: male
+    ethnicity: "Jewish"
     references:
       - MAT.10.3.KJV
 
@@ -1754,6 +1948,7 @@ biblical_persons:
       - name: Levi
         reference: MAR.2.14.KJV
     gender: male
+    ethnicity: "Jewish"
     references:
       - MAT.9.9.KJV
 
@@ -1763,12 +1958,14 @@ biblical_persons:
       - name: Didymus
         reference: JHN.11.16.KJV
     gender: male
+    ethnicity: "Jewish"
     references:
       - MAT.10.3.KJV
 
   - id: JAMES_SON_OF_ALPHAEUS
     name: James
     gender: male
+    ethnicity: "Jewish"
     parents:
       - ALPHAEUS
     references:
@@ -1777,6 +1974,7 @@ biblical_persons:
   - id: ALPHAEUS
     name: Alphaeus
     gender: male
+    ethnicity: "Jewish"
     references:
       - MAT.10.3.KJV
 
@@ -1786,6 +1984,7 @@ biblical_persons:
       - name: Judas
         reference: LUK.6.16.KJV
     gender: male
+    ethnicity: "Jewish"
     references:
       - MAT.10.3.KJV
 
@@ -1795,12 +1994,14 @@ biblical_persons:
       - name: Simon Zelotes
         reference: LUK.6.15.KJV
     gender: male
+    ethnicity: "Jewish"
     references:
       - MAT.10.4.KJV
 
   - id: JUDAS_ISCARIOT
     name: Judas Iscariot
     gender: male
+    ethnicity: "Jewish"
     parents:
       - SIMON_ISCARIOT
     references:
@@ -1810,12 +2011,14 @@ biblical_persons:
   - id: SIMON_ISCARIOT
     name: Simon Iscariot
     gender: male
+    ethnicity: "Jewish"
     references:
       - JHN.6.71.KJV
 
   - id: MATTHIAS
     name: Matthias
     gender: male
+    ethnicity: "Jewish"
     references:
       - ACT.1.26.KJV
 
@@ -1825,6 +2028,7 @@ biblical_persons:
       - name: Saul
         reference: ACT.7.58.KJV
     gender: male
+    ethnicity: "Jewish/Roman"
     birth_date: "~5 AD"
     death_date: "~67 AD"
     references:
@@ -1836,12 +2040,14 @@ biblical_persons:
       - name: Joses
         reference: ACT.4.36.KJV
     gender: male
+    ethnicity: "Jewish/Levite"
     references:
       - ACT.4.36.KJV
 
   - id: TIMOTHY
     name: Timothy
     gender: male
+    ethnicity: "Jewish/Greek"
     parents:
       - EUNICE
     references:
@@ -1850,6 +2056,7 @@ biblical_persons:
   - id: EUNICE
     name: Eunice
     gender: female
+    ethnicity: "Jewish"
     parents:
       - LOIS
     references:
@@ -1858,12 +2065,14 @@ biblical_persons:
   - id: LOIS
     name: Lois
     gender: female
+    ethnicity: "Jewish"
     references:
       - 2TI.1.5.KJV
 
   - id: TITUS
     name: Titus
     gender: male
+    ethnicity: "Greek"
     references:
       - 2CO.2.13.KJV
 
@@ -1873,6 +2082,7 @@ biblical_persons:
       - name: Silvanus
         reference: 1TH.1.1.KJV
     gender: male
+    ethnicity: "Jewish/Roman"
     references:
       - ACT.15.22.KJV
 
@@ -1880,6 +2090,7 @@ biblical_persons:
   - id: DEBORAH
     name: Deborah
     gender: female
+    ethnicity: "Hebrew/Israelite"
     references:
       - JDG.4.4.KJV
 
@@ -1889,12 +2100,14 @@ biblical_persons:
       - name: Jerubbaal
         reference: JDG.6.32.KJV
     gender: male
+    ethnicity: "Hebrew/Israelite"
     references:
       - JDG.6.11.KJV
 
   - id: SAMSON
     name: Samson
     gender: male
+    ethnicity: "Hebrew/Israelite"
     parents:
       - MANOAH
     references:
@@ -1903,24 +2116,28 @@ biblical_persons:
   - id: MANOAH
     name: Manoah
     gender: male
+    ethnicity: "Hebrew/Israelite"
     references:
       - JDG.13.2.KJV
 
   - id: DELILAH
     name: Delilah
     gender: female
+    ethnicity: "Philistine"
     references:
       - JDG.16.4.KJV
 
   - id: NAOMI
     name: Naomi
     gender: female
+    ethnicity: "Hebrew/Judean"
     references:
       - RUT.1.2.KJV
 
   - id: ORPAH
     name: Orpah
     gender: female
+    ethnicity: "Moabite"
     references:
       - RUT.1.4.KJV
 
@@ -1928,6 +2145,7 @@ biblical_persons:
   - id: CUSH
     name: Cush
     gender: male
+    ethnicity: "Cushite/Ethiopian"
     parents:
       - HAM
     references:
@@ -1936,6 +2154,7 @@ biblical_persons:
   - id: MIZRAIM
     name: Mizraim
     gender: male
+    ethnicity: "Egyptian"
     parents:
       - HAM
     references:
@@ -1944,6 +2163,7 @@ biblical_persons:
   - id: PHUT
     name: Phut
     gender: male
+    ethnicity: "Libyan"
     parents:
       - HAM
     references:
@@ -1952,6 +2172,7 @@ biblical_persons:
   - id: CANAAN
     name: Canaan
     gender: male
+    ethnicity: "Canaanite"
     parents:
       - HAM
     references:
@@ -1960,6 +2181,7 @@ biblical_persons:
   - id: NIMROD
     name: Nimrod
     gender: male
+    ethnicity: "Babylonian/Cushite"
     birth_date: "~2800 BC"
     death_date: "~2700 BC"
     parents:
@@ -1971,6 +2193,7 @@ biblical_persons:
   - id: CALEB
     name: Caleb
     gender: male
+    ethnicity: "Hebrew/Judean"
     birth_date: "~1530 BC"
     death_date: "~1425 BC"
     age: 85y
@@ -1984,6 +2207,7 @@ biblical_persons:
       - name: Hoshea
         reference: NUM.13.8.KJV
     gender: male
+    ethnicity: "Hebrew/Ephraimite"
     birth_date: "~1530 BC"
     death_date: "~1400 BC"
     age: 110y
@@ -1996,12 +2220,14 @@ biblical_persons:
   - id: NUN
     name: Nun
     gender: male
+    ethnicity: "Hebrew/Ephraimite"
     references:
       - NUM.13.8.KJV
 
   - id: BARAK
     name: Barak
     gender: male
+    ethnicity: "Hebrew/Israelite"
     birth_date: "~1250 BC"
     death_date: "~1170 BC"
     references:
@@ -2010,6 +2236,7 @@ biblical_persons:
   - id: JAEL
     name: Jael
     gender: female
+    ethnicity: "Kenite"
     birth_date: "~1230 BC"
     death_date: "~1150 BC"
     references:
@@ -2019,6 +2246,7 @@ biblical_persons:
   - id: JEROBOAM_I
     name: Jeroboam I
     gender: male
+    ethnicity: "Hebrew/Ephraimite"
     birth_date: "~980 BC"
     death_date: "~910 BC"
     references:
@@ -2027,6 +2255,7 @@ biblical_persons:
   - id: AHAB
     name: Ahab
     gender: male
+    ethnicity: "Hebrew/Israelite"
     birth_date: "~910 BC"
     death_date: "~853 BC"
     parents:
@@ -2039,6 +2268,7 @@ biblical_persons:
   - id: JEZEBEL
     name: Jezebel
     gender: female
+    ethnicity: "Phoenician/Sidonian"
     birth_date: "~900 BC"
     death_date: "~841 BC"
     spouses:
@@ -2050,6 +2280,7 @@ biblical_persons:
   - id: NATHAN_PROPHET
     name: Nathan
     gender: male
+    ethnicity: "Hebrew/Judean"
     birth_date: "~1080 BC"
     death_date: "~980 BC"
     references:
@@ -2058,6 +2289,7 @@ biblical_persons:
   - id: HULDAH
     name: Huldah
     gender: female
+    ethnicity: "Hebrew/Judean"
     birth_date: "~670 BC"
     death_date: "~590 BC"
     references:
@@ -2067,6 +2299,7 @@ biblical_persons:
   - id: MARY_MAGDALENE
     name: Mary Magdalene
     gender: female
+    ethnicity: "Jewish"
     birth_date: "~5 BC"
     death_date: "~65 AD"
     references:
@@ -2075,6 +2308,7 @@ biblical_persons:
   - id: MARTHA
     name: Martha
     gender: female
+    ethnicity: "Jewish"
     birth_date: "~10 BC"
     death_date: "~70 AD"
     references:
@@ -2083,6 +2317,7 @@ biblical_persons:
   - id: MARY_OF_BETHANY
     name: Mary of Bethany
     gender: female
+    ethnicity: "Jewish"
     birth_date: "~5 BC"
     death_date: "~65 AD"
     references:
@@ -2091,6 +2326,7 @@ biblical_persons:
   - id: LAZARUS
     name: Lazarus
     gender: male
+    ethnicity: "Jewish"
     birth_date: "~8 BC"
     death_date: "~68 AD"
     references:
@@ -2099,6 +2335,7 @@ biblical_persons:
   - id: STEPHEN
     name: Stephen
     gender: male
+    ethnicity: "Jewish/Greek"
     birth_date: "~5 AD"
     death_date: "~34 AD"
     references:
@@ -2110,6 +2347,7 @@ biblical_persons:
       - name: John Mark
         reference: ACT.12.12.KJV
     gender: male
+    ethnicity: "Jewish"
     birth_date: "~12 AD"
     death_date: "~82 AD"
     references:
@@ -2118,6 +2356,7 @@ biblical_persons:
   - id: LUKE
     name: Luke
     gender: male
+    ethnicity: "Greek"
     birth_date: "~15 AD"
     death_date: "~85 AD"
     references:
@@ -2127,6 +2366,7 @@ biblical_persons:
   - id: GOMER
     name: Gomer
     gender: male
+    ethnicity: "Indo-European"
     parents:
       - JAPHETH
     references:
@@ -2135,6 +2375,7 @@ biblical_persons:
   - id: MAGOG
     name: Magog
     gender: male
+    ethnicity: "Scythian"
     parents:
       - JAPHETH
     references:
@@ -2143,6 +2384,7 @@ biblical_persons:
   - id: MADAI
     name: Madai
     gender: male
+    ethnicity: "Median"
     parents:
       - JAPHETH
     references:
@@ -2151,6 +2393,7 @@ biblical_persons:
   - id: JAVAN
     name: Javan
     gender: male
+    ethnicity: "Greek/Ionian"
     parents:
       - JAPHETH
     references:
@@ -2159,6 +2402,7 @@ biblical_persons:
   - id: TUBAL
     name: Tubal
     gender: male
+    ethnicity: "Anatolian"
     parents:
       - JAPHETH
     references:
@@ -2167,6 +2411,7 @@ biblical_persons:
   - id: MESHECH
     name: Meshech
     gender: male
+    ethnicity: "Anatolian"
     parents:
       - JAPHETH
     references:
@@ -2175,6 +2420,7 @@ biblical_persons:
   - id: TIRAS
     name: Tiras
     gender: male
+    ethnicity: "Thracian"
     parents:
       - JAPHETH
     references:
@@ -2262,6 +2508,758 @@ tribes:
     references:
       - JOS.18.11.KJV
 
+  # Additional KJV Biblical Figures (without genealogical connections)
+  - id: OTHNIEL
+    name: Othniel
+    gender: male
+    ethnicity: "Hebrew/Israelite"
+    references:
+      - JDG.3.9.KJV
+
+  - id: EHUD
+    name: Ehud
+    gender: male
+    ethnicity: "Hebrew/Benjamite"
+    references:
+      - JDG.3.15.KJV
+
+  - id: SHAMGAR
+    name: Shamgar
+    gender: male
+    ethnicity: "Hebrew/Israelite"
+    references:
+      - JDG.3.31.KJV
+
+  - id: JEPHTHAH
+    name: Jephthah
+    gender: male
+    ethnicity: "Hebrew/Gileadite"
+    references:
+      - JDG.11.1.KJV
+
+  - id: IBZAN
+    name: Ibzan
+    gender: male
+    ethnicity: "Hebrew/Judean"
+    references:
+      - JDG.12.8.KJV
+
+  - id: ELON_JUDGE
+    name: Elon
+    gender: male
+    ethnicity: "Hebrew/Zebulunite"
+    references:
+      - JDG.12.11.KJV
+
+  - id: ABDON
+    name: Abdon
+    gender: male
+    ethnicity: "Hebrew/Ephraimite"
+    references:
+      - JDG.12.13.KJV
+
+  - id: TOLA
+    name: Tola
+    gender: male
+    ethnicity: "Hebrew/Issacharite"
+    references:
+      - JDG.10.1.KJV
+
+  - id: JAIR_JUDGE
+    name: Jair
+    gender: male
+    ethnicity: "Hebrew/Gileadite"
+    references:
+      - JDG.10.3.KJV
+
+  - id: BALAAM
+    name: Balaam
+    gender: male
+    ethnicity: "Mesopotamian"
+    references:
+      - NUM.22.5.KJV
+
+  - id: BALAK
+    name: Balak
+    gender: male
+    ethnicity: "Moabite"
+    references:
+      - NUM.22.2.KJV
+
+  - id: OG
+    name: Og
+    gender: male
+    ethnicity: "Amorite"
+    references:
+      - NUM.21.33.KJV
+
+  - id: SIHON
+    name: Sihon
+    gender: male
+    ethnicity: "Amorite"
+    references:
+      - NUM.21.21.KJV
+
+  - id: NEBUCHADNEZZAR
+    name: Nebuchadnezzar
+    gender: male
+    ethnicity: "Babylonian"
+    references:
+      - 2KI.24.1.KJV
+      - DAN.2.1.KJV
+
+  - id: BELSHAZZAR
+    name: Belshazzar
+    gender: male
+    ethnicity: "Babylonian"
+    references:
+      - DAN.5.1.KJV
+
+  - id: DARIUS_THE_MEDE
+    name: Darius
+    gender: male
+    ethnicity: "Median"
+    references:
+      - DAN.6.1.KJV
+
+  - id: CYRUS
+    name: Cyrus
+    gender: male
+    ethnicity: "Persian"
+    references:
+      - 2CH.36.22.KJV
+      - EZR.1.1.KJV
+
+  - id: PONTIUS_PILATE
+    name: Pontius Pilate
+    gender: male
+    ethnicity: "Roman"
+    references:
+      - MAT.27.2.KJV
+
+  - id: CAIAPHAS
+    name: Caiaphas
+    gender: male
+    ethnicity: "Jewish"
+    references:
+      - MAT.26.3.KJV
+
+  - id: ANNAS
+    name: Annas
+    gender: male
+    ethnicity: "Jewish"
+    references:
+      - LUK.3.2.KJV
+
+  - id: NICODEMUS
+    name: Nicodemus
+    gender: male
+    ethnicity: "Jewish"
+    references:
+      - JHN.3.1.KJV
+
+  - id: JOSEPH_OF_ARIMATHEA
+    name: Joseph of Arimathea
+    gender: male
+    ethnicity: "Jewish"
+    references:
+      - MAT.27.57.KJV
+
+  - id: GAMALIEL
+    name: Gamaliel
+    gender: male
+    ethnicity: "Jewish"
+    references:
+      - ACT.5.34.KJV
+
+  - id: CORNELIUS
+    name: Cornelius
+    gender: male
+    ethnicity: "Roman"
+    references:
+      - ACT.10.1.KJV
+
+  - id: ANANIAS_DAMASCUS
+    name: Ananias
+    gender: male
+    ethnicity: "Jewish"
+    references:
+      - ACT.9.10.KJV
+
+  - id: ANANIAS_HUSBAND
+    name: Ananias
+    gender: male
+    ethnicity: "Jewish"
+    spouses:
+      - SAPPHIRA
+    references:
+      - ACT.5.1.KJV
+
+  - id: SAPPHIRA
+    name: Sapphira
+    gender: female
+    ethnicity: "Jewish"
+    spouses:
+      - ANANIAS_HUSBAND
+    references:
+      - ACT.5.1.KJV
+
+  - id: AQUILA
+    name: Aquila
+    gender: male
+    ethnicity: "Jewish/Roman"
+    spouses:
+      - PRISCILLA
+    references:
+      - ACT.18.2.KJV
+
+  - id: PRISCILLA
+    name: Priscilla
+    gender: female
+    ethnicity: "Jewish/Roman"
+    spouses:
+      - AQUILA
+    references:
+      - ACT.18.2.KJV
+
+  - id: APOLLOS
+    name: Apollos
+    gender: male
+    ethnicity: "Jewish/Alexandrian"
+    references:
+      - ACT.18.24.KJV
+
+  - id: FELIX
+    name: Felix
+    gender: male
+    ethnicity: "Roman"
+    references:
+      - ACT.23.24.KJV
+
+  - id: FESTUS
+    name: Festus
+    gender: male
+    ethnicity: "Roman"
+    references:
+      - ACT.24.27.KJV
+
+  - id: AGRIPPA
+    name: Agrippa
+    gender: male
+    ethnicity: "Jewish/Roman"
+    references:
+      - ACT.25.13.KJV
+
+  - id: BERNICE
+    name: Bernice
+    gender: female
+    ethnicity: "Jewish/Roman"
+    references:
+      - ACT.25.13.KJV
+
+  - id: LYDIA
+    name: Lydia
+    gender: female
+    ethnicity: "Greek/Lydian"
+    references:
+      - ACT.16.14.KJV
+
+  - id: DORCAS
+    name: Dorcas
+    names:
+      - name: Tabitha
+        reference: ACT.9.36.KJV
+    gender: female
+    ethnicity: "Jewish"
+    references:
+      - ACT.9.36.KJV
+
+  - id: JAIRUS
+    name: Jairus
+    gender: male
+    ethnicity: "Jewish"
+    references:
+      - MAR.5.22.KJV
+
+  - id: ZACCHAEUS
+    name: Zacchaeus
+    gender: male
+    ethnicity: "Jewish"
+    references:
+      - LUK.19.2.KJV
+
+  - id: CLEOPAS
+    name: Cleopas
+    gender: male
+    ethnicity: "Jewish"
+    references:
+      - LUK.24.18.KJV
+
+  - id: JOAB
+    name: Joab
+    gender: male
+    ethnicity: "Hebrew/Judean"
+    references:
+      - 2SA.2.13.KJV
+
+  - id: ABNER
+    name: Abner
+    gender: male
+    ethnicity: "Hebrew/Benjamite"
+    references:
+      - 2SA.2.8.KJV
+
+  - id: URIAH_THE_HITTITE
+    name: Uriah the Hittite
+    gender: male
+    ethnicity: "Hittite"
+    spouses:
+      - BATHSHEBA
+    references:
+      - 2SA.11.3.KJV
+
+  - id: GAD_PROPHET
+    name: Gad
+    gender: male
+    ethnicity: "Hebrew/Judean"
+    references:
+      - 1SA.22.5.KJV
+
+  - id: NATHAN_PROPHET
+    name: Nathan
+    gender: male
+    ethnicity: "Hebrew/Judean"
+    references:
+      - 2SA.7.2.KJV
+
+  - id: AHIJAH_PROPHET
+    name: Ahijah
+    gender: male
+    ethnicity: "Hebrew/Israelite"
+    references:
+      - 1KI.11.29.KJV
+
+  - id: JEHU_KING
+    name: Jehu
+    gender: male
+    ethnicity: "Hebrew/Israelite"
+    references:
+      - 2KI.9.2.KJV
+
+  - id: OMRI
+    name: Omri
+    gender: male
+    ethnicity: "Hebrew/Israelite"
+    references:
+      - 1KI.16.16.KJV
+
+  - id: AHAB
+    name: Ahab
+    gender: male
+    ethnicity: "Hebrew/Israelite"
+    parents:
+      - OMRI
+    spouses:
+      - JEZEBEL
+    references:
+      - 1KI.16.28.KJV
+
+  - id: JEZEBEL
+    name: Jezebel
+    gender: female
+    ethnicity: "Phoenician/Sidonian"
+    spouses:
+      - AHAB
+    references:
+      - 1KI.16.31.KJV
+
+  - id: ATHALIAH
+    name: Athaliah
+    gender: female
+    ethnicity: "Hebrew/Israelite"
+    references:
+      - 2KI.8.26.KJV
+
+  - id: VASHTI
+    name: Vashti
+    gender: female
+    ethnicity: "Persian"
+    references:
+      - EST.1.9.KJV
+
+  - id: HAMAN
+    name: Haman
+    gender: male
+    ethnicity: "Agagite"
+    references:
+      - EST.3.1.KJV
+
+  - id: SHIPRAH
+    name: Shiprah
+    gender: female
+    ethnicity: "Hebrew"
+    references:
+      - EXO.1.15.KJV
+
+  - id: PUAH
+    name: Puah
+    gender: female
+    ethnicity: "Hebrew"
+    references:
+      - EXO.1.15.KJV
+
+  - id: PHARAOHS_DAUGHTER
+    name: Pharaoh's daughter
+    gender: female
+    ethnicity: "Egyptian"
+    references:
+      - EXO.2.5.KJV
+
+  - id: BEZALEEL
+    name: Bezaleel
+    gender: male
+    ethnicity: "Hebrew/Judean"
+    references:
+      - EXO.31.2.KJV
+
+  - id: AHOLIAB
+    name: Aholiab
+    gender: male
+    ethnicity: "Hebrew/Danite"
+    references:
+      - EXO.31.6.KJV
+
+  - id: ELDAD
+    name: Eldad
+    gender: male
+    ethnicity: "Hebrew"
+    references:
+      - NUM.11.26.KJV
+
+  - id: MEDAD
+    name: Medad
+    gender: male
+    ethnicity: "Hebrew"
+    references:
+      - NUM.11.26.KJV
+
+  - id: KORAH
+    name: Korah
+    gender: male
+    ethnicity: "Hebrew/Levite"
+    references:
+      - NUM.16.1.KJV
+
+  - id: DATHAN
+    name: Dathan
+    gender: male
+    ethnicity: "Hebrew/Reubenite"
+    references:
+      - NUM.16.1.KJV
+
+  - id: ABIRAM
+    name: Abiram
+    gender: male
+    ethnicity: "Hebrew/Reubenite"
+    references:
+      - NUM.16.1.KJV
+
+  - id: ANNA_PROPHETESS
+    name: Anna
+    gender: female
+    ethnicity: "Jewish"
+    references:
+      - LUK.2.36.KJV
+
+  - id: SIMEON_TEMPLE
+    name: Simeon
+    gender: male
+    ethnicity: "Jewish"
+    references:
+      - LUK.2.25.KJV
+
+  - id: MARY_MAGDALENE
+    name: Mary Magdalene
+    gender: female
+    ethnicity: "Jewish"
+    references:
+      - MAT.27.56.KJV
+
+  - id: MARTHA
+    name: Martha
+    gender: female
+    ethnicity: "Jewish"
+    references:
+      - LUK.10.38.KJV
+
+  - id: MARY_OF_BETHANY
+    name: Mary of Bethany
+    gender: female
+    ethnicity: "Jewish"
+    references:
+      - LUK.10.39.KJV
+
+  - id: LAZARUS
+    name: Lazarus
+    gender: male
+    ethnicity: "Jewish"
+    references:
+      - JHN.11.1.KJV
+
+  - id: STEPHEN
+    name: Stephen
+    gender: male
+    ethnicity: "Jewish/Greek"
+    references:
+      - ACT.6.5.KJV
+
+  - id: PHILIP_DEACON
+    name: Philip
+    gender: male
+    ethnicity: "Jewish/Greek"
+    references:
+      - ACT.6.5.KJV
+
+  - id: GOMER_WIFE_OF_HOSEA
+    name: Gomer
+    gender: female
+    ethnicity: "Hebrew/Israelite"
+    spouses:
+      - HOSEA
+    references:
+      - HOS.1.3.KJV
+
+  - id: NAAMAN_SYRIAN
+    name: Naaman
+    gender: male
+    ethnicity: "Syrian"
+    references:
+      - 2KI.5.1.KJV
+
+  - id: GEHAZI
+    name: Gehazi
+    gender: male
+    ethnicity: "Hebrew/Israelite"
+    references:
+      - 2KI.4.12.KJV
+
+  - id: HIRAM_KING_OF_TYRE
+    name: Hiram
+    gender: male
+    ethnicity: "Phoenician"
+    references:
+      - 1KI.5.1.KJV
+
+  - id: QUEEN_OF_SHEBA
+    name: Queen of Sheba
+    gender: female
+    ethnicity: "Sabean/Arabian"
+    references:
+      - 1KI.10.1.KJV
+
+  - id: JEROBOAM_I
+    name: Jeroboam I
+    gender: male
+    ethnicity: "Hebrew/Ephraimite"
+    references:
+      - 1KI.11.26.KJV
+
+  - id: SISERA
+    name: Sisera
+    gender: male
+    ethnicity: "Canaanite"
+    references:
+      - JDG.4.2.KJV
+
+  - id: JAEL
+    name: Jael
+    gender: female
+    ethnicity: "Kenite"
+    references:
+      - JDG.4.17.KJV
+
+  - id: BARAK
+    name: Barak
+    gender: male
+    ethnicity: "Hebrew/Naphtali"
+    references:
+      - JDG.4.6.KJV
+
+  - id: DELILAH
+    name: Delilah
+    gender: female
+    ethnicity: "Philistine"
+    references:
+      - JDG.16.4.KJV
+
+  - id: ORPAH
+    name: Orpah
+    gender: female
+    ethnicity: "Moabite"
+    references:
+      - RUT.1.4.KJV
+
+  - id: ELIMELECH
+    name: Elimelech
+    gender: male
+    ethnicity: "Hebrew/Judean"
+    spouses:
+      - NAOMI
+    references:
+      - RUT.1.2.KJV
+
+  - id: MAHLON
+    name: Mahlon
+    gender: male
+    ethnicity: "Hebrew/Judean"
+    parents:
+      - ELIMELECH
+      - NAOMI
+    spouses:
+      - RUTH
+    references:
+      - RUT.1.2.KJV
+
+  - id: CHILION
+    name: Chilion
+    gender: male
+    ethnicity: "Hebrew/Judean"
+    parents:
+      - ELIMELECH
+      - NAOMI
+    spouses:
+      - ORPAH
+    references:
+      - RUT.1.2.KJV
+
+  - id: MEPHIBOSHETH
+    name: Mephibosheth
+    gender: male
+    ethnicity: "Hebrew/Benjamite"
+    parents:
+      - JONATHAN
+    references:
+      - 2SA.4.4.KJV
+
+  - id: RIZPAH
+    name: Rizpah
+    gender: female
+    ethnicity: "Hebrew/Benjamite"
+    references:
+      - 2SA.3.7.KJV
+
+  - id: ABISHAI
+    name: Abishai
+    gender: male
+    ethnicity: "Hebrew/Judean"
+    references:
+      - 2SA.2.18.KJV
+
+  - id: ASAHEL
+    name: Asahel
+    gender: male
+    ethnicity: "Hebrew/Judean"
+    references:
+      - 2SA.2.18.KJV
+
+  - id: BENAIAH
+    name: Benaiah
+    gender: male
+    ethnicity: "Hebrew/Judean"
+    references:
+      - 2SA.8.18.KJV
+
+  - id: AHITHOPHEL
+    name: Ahithophel
+    gender: male
+    ethnicity: "Hebrew/Judean"
+    references:
+      - 2SA.15.12.KJV
+
+  - id: HUSHAI
+    name: Hushai
+    gender: male
+    ethnicity: "Archite"
+    references:
+      - 2SA.15.32.KJV
+
+  - id: SHIMEI_BENJAMITE
+    name: Shimei
+    gender: male
+    ethnicity: "Hebrew/Benjamite"
+    references:
+      - 2SA.16.5.KJV
+
+  - id: ZADOK
+    name: Zadok
+    gender: male
+    ethnicity: "Hebrew/Levite"
+    references:
+      - 2SA.8.17.KJV
+
+  - id: ABIATHAR
+    name: Abiathar
+    gender: male
+    ethnicity: "Hebrew/Levite"
+    references:
+      - 1SA.22.20.KJV
+
+  - id: AHIMELECH
+    name: Ahimelech
+    gender: male
+    ethnicity: "Hebrew/Levite"
+    references:
+      - 1SA.21.1.KJV
+
+  - id: DOEG
+    name: Doeg
+    gender: male
+    ethnicity: "Edomite"
+    references:
+      - 1SA.22.9.KJV
+
+  - id: AGAG
+    name: Agag
+    gender: male
+    ethnicity: "Amalekite"
+    references:
+      - 1SA.15.8.KJV
+
+  - id: ACHISH
+    name: Achish
+    gender: male
+    ethnicity: "Philistine"
+    references:
+      - 1SA.21.10.KJV
+
+  - id: GOLIATH
+    name: Goliath
+    gender: male
+    ethnicity: "Philistine"
+    references:
+      - 1SA.17.4.KJV
+
+  - id: EGLON
+    name: Eglon
+    gender: male
+    ethnicity: "Moabite"
+    references:
+      - JDG.3.12.KJV
+
+  - id: JABIN
+    name: Jabin
+    gender: male
+    ethnicity: "Canaanite"
+    references:
+      - JDG.4.2.KJV
+
+  - id: ADONIBEZEK
+    name: Adonibezek
+    gender: male
+    ethnicity: "Canaanite"
+    references:
+      - JDG.1.5.KJV
+
 # Notes on Genealogical Methodology
 notes:
   - The genealogies in Matthew and Luke differ, likely representing different lineages (paternal vs maternal or legal vs biological)
@@ -2271,3 +3269,8 @@ notes:
   - Gaps in genealogies were common in ancient records
   - Women are mentioned less frequently but play crucial roles in the lineage
   - The genealogies serve theological purposes beyond mere historical record
+  - Ethnicity classifications are based on biblical, historical, and geographical context
+  - Some ethnic designations may overlap or change over time periods
+  - Divine classification is used for God the Father as He transcends ethnicity
+  - Antediluvian refers to pre-flood humanity before ethnic distinctions
+  - Hebrew/Israelite/Jewish terms reflect different time periods and contexts
