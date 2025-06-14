@@ -3720,6 +3720,113 @@ biblical_events:
     references:
       - MAT.5.1-7.29.KJV
 
+  - id: WATER_TO_WINE
+    name: Water Turned to Wine
+    date: "~27 AD"
+    location: CANA
+    description: "Jesus performs His first miracle by turning water into wine at a wedding"
+    participants:
+      - JESUS
+      - MARY_MOTHER_OF_JESUS
+    references:
+      - JOH.2.1-11.KJV
+
+  - id: HEALING_NOBLEMAN_SON
+    name: Healing the Nobleman's Son
+    date: "~27 AD"
+    location: CAPERNAUM
+    description: "Jesus heals a nobleman's son from a distance with just His word"
+    participants:
+      - JESUS
+    references:
+      - JOH.4.46-54.KJV
+
+  - id: CALLING_FISHERMEN
+    name: Calling the Fishermen
+    date: "~27 AD"
+    location: SEA_OF_GALILEE
+    description: "Jesus calls Peter, Andrew, James, and John to follow Him"
+    participants:
+      - JESUS
+      - PETER
+      - ANDREW
+      - JAMES_SON_OF_ZEBEDEE
+      - JOHN_THE_APOSTLE
+    references:
+      - MAT.4.18-22.KJV
+      - LUK.5.1-11.KJV
+
+  - id: HEALING_LEPER
+    name: Healing the Leper
+    date: "~27 AD"
+    location: GALILEE
+    description: "Jesus cleanses a leper who kneels before Him in faith"
+    participants:
+      - JESUS
+    references:
+      - MAT.8.1-4.KJV
+
+  - id: HEALING_CENTURIONS_SERVANT
+    name: Healing the Centurion's Servant
+    date: "~28 AD"
+    location: CAPERNAUM
+    description: "Jesus heals a centurion's servant, praising the centurion's great faith"
+    participants:
+      - JESUS
+    references:
+      - MAT.8.5-13.KJV
+
+  - id: HEALING_PARALYTIC
+    name: Healing the Paralytic
+    date: "~28 AD"
+    location: CAPERNAUM
+    description: "Jesus heals a paralytic lowered through the roof, first forgiving his sins"
+    participants:
+      - JESUS
+    references:
+      - MAR.2.1-12.KJV
+
+  - id: RAISING_WIDOWS_SON
+    name: Raising the Widow's Son
+    date: "~28 AD"
+    location: NAIN
+    description: "Jesus raises a widow's only son from the dead, having compassion on her"
+    participants:
+      - JESUS
+    references:
+      - LUK.7.11-17.KJV
+
+  - id: CALMING_THE_STORM
+    name: Calming the Storm
+    date: "~28 AD"
+    location: SEA_OF_GALILEE
+    description: "Jesus calms a fierce storm, demonstrating His power over nature"
+    participants:
+      - JESUS
+    references:
+      - MAT.8.23-27.KJV
+
+  - id: HEALING_BLIND_MAN_BETHSAIDA
+    name: Healing Blind Man at Bethsaida
+    date: "~29 AD"
+    location: BETHSAIDA
+    description: "Jesus heals a blind man in two stages using spittle and touch"
+    participants:
+      - JESUS
+    references:
+      - MAR.8.22-26.KJV
+
+  - id: WALKING_ON_WATER
+    name: Walking on Water
+    date: "~29 AD"
+    location: SEA_OF_GALILEE
+    description: "Jesus walks on water to reach His disciples in their boat"
+    participants:
+      - JESUS
+      - PETER
+    references:
+      - MAT.14.22-33.KJV
+
   - id: FEEDING_FIVE_THOUSAND
     name: Feeding the Five Thousand
     date: "~29 AD"
@@ -3729,6 +3836,59 @@ biblical_events:
       - JESUS
     references:
       - MAT.14.13-21.KJV
+
+  - id: PARABLE_GOOD_SAMARITAN
+    name: Parable of the Good Samaritan
+    date: "~29 AD"
+    location: JUDEA
+    description: "Jesus teaches about loving one's neighbor through the parable of the Good Samaritan"
+    participants:
+      - JESUS
+    references:
+      - LUK.10.25-37.KJV
+
+  - id: PARABLE_PRODIGAL_SON
+    name: Parable of the Prodigal Son
+    date: "~29 AD"
+    location: PEREA
+    description: "Jesus tells the parable of the prodigal son to illustrate God's forgiveness"
+    participants:
+      - JESUS
+    references:
+      - LUK.15.11-32.KJV
+
+  - id: RAISING_LAZARUS
+    name: Raising of Lazarus
+    date: "~30 AD"
+    location: BETHANY
+    description: "Jesus raises Lazarus from the dead after four days in the tomb"
+    participants:
+      - JESUS
+      - LAZARUS
+      - MARY_OF_BETHANY
+      - MARTHA
+    references:
+      - JOH.11.1-44.KJV
+
+  - id: HEALING_TEN_LEPERS
+    name: Healing the Ten Lepers
+    date: "~30 AD"
+    location: SAMARIA
+    description: "Jesus heals ten lepers, but only one returns to thank Him"
+    participants:
+      - JESUS
+    references:
+      - LUK.17.11-19.KJV
+
+  - id: HEALING_BLIND_BARTIMAEUS
+    name: Healing Blind Bartimaeus
+    date: "~30 AD"
+    location: JERICHO
+    description: "Jesus heals blind Bartimaeus who cried out for mercy"
+    participants:
+      - JESUS
+    references:
+      - MAR.10.46-52.KJV
 
   - id: TRANSFIGURATION
     name: Transfiguration of Jesus
@@ -3859,6 +4019,94 @@ biblical_events:
       - JESUS
     references:
       - ACT.9.1-19.KJV
+
+  - id: PETERS_VISION_CORNELIUS
+    name: Peter's Vision and Cornelius
+    date: "~40 AD"
+    location: JOPPA
+    description: "Peter receives vision about Gentiles; baptizes Cornelius and his household"
+    participants:
+      - PETER
+      - CORNELIUS
+    references:
+      - ACT.10.1-48.KJV
+
+  - id: CHURCH_AT_ANTIOCH
+    name: Church Established at Antioch
+    date: "~42 AD"
+    location: ANTIOCH
+    description: "First Gentile church established; believers first called Christians here"
+    participants:
+      - BARNABAS
+      - PAUL
+    references:
+      - ACT.11.19-30.KJV
+
+  - id: JAMES_MARTYRED
+    name: Martyrdom of James
+    date: "~44 AD"
+    location: JERUSALEM
+    description: "James, brother of John, is killed by sword under Herod Agrippa"
+    participants:
+      - JAMES_SON_OF_ZEBEDEE
+    references:
+      - ACT.12.1-2.KJV
+
+  - id: PETER_IMPRISONED_FREED
+    name: Peter Imprisoned and Freed
+    date: "~44 AD"
+    location: JERUSALEM
+    description: "Peter is imprisoned by Herod but miraculously freed by an angel"
+    participants:
+      - PETER
+    references:
+      - ACT.12.3-19.KJV
+
+  - id: FIRST_MISSIONARY_JOURNEY
+    name: Paul's First Missionary Journey
+    date: "~47-48 AD"
+    location: ASIA_MINOR
+    description: "Paul and Barnabas travel through Cyprus and Asia Minor preaching"
+    participants:
+      - PAUL
+      - BARNABAS
+    references:
+      - ACT.13.1-14.28.KJV
+
+  - id: JERUSALEM_COUNCIL
+    name: Jerusalem Council
+    date: "~50 AD"
+    location: JERUSALEM
+    description: "Apostles decide that Gentiles don't need to be circumcised to become Christians"
+    participants:
+      - PAUL
+      - BARNABAS
+      - PETER
+      - JAMES_BROTHER_OF_JESUS
+    references:
+      - ACT.15.1-35.KJV
+
+  - id: SECOND_MISSIONARY_JOURNEY
+    name: Paul's Second Missionary Journey
+    date: "~50-52 AD"
+    location: GREECE
+    description: "Paul travels through Asia Minor and Greece, establishing churches"
+    participants:
+      - PAUL
+      - SILAS
+      - TIMOTHY
+    references:
+      - ACT.15.36-18.22.KJV
+
+  - id: THIRD_MISSIONARY_JOURNEY
+    name: Paul's Third Missionary Journey
+    date: "~53-57 AD"
+    location: EPHESUS
+    description: "Paul spends three years in Ephesus and revisits churches in Asia Minor and Greece"
+    participants:
+      - PAUL
+    references:
+      - ACT.18.23-21.17.KJV
 
   - id: PETER_CORNELIUS
     name: Peter and Cornelius

@@ -283,6 +283,8 @@ function PersonCard({ person, searchParams, router }: {
   searchParams: URLSearchParams;
   router: AppRouterInstance;
 }) {
+  const selectedPersonId = searchParams.get('selected')?.split(':')[1];
+  const isSelected = selectedPersonId === person.id;
   
   const getColorScheme = (person: BiblicalPerson) => {
     if (['GOD_FATHER', 'JESUS'].includes(person.id)) {
@@ -317,14 +319,24 @@ function PersonCard({ person, searchParams, router }: {
   return (
     <div className="inline-block mb-2">
       <div 
-        className={`px-2 py-1 rounded border ${colors.bg} ${colors.border} cursor-pointer transition-all duration-200 hover:shadow-md text-xs`}
+        className={`px-2 py-1 rounded border cursor-pointer transition-all duration-200 hover:shadow-md text-xs ${
+          isSelected 
+            ? 'bg-blue-600 border-blue-800 shadow-lg ring-2 ring-blue-300' 
+            : `${colors.bg} ${colors.border}`
+        }`}
         onClick={handlePersonClick}
         data-person-id={person.id}
       >
         <div className="flex items-center">
-          <span className="font-medium text-gray-800">{person.name}</span>
-          {person.created && <span className="ml-1 text-orange-600" title="Created by God">⭐</span>}
-          {person.translated && <span className="ml-1 text-cyan-600" title="Translated (taken up without death)">↗️</span>}
+          <span className={`font-medium ${
+            isSelected ? 'text-white font-bold' : 'text-gray-800'
+          }`}>{person.name}</span>
+          {person.created && <span className={`ml-1 ${
+            isSelected ? 'text-yellow-300' : 'text-orange-600'
+          }`} title="Created by God">⭐</span>}
+          {person.translated && <span className={`ml-1 ${
+            isSelected ? 'text-cyan-300' : 'text-cyan-600'
+          }`} title="Translated (taken up without death)">↗️</span>}
         </div>
       </div>
     </div>
@@ -648,6 +660,17 @@ function RegionDetailView({
   );
 }
 
+// Utility function to check if element is visible in viewport
+function isElementVisible(element: Element) {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
 function TimelinePeriodCard({ 
   period, 
   events, 
@@ -774,31 +797,31 @@ function TimelinePeriodCard({
     const targetEvent = searchParams.get('event');
     const targetRegion = searchParams.get('region');
 
-    // Scroll to period
+    // Scroll to period only if not visible
     if (targetPeriod === periodSlug) {
       setTimeout(() => {
         const element = document.querySelector(`[data-period-id="${periodSlug}"]`);
-        if (element) {
+        if (element && !isElementVisible(element)) {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }, 300);
     }
 
-    // Scroll to event
+    // Scroll to event only if not visible
     if (targetEvent && periodEvents.some(event => event.id === targetEvent)) {
       setTimeout(() => {
         const element = document.querySelector(`[data-event-id="${targetEvent}"]`);
-        if (element) {
+        if (element && !isElementVisible(element)) {
           element.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       }, 300);
     }
 
-    // Scroll to region
+    // Scroll to region only if not visible
     if (targetRegion && relevantRegions.some(region => region.id === targetRegion)) {
       setTimeout(() => {
         const element = document.querySelector(`[data-region-id="${targetRegion}"]`);
-        if (element) {
+        if (element && !isElementVisible(element)) {
           element.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       }, 300);
@@ -806,32 +829,38 @@ function TimelinePeriodCard({
   }, [searchParams, periodSlug, periodEvents, relevantRegions]);
 
   return (
-    <div className={`p-6 rounded-lg border-2 ${period.color} shadow-lg mb-8`} data-period-id={periodSlug}>
-      <div className="mb-4">
-        <h3 className="text-2xl font-bold text-gray-800 mb-2">
-          <button
-            className="text-left hover:text-blue-600 hover:underline cursor-pointer"
-            onClick={() => {
-              const newSearchParams = new URLSearchParams(searchParams);
-              const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-              newSearchParams.set('period', periodSlug);
-              router.push(`/?${newSearchParams.toString()}`, { scroll: false });
-              
-              // Scroll to top of this period
-              setTimeout(() => {
-                const element = document.querySelector(`[data-period-id="${periodSlug}"]`);
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-              }, 100);
-            }}
-          >
-            {period.name}
-          </button>
-        </h3>
-        <p className="text-lg font-semibold text-gray-700 mb-2">{period.dateRange}</p>
-        <p className="text-gray-600 mb-4">{period.description}</p>
+    <div className={`rounded-lg border-2 ${period.color} shadow-lg mb-8`} data-period-id={periodSlug}>
+      {/* Sticky Period Header */}
+      <div className="sticky top-[120px] lg:top-[180px] z-20 bg-white border-b-2 border-gray-200 rounded-t-lg">
+        <div className={`p-4 ${period.color} rounded-t-lg`}>
+          <h3 className="text-2xl font-bold text-gray-800 mb-1">
+            <button
+              className="text-left hover:text-blue-600 hover:underline cursor-pointer"
+              onClick={() => {
+                const newSearchParams = new URLSearchParams(searchParams);
+                const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+                newSearchParams.set('period', periodSlug);
+                router.push(`/?${newSearchParams.toString()}`, { scroll: false });
+                
+                // Only scroll if period not visible
+                setTimeout(() => {
+                  const element = document.querySelector(`[data-period-id="${periodSlug}"]`);
+                  if (element && !isElementVisible(element)) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }, 100);
+              }}
+            >
+              {period.name}
+            </button>
+          </h3>
+          <p className="text-lg font-semibold text-gray-700">{period.dateRange}</p>
+        </div>
       </div>
+      
+      {/* Period Content */}
+      <div className="p-6">
+        <p className="text-gray-600 mb-4">{period.description}</p>
 
       <div className={`grid grid-cols-1 gap-6 ${
         [showEvents, showPeople, showRegions].filter(Boolean).length === 3 ? 'lg:grid-cols-3' :
@@ -853,20 +882,31 @@ function TimelinePeriodCard({
               )}
             </div>
             <div className="space-y-3">
-              {periodEvents.map((event) => (
-                <div key={event.id} className="bg-white bg-opacity-80 rounded-lg p-3 border border-gray-200" data-event-id={event.id}>
-                  <h5 className="font-semibold text-gray-800 text-sm mb-1">
+              {periodEvents.map((event) => {
+                const selectedEventId = searchParams.get('selected')?.split(':')[1];
+                const isEventSelected = selectedEventId === event.id;
+                return (
+                <div key={event.id} className={`rounded-lg p-3 border transition-all duration-200 ${
+                  isEventSelected 
+                    ? 'bg-green-600 border-green-800 shadow-lg ring-2 ring-green-300' 
+                    : 'bg-white bg-opacity-80 border-gray-200'
+                }`} data-event-id={event.id}>
+                  <h5 className={`font-semibold text-sm mb-1 ${
+                    isEventSelected ? 'text-white' : 'text-gray-800'
+                  }`}>
                     <button
-                      className="text-left hover:text-blue-600 hover:underline cursor-pointer"
+                      className={`text-left hover:underline cursor-pointer ${
+                        isEventSelected ? 'text-white hover:text-gray-200' : 'hover:text-blue-600'
+                      }`}
                       onClick={() => {
                         const newSearchParams = new URLSearchParams(searchParams);
                         newSearchParams.set('selected', `event:${event.id}`);
                         router.push(`/?${newSearchParams.toString()}`, { scroll: false });
                         
-                        // Scroll to this event
+                        // Only scroll to event if not visible
                         setTimeout(() => {
                           const element = document.querySelector(`[data-event-id="${event.id}"]`);
-                          if (element) {
+                          if (element && !isElementVisible(element)) {
                             element.scrollIntoView({ behavior: 'smooth', block: 'center' });
                           }
                         }, 100);
@@ -875,8 +915,12 @@ function TimelinePeriodCard({
                       {event.name}
                     </button>
                   </h5>
-                  <p className="text-xs text-gray-600 mb-2">{event.date}</p>
-                  <p className="text-xs text-gray-700 mb-2">{event.description}</p>
+                  <p className={`text-xs mb-2 ${
+                    isEventSelected ? 'text-gray-200' : 'text-gray-600'
+                  }`}>{event.date}</p>
+                  <p className={`text-xs mb-2 ${
+                    isEventSelected ? 'text-gray-100' : 'text-gray-700'
+                  }`}>{event.description}</p>
                   {event.references && event.references.length > 0 && (
                     <div className="mb-2">
                       <span className="text-xs text-gray-500">References: </span>
@@ -918,7 +962,8 @@ function TimelinePeriodCard({
                     </div>
                   )}
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
@@ -968,20 +1013,31 @@ function TimelinePeriodCard({
               )}
             </div>
             <div className="space-y-3">
-              {relevantRegions.map(region => (
-                <div key={region.id} className="bg-white bg-opacity-80 rounded-lg p-3 border border-gray-200" data-region-id={region.id}>
-                  <h5 className="font-semibold text-gray-800 text-sm mb-1 flex items-center gap-2">
+              {relevantRegions.map(region => {
+                const selectedRegionId = searchParams.get('selected')?.split(':')[1];
+                const isRegionSelected = selectedRegionId === region.id;
+                return (
+                <div key={region.id} className={`rounded-lg p-3 border transition-all duration-200 ${
+                  isRegionSelected 
+                    ? 'bg-purple-600 border-purple-800 shadow-lg ring-2 ring-purple-300' 
+                    : 'bg-white bg-opacity-80 border-gray-200'
+                }`} data-region-id={region.id}>
+                  <h5 className={`font-semibold text-sm mb-1 flex items-center gap-2 ${
+                    isRegionSelected ? 'text-white' : 'text-gray-800'
+                  }`}>
                     <button
-                      className="text-left hover:text-blue-600 hover:underline cursor-pointer"
+                      className={`text-left hover:underline cursor-pointer ${
+                        isRegionSelected ? 'text-white hover:text-gray-200' : 'hover:text-blue-600'
+                      }`}
                       onClick={() => {
                         const newSearchParams = new URLSearchParams(searchParams);
                         newSearchParams.set('region', region.id);
                         router.push(`/?${newSearchParams.toString()}`, { scroll: false });
                         
-                        // Scroll to this region
+                        // Only scroll to region if not visible
                         setTimeout(() => {
                           const element = document.querySelector(`[data-region-id="${region.id}"]`);
-                          if (element) {
+                          if (element && !isElementVisible(element)) {
                             element.scrollIntoView({ behavior: 'smooth', block: 'center' });
                           }
                         }, 100);
@@ -999,8 +1055,12 @@ function TimelinePeriodCard({
                       📖
                     </a>
                   </h5>
-                  <p className="text-xs text-gray-600 mb-1">{region.location}</p>
-                  <p className="text-xs text-gray-700 mb-2">{region.description}</p>
+                  <p className={`text-xs mb-1 ${
+                    isRegionSelected ? 'text-gray-200' : 'text-gray-600'
+                  }`}>{region.location}</p>
+                  <p className={`text-xs mb-2 ${
+                    isRegionSelected ? 'text-gray-100' : 'text-gray-700'
+                  }`}>{region.description}</p>
                   {showPeople && region.notable_people.length > 0 && (
                     <div className="flex flex-wrap">
                       {region.notable_people.slice(0, 3).map(personId => {
@@ -1018,10 +1078,12 @@ function TimelinePeriodCard({
                     </div>
                   )}
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
+        </div>
       </div>
     </div>
   );
@@ -1068,10 +1130,10 @@ export function BiblicalTimeline({
         const person = persons.find(p => p.id === id);
         if (person) {
           setSelectedPerson(person);
-          // Scroll to person card in timeline after a delay
+          // Only scroll to person card if not visible in timeline
           setTimeout(() => {
             const element = document.querySelector(`[data-person-id="${id}"]`);
-            if (element) {
+            if (element && !isElementVisible(element)) {
               element.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
           }, 300);
@@ -1080,10 +1142,10 @@ export function BiblicalTimeline({
         const event = events.find(e => e.id === id);
         if (event) {
           setSelectedEvent(event);
-          // Scroll to event in timeline after a delay
+          // Only scroll to event if not visible in timeline
           setTimeout(() => {
             const element = document.querySelector(`[data-event-id="${id}"]`);
-            if (element) {
+            if (element && !isElementVisible(element)) {
               element.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
           }, 300);
@@ -1092,10 +1154,10 @@ export function BiblicalTimeline({
         const region = regions.find(r => r.id === id);
         if (region) {
           setSelectedRegion(region);
-          // Scroll to region in timeline after a delay
+          // Only scroll to region if not visible in timeline
           setTimeout(() => {
             const element = document.querySelector(`[data-region-id="${id}"]`);
-            if (element) {
+            if (element && !isElementVisible(element)) {
               element.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
           }, 300);
@@ -1118,17 +1180,17 @@ export function BiblicalTimeline({
     }
   }, [searchParams, persons, events, regions]);
 
-  // Handle person click - scroll to person card in timeline
+  // Handle person click - scroll to person card in timeline only if not visible
   const handlePersonClick = (person: BiblicalPerson) => {
     setSelectedPerson(person);
     const newSearchParams = new URLSearchParams(searchParams);
     newSearchParams.set('selected', `person:${person.id}`);
     router.push(`/?${newSearchParams.toString()}`, { scroll: false });
 
-    // Scroll to the person card in the timeline
+    // Only scroll if the person card is not visible in the timeline
     setTimeout(() => {
       const element = document.querySelector(`[data-person-id="${person.id}"]`);
-      if (element) {
+      if (element && !isElementVisible(element)) {
         element.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }, 100);
@@ -1399,30 +1461,64 @@ export function BiblicalTimeline({
   const totalResults = searchResults.persons.length + searchResults.events.length + searchResults.regions.length + searchResults.periods.length;
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="text-center mb-12">
-        <h1 className="text-5xl font-bold text-gray-800 mb-4">Biblical Timeline</h1>
-        <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-          A comprehensive journey through biblical history, from Creation to the early church, 
-          showcasing key events, influential people, and significant locations that shaped God&apos;s plan for humanity.
-        </p>
-      </div>
-
-      {/* Search and Controls */}
-      <div className="mb-8">
-        <div className="max-w-md mx-auto mb-6">
-          <input
-            type="text"
-            placeholder="Search events, people, regions, periods..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
+    <div className="min-h-screen">
+      {/* Sticky Main Header - Compact for Mobile */}
+      <div className="sticky top-0 z-30 bg-white border-b border-gray-200 shadow-sm">
+        <div className="container mx-auto px-4 py-3 lg:py-6">
+          <div className="text-center mb-3 lg:mb-6">
+            <h1 className="text-2xl lg:text-4xl font-bold text-gray-800 mb-1 lg:mb-2">Biblical Timeline</h1>
+            <p className="text-sm lg:text-lg text-gray-600 hidden lg:block">
+              A comprehensive journey through biblical history
+            </p>
+          </div>
+          
+          {/* Search and Controls in Header */}
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-2 lg:gap-4">
+            <div className="w-full max-w-md">
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
+            
+            {/* Content Toggles in Header - Compact for Mobile */}
+            <div className="flex gap-2 lg:gap-4">
+              <label className="flex items-center">
+                <input
+                  type="checkbox"
+                  checked={showEvents}
+                  onChange={(e) => setShowEvents(e.target.checked)}
+                  className="mr-1"
+                />
+                <span className="text-xs lg:text-sm font-medium text-gray-700">📅 <span className="hidden lg:inline">Events</span></span>
+              </label>
+              <label className="flex items-center">
+                <input
+                  type="checkbox"
+                  checked={showPeople}
+                  onChange={(e) => setShowPeople(e.target.checked)}
+                  className="mr-1"
+                />
+                <span className="text-xs lg:text-sm font-medium text-gray-700">👥 <span className="hidden lg:inline">People</span></span>
+              </label>
+              <label className="flex items-center">
+                <input
+                  type="checkbox"
+                  checked={showRegions}
+                  onChange={(e) => setShowRegions(e.target.checked)}
+                  className="mr-1"
+                />
+                <span className="text-xs lg:text-sm font-medium text-gray-700">🗺️ <span className="hidden lg:inline">Regions</span></span>
+              </label>
+            </div>
+          </div>
         </div>
-
-
-
       </div>
+      
+      <div className="container mx-auto px-4 py-8">
 
       {/* Search Results */}
       {searchTerm && totalResults > 0 && (
@@ -1512,10 +1608,10 @@ export function BiblicalTimeline({
                       newSearchParams.set('period', periodSlug);
                       router.push(`/?${newSearchParams.toString()}`, { scroll: false });
                       
-                      // Scroll to the period
+                      // Only scroll to the period if it's not visible
                       setTimeout(() => {
                         const element = document.querySelector(`[data-period-id="${periodSlug}"]`);
-                        if (element) {
+                        if (element && !isElementVisible(element)) {
                           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }
                       }, 100);
@@ -1547,31 +1643,44 @@ export function BiblicalTimeline({
       <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 mb-12 border border-gray-200">
         <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Timeline Overview</h2>
         <div className="flex flex-wrap justify-center gap-3">
-          {timelinePeriods.map((period, index) => (
+          {timelinePeriods.map((period, index) => {
+            const selectedPeriod = searchParams.get('period');
+            const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+            const isPeriodSelected = selectedPeriod === periodSlug;
+            return (
             <button
               key={index}
-              className={`px-4 py-2 rounded-full border-2 ${period.color} shadow-sm hover:shadow-md transition-shadow cursor-pointer`}
+              className={`px-4 py-2 rounded-full border-2 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer ${
+                isPeriodSelected 
+                  ? 'bg-indigo-600 border-indigo-800 text-white shadow-lg ring-2 ring-indigo-300' 
+                  : `${period.color}`
+              }`}
               onClick={() => {
                 const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
                 const newSearchParams = new URLSearchParams(searchParams);
                 newSearchParams.set('period', periodSlug);
                 router.push(`/?${newSearchParams.toString()}`, { scroll: false });
                 
-                // Scroll to the period
+                // Only scroll to the period if it's not visible
                 setTimeout(() => {
                   const element = document.querySelector(`[data-period-id="${periodSlug}"]`);
-                  if (element) {
+                  if (element && !isElementVisible(element)) {
                     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }
                 }, 100);
               }}
             >
               <div className="text-center">
-                <div className="font-semibold text-sm text-gray-800">{period.name}</div>
-                <div className="text-xs text-gray-600">{period.dateRange}</div>
+                <div className={`font-semibold text-sm ${
+                  isPeriodSelected ? 'text-white' : 'text-gray-800'
+                }`}>{period.name}</div>
+                <div className={`text-xs ${
+                  isPeriodSelected ? 'text-gray-200' : 'text-gray-600'
+                }`}>{period.dateRange}</div>
               </div>
             </button>
-          ))}
+            );
+          })}
         </div>
         <div className="text-center mt-6">
           <p className="text-sm text-gray-600">
@@ -1582,41 +1691,6 @@ export function BiblicalTimeline({
         </div>
       </div>
 
-      {/* Content Toggles */}
-      <div className="flex justify-center mb-8">
-        <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">Timeline Content</h3>
-          <div className="flex gap-6">
-            <label className="flex items-center">
-              <input
-                type="checkbox"
-                checked={showEvents}
-                onChange={(e) => setShowEvents(e.target.checked)}
-                className="mr-2"
-              />
-              <span className="text-sm font-medium text-gray-700">📅 Events</span>
-            </label>
-            <label className="flex items-center">
-              <input
-                type="checkbox"
-                checked={showPeople}
-                onChange={(e) => setShowPeople(e.target.checked)}
-                className="mr-2"
-              />
-              <span className="text-sm font-medium text-gray-700">👥 People</span>
-            </label>
-            <label className="flex items-center">
-              <input
-                type="checkbox"
-                checked={showRegions}
-                onChange={(e) => setShowRegions(e.target.checked)}
-                className="mr-2"
-              />
-              <span className="text-sm font-medium text-gray-700">🗺️ Regions</span>
-            </label>
-          </div>
-        </div>
-      </div>
 
       {/* Main Content Area with Sticky Person Details */}
       <div className="flex flex-col lg:flex-row gap-8">
@@ -1778,27 +1852,94 @@ export function BiblicalTimeline({
           )}
         </div>
 
-        {/* Sticky Person Details Sidebar - only show in overview mode */}
-        {currentView === 'overview' && (
-          <div className="lg:w-80 xl:w-96">
-            <div className="sticky top-24">
-              {selectedPerson ? (
-                <PersonDetails
-                  person={selectedPerson}
-                  allPersons={persons}
-                  onPersonClick={handlePersonClick}
-                />
-              ) : (
-                <div className="text-center bg-gray-50 rounded-xl p-8 border border-gray-200">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">Person Details</h3>
-                  <p className="text-gray-600 mb-4">
-                    Click on any person in the timeline to see detailed information about them.
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    Includes family relationships, biblical references, and biographical information.
-                  </p>
+        {/* Person Details - Desktop Sidebar / Mobile Modal */}
+        {currentView === 'overview' && selectedPerson && (
+          <>
+            {/* Desktop Sidebar */}
+            <div className="hidden lg:block lg:w-80 xl:w-96">
+              <div className="sticky top-[140px] lg:top-[200px]">
+                <div className="bg-white rounded-xl p-1 border-2 border-blue-400 shadow-lg">
+                  <div className="bg-blue-50 rounded-lg p-4 mb-2">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="text-lg font-bold text-blue-800">Selected Person</h3>
+                      <button
+                        onClick={() => {
+                          setSelectedPerson(null);
+                          const newSearchParams = new URLSearchParams(searchParams);
+                          newSearchParams.delete('selected');
+                          const newQuery = newSearchParams.toString();
+                          router.push(newQuery ? `/?${newQuery}` : '/', { scroll: false });
+                        }}
+                        className="text-gray-500 hover:text-gray-700 text-xl font-bold"
+                        title="Clear selection"
+                      >
+                        ×
+                      </button>
+                    </div>
+                    <p className="text-sm text-blue-700 font-medium">{selectedPerson.name}</p>
+                  </div>
+                  <PersonDetails
+                    person={selectedPerson}
+                    allPersons={persons}
+                    onPersonClick={handlePersonClick}
+                  />
                 </div>
-              )}
+              </div>
+            </div>
+            
+            {/* Mobile Modal Overlay */}
+            <div className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50" onClick={() => {
+              setSelectedPerson(null);
+              const newSearchParams = new URLSearchParams(searchParams);
+              newSearchParams.delete('selected');
+              const newQuery = newSearchParams.toString();
+              router.push(newQuery ? `/?${newQuery}` : '/', { scroll: false });
+            }}>
+              <div className="fixed bottom-0 left-0 right-0 max-h-[80vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+                <div className="bg-white rounded-t-xl p-4 shadow-lg">
+                  <div className="bg-blue-50 rounded-lg p-4 mb-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="text-lg font-bold text-blue-800">Selected Person</h3>
+                      <button
+                        onClick={() => {
+                          setSelectedPerson(null);
+                          const newSearchParams = new URLSearchParams(searchParams);
+                          newSearchParams.delete('selected');
+                          const newQuery = newSearchParams.toString();
+                          router.push(newQuery ? `/?${newQuery}` : '/', { scroll: false });
+                        }}
+                        className="text-gray-500 hover:text-gray-700 text-xl font-bold"
+                        title="Clear selection"
+                      >
+                        ×
+                      </button>
+                    </div>
+                    <p className="text-sm text-blue-700 font-medium">{selectedPerson.name}</p>
+                  </div>
+                  <PersonDetails
+                    person={selectedPerson}
+                    allPersons={persons}
+                    onPersonClick={handlePersonClick}
+                  />
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+        
+        {/* Desktop Empty State */}
+        {currentView === 'overview' && !selectedPerson && (
+          <div className="hidden lg:block lg:w-80 xl:w-96">
+            <div className="sticky top-[140px] lg:top-[200px]">
+              <div className="text-center bg-gray-50 rounded-xl p-8 border border-gray-200">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">Person Details</h3>
+                <p className="text-gray-600 mb-4">
+                  Click on any person in the timeline to see detailed information about them.
+                </p>
+                <p className="text-sm text-gray-500">
+                  Includes family relationships, biblical references, and biographical information.
+                </p>
+              </div>
             </div>
           </div>
         )}
@@ -1874,6 +2015,7 @@ export function BiblicalTimeline({
             <strong>Total Timespan:</strong> Approximately 4,000+ years of biblical history
           </p>
         </div>
+      </div>
       </div>
     </div>
   );
