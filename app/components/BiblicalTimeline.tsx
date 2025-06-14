@@ -1,6 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
 interface BiblicalPerson {
   id: string;
@@ -87,9 +89,29 @@ function getPersonRelationships(person: BiblicalPerson, allPersons: BiblicalPers
   return { parents, spouses, children, siblings };
 }
 
-function PersonCard({ person, allPersons }: { person: BiblicalPerson; allPersons: BiblicalPerson[] }) {
+function PersonCard({ person, allPersons, searchParams, router }: { 
+  person: BiblicalPerson; 
+  allPersons: BiblicalPerson[];
+  searchParams: URLSearchParams;
+  router: AppRouterInstance;
+}) {
   const [isExpanded, setIsExpanded] = useState(false);
   const relationships = getPersonRelationships(person, allPersons);
+
+  // Check if this person should be expanded based on URL
+  useEffect(() => {
+    const targetPerson = searchParams.get('person');
+    if (targetPerson === person.id) {
+      setIsExpanded(true);
+      // Scroll to this person with a longer delay to ensure rendering
+      setTimeout(() => {
+        const element = document.querySelector(`[data-person-id="${person.id}"]`);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 300);
+    }
+  }, [searchParams, person.id]);
   
   const getColorScheme = (person: BiblicalPerson) => {
     if (['GOD_FATHER', 'JESUS'].includes(person.id)) {
@@ -116,7 +138,20 @@ function PersonCard({ person, allPersons }: { person: BiblicalPerson; allPersons
   const colors = getColorScheme(person);
   
   const toggleExpanded = () => {
-    setIsExpanded(!isExpanded);
+    const newExpanded = !isExpanded;
+    setIsExpanded(newExpanded);
+    
+    // Update URL to reflect the state
+    if (newExpanded) {
+      const newSearchParams = new URLSearchParams(searchParams);
+      newSearchParams.set('person', person.id);
+      router.push(`/?${newSearchParams.toString()}`, { scroll: false });
+    } else {
+      const newSearchParams = new URLSearchParams(searchParams);
+      newSearchParams.delete('person');
+      const newQuery = newSearchParams.toString();
+      router.push(newQuery ? `/?${newQuery}` : '/', { scroll: false });
+    }
   };
   
   return (
@@ -175,11 +210,9 @@ function PersonCard({ person, allPersons }: { person: BiblicalPerson; allPersons
                             className={`px-2 py-1 rounded border text-xs font-medium cursor-pointer hover:shadow-md transition-all duration-200 ${pColors.bg} ${pColors.border} ${pColors.text}`}
                             onClick={(e) => {
                               e.stopPropagation();
-                              const parentCard = document.querySelector(`[data-person-id="${p.id}"]`) as HTMLElement;
-                              if (parentCard) {
-                                parentCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                parentCard.click();
-                              }
+                              const newSearchParams = new URLSearchParams(searchParams);
+                              newSearchParams.set('person', p.id);
+                              router.push(`/?${newSearchParams.toString()}`, { scroll: false });
                             }}
                           >
                             {p.name}
@@ -203,11 +236,9 @@ function PersonCard({ person, allPersons }: { person: BiblicalPerson; allPersons
                             className={`px-2 py-1 rounded border text-xs font-medium cursor-pointer hover:shadow-md transition-all duration-200 ${pColors.bg} ${pColors.border} ${pColors.text}`}
                             onClick={(e) => {
                               e.stopPropagation();
-                              const spouseCard = document.querySelector(`[data-person-id="${p.id}"]`) as HTMLElement;
-                              if (spouseCard) {
-                                spouseCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                spouseCard.click();
-                              }
+                              const newSearchParams = new URLSearchParams(searchParams);
+                              newSearchParams.set('person', p.id);
+                              router.push(`/?${newSearchParams.toString()}`, { scroll: false });
                             }}
                           >
                             {p.name}
@@ -231,11 +262,9 @@ function PersonCard({ person, allPersons }: { person: BiblicalPerson; allPersons
                             className={`px-2 py-1 rounded border text-xs font-medium cursor-pointer hover:shadow-md transition-all duration-200 ${pColors.bg} ${pColors.border} ${pColors.text}`}
                             onClick={(e) => {
                               e.stopPropagation();
-                              const childCard = document.querySelector(`[data-person-id="${p.id}"]`) as HTMLElement;
-                              if (childCard) {
-                                childCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                childCard.click();
-                              }
+                              const newSearchParams = new URLSearchParams(searchParams);
+                              newSearchParams.set('person', p.id);
+                              router.push(`/?${newSearchParams.toString()}`, { scroll: false });
                             }}
                           >
                             {p.name}
@@ -264,11 +293,9 @@ function PersonCard({ person, allPersons }: { person: BiblicalPerson; allPersons
                             className={`px-2 py-1 rounded border text-xs font-medium cursor-pointer hover:shadow-md transition-all duration-200 ${pColors.bg} ${pColors.border} ${pColors.text}`}
                             onClick={(e) => {
                               e.stopPropagation();
-                              const siblingCard = document.querySelector(`[data-person-id="${p.id}"]`) as HTMLElement;
-                              if (siblingCard) {
-                                siblingCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                siblingCard.click();
-                              }
+                              const newSearchParams = new URLSearchParams(searchParams);
+                              newSearchParams.set('person', p.id);
+                              router.push(`/?${newSearchParams.toString()}`, { scroll: false });
                             }}
                           >
                             {p.name}
@@ -323,14 +350,20 @@ function TimelinePeriodCard({
   events, 
   regions, 
   getPersonById, 
-  allPersons
+  allPersons,
+  searchParams,
+  router
 }: { 
   period: { name: string; dateRange: string; color: string; description: string };
   events: BiblicalEvent[];
   regions: BiblicalRegion[];
   getPersonById: (id: string) => BiblicalPerson | undefined;
   allPersons: BiblicalPerson[];
+  searchParams: URLSearchParams;
+  router: AppRouterInstance;
 }) {
+  const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+
   const periodEvents = events.filter(event => {
     // Parse event date
     let eventYear = parseInt(event.date.replace(/[^\d-]/g, ''));
@@ -388,10 +421,67 @@ function TimelinePeriodCard({
     );
   }).slice(0, 3);
 
+  // Handle scrolling for linked periods, events, and regions
+  useEffect(() => {
+    const targetPeriod = searchParams.get('period');
+    const targetEvent = searchParams.get('event');
+    const targetRegion = searchParams.get('region');
+
+    // Scroll to period
+    if (targetPeriod === periodSlug) {
+      setTimeout(() => {
+        const element = document.querySelector(`[data-period-id="${periodSlug}"]`);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
+    }
+
+    // Scroll to event
+    if (targetEvent && periodEvents.some(event => event.id === targetEvent)) {
+      setTimeout(() => {
+        const element = document.querySelector(`[data-event-id="${targetEvent}"]`);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 300);
+    }
+
+    // Scroll to region
+    if (targetRegion && relevantRegions.some(region => region.id === targetRegion)) {
+      setTimeout(() => {
+        const element = document.querySelector(`[data-region-id="${targetRegion}"]`);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 300);
+    }
+  }, [searchParams, periodSlug, periodEvents, relevantRegions]);
+
   return (
-    <div className={`p-6 rounded-lg border-2 ${period.color} shadow-lg mb-8`}>
+    <div className={`p-6 rounded-lg border-2 ${period.color} shadow-lg mb-8`} data-period-id={periodSlug}>
       <div className="mb-4">
-        <h3 className="text-2xl font-bold text-gray-800 mb-2">{period.name}</h3>
+        <h3 className="text-2xl font-bold text-gray-800 mb-2">
+          <button
+            className="text-left hover:text-blue-600 hover:underline cursor-pointer"
+            onClick={() => {
+              const newSearchParams = new URLSearchParams(searchParams);
+              const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+              newSearchParams.set('period', periodSlug);
+              router.push(`/?${newSearchParams.toString()}`, { scroll: false });
+              
+              // Scroll to top of this period
+              setTimeout(() => {
+                const element = document.querySelector(`[data-period-id="${periodSlug}"]`);
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }, 100);
+            }}
+          >
+            {period.name}
+          </button>
+        </h3>
         <p className="text-lg font-semibold text-gray-700 mb-2">{period.dateRange}</p>
         <p className="text-gray-600 mb-4">{period.description}</p>
       </div>
@@ -402,8 +492,27 @@ function TimelinePeriodCard({
           <h4 className="font-bold text-gray-800 mb-3 text-lg">📅 Key Events</h4>
           <div className="space-y-3">
             {periodEvents.map((event) => (
-              <div key={event.id} className="bg-white bg-opacity-80 rounded-lg p-3 border border-gray-200">
-                <h5 className="font-semibold text-gray-800 text-sm mb-1">{event.name}</h5>
+              <div key={event.id} className="bg-white bg-opacity-80 rounded-lg p-3 border border-gray-200" data-event-id={event.id}>
+                <h5 className="font-semibold text-gray-800 text-sm mb-1">
+                  <button
+                    className="text-left hover:text-blue-600 hover:underline cursor-pointer"
+                    onClick={() => {
+                      const newSearchParams = new URLSearchParams(searchParams);
+                      newSearchParams.set('event', event.id);
+                      router.push(`/?${newSearchParams.toString()}`, { scroll: false });
+                      
+                      // Scroll to this event
+                      setTimeout(() => {
+                        const element = document.querySelector(`[data-event-id="${event.id}"]`);
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                      }, 100);
+                    }}
+                  >
+                    {event.name}
+                  </button>
+                </h5>
                 <p className="text-xs text-gray-600 mb-2">{event.date}</p>
                 <p className="text-xs text-gray-700 mb-2">{event.description}</p>
                 {event.references && event.references.length > 0 && (
@@ -433,7 +542,7 @@ function TimelinePeriodCard({
                       const person = getPersonById(participantId);
                       return person ? (
                         <div key={participantId} className="transform scale-75 -ml-1">
-                          <PersonCard person={person} allPersons={allPersons} />
+                          <PersonCard person={person} allPersons={allPersons} searchParams={searchParams} router={router} />
                         </div>
                       ) : null;
                     })}
@@ -455,7 +564,7 @@ function TimelinePeriodCard({
               {Array.from(allParticipants).slice(0, 12).map(participantId => {
                 const person = getPersonById(participantId);
                 return person ? (
-                  <PersonCard key={participantId} person={person} allPersons={allPersons} />
+                  <PersonCard key={participantId} person={person} allPersons={allPersons} searchParams={searchParams} router={router} />
                 ) : null;
               })}
               {allParticipants.size > 12 && (
@@ -470,15 +579,34 @@ function TimelinePeriodCard({
           <h4 className="font-bold text-gray-800 mb-3 text-lg">🗺️ Regions</h4>
           <div className="space-y-3">
             {relevantRegions.map(region => (
-              <div key={region.id} className="bg-white bg-opacity-80 rounded-lg p-3 border border-gray-200">
-                <h5 className="font-semibold text-gray-800 text-sm mb-1">
+              <div key={region.id} className="bg-white bg-opacity-80 rounded-lg p-3 border border-gray-200" data-region-id={region.id}>
+                <h5 className="font-semibold text-gray-800 text-sm mb-1 flex items-center gap-2">
+                  <button
+                    className="text-left hover:text-blue-600 hover:underline cursor-pointer"
+                    onClick={() => {
+                      const newSearchParams = new URLSearchParams(searchParams);
+                      newSearchParams.set('region', region.id);
+                      router.push(`/?${newSearchParams.toString()}`, { scroll: false });
+                      
+                      // Scroll to this region
+                      setTimeout(() => {
+                        const element = document.querySelector(`[data-region-id="${region.id}"]`);
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                      }, 100);
+                    }}
+                  >
+                    {region.name}
+                  </button>
                   <a 
                     href={getRegionStudyUrl(region.name)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-800 hover:text-blue-600 hover:underline"
+                    className="text-blue-600 hover:text-blue-800 text-xs"
+                    title="Study this region in the Bible"
                   >
-                    {region.name}
+                    📖
                   </a>
                 </h5>
                 <p className="text-xs text-gray-600 mb-1">{region.location}</p>
@@ -489,7 +617,7 @@ function TimelinePeriodCard({
                       const person = getPersonById(personId);
                       return person ? (
                         <div key={personId} className="transform scale-75 -ml-1">
-                          <PersonCard person={person} allPersons={allPersons} />
+                          <PersonCard person={person} allPersons={allPersons} searchParams={searchParams} router={router} />
                         </div>
                       ) : null;
                     })}
@@ -513,6 +641,8 @@ export function BiblicalTimeline({
   persons: BiblicalPerson[];
   regions: BiblicalRegion[];
 }) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const getPersonById = (id: string) => persons.find(p => p.id === id);
 
   const timelinePeriods = [
@@ -593,12 +723,29 @@ export function BiblicalTimeline({
         <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Timeline Overview</h2>
         <div className="flex flex-wrap justify-center gap-3">
           {timelinePeriods.map((period, index) => (
-            <div key={index} className={`px-4 py-2 rounded-full border-2 ${period.color} shadow-sm`}>
+            <button
+              key={index}
+              className={`px-4 py-2 rounded-full border-2 ${period.color} shadow-sm hover:shadow-md transition-shadow cursor-pointer`}
+              onClick={() => {
+                const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+                const newSearchParams = new URLSearchParams(searchParams);
+                newSearchParams.set('period', periodSlug);
+                router.push(`/?${newSearchParams.toString()}`, { scroll: false });
+                
+                // Scroll to the period
+                setTimeout(() => {
+                  const element = document.querySelector(`[data-period-id="${periodSlug}"]`);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }, 100);
+              }}
+            >
               <div className="text-center">
                 <div className="font-semibold text-sm text-gray-800">{period.name}</div>
                 <div className="text-xs text-gray-600">{period.dateRange}</div>
               </div>
-            </div>
+            </button>
           ))}
         </div>
         <div className="text-center mt-6">
@@ -673,6 +820,8 @@ export function BiblicalTimeline({
                 regions={regions}
                 getPersonById={getPersonById}
                 allPersons={persons}
+                searchParams={searchParams}
+                router={router}
               />
             </div>
           </div>

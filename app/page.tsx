@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { promises as fs } from 'fs';
 import yaml from 'js-yaml';
 import path from 'path';
@@ -68,10 +69,12 @@ export default async function Home() {
   const eventsData = yaml.load(eventsContents) as EventsData;
 
   return (
-    <BiblicalTimeline 
-      events={eventsData.biblical_events}
-      persons={ancestryData.biblical_persons}
-      regions={regionsData.biblical_regions}
-    />
+    <Suspense fallback={<div className="flex justify-center items-center min-h-screen">Loading...</div>}>
+      <BiblicalTimeline 
+        events={eventsData.biblical_events}
+        persons={ancestryData.biblical_persons}
+        regions={regionsData.biblical_regions}
+      />
+    </Suspense>
   );
 }
