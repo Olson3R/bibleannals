@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getTimelinePeriods, getPeriodEvents, getPeriodPeople, getPeriodRegions } from '../../utils/data-loader';
+import { EventCard, PersonCard, RegionCard } from '../../components/ui';
 
 interface PeriodPageProps {
   params: {
@@ -112,14 +113,7 @@ export default function PeriodPage({ params }: PeriodPageProps) {
               <h3 className="text-lg font-semibold text-gray-800 mb-4">Featured Events</h3>
               <div className="space-y-3">
                 {events.slice(0, 3).map(event => (
-                  <Link
-                    key={event.id}
-                    href={`/events/${event.id}`}
-                    className="block p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors"
-                  >
-                    <h4 className="font-medium text-sm text-gray-800">{event.name}</h4>
-                    <p className="text-xs text-gray-600">{event.date}</p>
-                  </Link>
+                  <EventCard key={event.id} event={event} showDescription={false} className="p-3" />
                 ))}
                 {events.length > 3 && (
                   <Link
@@ -137,20 +131,7 @@ export default function PeriodPage({ params }: PeriodPageProps) {
               <h3 className="text-lg font-semibold text-gray-800 mb-4">Featured People</h3>
               <div className="space-y-3">
                 {people.slice(0, 3).map(person => (
-                  <Link
-                    key={person.id}
-                    href={`/people/${person.id}`}
-                    className="block p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors"
-                  >
-                    <h4 className="font-medium text-sm text-gray-800">
-                      {person.name}
-                      {person.created && <span className="ml-1 text-orange-600" title="Created by God">⭐</span>}
-                      {person.translated && <span className="ml-1 text-cyan-600" title="Translated">↗️</span>}
-                    </h4>
-                    {person.birth_date && (
-                      <p className="text-xs text-gray-600">{person.birth_date}</p>
-                    )}
-                  </Link>
+                  <PersonCard key={person.id} person={person} showDates={true} className="p-3" />
                 ))}
                 {people.length > 3 && (
                   <Link
@@ -168,14 +149,7 @@ export default function PeriodPage({ params }: PeriodPageProps) {
               <h3 className="text-lg font-semibold text-gray-800 mb-4">Featured Regions</h3>
               <div className="space-y-3">
                 {regions.slice(0, 3).map(region => (
-                  <Link
-                    key={region.id}
-                    href={`/regions/${region.id}`}
-                    className="block p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors"
-                  >
-                    <h4 className="font-medium text-sm text-gray-800">{region.name}</h4>
-                    <p className="text-xs text-gray-600">{region.location}</p>
-                  </Link>
+                  <RegionCard key={region.id} region={region} showDescription={false} className="p-3" />
                 ))}
                 {regions.length > 3 && (
                   <Link

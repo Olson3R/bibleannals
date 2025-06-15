@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { loadTimelineData, getEventById, getPersonById } from '../../utils/data-loader';
+import { loadTimelineData, getEventById, getPersonById, getTimelinePeriods } from '../../utils/data-loader';
+import { getEventPeriod, getPeriodTimelineUrl } from '../../utils/period-detection';
+import { PersonCard } from '../../components/ui';
 
 interface EventPageProps {
   params: {
@@ -40,6 +42,10 @@ export default function EventPage({ params }: EventPageProps) {
     notFound();
   }
 
+  const eventPeriod = getEventPeriod(params.id);
+  const backUrl = eventPeriod ? getPeriodTimelineUrl(eventPeriod) : '/';
+  const periodInfo = eventPeriod ? getTimelinePeriods().find(p => p.slug === eventPeriod) : null;
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -50,12 +56,22 @@ export default function EventPage({ params }: EventPageProps) {
               <h1 className="text-2xl font-bold text-gray-800">{event.name}</h1>
               <p className="text-gray-600">Event Details</p>
             </div>
-            <Link
-              href="/"
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              ← Back to Timeline
-            </Link>
+            <div className="flex gap-2">
+              {periodInfo && (
+                <Link
+                  href={`/periods/${eventPeriod}`}
+                  className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm font-medium transition-colors"
+                >
+                  ← Back to {periodInfo.name}
+                </Link>
+              )}
+              <Link
+                href={backUrl}
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                ← Back to Timeline
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -92,13 +108,7 @@ export default function EventPage({ params }: EventPageProps) {
                     {event.participants.map(participantId => {
                       const person = getPersonById(participantId);
                       return person ? (
-                        <Link
-                          key={participantId}
-                          href={`/people/${person.id}`}
-                          className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm hover:bg-blue-200 transition-colors"
-                        >
-                          {person.name}
-                        </Link>
+                        <PersonCard key={participantId} person={person} className="text-sm" />
                       ) : null;
                     })}
                   </div>

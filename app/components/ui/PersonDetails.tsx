@@ -1,8 +1,9 @@
 // PersonDetails component for displaying detailed person information
 
-import Link from 'next/link';
 import type { BiblicalPerson, BiblicalEvent } from '../../types/biblical';
 import { getBibleUrl } from '../../utils/bible-urls';
+import { PersonCard, getPersonColorScheme } from './PersonCard';
+import { EventCard } from './EventCard';
 
 interface PersonDetailsProps {
   person: BiblicalPerson;
@@ -31,22 +32,6 @@ export function PersonDetails({
     event.participants.includes(person.id)
   ).slice(0, 10); // Limit to 10 most relevant events
 
-  // Color scheme function for family relations
-  const getPersonColorScheme = (person: BiblicalPerson) => {
-    if (['GOD_FATHER', 'JESUS'].includes(person.id)) {
-      return { bg: 'bg-yellow-200', border: 'border-yellow-400', text: 'text-yellow-800' };
-    }
-    if (['ABRAHAM', 'ISAAC', 'JACOB'].includes(person.id)) {
-      return { bg: 'bg-purple-200', border: 'border-purple-400', text: 'text-purple-800' };
-    }
-    if (['DAVID', 'SOLOMON'].includes(person.id) || person.name.includes('King')) {
-      return { bg: 'bg-red-200', border: 'border-red-400', text: 'text-red-800' };
-    }
-    if (['MOSES', 'ELIJAH', 'ELISHA', 'ISAIAH', 'JEREMIAH', 'DANIEL'].includes(person.id)) {
-      return { bg: 'bg-green-200', border: 'border-green-400', text: 'text-green-800' };
-    }
-    return { bg: 'bg-blue-100', border: 'border-blue-300', text: 'text-blue-800' };
-  };
 
   const colorScheme = getPersonColorScheme(person);
 
@@ -110,18 +95,9 @@ export function PersonDetails({
             <div className="mb-4">
               <h4 className="font-medium text-gray-700 mb-2">Parents:</h4>
               <div className="flex flex-wrap gap-2">
-                {parents.map(parent => {
-                  const parentColors = getPersonColorScheme(parent);
-                  return (
-                    <Link
-                      key={parent.id}
-                      href={`/people/${parent.id}`}
-                      className={`px-3 py-1 rounded-full border ${parentColors.bg} ${parentColors.border} ${parentColors.text} hover:shadow-md transition-shadow text-sm`}
-                    >
-                      {parent.name}
-                    </Link>
-                  );
-                })}
+                {parents.map(parent => (
+                  <PersonCard key={parent.id} person={parent} className="text-sm" />
+                ))}
               </div>
             </div>
           )}
@@ -130,18 +106,9 @@ export function PersonDetails({
             <div className="mb-4">
               <h4 className="font-medium text-gray-700 mb-2">Spouses:</h4>
               <div className="flex flex-wrap gap-2">
-                {spouses.map(spouse => {
-                  const spouseColors = getPersonColorScheme(spouse);
-                  return (
-                    <Link
-                      key={spouse.id}
-                      href={`/people/${spouse.id}`}
-                      className={`px-3 py-1 rounded-full border ${spouseColors.bg} ${spouseColors.border} ${spouseColors.text} hover:shadow-md transition-shadow text-sm`}
-                    >
-                      {spouse.name}
-                    </Link>
-                  );
-                })}
+                {spouses.map(spouse => (
+                  <PersonCard key={spouse.id} person={spouse} className="text-sm" />
+                ))}
               </div>
             </div>
           )}
@@ -150,18 +117,9 @@ export function PersonDetails({
             <div>
               <h4 className="font-medium text-gray-700 mb-2">Children:</h4>
               <div className="flex flex-wrap gap-2">
-                {children.map(child => {
-                  const childColors = getPersonColorScheme(child);
-                  return (
-                    <Link
-                      key={child.id}
-                      href={`/people/${child.id}`}
-                      className={`px-3 py-1 rounded-full border ${childColors.bg} ${childColors.border} ${childColors.text} hover:shadow-md transition-shadow text-sm`}
-                    >
-                      {child.name}
-                    </Link>
-                  );
-                })}
+                {children.map(child => (
+                  <PersonCard key={child.id} person={child} className="text-sm" />
+                ))}
               </div>
             </div>
           )}
@@ -198,11 +156,7 @@ export function PersonDetails({
           <h3 className="text-lg font-semibold text-gray-800 mb-4">📅 Events Participated In</h3>
           <div className="space-y-3">
             {personEvents.map(event => (
-              <Link key={event.id} href={`/events/${event.id}`} className="block p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                <div className="font-medium text-gray-800 hover:text-blue-600">{event.name}</div>
-                <div className="text-sm text-gray-600 mt-1">{event.date} • {event.location}</div>
-                <div className="text-sm text-gray-700 mt-2">{event.description}</div>
-              </Link>
+              <EventCard key={event.id} event={event} />
             ))}
           </div>
         </div>

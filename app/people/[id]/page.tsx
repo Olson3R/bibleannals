@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { loadTimelineData, getPersonById } from '../../utils/data-loader';
+import { loadTimelineData, getPersonById, getTimelinePeriods } from '../../utils/data-loader';
+import { getPersonPeriod, getPeriodTimelineUrl } from '../../utils/period-detection';
 import { PersonDetails } from '../../components/ui';
 
 interface PersonPageProps {
@@ -24,6 +25,10 @@ export default function PersonPage({ params }: PersonPageProps) {
     notFound();
   }
 
+  const personPeriod = getPersonPeriod(params.id);
+  const backUrl = personPeriod ? getPeriodTimelineUrl(personPeriod) : '/';
+  const periodInfo = personPeriod ? getTimelinePeriods().find(p => p.slug === personPeriod) : null;
+
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -35,12 +40,22 @@ export default function PersonPage({ params }: PersonPageProps) {
               <h1 className="text-2xl font-bold text-gray-800">{person.name}</h1>
               <p className="text-gray-600">Person Details</p>
             </div>
-            <Link
-              href="/"
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              ← Back to Timeline
-            </Link>
+            <div className="flex gap-2">
+              {periodInfo && (
+                <Link
+                  href={`/periods/${personPeriod}`}
+                  className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm font-medium transition-colors"
+                >
+                  ← Back to {periodInfo.name}
+                </Link>
+              )}
+              <Link
+                href={backUrl}
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                ← Back to Timeline
+              </Link>
+            </div>
           </div>
         </div>
       </div>

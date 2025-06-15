@@ -1,11 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { scrollToElementWithOffset } from '../utils';
+import { isWithinDateRange } from '../utils/date-parsing';
 import { TimelinePeriodCard } from './timeline';
 import { PersonDetails } from './ui';
+import { SearchResultsDisplay } from './search';
 
 interface BiblicalPerson {
   id: string;
@@ -45,69 +46,7 @@ interface BiblicalRegion {
 }
 
 
-// Helper function to parse biblical date ranges and extract start/end years
-function parseDateRange(dateStr: string): { startYear: number | null; endYear: number | null } {
-  if (!dateStr) return { startYear: null, endYear: null };
-  
-  // Handle complex ranges like "6 BC-60 AD"
-  const bcToAdMatch = dateStr.match(/(\\d+)\\s*BC\\s*-\\s*(\\d+)\\s*AD/i);
-  if (bcToAdMatch) {
-    return {
-      startYear: -parseInt(bcToAdMatch[1]), // BC as negative
-      endYear: parseInt(bcToAdMatch[2])     // AD as positive
-    };
-  }
-  
-  // Handle BC ranges like "4004-2348 BC" or "~4004-2348 BC"
-  const bcRangeMatch = dateStr.match(/~?(\\d+)\\s*-\\s*(\\d+)\\s*BC/i);
-  if (bcRangeMatch) {
-    return {
-      startYear: -parseInt(bcRangeMatch[1]), // Earlier BC year (larger negative)
-      endYear: -parseInt(bcRangeMatch[2])    // Later BC year (smaller negative)
-    };
-  }
-  
-  // Handle AD ranges like "30-60 AD" or "30-60"
-  const adRangeMatch = dateStr.match(/(\\d+)\\s*-\\s*(\\d+)(?:\\s*AD)?/i);
-  if (adRangeMatch) {
-    return {
-      startYear: parseInt(adRangeMatch[1]),
-      endYear: parseInt(adRangeMatch[2])
-    };
-  }
-  
-  // Handle single BC year like "4004 BC"
-  const singleBcMatch = dateStr.match(/(\\d+)\\s*BC/i);
-  if (singleBcMatch) {
-    const year = -parseInt(singleBcMatch[1]);
-    return { startYear: year, endYear: year };
-  }
-  
-  // Handle single AD year like "30 AD" or just "30"
-  const singleAdMatch = dateStr.match(/(\\d+)(?:\\s*AD)?/i);
-  if (singleAdMatch) {
-    const year = parseInt(singleAdMatch[1]);
-    return { startYear: year, endYear: year };
-  }
-  
-  return { startYear: null, endYear: null };
-}
 
-// Helper function to check if a date is within the given range
-function isWithinDateRange(dateStr: string, minYear: number | null, maxYear: number | null): boolean {
-  if (!minYear && !maxYear) return true;
-  
-  const { startYear, endYear } = parseDateRange(dateStr);
-  if (!startYear && !endYear) return true;
-  
-  const earliestYear = Math.min(startYear || 0, endYear || 0);
-  const latestYear = Math.max(startYear || 0, endYear || 0);
-  
-  if (minYear && latestYear < minYear) return false;
-  if (maxYear && earliestYear > maxYear) return false;
-  
-  return true;
-}
 
 
 // Utility function to check if element is visible in viewport
@@ -506,112 +445,11 @@ export function BiblicalTimeline({
       <div className="container mx-auto px-4 py-8">
 
       {/* Search Results */}
-      {searchTerm && totalResults > 0 && (
-        <div id="search-results" className="mb-8">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">Search Results ({totalResults})</h3>
-          
-          {/* People Results */}
-          {searchResults.persons.length > 0 && (
-            <div className="mb-6">
-              <h4 className="text-md font-medium text-gray-700 mb-3">👥 People ({searchResults.persons.length})</h4>
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
-                {searchResults.persons.map(person => (
-                  <Link
-                    key={person.id}
-                    href={`/people/${person.id}`}
-                    className="p-2 bg-white border border-gray-300 rounded-lg hover:shadow-md transition-shadow text-sm text-left block"
-                  >
-                    <div className="font-medium text-gray-800">{person.name}</div>
-                    {person.birth_date && (
-                      <div className="text-xs text-gray-600">{person.birth_date}</div>
-                    )}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Events Results */}
-          {searchResults.events.length > 0 && (
-            <div className="mb-6">
-              <h4 className="text-md font-medium text-gray-700 mb-3">📅 Events ({searchResults.events.length})</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                {searchResults.events.map(event => (
-                  <Link
-                    key={event.id}
-                    href={`/events/${event.id}`}
-                    className="p-3 bg-white border border-gray-300 rounded-lg hover:shadow-md transition-shadow text-sm text-left block"
-                  >
-                    <div className="font-medium text-gray-800">{event.name}</div>
-                    <div className="text-xs text-gray-600 mb-1">{event.date}</div>
-                    <div className="text-xs text-gray-500">{event.description.slice(0, 80)}...</div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Regions Results */}
-          {searchResults.regions.length > 0 && (
-            <div className="mb-6">
-              <h4 className="text-md font-medium text-gray-700 mb-3">🗺️ Regions ({searchResults.regions.length})</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                {searchResults.regions.map(region => (
-                  <Link
-                    key={region.id}
-                    href={`/regions/${region.id}`}
-                    className="p-3 bg-white border border-gray-300 rounded-lg hover:shadow-md transition-shadow text-sm text-left block"
-                  >
-                    <div className="font-medium text-gray-800">{region.name}</div>
-                    <div className="text-xs text-gray-600 mb-1">{region.location}</div>
-                    <div className="text-xs text-gray-500">{region.description.slice(0, 80)}...</div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Periods Results */}
-          {searchResults.periods.length > 0 && (
-            <div className="mb-6">
-              <h4 className="text-md font-medium text-gray-700 mb-3">📜 Time Periods ({searchResults.periods.length})</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                {searchResults.periods.map((period, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-                      
-                      // Only scroll to the period if it's not visible
-                      setTimeout(() => {
-                        const element = document.querySelector(`[data-period-id="${periodSlug}"]`);
-                        if (element && !isElementVisible(element)) {
-                          scrollToElementWithOffset(element, 180, 0);
-                        }
-                      }, 100);
-                    }}
-                    className={`p-3 bg-white border-2 hover:shadow-md transition-shadow text-sm text-left rounded-lg ${period.color.includes('border-') ? period.color.split(' ').find(c => c.includes('border-')) || 'border-gray-300' : 'border-gray-300'}`}
-                  >
-                    <div className="font-medium text-gray-900">{period.name}</div>
-                    <div className="text-xs text-gray-700 mb-1">{period.dateRange}</div>
-                    <div className="text-xs text-gray-600">{period.description}</div>
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* No Results */}
-      {searchTerm && totalResults === 0 && (
-        <div className="mb-8 text-center">
-          <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">No Results Found</h3>
-            <p className="text-gray-600">Try searching for different terms or check your spelling.</p>
-          </div>
-        </div>
-      )}
+      <SearchResultsDisplay
+        searchTerm={searchTerm}
+        searchResults={searchResults}
+        totalResults={totalResults}
+      />
 
       {/* Timeline Overview */}
       <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 mb-12 border border-gray-200">

@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { loadTimelineData, getRegionById, getPersonById } from '../../utils/data-loader';
+import { loadTimelineData, getRegionById, getPersonById, getTimelinePeriods } from '../../utils/data-loader';
+import { getRegionPeriod, getPeriodTimelineUrl } from '../../utils/period-detection';
+import { PersonCard } from '../../components/ui';
 
 interface RegionPageProps {
   params: {
@@ -28,6 +30,10 @@ export default function RegionPage({ params }: RegionPageProps) {
     notFound();
   }
 
+  const regionPeriod = getRegionPeriod(params.id);
+  const backUrl = regionPeriod ? getPeriodTimelineUrl(regionPeriod) : '/';
+  const periodInfo = regionPeriod ? getTimelinePeriods().find(p => p.slug === regionPeriod) : null;
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -38,12 +44,22 @@ export default function RegionPage({ params }: RegionPageProps) {
               <h1 className="text-2xl font-bold text-gray-800">{region.name}</h1>
               <p className="text-gray-600">Region Details</p>
             </div>
-            <Link
-              href="/"
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              ← Back to Timeline
-            </Link>
+            <div className="flex gap-2">
+              {periodInfo && (
+                <Link
+                  href={`/periods/${regionPeriod}`}
+                  className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm font-medium transition-colors"
+                >
+                  ← Back to {periodInfo.name}
+                </Link>
+              )}
+              <Link
+                href={backUrl}
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                ← Back to Timeline
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -85,13 +101,7 @@ export default function RegionPage({ params }: RegionPageProps) {
                     {region.notable_people.map(personId => {
                       const person = getPersonById(personId);
                       return person ? (
-                        <Link
-                          key={personId}
-                          href={`/people/${person.id}`}
-                          className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm hover:bg-green-200 transition-colors"
-                        >
-                          {person.name}
-                        </Link>
+                        <PersonCard key={personId} person={person} className="text-sm" />
                       ) : null;
                     })}
                   </div>
