@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { EventCard, PersonCard, RegionCard } from '../../components/ui';
+import { DateRangeSlider } from '../../components/ui/DateRangeSlider';
 import { isWithinDateRange } from '../../utils/date-parsing';
 
 interface BiblicalPerson {
@@ -55,13 +56,20 @@ interface PeriodClientProps {
   events: BiblicalEvent[];
   people: BiblicalPerson[];
   regions: BiblicalRegion[];
+  allPeriods: TimelinePeriod[];
+  eventLocationNames: Record<string, string>;
 }
 
-export function PeriodClient({ period, events: allEvents, people: allPeople, regions: allRegions }: PeriodClientProps) {
+export function PeriodClient({ period, events: allEvents, people: allPeople, regions: allRegions, allPeriods, eventLocationNames }: PeriodClientProps) {
   const [minYear, setMinYear] = useState<number | null>(null);
   const [maxYear, setMaxYear] = useState<number | null>(null);
   const [minEra, setMinEra] = useState<'BC' | 'AD'>('BC');
   const [maxEra, setMaxEra] = useState<'AD' | 'BC'>('AD');
+
+  // Find adjacent periods for navigation
+  const currentIndex = allPeriods.findIndex(p => p.slug === period.slug);
+  const previousPeriod = currentIndex > 0 ? allPeriods[currentIndex - 1] : null;
+  const nextPeriod = currentIndex < allPeriods.length - 1 ? allPeriods[currentIndex + 1] : null;
 
   // Filter data based on date range
   const events = allEvents.filter(event => 
@@ -88,76 +96,22 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
             </div>
             
             {/* Date Range Filter */}
-            <div className="flex items-center gap-2 text-sm">
-              <span className="text-gray-700 font-medium">📅 Filter:</span>
-              <div className="flex items-center gap-1">
-                <input
-                  type="number"
-                  placeholder="4004"
-                  value={minYear ? Math.abs(minYear) : ''}
-                  onChange={(e) => {
-                    const val = e.target.value ? parseInt(e.target.value) : null;
-                    setMinYear(val ? (minEra === 'BC' ? -Math.abs(val) : Math.abs(val)) : null);
-                  }}
-                  className="w-16 px-2 py-1 text-xs border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-transparent"
-                />
-                <select
-                  value={minEra}
-                  onChange={(e) => {
-                    const newEra = e.target.value as 'BC' | 'AD';
-                    setMinEra(newEra);
-                    if (minYear) {
-                      setMinYear(newEra === 'BC' ? -Math.abs(minYear) : Math.abs(minYear));
-                    }
-                  }}
-                  className="text-xs border border-gray-300 rounded px-1 py-1 focus:ring-1 focus:ring-blue-500 focus:border-transparent"
-                >
-                  <option value="BC">BC</option>
-                  <option value="AD">AD</option>
-                </select>
-              </div>
-              <span className="text-gray-500">-</span>
-              <div className="flex items-center gap-1">
-                <input
-                  type="number"
-                  placeholder="100"
-                  value={maxYear ? Math.abs(maxYear) : ''}
-                  onChange={(e) => {
-                    const val = e.target.value ? parseInt(e.target.value) : null;
-                    setMaxYear(val ? (maxEra === 'BC' ? -Math.abs(val) : Math.abs(val)) : null);
-                  }}
-                  className="w-16 px-2 py-1 text-xs border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-transparent"
-                />
-                <select
-                  value={maxEra}
-                  onChange={(e) => {
-                    const newEra = e.target.value as 'BC' | 'AD';
-                    setMaxEra(newEra);
-                    if (maxYear) {
-                      setMaxYear(newEra === 'BC' ? -Math.abs(maxYear) : Math.abs(maxYear));
-                    }
-                  }}
-                  className="text-xs border border-gray-300 rounded px-1 py-1 focus:ring-1 focus:ring-blue-500 focus:border-transparent"
-                >
-                  <option value="AD">AD</option>
-                  <option value="BC">BC</option>
-                </select>
-              </div>
-              {(minYear || maxYear) && (
-                <button
-                  onClick={() => { 
-                    setMinYear(null); 
-                    setMaxYear(null); 
-                    setMinEra('BC'); 
-                    setMaxEra('AD'); 
-                  }}
-                  className="text-xs text-gray-500 hover:text-gray-700 ml-1"
-                  title="Clear date filter"
-                >
-                  ✕
-                </button>
-              )}
-            </div>
+            <DateRangeSlider
+              minYear={minYear}
+              maxYear={maxYear}
+              minEra={minEra}
+              maxEra={maxEra}
+              onMinYearChange={setMinYear}
+              onMaxYearChange={setMaxYear}
+              onMinEraChange={setMinEra}
+              onMaxEraChange={setMaxEra}
+              onReset={() => {
+                setMinYear(null);
+                setMaxYear(null);
+                setMinEra('BC');
+                setMaxEra('AD');
+              }}
+            />
             
             <Link
               href="/"
@@ -179,6 +133,43 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
               <p className="text-gray-700">{period.description}</p>
             </div>
           </div>
+
+          {/* Period Navigation */}
+          {(previousPeriod || nextPeriod) && (
+            <div className="flex justify-between items-center mb-8 bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
+              <div className="flex-1">
+                {previousPeriod && (
+                  <Link
+                    href={`/periods/${previousPeriod.slug}`}
+                    className="flex items-center text-blue-600 hover:text-blue-800 group"
+                  >
+                    <span className="mr-2">←</span>
+                    <div>
+                      <div className="text-sm text-gray-500">Previous Period</div>
+                      <div className="font-semibold group-hover:underline">{previousPeriod.name}</div>
+                      <div className="text-sm text-gray-600">{previousPeriod.dateRange}</div>
+                    </div>
+                  </Link>
+                )}
+              </div>
+              
+              <div className="flex-1 text-right">
+                {nextPeriod && (
+                  <Link
+                    href={`/periods/${nextPeriod.slug}`}
+                    className="flex items-center justify-end text-blue-600 hover:text-blue-800 group"
+                  >
+                    <div className="text-right">
+                      <div className="text-sm text-gray-500">Next Period</div>
+                      <div className="font-semibold group-hover:underline">{nextPeriod.name}</div>
+                      <div className="text-sm text-gray-600">{nextPeriod.dateRange}</div>
+                    </div>
+                    <span className="ml-2">→</span>
+                  </Link>
+                )}
+              </div>
+            </div>
+          )}
 
           {/* Navigation Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -235,7 +226,13 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
               <h3 className="text-lg font-semibold text-gray-800 mb-4">Featured Events</h3>
               <div className="space-y-3">
                 {events.slice(0, 3).map(event => (
-                  <EventCard key={event.id} event={event} showDescription={false} className="p-3" />
+                  <EventCard 
+                    key={event.id} 
+                    event={event} 
+                    showDescription={false} 
+                    className="p-3"
+                    locationName={eventLocationNames[event.id]}
+                  />
                 ))}
                 {events.length > 3 && (
                   <Link

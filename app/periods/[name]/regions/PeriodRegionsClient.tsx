@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { isWithinDateRange } from '../../../utils/date-parsing';
 import { RegionCard } from '../../../components/ui';
@@ -17,6 +17,12 @@ interface PeriodRegionsClientProps {
 }
 
 export function PeriodRegionsClient({ period, allRegions }: PeriodRegionsClientProps) {
+  const [fromTimeline, setFromTimeline] = useState(false);
+  
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    setFromTimeline(urlParams.get('from') === 'timeline');
+  }, []);
   // Date filtering state
   const [minYear, setMinYear] = useState<number | null>(null);
   const [maxYear, setMaxYear] = useState<number | null>(null);
@@ -40,17 +46,19 @@ export function PeriodRegionsClient({ period, allRegions }: PeriodRegionsClientP
               <p className="text-gray-600">{period.dateRange}</p>
             </div>
             <div className="flex gap-2">
+              {!fromTimeline && (
+                <Link
+                  href={`/periods/${period.slug}`}
+                  className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm font-medium transition-colors"
+                >
+                  ← Back to Period
+                </Link>
+              )}
               <Link
-                href={`/periods/${period.slug}`}
-                className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm font-medium transition-colors"
-              >
-                ← Back to Period
-              </Link>
-              <Link
-                href="/"
+                href={fromTimeline ? `/#period-${period.slug}` : "/"}
                 className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
-                Timeline
+                {fromTimeline ? "← Back to Timeline" : "Timeline"}
               </Link>
             </div>
           </div>

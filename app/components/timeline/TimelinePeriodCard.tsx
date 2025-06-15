@@ -3,20 +3,12 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import type { BiblicalPerson, BiblicalEvent, BiblicalRegion, TimelinePeriod } from '../../types/biblical';
 import { getBibleUrl, getRegionStudyUrl, isElementVisible, scrollToElementWithOffset } from '../../utils';
 
-interface PersonCardProps {
-  person: BiblicalPerson;
-  searchParams: URLSearchParams;
-  onPersonClick: (person: BiblicalPerson) => void;
-}
 
-function PersonCard({ person, searchParams, onPersonClick }: PersonCardProps) {
-  const selectedPersonId = searchParams.get('selected')?.split(':')[1];
-  const isSelected = selectedPersonId === person.id;
-  
+function PersonCard({ person }: { person: BiblicalPerson }) {
   const getColorScheme = (person: BiblicalPerson) => {
     if (['GOD_FATHER', 'JESUS'].includes(person.id)) {
       return { bg: 'bg-yellow-200', border: 'border-yellow-400', text: 'text-yellow-800' };
@@ -41,33 +33,19 @@ function PersonCard({ person, searchParams, onPersonClick }: PersonCardProps) {
   
   const colors = getColorScheme(person);
   
-  const handlePersonClick = () => {
-    onPersonClick(person);
-  };
-  
   return (
     <div className="inline-block mb-2">
-      <div 
-        className={`px-2 py-1 rounded border cursor-pointer transition-all duration-200 hover:shadow-md text-xs ${
-          isSelected 
-            ? 'bg-indigo-50 border-indigo-500 shadow-lg ring-2 ring-indigo-300' 
-            : `${colors.bg} ${colors.border}`
-        }`}
-        onClick={handlePersonClick}
+      <a 
+        href={`/people/${person.id}`}
+        className={`block px-2 py-1 rounded border cursor-pointer transition-all duration-200 hover:shadow-md text-xs ${colors.bg} ${colors.border}`}
         data-person-id={person.id}
       >
         <div className="flex items-center">
-          <span className={`font-medium ${
-            isSelected ? 'text-indigo-900 font-bold' : 'text-gray-800'
-          }`}>{person.name}</span>
-          {person.created && <span className={`ml-1 ${
-            isSelected ? 'text-yellow-600' : 'text-orange-600'
-          }`} title="Created by God">⭐</span>}
-          {person.translated && <span className={`ml-1 ${
-            isSelected ? 'text-cyan-600' : 'text-cyan-600'
-          }`} title="Translated (taken up without death)">↗️</span>}
+          <span className="font-medium text-gray-800">{person.name}</span>
+          {person.created && <span className="ml-1 text-orange-600" title="Created by God">⭐</span>}
+          {person.translated && <span className="ml-1 text-cyan-600" title="Translated (taken up without death)">↗️</span>}
         </div>
-      </div>
+      </a>
     </div>
   );
 }
@@ -80,7 +58,6 @@ interface TimelinePeriodCardProps {
   showEvents: boolean;
   showPeople: boolean;
   showRegions: boolean;
-  onPersonClick: (person: BiblicalPerson) => void;
   onEventClick: (event: BiblicalEvent) => void;
   onRegionClick: (region: BiblicalRegion) => void;
   showPeriodEvents: (periodName: string) => void;
@@ -96,7 +73,6 @@ export function TimelinePeriodCard({
   showEvents,
   showPeople,
   showRegions,
-  onPersonClick,
   onEventClick,
   onRegionClick,
   showPeriodEvents,
@@ -104,7 +80,6 @@ export function TimelinePeriodCard({
   showPeriodRegions
 }: TimelinePeriodCardProps) {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
   const periodEvents = events.filter(event => {
@@ -234,31 +209,42 @@ export function TimelinePeriodCard({
   }, [searchParams, periodSlug, periodEvents, relevantRegions]);
 
   return (
-    <div className={`rounded-lg border-2 ${period.color} shadow-lg mb-8`} data-period-id={periodSlug}>
+    <div className={`rounded-lg border-2 ${period.color} shadow-lg mb-8`} data-period-id={periodSlug} id={`period-${periodSlug}`}>
       {/* Sticky Period Header */}
       <div className="sticky top-[120px] lg:top-[180px] z-20 bg-white border-b-2 border-gray-200 rounded-t-lg">
-        <div className={`p-4 ${period.color} rounded-t-lg`}>
+        <div className={`p-4 ${period.color} rounded-t-lg relative group`}>
           <h3 className="text-2xl font-bold text-gray-800 mb-1">
-            <button
+            <a
+              href={`/periods/${periodSlug}`}
               className="text-left hover:text-blue-600 hover:underline cursor-pointer"
-              onClick={() => {
-                const newSearchParams = new URLSearchParams(searchParams);
-                newSearchParams.set('selected', `period:${periodSlug}`);
-                router.push(`/?${newSearchParams.toString()}`, { scroll: false });
-                
-                // Only scroll if period not visible
-                setTimeout(() => {
-                  const element = document.querySelector(`[data-period-id="${periodSlug}"]`);
-                  if (element && !isElementVisible(element)) {
-                    scrollToElementWithOffset(element, 180, 0);
-                  }
-                }, 100);
-              }}
             >
               {period.name}
-            </button>
+            </a>
           </h3>
           <p className="text-lg font-semibold text-gray-700">{period.dateRange}</p>
+          
+          {/* Copy Link Button */}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              const url = `${window.location.origin}/#period-${periodSlug}`;
+              navigator.clipboard.writeText(url);
+              
+              // Show temporary feedback
+              const button = e.currentTarget as HTMLButtonElement;
+              const originalText = button.innerHTML;
+              button.innerHTML = '✓';
+              button.classList.add('bg-green-100', 'text-green-600');
+              setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.remove('bg-green-100', 'text-green-600');
+              }, 1000);
+            }}
+            className="absolute top-2 right-2 w-6 h-6 bg-white border border-gray-300 rounded-full shadow-sm hover:shadow-md transition-all duration-200 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xs text-gray-600 hover:text-gray-800"
+            title="Copy link to this period on timeline"
+          >
+            🔗
+          </button>
         </div>
       </div>
       
@@ -339,13 +325,13 @@ export function TimelinePeriodCard({
                           {event.participants.slice(0, 3).map(participantId => {
                             const person = getPersonById(participantId);
                             return person ? (
-                              <button
+                              <a
                                 key={participantId}
-                                onClick={() => onPersonClick(person)}
-                                className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded mr-1 mb-1 hover:bg-blue-200"
+                                href={`/people/${person.id}`}
+                                className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded mr-1 mb-1 hover:bg-blue-200 inline-block"
                               >
                                 {person.name}
-                              </button>
+                              </a>
                             ) : null;
                           })}
                           {event.participants.length > 3 && (
@@ -379,7 +365,7 @@ export function TimelinePeriodCard({
                   {Array.from(allParticipants).slice(0, 12).map(participantId => {
                     const person = getPersonById(participantId);
                     return person ? (
-                      <PersonCard key={participantId} person={person} searchParams={searchParams} onPersonClick={onPersonClick} />
+                      <PersonCard key={participantId} person={person} />
                     ) : null;
                   })}
                   {allParticipants.size > 12 && (
@@ -446,13 +432,13 @@ export function TimelinePeriodCard({
                           {region.notable_people.slice(0, 3).map(personId => {
                             const person = getPersonById(personId);
                             return person ? (
-                              <button
+                              <a
                                 key={personId}
-                                onClick={() => onPersonClick(person)}
-                                className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded mr-1 mb-1 hover:bg-blue-200"
+                                href={`/people/${person.id}`}
+                                className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded mr-1 mb-1 hover:bg-blue-200 inline-block"
                               >
                                 {person.name}
-                              </button>
+                              </a>
                             ) : null;
                           })}
                         </div>

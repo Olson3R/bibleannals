@@ -3,11 +3,10 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { scrollToElementWithOffset } from '../utils';
 import { isWithinDateRange } from '../utils/date-parsing';
 import { TimelinePeriodCard } from './timeline';
-import { PersonDetails } from './ui';
 import { SearchResultsDisplay } from './search';
+import { DateRangeSlider } from './ui/DateRangeSlider';
 
 interface BiblicalPerson {
   id: string;
@@ -50,16 +49,6 @@ interface BiblicalRegion {
 
 
 
-// Utility function to check if element is visible in viewport
-function isElementVisible(element: Element) {
-  const rect = element.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-}
 
 export function BiblicalTimeline({ 
   events, 
@@ -74,7 +63,6 @@ export function BiblicalTimeline({
   const getPersonById = (id: string) => persons.find(p => p.id === id);
   
   // State for timeline features
-  const [selectedPerson, setSelectedPerson] = useState<BiblicalPerson | null>(null);
   const [showEvents, setShowEvents] = useState(true);
   const [showPeople, setShowPeople] = useState(true);
   const [showRegions, setShowRegions] = useState(true);
@@ -93,7 +81,7 @@ export function BiblicalTimeline({
       setTimeout(() => {
         const searchResultsElement = document.getElementById('search-results');
         if (searchResultsElement) {
-          scrollToElementWithOffset(searchResultsElement, 180, 0);
+          searchResultsElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }, 100);
     } else if (!searchTerm) {
@@ -101,41 +89,29 @@ export function BiblicalTimeline({
     }
   }, [searchTerm, prevSearchTerm]);
 
-  // Handle person click - scroll to person card in timeline only if not visible
-  const handlePersonClick = (person: BiblicalPerson) => {
-    setSelectedPerson(person);
-    // Only scroll if the person card is not visible in the timeline
-    setTimeout(() => {
-      const element = document.querySelector(`[data-person-id="${person.id}"]`);
-      if (element && !isElementVisible(element)) {
-        scrollToElementWithOffset(element, 180, 0);
-      }
-    }, 100);
-  };
 
   // Navigation functions
   const showPeriodEvents = (periodName: string) => {
     const slug = periodName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-    router.push(`/periods/${slug}/events`);
+    router.push(`/periods/${slug}/events?from=timeline`);
   };
 
   const showPeriodPeople = (periodName: string) => {
     const slug = periodName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-    router.push(`/periods/${slug}/people`);
+    router.push(`/periods/${slug}/people?from=timeline`);
   };
 
   const showPeriodRegions = (periodName: string) => {
     const slug = periodName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-    router.push(`/periods/${slug}/regions`);
+    router.push(`/periods/${slug}/regions?from=timeline`);
   };
 
-
   const showEventDetail = (event: BiblicalEvent) => {
-    router.push(`/events/${event.id}`);
+    router.push(`/events/${event.id}?from=timeline`);
   };
 
   const showRegionDetail = (region: BiblicalRegion) => {
-    router.push(`/regions/${region.id}`);
+    router.push(`/regions/${region.id}?from=timeline`);
   };
 
 
@@ -338,76 +314,22 @@ export function BiblicalTimeline({
             </div>
             
             {/* Date Range Filter */}
-            <div className="flex items-center gap-2 text-sm">
-              <span className="text-gray-700 font-medium">📅</span>
-              <div className="flex items-center gap-1">
-                <input
-                  type="number"
-                  placeholder="4004"
-                  value={minYear ? Math.abs(minYear) : ''}
-                  onChange={(e) => {
-                    const val = e.target.value ? parseInt(e.target.value) : null;
-                    setMinYear(val ? (minEra === 'BC' ? -Math.abs(val) : Math.abs(val)) : null);
-                  }}
-                  className="w-12 px-1 py-1 text-xs border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-transparent"
-                />
-                <select
-                  value={minEra}
-                  onChange={(e) => {
-                    const newEra = e.target.value as 'BC' | 'AD';
-                    setMinEra(newEra);
-                    if (minYear) {
-                      setMinYear(newEra === 'BC' ? -Math.abs(minYear) : Math.abs(minYear));
-                    }
-                  }}
-                  className="text-xs border border-gray-300 rounded px-1 py-1 focus:ring-1 focus:ring-blue-500 focus:border-transparent"
-                >
-                  <option value="BC">BC</option>
-                  <option value="AD">AD</option>
-                </select>
-              </div>
-              <span className="text-gray-500">-</span>
-              <div className="flex items-center gap-1">
-                <input
-                  type="number"
-                  placeholder="100"
-                  value={maxYear ? Math.abs(maxYear) : ''}
-                  onChange={(e) => {
-                    const val = e.target.value ? parseInt(e.target.value) : null;
-                    setMaxYear(val ? (maxEra === 'BC' ? -Math.abs(val) : Math.abs(val)) : null);
-                  }}
-                  className="w-12 px-1 py-1 text-xs border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-transparent"
-                />
-                <select
-                  value={maxEra}
-                  onChange={(e) => {
-                    const newEra = e.target.value as 'BC' | 'AD';
-                    setMaxEra(newEra);
-                    if (maxYear) {
-                      setMaxYear(newEra === 'BC' ? -Math.abs(maxYear) : Math.abs(maxYear));
-                    }
-                  }}
-                  className="text-xs border border-gray-300 rounded px-1 py-1 focus:ring-1 focus:ring-blue-500 focus:border-transparent"
-                >
-                  <option value="AD">AD</option>
-                  <option value="BC">BC</option>
-                </select>
-              </div>
-              {(minYear || maxYear) && (
-                <button
-                  onClick={() => { 
-                    setMinYear(null); 
-                    setMaxYear(null); 
-                    setMinEra('BC'); 
-                    setMaxEra('AD'); 
-                  }}
-                  className="text-xs text-gray-500 hover:text-gray-700 ml-1"
-                  title="Clear date filter"
-                >
-                  ✕
-                </button>
-              )}
-            </div>
+            <DateRangeSlider
+              minYear={minYear}
+              maxYear={maxYear}
+              minEra={minEra}
+              maxEra={maxEra}
+              onMinYearChange={setMinYear}
+              onMaxYearChange={setMaxYear}
+              onMinEraChange={setMinEra}
+              onMaxEraChange={setMaxEra}
+              onReset={() => {
+                setMinYear(null);
+                setMaxYear(null);
+                setMinEra('BC');
+                setMaxEra('AD');
+              }}
+            />
             
             {/* Content Toggles in Header - Compact for Mobile */}
             <div className="flex gap-2 lg:gap-4">
@@ -476,7 +398,7 @@ export function BiblicalTimeline({
                 onClick={(e) => {
                   e.preventDefault();
                   const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-                  const url = `${window.location.origin}/periods/${periodSlug}`;
+                  const url = `${window.location.origin}/#period-${periodSlug}`;
                   navigator.clipboard.writeText(url);
                   
                   // Show temporary feedback
@@ -490,7 +412,7 @@ export function BiblicalTimeline({
                   }, 1000);
                 }}
                 className="absolute -top-2 -right-2 w-6 h-6 bg-white border border-gray-300 rounded-full shadow-sm hover:shadow-md transition-all duration-200 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xs text-gray-600 hover:text-gray-800"
-                title="Copy direct link"
+                title="Copy link to this period on timeline"
               >
                 🔗
               </button>
@@ -501,118 +423,36 @@ export function BiblicalTimeline({
       </div>
 
       {/* Main Timeline Content */}
-      <div className="flex flex-col lg:flex-row gap-8">
-        {/* Left Content */}
-        <div className="flex-1">
-          <div className="relative">
-            {/* Vertical Timeline Line */}
-            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-300"></div>
-            
-            {timelinePeriods
-              .filter(period => isWithinDateRange(period.dateRange, minYear, maxYear))
-              .map((period, index) => (
-              <div key={index} className="relative mb-16">
-                {/* Timeline dot */}
-                <div className="absolute left-6 w-5 h-5 bg-white border-4 border-gray-600 rounded-full z-10 shadow-lg"></div>
-                
-                {/* Content */}
-                <div className="ml-20">
-                  <TimelinePeriodCard
-                    period={period}
-                    events={events}
-                    regions={regions}
-                    getPersonById={getPersonById}
-                    showEvents={showEvents}
-                    showPeople={showPeople}
-                    showRegions={showRegions}
-                    onPersonClick={handlePersonClick}
-                    onEventClick={showEventDetail}
-                    onRegionClick={showRegionDetail}
-                    showPeriodEvents={showPeriodEvents}
-                    showPeriodPeople={showPeriodPeople}
-                    showPeriodRegions={showPeriodRegions}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Right Sidebar - Person Details */}
-        {selectedPerson && (
-          <>
-            {/* Desktop Sidebar */}
-            <div className="hidden lg:block lg:w-80 xl:w-96">
-              <div className="sticky top-[140px] lg:top-[200px] h-[calc(100vh-160px)] lg:h-[calc(100vh-220px)] flex flex-col">
-                <div className="bg-blue-50 rounded-lg p-4 mb-4 shadow-sm border border-blue-200">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-lg font-bold text-blue-800">Selected Person</h3>
-                    <button
-                      onClick={() => setSelectedPerson(null)}
-                      className="text-gray-500 hover:text-gray-700 text-xl font-bold"
-                      title="Clear selection"
-                    >
-                      ×
-                    </button>
-                  </div>
-                  <p className="text-sm text-blue-700 font-medium">{selectedPerson.name}</p>
-                </div>
-                
-                {/* Scrollable Content */}
-                <div className="flex-1 overflow-y-auto p-1 pb-1">
-                  <PersonDetails
-                    person={selectedPerson}
-                    allPersons={persons}
-                    allEvents={events}
-                  />
-                </div>
-              </div>
-            </div>
-            
-            {/* Mobile Modal Overlay */}
-            <div className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50" onClick={() => setSelectedPerson(null)}>
-              <div className="fixed bottom-0 left-0 right-0 max-h-[80vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-                <div className="bg-white rounded-t-xl p-4 shadow-lg">
-                  <div className="bg-blue-50 rounded-lg p-4 mb-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-lg font-bold text-blue-800">Selected Person</h3>
-                      <button
-                        onClick={() => setSelectedPerson(null)}
-                        className="text-gray-500 hover:text-gray-700 text-xl font-bold"
-                        title="Clear selection"
-                      >
-                        ×
-                      </button>
-                    </div>
-                    <p className="text-sm text-blue-700 font-medium">{selectedPerson.name}</p>
-                  </div>
-                  <PersonDetails
-                    person={selectedPerson}
-                    allPersons={persons}
-                    allEvents={events}
-                  />
-                </div>
-              </div>
-            </div>
-          </>
-        )}
+      <div className="relative">
+        {/* Vertical Timeline Line */}
+        <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-300"></div>
         
-        {/* Desktop Empty State */}
-        {!selectedPerson && (
-          <div className="hidden lg:block lg:w-80 xl:w-96">
-            <div className="sticky top-[140px] lg:top-[200px] h-[calc(100vh-160px)] lg:h-[calc(100vh-220px)]">
-              <div className="text-center bg-gray-50 rounded-xl p-8 border border-gray-200 h-full flex flex-col justify-center">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">Person Details</h3>
-                <p className="text-gray-600 mb-4">
-                  Click on any person in the timeline to see detailed information about them.
-                </p>
-                <p className="text-sm text-gray-500">
-                  Includes family relationships, biblical references, and biographical information.
-                </p>
-              </div>
+        {timelinePeriods
+          .filter(period => isWithinDateRange(period.dateRange, minYear, maxYear))
+          .map((period, index) => (
+          <div key={index} className="relative mb-16">
+            {/* Timeline dot */}
+            <div className="absolute left-6 w-5 h-5 bg-white border-4 border-gray-600 rounded-full z-10 shadow-lg"></div>
+            
+            {/* Content */}
+            <div className="ml-20">
+              <TimelinePeriodCard
+                period={period}
+                events={events}
+                regions={regions}
+                getPersonById={getPersonById}
+                showEvents={showEvents}
+                showPeople={showPeople}
+                showRegions={showRegions}
+                onEventClick={showEventDetail}
+                onRegionClick={showRegionDetail}
+                showPeriodEvents={showPeriodEvents}
+                showPeriodPeople={showPeriodPeople}
+                showPeriodRegions={showPeriodRegions}
+              />
             </div>
           </div>
-        )}
+        ))}
       </div>
 
       {/* Color Legend */}

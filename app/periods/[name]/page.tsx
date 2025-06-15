@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getTimelinePeriods, getPeriodEvents, getPeriodPeople, getPeriodRegions } from '../../utils/data-loader';
+import { getLocationName } from '../../utils/location-resolver';
 import { PeriodClient } from './PeriodClient';
 
 interface PeriodPageProps {
@@ -25,6 +26,12 @@ export default function PeriodPage({ params }: PeriodPageProps) {
   const events = getPeriodEvents(period.name);
   const people = getPeriodPeople(period.name);
   const regions = getPeriodRegions(period.name);
+  const allPeriods = getTimelinePeriods();
+
+  // Create a map of event IDs to resolved location names
+  const eventLocationNames = Object.fromEntries(
+    events.map(event => [event.id, getLocationName(event.location)])
+  );
 
   return (
     <PeriodClient 
@@ -32,6 +39,8 @@ export default function PeriodPage({ params }: PeriodPageProps) {
       events={events}
       people={people}
       regions={regions}
+      allPeriods={allPeriods}
+      eventLocationNames={eventLocationNames}
     />
   );
 }
