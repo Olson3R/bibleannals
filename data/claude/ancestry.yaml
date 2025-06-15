@@ -334,8 +334,8 @@ biblical_persons:
     gender: male
     ethnicity: "Hebrew"
     age: 175y
-    birth_date: "~2166 BC"
-    death_date: "~1991 BC"
+    birth_date: "1951 BC"
+    death_date: "1776 BC"
     parents:
       - TERAH
     spouses:

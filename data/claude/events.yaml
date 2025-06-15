@@ -159,14 +159,15 @@ biblical_events:
 
   - id: COVENANT_WITH_ABRAHAM
     name: God's Covenant with Abraham
-    date: "~2081 BC"
+    date: "1876 BC"
     location: CANAAN
-    description: "God makes a covenant with Abraham, promising to make him a great nation"
+    description: "God makes a covenant with Abraham, promising to make him a great nation and that his descendants would leave Egypt after 430 years"
     participants:
       - GOD_FATHER
       - ABRAHAM
     references:
       - GEN.15.1-21.KJV
+      - EXO.12.40.KJV
 
   - id: ABRAHAM_NAME_CHANGE
     name: Abraham's Name Changed
@@ -525,14 +526,15 @@ biblical_events:
 
   - id: THE_EXODUS
     name: The Exodus from Egypt
-    date: "~1491 BC"
+    date: "1446 BC"
     location: EGYPT
-    description: "The Israelites leave Egypt after 430 years of sojourning"
+    description: "The Israelites leave Egypt after 430 years from God's covenant with Abraham (1876-1446 BC)"
     participants:
       - MOSES
       - AARON
     references:
       - EXO.12.31-51.KJV
+      - 1KI.6.1.KJV
 
   - id: RED_SEA_CROSSING
     name: Crossing the Red Sea
