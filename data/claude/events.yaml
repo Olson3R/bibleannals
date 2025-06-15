@@ -3890,6 +3890,114 @@ biblical_events:
     references:
       - MAR.10.46-52.KJV
 
+  - id: HEALING_WITHERED_HAND
+    name: Healing the Man with Withered Hand
+    date: "~28 AD"
+    location: SYNAGOGUE
+    description: "Jesus heals a man with a withered hand on the Sabbath"
+    participants:
+      - JESUS
+    references:
+      - MAT.12.9-14.KJV
+      - MAR.3.1-6.KJV
+
+  - id: HEALING_WOMAN_BLEEDING
+    name: Healing Woman with Issue of Blood
+    date: "~29 AD"
+    location: GALILEE
+    description: "Woman with 12-year bleeding issue is healed by touching Jesus' garment"
+    participants:
+      - JESUS
+    references:
+      - MAT.9.20-22.KJV
+      - MAR.5.25-34.KJV
+
+  - id: HEALING_DEAF_MUTE
+    name: Healing the Deaf and Mute Man
+    date: "~29 AD"
+    location: DECAPOLIS
+    description: "Jesus heals a deaf man with speech impediment"
+    participants:
+      - JESUS
+    references:
+      - MAR.7.31-37.KJV
+
+  - id: CASTING_OUT_LEGION
+    name: Casting Out Legion of Demons
+    date: "~28 AD"
+    location: GADARA
+    description: "Jesus casts legion of demons from a man into swine"
+    participants:
+      - JESUS
+    references:
+      - MAT.8.28-34.KJV
+      - MAR.5.1-20.KJV
+      - LUK.8.26-39.KJV
+
+  - id: HEALING_BLIND_BORN
+    name: Healing Man Born Blind
+    date: "~29 AD"
+    location: JERUSALEM
+    description: "Jesus heals a man born blind by making clay with spittle"
+    participants:
+      - JESUS
+    references:
+      - JOH.9.1-41.KJV
+
+  - id: HEALING_SYROPHOENICIAN_DAUGHTER
+    name: Healing Syrophoenician Woman's Daughter
+    date: "~29 AD"
+    location: TYRE_AND_SIDON
+    description: "Jesus heals a Gentile woman's daughter possessed by demon"
+    participants:
+      - JESUS
+    references:
+      - MAT.15.21-28.KJV
+      - MAR.7.24-30.KJV
+
+  - id: FEEDING_FOUR_THOUSAND
+    name: Feeding the Four Thousand
+    date: "~29 AD"
+    location: DECAPOLIS
+    description: "Jesus feeds 4000 people with seven loaves and few fish"
+    participants:
+      - JESUS
+    references:
+      - MAT.15.32-39.KJV
+      - MAR.8.1-10.KJV
+
+  - id: HEALING_DROPSICAL_MAN
+    name: Healing Man with Dropsy
+    date: "~29 AD"
+    location: PHARISEE_HOUSE
+    description: "Jesus heals a man with dropsy on the Sabbath"
+    participants:
+      - JESUS
+    references:
+      - LUK.14.1-6.KJV
+
+  - id: CLEANSING_TEN_LEPERS
+    name: Cleansing Ten Lepers
+    date: "~30 AD"
+    location: SAMARIA
+    description: "Jesus cleanses ten lepers, only one Samaritan returns to thank Him"
+    participants:
+      - JESUS
+    references:
+      - LUK.17.11-19.KJV
+
+  - id: HEALING_SERVANTS_EAR
+    name: Healing Malchus' Ear
+    date: "~30 AD"
+    location: GETHSEMANE
+    description: "Jesus heals the ear of the high priest's servant cut off by Peter"
+    participants:
+      - JESUS
+      - PETER
+    references:
+      - LUK.22.50-51.KJV
+      - JOH.18.10-11.KJV
+
   - id: TRANSFIGURATION
     name: Transfiguration of Jesus
     date: "~29 AD"
