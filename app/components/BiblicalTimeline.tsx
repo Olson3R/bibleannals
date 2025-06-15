@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { scrollToElementWithOffset } from '../utils';
 import { isWithinDateRange } from '../utils/date-parsing';
@@ -459,26 +460,41 @@ export function BiblicalTimeline({
             .filter(period => isWithinDateRange(period.dateRange, minYear, maxYear))
             .map((period, index) => {
             return (
-            <button
-              key={index}
-              className={`px-4 py-2 rounded-full border-2 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer ${period.color}`}
-              onClick={() => {
-                const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-                
-                // Only scroll to the period if it's not visible
-                setTimeout(() => {
-                  const element = document.querySelector(`[data-period-id="${periodSlug}"]`);
-                  if (element && !isElementVisible(element)) {
-                    scrollToElementWithOffset(element, 180, 0);
-                  }
-                }, 100);
-              }}
-            >
-              <div className="text-center">
-                <div className="font-semibold text-sm text-gray-800">{period.name}</div>
-                <div className="text-xs text-gray-600">{period.dateRange}</div>
-              </div>
-            </button>
+            <div key={index} className="relative group">
+              <Link
+                href={`/periods/${period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')}`}
+                className={`block px-4 py-2 rounded-full border-2 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer ${period.color}`}
+              >
+                <div className="text-center">
+                  <div className="font-semibold text-sm text-gray-800">{period.name}</div>
+                  <div className="text-xs text-gray-600">{period.dateRange}</div>
+                </div>
+              </Link>
+              
+              {/* Copy Link Button */}
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+                  const url = `${window.location.origin}/periods/${periodSlug}`;
+                  navigator.clipboard.writeText(url);
+                  
+                  // Show temporary feedback
+                  const button = e.currentTarget as HTMLButtonElement;
+                  const originalText = button.innerHTML;
+                  button.innerHTML = '✓';
+                  button.classList.add('bg-green-100', 'text-green-600');
+                  setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('bg-green-100', 'text-green-600');
+                  }, 1000);
+                }}
+                className="absolute -top-2 -right-2 w-6 h-6 bg-white border border-gray-300 rounded-full shadow-sm hover:shadow-md transition-all duration-200 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xs text-gray-600 hover:text-gray-800"
+                title="Copy direct link"
+              >
+                🔗
+              </button>
+            </div>
           );
           })}
         </div>
