@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { isWithinDateRange } from '../utils/date-parsing';
@@ -146,20 +146,34 @@ export function BiblicalTimeline({
     }
   }, []);
 
-  // Track whether we're updating from URL to prevent loops
-  const isUpdatingFromUrl = useRef(false);
 
-  // Function to update URL parameters with loop prevention
+  // Function to update URL parameters
   const updateUrlParamsWithState = useCallback((params: Record<string, string | null>) => {
-    isUpdatingFromUrl.current = true;
     updateUrlParams(params);
-    // Reset flag after URL update
-    setTimeout(() => {
-      isUpdatingFromUrl.current = false;
-    }, 0);
   }, [updateUrlParams]);
 
+  // Combined update function for year and era changes
+  const updateDateRange = useCallback((type: 'min' | 'max', year: number | null, era: 'BC' | 'AD') => {
+    if (type === 'min') {
+      setMinYear(year);
+      setMinEra(era);
+      updateUrlParamsWithState({ 
+        minYear: year?.toString() ?? null,
+        minEra: era 
+      });
+    } else {
+      setMaxYear(year);
+      setMaxEra(era);
+      updateUrlParamsWithState({ 
+        maxYear: year?.toString() ?? null,
+        maxEra: era 
+      });
+    }
+  }, [updateUrlParamsWithState]);
+
   // Sync URL params to state (for browser back/forward navigation only)
+  // TEMPORARILY DISABLED TO TEST SLIDER ISSUE
+  /*
   useEffect(() => {
     if (isUpdatingFromUrl.current) return;
 
@@ -179,6 +193,7 @@ export function BiblicalTimeline({
     if (urlMinEra !== minEra) setMinEra(urlMinEra);
     if (urlMaxEra !== maxEra) setMaxEra(urlMaxEra);
   }, [searchParams]); // Only depend on searchParams
+  */
 
 
   // Navigation functions
@@ -362,6 +377,7 @@ export function BiblicalTimeline({
               maxYear={maxYear}
               minEra={minEra}
               maxEra={maxEra}
+              onDateRangeChange={updateDateRange}
               onMinYearChange={(year) => {
                 setMinYear(year);
                 updateUrlParamsWithState({ minYear: year?.toString() ?? null });

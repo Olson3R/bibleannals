@@ -11,6 +11,7 @@ interface DateRangeSliderProps {
   onMaxYearChange: (year: number | null) => void;
   onMinEraChange: (era: 'BC' | 'AD') => void;
   onMaxEraChange: (era: 'BC' | 'AD') => void;
+  onDateRangeChange?: (type: 'min' | 'max', year: number | null, era: 'BC' | 'AD') => void;
   onReset: () => void;
 }
 
@@ -23,6 +24,7 @@ export function DateRangeSlider({
   onMaxYearChange,
   onMinEraChange,
   onMaxEraChange,
+  onDateRangeChange,
   onReset
 }: DateRangeSliderProps) {
   // Convert BC/AD years to a linear scale for the slider
@@ -59,22 +61,14 @@ export function DateRangeSlider({
   const sliderRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState<'min' | 'max' | null>(null);
   
-  // Track pending changes during drag
-  const [pendingMinValue, setPendingMinValue] = useState<number | null>(null);
-  const [pendingMaxValue, setPendingMaxValue] = useState<number | null>(null);
-  
   useEffect(() => {
     const newValue = yearToSliderValue(minYear, minEra);
     setMinSliderValue(newValue);
-    // Clear pending value if parent state changed externally
-    setPendingMinValue(null);
   }, [minYear, minEra, yearToSliderValue]);
   
   useEffect(() => {
     const newValue = yearToSliderValue(maxYear, maxEra);
     setMaxSliderValue(newValue);
-    // Clear pending value if parent state changed externally
-    setPendingMaxValue(null);
   }, [maxYear, maxEra, yearToSliderValue]);
   
   const handleSliderChange = useCallback((clientX: number) => {
@@ -87,13 +81,35 @@ export function DateRangeSlider({
     if (isDragging === 'min') {
       const newValue = Math.min(value, maxSliderValue - 1);
       setMinSliderValue(newValue);
-      setPendingMinValue(newValue);
+      const { year, era } = sliderValueToYear(newValue);
+      
+      if (onDateRangeChange) {
+        // Use combined update function
+        onDateRangeChange('min', era === 'BC' ? -year : year, era);
+      } else {
+        // Fallback to separate calls
+        onMinYearChange(era === 'BC' ? -year : year);
+        if (era !== minEra) {
+          onMinEraChange(era);
+        }
+      }
     } else if (isDragging === 'max') {
       const newValue = Math.max(value, minSliderValue + 1);
       setMaxSliderValue(newValue);
-      setPendingMaxValue(newValue);
+      const { year, era } = sliderValueToYear(newValue);
+      
+      if (onDateRangeChange) {
+        // Use combined update function
+        onDateRangeChange('max', era === 'BC' ? -year : year, era);
+      } else {
+        // Fallback to separate calls
+        onMaxYearChange(era === 'BC' ? -year : year);
+        if (era !== maxEra) {
+          onMaxEraChange(era);
+        }
+      }
     }
-  }, [isDragging, maxSliderValue, minSliderValue, TOTAL_RANGE]);
+  }, [isDragging, maxSliderValue, minSliderValue, TOTAL_RANGE, sliderValueToYear, onMinYearChange, onMinEraChange, onMaxYearChange, onMaxEraChange, onDateRangeChange, minEra, maxEra]);
   
   const handleMouseDown = (type: 'min' | 'max') => (e: React.MouseEvent) => {
     e.preventDefault();
@@ -108,19 +124,6 @@ export function DateRangeSlider({
     };
     
     const handleMouseUp = () => {
-      // Call parent handlers with final values when drag ends
-      if (pendingMinValue !== null) {
-        const { year, era } = sliderValueToYear(pendingMinValue);
-        onMinYearChange(era === 'BC' ? -year : year);
-        onMinEraChange(era);
-        setPendingMinValue(null);
-      }
-      if (pendingMaxValue !== null) {
-        const { year, era } = sliderValueToYear(pendingMaxValue);
-        onMaxYearChange(era === 'BC' ? -year : year);
-        onMaxEraChange(era);
-        setPendingMaxValue(null);
-      }
       setIsDragging(null);
     };
     
@@ -133,7 +136,7 @@ export function DateRangeSlider({
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [isDragging, handleSliderChange, pendingMinValue, pendingMaxValue, sliderValueToYear, onMinYearChange, onMinEraChange, onMaxYearChange, onMaxEraChange]);
+  }, [isDragging, handleSliderChange]);
   
   const minPercentage = (minSliderValue / TOTAL_RANGE) * 100;
   const maxPercentage = (maxSliderValue / TOTAL_RANGE) * 100;
