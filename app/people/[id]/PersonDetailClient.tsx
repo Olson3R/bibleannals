@@ -6,15 +6,15 @@ import type { BiblicalPerson, BiblicalEvent } from '../../types/biblical';
 
 interface PersonDetailClientProps {
   person: BiblicalPerson;
-  allPersons: BiblicalPerson[];
-  allEvents: BiblicalEvent[];
+  relatedPersons: BiblicalPerson[];
+  relatedEvents: BiblicalEvent[];
   personPeriod: string | null;
 }
 
 export function PersonDetailClient({ 
   person, 
-  allPersons, 
-  allEvents, 
+  relatedPersons, 
+  relatedEvents, 
   personPeriod
 }: PersonDetailClientProps) {
   const [fromTimeline, setFromTimeline] = useState(false);
@@ -78,8 +78,8 @@ export function PersonDetailClient({
         <div className="max-w-4xl mx-auto">
           <PersonDetails
             person={person}
-            allPersons={allPersons}
-            allEvents={allEvents}
+            relatedPersons={relatedPersons}
+            relatedEvents={relatedEvents}
           />
         </div>
       </div>

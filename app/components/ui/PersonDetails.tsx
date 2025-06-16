@@ -7,30 +7,39 @@ import { EventCard } from './EventCard';
 
 interface PersonDetailsProps {
   person: BiblicalPerson;
-  allPersons: BiblicalPerson[];
-  allEvents: BiblicalEvent[];
+  relatedPersons?: BiblicalPerson[];
+  relatedEvents?: BiblicalEvent[];
+  // Legacy support for existing usage
+  allPersons?: BiblicalPerson[];
+  allEvents?: BiblicalEvent[];
   onBackClick?: () => void;
 }
 
 export function PersonDetails({ 
   person, 
+  relatedPersons,
+  relatedEvents,
   allPersons, 
   allEvents, 
   onBackClick 
 }: PersonDetailsProps) {
-  const parents = person.parents?.map(id => 
-    allPersons.find(p => p.id === id)
-  ).filter((p): p is BiblicalPerson => p !== undefined) || [];
-  
-  const children = allPersons.filter(p => p.parents?.includes(person.id));
-  const spouses = person.spouses?.map(id => 
-    allPersons.find(p => p.id === id)
-  ).filter((p): p is BiblicalPerson => p !== undefined) || [];
-  
-  // Find events this person participated in
-  const personEvents = allEvents.filter(event => 
+  // Use optimized data if available, fall back to legacy approach
+  const personsData = relatedPersons || allPersons || [];
+  const eventsData = relatedEvents || (allEvents?.filter(event => 
     event.participants.includes(person.id)
-  ).slice(0, 10); // Limit to 10 most relevant events
+  ).slice(0, 10)) || [];
+  
+  const parents = person.parents?.map(id => 
+    personsData.find(p => p.id === id)
+  ).filter((p): p is BiblicalPerson => p !== undefined) || [];
+  
+  const children = personsData.filter(p => p.parents?.includes(person.id));
+  const spouses = person.spouses?.map(id => 
+    personsData.find(p => p.id === id)
+  ).filter((p): p is BiblicalPerson => p !== undefined) || [];
+  
+  // Use pre-calculated events or filter from all events
+  const personEvents = eventsData;
 
 
   const colorScheme = getPersonColorScheme(person);
