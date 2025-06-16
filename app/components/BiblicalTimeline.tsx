@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { isWithinDateRange } from '../utils/date-parsing';
 import { calculateDateRangeFromPeriods } from '../utils/date-range';
+import { scrollToElementWithOffset } from '../utils/scroll';
 import { TimelinePeriodCard } from './timeline';
 import { SearchResultsDisplay } from './search';
 import { DateRangeSlider, NavLink } from './ui';
@@ -102,12 +103,10 @@ export function BiblicalTimeline({
   useEffect(() => {
     if (searchTerm && searchTerm !== prevSearchTerm) {
       setPrevSearchTerm(searchTerm);
-      setTimeout(() => {
-        const searchResultsElement = document.getElementById('search-results');
-        if (searchResultsElement) {
-          searchResultsElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
+      const searchResultsElement = document.getElementById('search-results');
+      if (searchResultsElement) {
+        scrollToElementWithOffset(searchResultsElement, 120, 100); // 120px offset for header
+      }
     } else if (!searchTerm) {
       setPrevSearchTerm('');
     }

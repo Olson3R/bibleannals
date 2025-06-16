@@ -101,6 +101,7 @@ A comprehensive interactive timeline website showcasing biblical people, events,
 2. Ensure responsive design works on all screen sizes
 3. Test search and filtering functionality
 4. Verify biblical accuracy of any content changes
+5. Make sure content isn't initially hidden underneath sticky headers.
 
 ### After Making Changes
 1. **Always run `npm run build`** to ensure the project compiles
