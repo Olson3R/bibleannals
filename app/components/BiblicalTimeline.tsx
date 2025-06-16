@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { isWithinDateRange } from '../utils/date-parsing';
+import { calculateDateRangeFromPeriods } from '../utils/date-range';
 import { TimelinePeriodCard } from './timeline';
 import { SearchResultsDisplay } from './search';
 import { DateRangeSlider, NavLink } from './ui';
@@ -64,6 +65,9 @@ export function BiblicalTimeline({
 }) {
   const router = useRouter();
   const getPersonById = (id: string) => persons.find(p => p.id === id);
+  
+  // Get dynamic date range from timeline periods data
+  const { minYear: dataMinYear, maxYear: dataMaxYear } = calculateDateRangeFromPeriods(timelinePeriods);
   
   // Use the date filter hook
   const {
@@ -146,6 +150,19 @@ export function BiblicalTimeline({
     if (periodSlug) {
       params.set('period', periodSlug);
     }
+    // Include current date filter parameters
+    if (minYear !== null) {
+      params.set('minYear', minYear.toString());
+    }
+    if (maxYear !== null) {
+      params.set('maxYear', maxYear.toString());
+    }
+    if (minEra !== 'BC') {
+      params.set('minEra', minEra);
+    }
+    if (maxEra !== 'AD') {
+      params.set('maxEra', maxEra);
+    }
     router.push(`/events/${event.id}?${params.toString()}`);
   };
 
@@ -153,6 +170,19 @@ export function BiblicalTimeline({
     const params = new URLSearchParams({ from: 'timeline' });
     if (periodSlug) {
       params.set('period', periodSlug);
+    }
+    // Include current date filter parameters
+    if (minYear !== null) {
+      params.set('minYear', minYear.toString());
+    }
+    if (maxYear !== null) {
+      params.set('maxYear', maxYear.toString());
+    }
+    if (minEra !== 'BC') {
+      params.set('minEra', minEra);
+    }
+    if (maxEra !== 'AD') {
+      params.set('maxEra', maxEra);
     }
     router.push(`/regions/${region.id}?${params.toString()}`);
   };
@@ -312,6 +342,8 @@ export function BiblicalTimeline({
               onMinEraChange={setMinEra}
               onMaxEraChange={setMaxEra}
               onReset={resetFilter}
+              dataMinYear={dataMinYear}
+              dataMaxYear={dataMaxYear}
             />
             
             {/* Content Toggles in Header - Compact for Mobile */}

@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { getTimelinePeriods, getPeriodEvents } from '../../../utils/data-loader';
 import { getLocationName } from '../../../utils/location-resolver';
+import { calculateDateRangeFromPeriods } from '../../../utils/date-range';
 import { PeriodEventsClient } from './PeriodEventsClient';
 
 interface PeriodEventsPageProps {
@@ -18,13 +19,15 @@ export async function generateStaticParams() {
 }
 
 export default function PeriodEventsPage({ params }: PeriodEventsPageProps) {
-  const period = getTimelinePeriods().find(p => p.slug === params.name);
+  const allPeriods = getTimelinePeriods();
+  const period = allPeriods.find(p => p.slug === params.name);
   
   if (!period) {
     notFound();
   }
 
   const allEvents = getPeriodEvents(period.name);
+  const { minYear: dataMinYear, maxYear: dataMaxYear } = calculateDateRangeFromPeriods(allPeriods);
 
   // Create a map of event IDs to resolved location names
   const eventLocationNames = Object.fromEntries(
@@ -37,6 +40,8 @@ export default function PeriodEventsPage({ params }: PeriodEventsPageProps) {
         period={period}
         allEvents={allEvents}
         eventLocationNames={eventLocationNames}
+        dataMinYear={dataMinYear}
+        dataMaxYear={dataMaxYear}
       />
     </Suspense>
   );

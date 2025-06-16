@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { NavLink } from './NavLink';
 import type { BiblicalPerson } from '../../types/biblical';
 
 interface PersonCardProps {
@@ -33,7 +33,7 @@ export function PersonCard({ person, className = '', showDates = false, periodSl
     : `/people/${person.id}`;
 
   return (
-    <Link
+    <NavLink
       href={href}
       className={`block px-3 py-2 rounded-lg border ${colorScheme.bg} ${colorScheme.border} ${colorScheme.text} hover:shadow-md transition-shadow ${className}`}
     >
@@ -53,6 +53,6 @@ export function PersonCard({ person, className = '', showDates = false, periodSl
           )}
         </div>
       </div>
-    </Link>
+    </NavLink>
   );
 }

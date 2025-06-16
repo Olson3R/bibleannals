@@ -15,9 +15,11 @@ interface PeriodRegionsClientProps {
     description: string;
   };
   allRegions: BiblicalRegion[];
+  dataMinYear: number;
+  dataMaxYear: number;
 }
 
-export function PeriodRegionsClient({ period, allRegions }: PeriodRegionsClientProps) {
+export function PeriodRegionsClient({ period, allRegions, dataMinYear, dataMaxYear }: PeriodRegionsClientProps) {
   const [fromTimeline, setFromTimeline] = useState(false);
   
   useEffect(() => {
@@ -90,6 +92,8 @@ export function PeriodRegionsClient({ period, allRegions }: PeriodRegionsClientP
               onMinEraChange={setMinEra}
               onMaxEraChange={setMaxEra}
               onReset={resetFilter}
+              dataMinYear={dataMinYear}
+              dataMaxYear={dataMaxYear}
             />
           </div>
         </div>

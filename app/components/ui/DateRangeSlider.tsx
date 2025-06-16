@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 
 interface DateRangeSliderProps {
   minYear: number | null;
@@ -13,6 +13,8 @@ interface DateRangeSliderProps {
   onMaxEraChange: (era: 'BC' | 'AD') => void;
   onDateRangeChange?: (type: 'min' | 'max', year: number | null, era: 'BC' | 'AD') => void;
   onReset: () => void;
+  dataMinYear?: number; // Optional: actual minimum year in the data
+  dataMaxYear?: number; // Optional: actual maximum year in the data
 }
 
 export function DateRangeSlider({
@@ -25,14 +27,14 @@ export function DateRangeSlider({
   onMinEraChange,
   onMaxEraChange,
   onDateRangeChange,
-  onReset
+  onReset,
+  dataMinYear = -4004, // Default to 4004 BC
+  dataMaxYear = 60      // Default to 60 AD
 }: DateRangeSliderProps) {
-  // Convert BC/AD years to a linear scale for the slider
-  // BC years are positive, AD years are negative for easier comparison
-  // For slider: 4004 BC = 0, 1 BC = 4003, 1 AD = 4004, 100 AD = 4103
-  const BC_START = 4004;
-  const AD_END = 100;
-  const TOTAL_RANGE = BC_START + AD_END; // 4104 years total
+  // Calculate dynamic range based on actual data
+  const BC_START = Math.abs(dataMinYear); // e.g., 4004 for 4004 BC
+  const AD_END = Math.max(0, dataMaxYear); // e.g., 60 for 60 AD
+  const TOTAL_RANGE = BC_START + AD_END; // Total years span
   
   const yearToSliderValue = useCallback((year: number | null, era: 'BC' | 'AD'): number => {
     if (year === null) return era === 'BC' ? 0 : TOTAL_RANGE;
@@ -160,7 +162,7 @@ export function DateRangeSlider({
               const val = e.target.value ? parseInt(e.target.value) : null;
               onMinYearChange(val ? (minEra === 'BC' ? -Math.abs(val) : Math.abs(val)) : null);
             }}
-            className="w-12 px-1 py-1 border border-gray-300 rounded text-center focus:ring-1 focus:ring-blue-500 focus:border-transparent"
+            className="w-16 px-1 py-1 border border-gray-300 rounded text-center focus:ring-1 focus:ring-blue-500 focus:border-transparent"
           />
           <select
             value={minEra}
@@ -185,7 +187,7 @@ export function DateRangeSlider({
               const val = e.target.value ? parseInt(e.target.value) : null;
               onMaxYearChange(val ? (maxEra === 'BC' ? -Math.abs(val) : Math.abs(val)) : null);
             }}
-            className="w-12 px-1 py-1 border border-gray-300 rounded text-center focus:ring-1 focus:ring-blue-500 focus:border-transparent"
+            className="w-16 px-1 py-1 border border-gray-300 rounded text-center focus:ring-1 focus:ring-blue-500 focus:border-transparent"
           />
           <select
             value={maxEra}
@@ -245,13 +247,117 @@ export function DateRangeSlider({
           />
         </div>
         
-        {/* Minimal scale markers - only show on larger screens */}
-        <div className="hidden sm:flex absolute w-full top-2 justify-between text-xs text-gray-400">
-          <span>4004BC</span>
-          <span>1AD</span>
-          <span>100AD</span>
-        </div>
+        {/* Dynamic scale markers - only show on larger screens */}
+        <DynamicScaleMarkers
+          bcStart={BC_START}
+          adEnd={AD_END}
+          totalRange={TOTAL_RANGE}
+        />
       </div>
+    </div>
+  );
+}
+
+interface DynamicScaleMarkersProps {
+  bcStart: number;
+  adEnd: number;
+  totalRange: number;
+}
+
+function DynamicScaleMarkers({ bcStart, adEnd, totalRange }: DynamicScaleMarkersProps) {
+  const markers = useMemo(() => {
+    const result: { position: number; label: string; key: string }[] = [];
+    
+    // Always include the start point
+    result.push({
+      position: 0,
+      label: `${bcStart}BC`,
+      key: 'start'
+    });
+    
+    // Handle AD markers with overlap detection
+    if (adEnd > 0) {
+      const adStartPosition = (bcStart / totalRange) * 100;
+      const adEndPosition = 100;
+      
+      // Check if 1AD and end AD would overlap (minimum 20% apart for AD markers)
+      const adSpacing = adEndPosition - adStartPosition;
+      
+      if (adSpacing >= 20) {
+        // Enough space for both markers
+        result.push({
+          position: adStartPosition,
+          label: '1AD',
+          key: 'ad-start'
+        });
+        result.push({
+          position: adEndPosition,
+          label: `${adEnd}AD`,
+          key: 'end'
+        });
+      } else {
+        // Too close - only show the end marker
+        result.push({
+          position: adEndPosition,
+          label: `${adEnd}AD`,
+          key: 'end'
+        });
+      }
+    }
+    
+    // Add intermediate BC markers, but only if they don't overlap
+    const bcRange = bcStart;
+    const intervals = [1000, 500, 250, 100]; // Try different intervals
+    
+    for (const interval of intervals) {
+      const potentialMarkers: { position: number; label: string; key: string }[] = [];
+      
+      // Generate markers at this interval
+      for (let year = interval; year < bcRange; year += interval) {
+        const position = ((bcRange - year) / totalRange) * 100;
+        potentialMarkers.push({
+          position,
+          label: `${year}BC`,
+          key: `bc-${year}`
+        });
+      }
+      
+      // Check if these markers would have enough space (minimum 15% apart)
+      const allMarkers = [...result, ...potentialMarkers].sort((a, b) => a.position - b.position);
+      let hasOverlap = false;
+      
+      for (let i = 1; i < allMarkers.length; i++) {
+        if (allMarkers[i].position - allMarkers[i - 1].position < 15) {
+          hasOverlap = true;
+          break;
+        }
+      }
+      
+      if (!hasOverlap) {
+        result.push(...potentialMarkers);
+        break; // Use this interval and stop trying smaller ones
+      }
+    }
+    
+    return result.sort((a, b) => a.position - b.position);
+  }, [bcStart, adEnd, totalRange]);
+  
+  return (
+    <div className="hidden sm:flex absolute w-full top-2 text-xs text-gray-400">
+      {markers.map((marker) => (
+        <span
+          key={marker.key}
+          style={{
+            position: 'absolute',
+            left: `${marker.position}%`,
+            transform: marker.position === 0 ? 'translateX(0%)' : 
+                      marker.position === 100 ? 'translateX(-100%)' : 
+                      'translateX(-50%)'
+          }}
+        >
+          {marker.label}
+        </span>
+      ))}
     </div>
   );
 }

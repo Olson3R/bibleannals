@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { loadTimelineData, getPersonById } from '../../utils/data-loader';
 import { getPersonPeriod } from '../../utils/period-detection';
@@ -27,11 +28,13 @@ export default function PersonPage({ params }: PersonPageProps) {
   const personPeriod = getPersonPeriod(params.id);
 
   return (
-    <PersonDetailClient
-      person={person}
-      allPersons={data.persons}
-      allEvents={data.events}
-      personPeriod={personPeriod}
-    />
+    <Suspense fallback={<div className="flex justify-center items-center min-h-screen">Loading...</div>}>
+      <PersonDetailClient
+        person={person}
+        allPersons={data.persons}
+        allEvents={data.events}
+        personPeriod={personPeriod}
+      />
+    </Suspense>
   );
 }

@@ -4,6 +4,7 @@ import { EventCard, PersonCard, RegionCard, NavLink } from '../../components/ui'
 import { DateRangeSlider } from '../../components/ui/DateRangeSlider';
 import { useDateFilter } from '../../hooks/useDateFilter';
 import { isWithinDateRange } from '../../utils/date-parsing';
+import { calculateDateRangeFromPeriods } from '../../utils/date-range';
 
 interface BiblicalPerson {
   id: string;
@@ -73,6 +74,9 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
     updateDateRange,
     resetFilter
   } = useDateFilter();
+  
+  // Get dynamic date range from timeline periods data
+  const { minYear: dataMinYear, maxYear: dataMaxYear } = calculateDateRangeFromPeriods(allPeriods);
 
   // Find adjacent periods for navigation
   const currentIndex = allPeriods.findIndex(p => p.slug === period.slug);
@@ -115,6 +119,8 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
               onMinEraChange={setMinEra}
               onMaxEraChange={setMaxEra}
               onReset={resetFilter}
+              dataMinYear={dataMinYear}
+              dataMaxYear={dataMaxYear}
             />
             
             <NavLink

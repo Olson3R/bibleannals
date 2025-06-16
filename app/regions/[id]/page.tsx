@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { loadTimelineData, getRegionById, getPersonById } from '../../utils/data-loader';
 import { getRegionPeriod } from '../../utils/period-detection';
@@ -41,12 +42,14 @@ export default function RegionPage({ params }: RegionPageProps) {
   const regionStudyUrl = getRegionStudyUrl(region.name);
 
   return (
-    <RegionDetailClient
-      region={region}
-      regionPeriod={regionPeriod}
-      regionPeriods={regionPeriods}
-      notablePeople={notablePeople}
-      regionStudyUrl={regionStudyUrl}
-    />
+    <Suspense fallback={<div className="flex justify-center items-center min-h-screen">Loading...</div>}>
+      <RegionDetailClient
+        region={region}
+        regionPeriod={regionPeriod}
+        regionPeriods={regionPeriods}
+        notablePeople={notablePeople}
+        regionStudyUrl={regionStudyUrl}
+      />
+    </Suspense>
   );
 }

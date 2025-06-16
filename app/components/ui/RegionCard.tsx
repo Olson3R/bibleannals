@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { NavLink } from './NavLink';
 import type { BiblicalRegion } from '../../types/biblical';
 
 interface RegionCardProps {
@@ -14,7 +14,7 @@ export function RegionCard({ region, className = '', showDescription = true, per
     : `/regions/${region.id}`;
     
   return (
-    <Link
+    <NavLink
       href={href}
       className={`block p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 hover:shadow-md transition-all ${className}`}
     >
@@ -23,6 +23,6 @@ export function RegionCard({ region, className = '', showDescription = true, per
       {showDescription && (
         <div className="text-sm text-gray-700 mt-2 line-clamp-2">{region.description}</div>
       )}
-    </Link>
+    </NavLink>
   );
 }

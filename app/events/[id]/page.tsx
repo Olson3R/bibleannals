@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { loadTimelineData, getEventById, getPersonById } from '../../utils/data-loader';
 import { getEventPeriod } from '../../utils/period-detection';
@@ -54,11 +55,13 @@ export default function EventPage({ params }: EventPageProps) {
   }));
 
   return (
-    <EventDetailClient
-      event={event}
-      eventPeriod={eventPeriod}
-      participants={participants}
-      bibleReferences={bibleReferences}
-    />
+    <Suspense fallback={<div className="flex justify-center items-center min-h-screen">Loading...</div>}>
+      <EventDetailClient
+        event={event}
+        eventPeriod={eventPeriod}
+        participants={participants}
+        bibleReferences={bibleReferences}
+      />
+    </Suspense>
   );
 }

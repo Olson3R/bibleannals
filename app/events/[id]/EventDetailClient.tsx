@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { NavLink } from '../../components/ui';
 import type { BiblicalEvent, BiblicalPerson } from '../../types/biblical';
 
 interface EventDetailClientProps {
@@ -62,12 +62,12 @@ export function EventDetailClient({
               <p className="text-gray-600">Event Details</p>
             </div>
             <div className="flex gap-2">
-              <Link
+              <NavLink
                 href={backUrl}
                 className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 {backButtonText}
-              </Link>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -103,13 +103,13 @@ export function EventDetailClient({
                   <span className="font-semibold text-gray-600">Participants:</span>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {participants.map(person => (
-                      <a
+                      <NavLink
                         key={person.id}
                         href={`/people/${person.id}${fromTimeline && timelinePeriodSlug ? `?from=timeline&period=${timelinePeriodSlug}` : ''}`}
                         className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm hover:bg-blue-200 transition-colors"
                       >
                         {person.name}
-                      </a>
+                      </NavLink>
                     ))}
                   </div>
                 </div>

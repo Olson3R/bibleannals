@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { getTimelinePeriods, getPeriodRegions } from '../../../utils/data-loader';
+import { calculateDateRangeFromPeriods } from '../../../utils/date-range';
 import { PeriodRegionsClient } from './PeriodRegionsClient';
 
 interface PeriodRegionsPageProps {
@@ -17,19 +18,23 @@ export async function generateStaticParams() {
 }
 
 export default function PeriodRegionsPage({ params }: PeriodRegionsPageProps) {
-  const period = getTimelinePeriods().find(p => p.slug === params.name);
+  const allPeriods = getTimelinePeriods();
+  const period = allPeriods.find(p => p.slug === params.name);
   
   if (!period) {
     notFound();
   }
 
   const allRegions = getPeriodRegions(period.name);
+  const { minYear: dataMinYear, maxYear: dataMaxYear } = calculateDateRangeFromPeriods(allPeriods);
 
   return (
     <Suspense fallback={<div className="flex justify-center items-center min-h-screen">Loading...</div>}>
       <PeriodRegionsClient 
         period={period}
         allRegions={allRegions}
+        dataMinYear={dataMinYear}
+        dataMaxYear={dataMaxYear}
       />
     </Suspense>
   );

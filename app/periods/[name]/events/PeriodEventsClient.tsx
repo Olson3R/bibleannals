@@ -17,9 +17,11 @@ interface PeriodEventsClientProps {
   };
   allEvents: BiblicalEvent[];
   eventLocationNames: Record<string, string>;
+  dataMinYear: number;
+  dataMaxYear: number;
 }
 
-export function PeriodEventsClient({ period, allEvents, eventLocationNames }: PeriodEventsClientProps) {
+export function PeriodEventsClient({ period, allEvents, eventLocationNames, dataMinYear, dataMaxYear }: PeriodEventsClientProps) {
   const [fromTimeline, setFromTimeline] = useState(false);
   
   useEffect(() => {
@@ -92,6 +94,8 @@ export function PeriodEventsClient({ period, allEvents, eventLocationNames }: Pe
               onMinEraChange={setMinEra}
               onMaxEraChange={setMaxEra}
               onReset={resetFilter}
+              dataMinYear={dataMinYear}
+              dataMaxYear={dataMaxYear}
             />
           </div>
         </div>

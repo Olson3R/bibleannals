@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { NavLink } from '../../components/ui';
 import type { BiblicalRegion, BiblicalPerson, TimelinePeriod } from '../../types/biblical';
 
 interface RegionDetailClientProps {
@@ -66,12 +66,12 @@ export function RegionDetailClient({
               <p className="text-gray-600">Region Details</p>
             </div>
             <div className="flex gap-2">
-              <Link
+              <NavLink
                 href={backUrl}
                 className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 {backButtonText}
-              </Link>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -112,13 +112,13 @@ export function RegionDetailClient({
                   <span className="font-semibold text-gray-600">Historical Periods:</span>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {regionPeriods.map((period) => (
-                      <Link
+                      <NavLink
                         key={period.slug}
                         href={`/periods/${period.slug}`}
                         className={`px-3 py-1 rounded-full text-sm hover:opacity-80 transition-all ${period.color} border-2`}
                       >
                         {period.name}
-                      </Link>
+                      </NavLink>
                     ))}
                   </div>
                 </div>
@@ -129,13 +129,13 @@ export function RegionDetailClient({
                   <span className="font-semibold text-gray-600">Notable People:</span>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {notablePeople.map(person => (
-                      <a
+                      <NavLink
                         key={person.id}
                         href={`/people/${person.id}${fromTimeline && timelinePeriodSlug ? `?from=timeline&period=${timelinePeriodSlug}` : ''}`}
                         className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm hover:bg-blue-200 transition-colors"
                       >
                         {person.name}
-                      </a>
+                      </NavLink>
                     ))}
                   </div>
                 </div>

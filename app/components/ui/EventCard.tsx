@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { NavLink } from './NavLink';
 import type { BiblicalEvent } from '../../types/biblical';
 
 interface EventCardProps {
@@ -17,7 +17,7 @@ export function EventCard({ event, className = '', showDescription = true, locat
     : `/events/${event.id}`;
   
   return (
-    <Link
+    <NavLink
       href={href}
       className={`block p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 hover:shadow-md transition-all ${className}`}
     >
@@ -26,6 +26,6 @@ export function EventCard({ event, className = '', showDescription = true, locat
       {showDescription && (
         <div className="text-sm text-gray-700 mt-2 line-clamp-2">{event.description}</div>
       )}
-    </Link>
+    </NavLink>
   );
 }

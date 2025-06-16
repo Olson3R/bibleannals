@@ -4,6 +4,7 @@
 
 import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { NavLink } from '../ui';
 import type { BiblicalPerson, BiblicalEvent, BiblicalRegion, TimelinePeriod } from '../../types/biblical';
 import { getBibleUrl, getRegionStudyUrl, isElementVisible, scrollToElementWithOffset } from '../../utils';
 import { isWithinDateRange } from '../../utils/date-parsing';
@@ -36,7 +37,7 @@ function PersonCard({ person, periodSlug }: { person: BiblicalPerson; periodSlug
   
   return (
     <div className="inline-block mb-2">
-      <a 
+      <NavLink 
         href={`/people/${person.id}?from=timeline&period=${periodSlug || ''}`}
         className={`block px-2 py-1 rounded border cursor-pointer transition-all duration-200 hover:shadow-md text-xs ${colors.bg} ${colors.border}`}
         data-person-id={person.id}
@@ -46,7 +47,7 @@ function PersonCard({ person, periodSlug }: { person: BiblicalPerson; periodSlug
           {person.created && <span className="ml-1 text-orange-600" title="Created by God">⭐</span>}
           {person.translated && <span className="ml-1 text-cyan-600" title="Translated (taken up without death)">↗️</span>}
         </div>
-      </a>
+      </NavLink>
     </div>
   );
 }
@@ -232,12 +233,12 @@ export function TimelinePeriodCard({
       <div className="sticky top-[120px] lg:top-[180px] z-20 bg-white border-b-2 border-gray-200 rounded-t-lg">
         <div className={`p-4 ${period.color} rounded-t-lg relative group`}>
           <h3 className="text-2xl font-bold text-gray-800 mb-1">
-            <a
+            <NavLink
               href={`/periods/${periodSlug}`}
               className="text-left hover:text-blue-600 hover:underline cursor-pointer"
             >
               {period.name}
-            </a>
+            </NavLink>
           </h3>
           <p className="text-lg font-semibold text-gray-700">{period.dateRange}</p>
           
@@ -343,13 +344,13 @@ export function TimelinePeriodCard({
                           {event.participants.slice(0, 3).map(participantId => {
                             const person = getPersonById(participantId);
                             return person ? (
-                              <a
+                              <NavLink
                                 key={participantId}
                                 href={`/people/${person.id}?from=timeline&period=${periodSlug}`}
                                 className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded mr-1 mb-1 hover:bg-blue-200 inline-block"
                               >
                                 {person.name}
-                              </a>
+                              </NavLink>
                             ) : null;
                           })}
                           {event.participants.length > 3 && (
@@ -450,13 +451,13 @@ export function TimelinePeriodCard({
                           {region.notable_people.slice(0, 3).map(personId => {
                             const person = getPersonById(personId);
                             return person ? (
-                              <a
+                              <NavLink
                                 key={personId}
                                 href={`/people/${person.id}?from=timeline&period=${periodSlug}`}
                                 className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded mr-1 mb-1 hover:bg-blue-200 inline-block"
                               >
                                 {person.name}
-                              </a>
+                              </NavLink>
                             ) : null;
                           })}
                         </div>

@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { PersonDetails } from '../../components/ui';
+import { NavLink, PersonDetails } from '../../components/ui';
 import type { BiblicalPerson, BiblicalEvent } from '../../types/biblical';
 
 interface PersonDetailClientProps {
@@ -63,12 +62,12 @@ export function PersonDetailClient({
               <p className="text-gray-600">Person Details</p>
             </div>
             <div className="flex gap-2">
-              <Link
+              <NavLink
                 href={backUrl}
                 className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 {backButtonText}
-              </Link>
+              </NavLink>
             </div>
           </div>
         </div>

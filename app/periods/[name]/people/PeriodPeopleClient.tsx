@@ -15,9 +15,11 @@ interface PeriodPeopleClientProps {
     description: string;
   };
   allPeople: BiblicalPerson[];
+  dataMinYear: number;
+  dataMaxYear: number;
 }
 
-export function PeriodPeopleClient({ period, allPeople }: PeriodPeopleClientProps) {
+export function PeriodPeopleClient({ period, allPeople, dataMinYear, dataMaxYear }: PeriodPeopleClientProps) {
   const [fromTimeline, setFromTimeline] = useState(false);
   
   useEffect(() => {
@@ -90,6 +92,8 @@ export function PeriodPeopleClient({ period, allPeople }: PeriodPeopleClientProp
               onMinEraChange={setMinEra}
               onMaxEraChange={setMaxEra}
               onReset={resetFilter}
+              dataMinYear={dataMinYear}
+              dataMaxYear={dataMaxYear}
             />
           </div>
         </div>
