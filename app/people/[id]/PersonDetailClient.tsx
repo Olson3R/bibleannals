@@ -8,6 +8,7 @@ interface PersonDetailClientProps {
   person: BiblicalPerson;
   relatedPersons: BiblicalPerson[];
   relatedEvents: BiblicalEvent[];
+  eventLocationNames: Record<string, string>;
   personPeriod: string | null;
 }
 
@@ -15,6 +16,7 @@ export function PersonDetailClient({
   person, 
   relatedPersons, 
   relatedEvents, 
+  eventLocationNames,
   personPeriod
 }: PersonDetailClientProps) {
   const [fromTimeline, setFromTimeline] = useState(false);
@@ -80,6 +82,7 @@ export function PersonDetailClient({
             person={person}
             relatedPersons={relatedPersons}
             relatedEvents={relatedEvents}
+            eventLocationNames={eventLocationNames}
           />
         </div>
       </div>

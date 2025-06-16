@@ -41,12 +41,18 @@ export default function PersonPage({ params }: PersonPageProps) {
     .filter(event => event.participants.includes(person.id))
     .slice(0, 10);
 
+  // Create location names mapping for events
+  const eventLocationNames = Object.fromEntries(
+    relatedEvents.map(event => [event.id, data.regions.find(r => r.id === event.location)?.name || event.location])
+  );
+
   return (
     <Suspense fallback={<div className="flex justify-center items-center min-h-screen">Loading...</div>}>
       <PersonDetailClient
         person={person}
         relatedPersons={relatedPersons}
         relatedEvents={relatedEvents}
+        eventLocationNames={eventLocationNames}
         personPeriod={personPeriod}
       />
     </Suspense>

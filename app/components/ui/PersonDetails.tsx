@@ -9,6 +9,7 @@ interface PersonDetailsProps {
   person: BiblicalPerson;
   relatedPersons?: BiblicalPerson[];
   relatedEvents?: BiblicalEvent[];
+  eventLocationNames?: Record<string, string>;
   // Legacy support for existing usage
   allPersons?: BiblicalPerson[];
   allEvents?: BiblicalEvent[];
@@ -19,6 +20,7 @@ export function PersonDetails({
   person, 
   relatedPersons,
   relatedEvents,
+  eventLocationNames,
   allPersons, 
   allEvents, 
   onBackClick 
@@ -165,7 +167,11 @@ export function PersonDetails({
           <h3 className="text-lg font-semibold text-gray-800 mb-4">📅 Events Participated In</h3>
           <div className="space-y-3">
             {personEvents.map(event => (
-              <EventCard key={event.id} event={event} />
+              <EventCard 
+                key={event.id} 
+                event={event} 
+                locationName={eventLocationNames?.[event.id]} 
+              />
             ))}
           </div>
         </div>
