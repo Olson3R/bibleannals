@@ -59,12 +59,22 @@ export function DateRangeSlider({
   const sliderRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState<'min' | 'max' | null>(null);
   
+  // Track pending changes during drag
+  const [pendingMinValue, setPendingMinValue] = useState<number | null>(null);
+  const [pendingMaxValue, setPendingMaxValue] = useState<number | null>(null);
+  
   useEffect(() => {
-    setMinSliderValue(yearToSliderValue(minYear, minEra));
+    const newValue = yearToSliderValue(minYear, minEra);
+    setMinSliderValue(newValue);
+    // Clear pending value if parent state changed externally
+    setPendingMinValue(null);
   }, [minYear, minEra, yearToSliderValue]);
   
   useEffect(() => {
-    setMaxSliderValue(yearToSliderValue(maxYear, maxEra));
+    const newValue = yearToSliderValue(maxYear, maxEra);
+    setMaxSliderValue(newValue);
+    // Clear pending value if parent state changed externally
+    setPendingMaxValue(null);
   }, [maxYear, maxEra, yearToSliderValue]);
   
   const handleSliderChange = useCallback((clientX: number) => {
@@ -77,17 +87,13 @@ export function DateRangeSlider({
     if (isDragging === 'min') {
       const newValue = Math.min(value, maxSliderValue - 1);
       setMinSliderValue(newValue);
-      const { year, era } = sliderValueToYear(newValue);
-      onMinYearChange(year);
-      onMinEraChange(era);
+      setPendingMinValue(newValue);
     } else if (isDragging === 'max') {
       const newValue = Math.max(value, minSliderValue + 1);
       setMaxSliderValue(newValue);
-      const { year, era } = sliderValueToYear(newValue);
-      onMaxYearChange(year);
-      onMaxEraChange(era);
+      setPendingMaxValue(newValue);
     }
-  }, [isDragging, maxSliderValue, minSliderValue, TOTAL_RANGE, sliderValueToYear, onMinYearChange, onMinEraChange, onMaxYearChange, onMaxEraChange]);
+  }, [isDragging, maxSliderValue, minSliderValue, TOTAL_RANGE]);
   
   const handleMouseDown = (type: 'min' | 'max') => (e: React.MouseEvent) => {
     e.preventDefault();
@@ -102,6 +108,19 @@ export function DateRangeSlider({
     };
     
     const handleMouseUp = () => {
+      // Call parent handlers with final values when drag ends
+      if (pendingMinValue !== null) {
+        const { year, era } = sliderValueToYear(pendingMinValue);
+        onMinYearChange(era === 'BC' ? -year : year);
+        onMinEraChange(era);
+        setPendingMinValue(null);
+      }
+      if (pendingMaxValue !== null) {
+        const { year, era } = sliderValueToYear(pendingMaxValue);
+        onMaxYearChange(era === 'BC' ? -year : year);
+        onMaxEraChange(era);
+        setPendingMaxValue(null);
+      }
       setIsDragging(null);
     };
     
@@ -114,7 +133,7 @@ export function DateRangeSlider({
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [isDragging, handleSliderChange]);
+  }, [isDragging, handleSliderChange, pendingMinValue, pendingMaxValue, sliderValueToYear, onMinYearChange, onMinEraChange, onMaxYearChange, onMaxEraChange]);
   
   const minPercentage = (minSliderValue / TOTAL_RANGE) * 100;
   const maxPercentage = (maxSliderValue / TOTAL_RANGE) * 100;

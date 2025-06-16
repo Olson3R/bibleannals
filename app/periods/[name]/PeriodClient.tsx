@@ -232,6 +232,7 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
                     showDescription={false} 
                     className="p-3"
                     locationName={eventLocationNames[event.id]}
+                    periodSlug={period.slug}
                   />
                 ))}
                 {events.length > 3 && (
@@ -253,7 +254,7 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
               <h3 className="text-lg font-semibold text-gray-800 mb-4">Featured People</h3>
               <div className="space-y-3">
                 {people.slice(0, 3).map(person => (
-                  <PersonCard key={person.id} person={person} showDates={true} className="p-3" />
+                  <PersonCard key={person.id} person={person} showDates={true} className="p-3" periodSlug={period.slug} />
                 ))}
                 {people.length > 3 && (
                   <Link
@@ -274,7 +275,7 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
               <h3 className="text-lg font-semibold text-gray-800 mb-4">Featured Regions</h3>
               <div className="space-y-3">
                 {regions.slice(0, 3).map(region => (
-                  <RegionCard key={region.id} region={region} showDescription={false} className="p-3" />
+                  <RegionCard key={region.id} region={region} showDescription={false} className="p-3" periodSlug={period.slug} />
                 ))}
                 {regions.length > 3 && (
                   <Link

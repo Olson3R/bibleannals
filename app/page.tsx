@@ -3,6 +3,7 @@ import { promises as fs } from 'fs';
 import yaml from 'js-yaml';
 import path from 'path';
 import { BiblicalTimeline } from './components/BiblicalTimeline';
+import { getTimelinePeriods } from './utils/data-loader';
 
 interface BiblicalPerson {
   id: string;
@@ -68,6 +69,7 @@ export default async function Home() {
   const ancestryData = yaml.load(ancestryContents) as AncestryData;
   const regionsData = yaml.load(regionsContents) as RegionsData;
   const eventsData = yaml.load(eventsContents) as EventsData;
+  const timelinePeriods = getTimelinePeriods();
 
   return (
     <Suspense fallback={<div className="flex justify-center items-center min-h-screen">Loading...</div>}>
@@ -75,6 +77,7 @@ export default async function Home() {
         events={eventsData.biblical_events}
         persons={ancestryData.biblical_persons}
         regions={regionsData.biblical_regions}
+        timelinePeriods={timelinePeriods}
       />
     </Suspense>
   );

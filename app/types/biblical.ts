@@ -42,6 +42,7 @@ export interface BiblicalRegion {
 
 export interface TimelinePeriod {
   name: string;
+  slug: string;
   dateRange: string;
   description: string;
   color: string;

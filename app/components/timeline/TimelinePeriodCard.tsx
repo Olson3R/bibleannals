@@ -6,9 +6,10 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import type { BiblicalPerson, BiblicalEvent, BiblicalRegion, TimelinePeriod } from '../../types/biblical';
 import { getBibleUrl, getRegionStudyUrl, isElementVisible, scrollToElementWithOffset } from '../../utils';
+import { isWithinDateRange } from '../../utils/date-parsing';
 
 
-function PersonCard({ person }: { person: BiblicalPerson }) {
+function PersonCard({ person, periodSlug }: { person: BiblicalPerson; periodSlug?: string }) {
   const getColorScheme = (person: BiblicalPerson) => {
     if (['GOD_FATHER', 'JESUS'].includes(person.id)) {
       return { bg: 'bg-yellow-200', border: 'border-yellow-400', text: 'text-yellow-800' };
@@ -36,7 +37,7 @@ function PersonCard({ person }: { person: BiblicalPerson }) {
   return (
     <div className="inline-block mb-2">
       <a 
-        href={`/people/${person.id}`}
+        href={`/people/${person.id}?from=timeline&period=${periodSlug || ''}`}
         className={`block px-2 py-1 rounded border cursor-pointer transition-all duration-200 hover:shadow-md text-xs ${colors.bg} ${colors.border}`}
         data-person-id={person.id}
       >
@@ -58,11 +59,13 @@ interface TimelinePeriodCardProps {
   showEvents: boolean;
   showPeople: boolean;
   showRegions: boolean;
-  onEventClick: (event: BiblicalEvent) => void;
-  onRegionClick: (region: BiblicalRegion) => void;
+  onEventClick: (event: BiblicalEvent, periodSlug?: string) => void;
+  onRegionClick: (region: BiblicalRegion, periodSlug?: string) => void;
   showPeriodEvents: (periodName: string) => void;
   showPeriodPeople: (periodName: string) => void;
   showPeriodRegions: (periodName: string) => void;
+  minYear?: number | null;
+  maxYear?: number | null;
 }
 
 export function TimelinePeriodCard({
@@ -77,12 +80,15 @@ export function TimelinePeriodCard({
   onRegionClick,
   showPeriodEvents,
   showPeriodPeople,
-  showPeriodRegions
+  showPeriodRegions,
+  minYear,
+  maxYear
 }: TimelinePeriodCardProps) {
   const searchParams = useSearchParams();
   const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
   const periodEvents = events.filter(event => {
+    // First, check if event belongs to this period
     // Parse event date
     let eventYear = parseInt(event.date.replace(/[^\d-]/g, ''));
     const isAD = event.date.includes('AD');
@@ -99,18 +105,30 @@ export function TimelinePeriodCard({
     if (startStr.includes('AD')) startYear = -Math.abs(startYear);
     if (endStr.includes('AD')) endYear = -Math.abs(endYear);
     
+    let belongsToPeriod = false;
+    
     // For periods spanning BC to AD, we need special handling
     if (period.dateRange === "6 BC-60 AD") {
       const eventYearOriginal = parseInt(event.date.replace(/[^\d-]/g, ''));
       if (event.date.includes('BC')) {
-        return eventYearOriginal <= 6;
+        belongsToPeriod = eventYearOriginal <= 6;
       } else if (event.date.includes('AD')) {
-        return eventYearOriginal <= 60;
+        belongsToPeriod = eventYearOriginal <= 60;
       }
+    } else {
+      // Normal filtering for other periods
+      belongsToPeriod = eventYear >= endYear && eventYear <= startYear;
     }
     
-    // Normal filtering for other periods
-    return eventYear >= endYear && eventYear <= startYear;
+    // If event doesn't belong to this period, exclude it
+    if (!belongsToPeriod) return false;
+    
+    // Then, apply the date range filter if specified
+    if (minYear !== null || maxYear !== null) {
+      return isWithinDateRange(event.date, minYear ?? null, maxYear ?? null);
+    }
+    
+    return true;
   }).slice(0, 8); // Limit to 8 events per period
 
   // Get ALL participants from all events in this period (not just the first 8 displayed)
@@ -288,7 +306,7 @@ export function TimelinePeriodCard({
                           className={`text-left hover:underline cursor-pointer ${
                             isEventSelected ? 'text-green-900 hover:text-green-700' : 'hover:text-blue-600'
                           }`}
-                          onClick={() => onEventClick(event)}
+                          onClick={() => onEventClick(event, periodSlug)}
                         >
                           {event.name}
                         </button>
@@ -327,7 +345,7 @@ export function TimelinePeriodCard({
                             return person ? (
                               <a
                                 key={participantId}
-                                href={`/people/${person.id}`}
+                                href={`/people/${person.id}?from=timeline&period=${periodSlug}`}
                                 className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded mr-1 mb-1 hover:bg-blue-200 inline-block"
                               >
                                 {person.name}
@@ -365,7 +383,7 @@ export function TimelinePeriodCard({
                   {Array.from(allParticipants).slice(0, 12).map(participantId => {
                     const person = getPersonById(participantId);
                     return person ? (
-                      <PersonCard key={participantId} person={person} />
+                      <PersonCard key={participantId} person={person} periodSlug={periodSlug} />
                     ) : null;
                   })}
                   {allParticipants.size > 12 && (
@@ -407,7 +425,7 @@ export function TimelinePeriodCard({
                           className={`text-left hover:underline cursor-pointer ${
                             isRegionSelected ? 'text-purple-900 hover:text-purple-700' : 'hover:text-blue-600'
                           }`}
-                          onClick={() => onRegionClick(region)}
+                          onClick={() => onRegionClick(region, periodSlug)}
                         >
                           {region.name}
                         </button>
@@ -434,7 +452,7 @@ export function TimelinePeriodCard({
                             return person ? (
                               <a
                                 key={personId}
-                                href={`/people/${person.id}`}
+                                href={`/people/${person.id}?from=timeline&period=${periodSlug}`}
                                 className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded mr-1 mb-1 hover:bg-blue-200 inline-block"
                               >
                                 {person.name}

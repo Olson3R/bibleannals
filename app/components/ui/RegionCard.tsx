@@ -5,12 +5,17 @@ interface RegionCardProps {
   region: BiblicalRegion;
   className?: string;
   showDescription?: boolean;
+  periodSlug?: string;
 }
 
-export function RegionCard({ region, className = '', showDescription = true }: RegionCardProps) {
+export function RegionCard({ region, className = '', showDescription = true, periodSlug }: RegionCardProps) {
+  const href = periodSlug 
+    ? `/regions/${region.id}?from=period&period=${periodSlug}`
+    : `/regions/${region.id}`;
+    
   return (
     <Link
-      href={`/regions/${region.id}`}
+      href={href}
       className={`block p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 hover:shadow-md transition-all ${className}`}
     >
       <div className="font-medium text-gray-800 hover:text-blue-600">{region.name}</div>

@@ -66,14 +66,14 @@ export function isWithinDateRange(
   minYear: number | null, 
   maxYear: number | null
 ): boolean {
-  if (!minYear && !maxYear) return true; // No filter applied
+  if (minYear === null && maxYear === null) return true; // No filter applied
   
   const { startYear, endYear } = parseDateRange(dateStr);
   if (startYear === null || endYear === null) return true; // Include items with unparseable dates
   
   // Check if the date range overlaps with the filter range
-  const filterMin = minYear || -Infinity;
-  const filterMax = maxYear || Infinity;
+  const filterMin = minYear !== null ? minYear : -Infinity;
+  const filterMax = maxYear !== null ? maxYear : Infinity;
   
   // Ranges overlap if: max(start1, start2) <= min(end1, end2)
   const overlapStart = Math.max(startYear, filterMin);

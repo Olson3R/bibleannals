@@ -8,12 +8,14 @@ interface SearchResultsProps {
   searchTerm: string;
   searchResults: SearchResults;
   totalResults: number;
+  eventLocationNames?: Record<string, string>;
 }
 
 export function SearchResultsDisplay({
   searchTerm,
   searchResults,
   totalResults,
+  eventLocationNames,
 }: SearchResultsProps) {
   if (!searchTerm) return null;
 
@@ -56,7 +58,11 @@ export function SearchResultsDisplay({
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {searchResults.events.map(event => (
-              <EventCard key={event.id} event={event} />
+              <EventCard 
+                key={event.id} 
+                event={event} 
+                locationName={eventLocationNames?.[event.id]}
+              />
             ))}
           </div>
         </div>

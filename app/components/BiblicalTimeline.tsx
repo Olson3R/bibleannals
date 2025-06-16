@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { isWithinDateRange } from '../utils/date-parsing';
 import { TimelinePeriodCard } from './timeline';
 import { SearchResultsDisplay } from './search';
 import { DateRangeSlider } from './ui/DateRangeSlider';
+import type { TimelinePeriod } from '../types/biblical';
 
 interface BiblicalPerson {
   id: string;
@@ -53,14 +54,42 @@ interface BiblicalRegion {
 export function BiblicalTimeline({ 
   events, 
   persons, 
-  regions 
+  regions,
+  timelinePeriods
 }: { 
   events: BiblicalEvent[];
   persons: BiblicalPerson[];
   regions: BiblicalRegion[];
+  timelinePeriods: TimelinePeriod[];
 }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
   const getPersonById = (id: string) => persons.find(p => p.id === id);
+  
+  
+  // Client-side location name resolver
+  const getLocationName = (locationId: string): string => {
+    const region = regions.find(r => r.id === locationId);
+    return region ? region.name : locationId;
+  };
+
+  // Function to update URL parameters
+  const updateUrlParams = useCallback((params: Record<string, string | null>) => {
+    const current = new URLSearchParams(Array.from(searchParams.entries()));
+    
+    Object.entries(params).forEach(([key, value]) => {
+      if (value === null) {
+        current.delete(key);
+      } else {
+        current.set(key, value);
+      }
+    });
+
+    const search = current.toString();
+    const query = search ? `?${search}` : '';
+    router.replace(`${pathname}${query}`, { scroll: false });
+  }, [searchParams, router, pathname]);
   
   // State for timeline features
   const [showEvents, setShowEvents] = useState(true);
@@ -68,10 +97,24 @@ export function BiblicalTimeline({
   const [showRegions, setShowRegions] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [prevSearchTerm, setPrevSearchTerm] = useState('');
-  const [minYear, setMinYear] = useState<number | null>(null);
-  const [maxYear, setMaxYear] = useState<number | null>(null);
-  const [minEra, setMinEra] = useState<'BC' | 'AD'>('BC');
-  const [maxEra, setMaxEra] = useState<'AD' | 'BC'>('AD');
+  
+  // Initialize date filter state from URL parameters
+  const [minYear, setMinYear] = useState<number | null>(() => {
+    const param = searchParams.get('minYear');
+    return param ? parseInt(param, 10) : null;
+  });
+  const [maxYear, setMaxYear] = useState<number | null>(() => {
+    const param = searchParams.get('maxYear');
+    return param ? parseInt(param, 10) : null;
+  });
+  const [minEra, setMinEra] = useState<'BC' | 'AD'>(() => {
+    const param = searchParams.get('minEra');
+    return param === 'AD' ? 'AD' : 'BC';
+  });
+  const [maxEra, setMaxEra] = useState<'AD' | 'BC'>(() => {
+    const param = searchParams.get('maxEra');
+    return param === 'BC' ? 'BC' : 'AD';
+  });
   
 
   // Handle search scroll - scroll to search results when new search is performed
@@ -88,6 +131,54 @@ export function BiblicalTimeline({
       setPrevSearchTerm('');
     }
   }, [searchTerm, prevSearchTerm]);
+
+  // Handle period anchor scrolling on page load
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#period-')) {
+      // Wait for timeline to render, then scroll to the period
+      setTimeout(() => {
+        const element = document.getElementById(hash.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 500); // Increased timeout to ensure timeline is fully rendered
+    }
+  }, []);
+
+  // Track whether we're updating from URL to prevent loops
+  const isUpdatingFromUrl = useRef(false);
+
+  // Function to update URL parameters with loop prevention
+  const updateUrlParamsWithState = useCallback((params: Record<string, string | null>) => {
+    isUpdatingFromUrl.current = true;
+    updateUrlParams(params);
+    // Reset flag after URL update
+    setTimeout(() => {
+      isUpdatingFromUrl.current = false;
+    }, 0);
+  }, [updateUrlParams]);
+
+  // Sync URL params to state (for browser back/forward navigation only)
+  useEffect(() => {
+    if (isUpdatingFromUrl.current) return;
+
+    const newMinYear = searchParams.get('minYear');
+    const newMaxYear = searchParams.get('maxYear');
+    const newMinEra = searchParams.get('minEra');
+    const newMaxEra = searchParams.get('maxEra');
+
+    const urlMinYear = newMinYear ? parseInt(newMinYear, 10) : null;
+    const urlMaxYear = newMaxYear ? parseInt(newMaxYear, 10) : null;
+    const urlMinEra = newMinEra === 'AD' ? 'AD' : 'BC';
+    const urlMaxEra = newMaxEra === 'BC' ? 'BC' : 'AD';
+
+    // Only update state if URL values are different from current state
+    if (urlMinYear !== minYear) setMinYear(urlMinYear);
+    if (urlMaxYear !== maxYear) setMaxYear(urlMaxYear);
+    if (urlMinEra !== minEra) setMinEra(urlMinEra);
+    if (urlMaxEra !== maxEra) setMaxEra(urlMaxEra);
+  }, [searchParams]); // Only depend on searchParams
 
 
   // Navigation functions
@@ -106,79 +197,26 @@ export function BiblicalTimeline({
     router.push(`/periods/${slug}/regions?from=timeline`);
   };
 
-  const showEventDetail = (event: BiblicalEvent) => {
-    router.push(`/events/${event.id}?from=timeline`);
-  };
-
-  const showRegionDetail = (region: BiblicalRegion) => {
-    router.push(`/regions/${region.id}?from=timeline`);
-  };
-
-
-
-
-  const timelinePeriods = [
-    {
-      name: "Creation & Pre-Flood Era",
-      dateRange: "4004-2348 BC",
-      color: "bg-green-100 border-green-400",
-      description: "From the creation of the world to Noah's flood, spanning approximately 1,656 years"
-    },
-    {
-      name: "Post-Flood & Patriarchs",
-      dateRange: "2348-1805 BC", 
-      color: "bg-blue-100 border-blue-400",
-      description: "From Noah's family repopulating the earth to the death of Joseph in Egypt"
-    },
-    {
-      name: "Egyptian Bondage",
-      dateRange: "1804-1491 BC",
-      color: "bg-yellow-100 border-yellow-400", 
-      description: "Israel's 400+ years of slavery in Egypt until the Exodus under Moses"
-    },
-    {
-      name: "Wilderness & Conquest",
-      dateRange: "1491-1427 BC",
-      color: "bg-orange-100 border-orange-400",
-      description: "40 years in wilderness and conquest of the Promised Land under Joshua"
-    },
-    {
-      name: "Judges Period", 
-      dateRange: "1427-1043 BC",
-      color: "bg-purple-100 border-purple-400",
-      description: "Cycles of sin, oppression, and deliverance through judges like Gideon and Samson"
-    },
-    {
-      name: "United Kingdom",
-      dateRange: "1043-930 BC", 
-      color: "bg-red-100 border-red-400",
-      description: "Israel united under kings Saul, David, and Solomon; temple built"
-    },
-    {
-      name: "Divided Kingdom",
-      dateRange: "930-586 BC",
-      color: "bg-pink-100 border-pink-400", 
-      description: "Kingdom splits into Israel and Judah; prophets warn of judgment"
-    },
-    {
-      name: "Exile & Return",
-      dateRange: "586-430 BC",
-      color: "bg-indigo-100 border-indigo-400",
-      description: "Babylonian exile, return under Cyrus, temple rebuilt, walls restored"
-    },
-    {
-      name: "Intertestamental Period",
-      dateRange: "430-6 BC", 
-      color: "bg-gray-100 border-gray-400",
-      description: "400 years of prophetic silence; Greek and Roman influence"
-    },
-    {
-      name: "New Testament Era",
-      dateRange: "6 BC-60 AD",
-      color: "bg-emerald-100 border-emerald-400", 
-      description: "Birth, life, death, and resurrection of Jesus; early church established"
+  const showEventDetail = (event: BiblicalEvent, periodSlug?: string) => {
+    const params = new URLSearchParams({ from: 'timeline' });
+    if (periodSlug) {
+      params.set('period', periodSlug);
     }
-  ];
+    router.push(`/events/${event.id}?${params.toString()}`);
+  };
+
+  const showRegionDetail = (region: BiblicalRegion, periodSlug?: string) => {
+    const params = new URLSearchParams({ from: 'timeline' });
+    if (periodSlug) {
+      params.set('period', periodSlug);
+    }
+    router.push(`/regions/${region.id}?${params.toString()}`);
+  };
+
+
+
+
+  // timelinePeriods is now passed as a prop
 
   // Relevance scoring function
   const calculateRelevance = (text: string, search: string, isMainField = false): number => {
@@ -280,6 +318,11 @@ export function BiblicalTimeline({
 
   const totalResults = searchResults.persons.length + searchResults.events.length + searchResults.regions.length + searchResults.periods.length;
 
+  // Create location names mapping for search results
+  const searchEventLocationNames = Object.fromEntries(
+    searchResults.events.map(event => [event.id, getLocationName(event.location)])
+  );
+
   return (
     <div className="min-h-screen">
       {/* Sticky Main Header - Compact for Mobile */}
@@ -319,15 +362,33 @@ export function BiblicalTimeline({
               maxYear={maxYear}
               minEra={minEra}
               maxEra={maxEra}
-              onMinYearChange={setMinYear}
-              onMaxYearChange={setMaxYear}
-              onMinEraChange={setMinEra}
-              onMaxEraChange={setMaxEra}
+              onMinYearChange={(year) => {
+                setMinYear(year);
+                updateUrlParamsWithState({ minYear: year?.toString() ?? null });
+              }}
+              onMaxYearChange={(year) => {
+                setMaxYear(year);
+                updateUrlParamsWithState({ maxYear: year?.toString() ?? null });
+              }}
+              onMinEraChange={(era) => {
+                setMinEra(era);
+                updateUrlParamsWithState({ minEra: era });
+              }}
+              onMaxEraChange={(era) => {
+                setMaxEra(era);
+                updateUrlParamsWithState({ maxEra: era });
+              }}
               onReset={() => {
                 setMinYear(null);
                 setMaxYear(null);
                 setMinEra('BC');
                 setMaxEra('AD');
+                updateUrlParamsWithState({
+                  minYear: null,
+                  maxYear: null,
+                  minEra: null,
+                  maxEra: null
+                });
               }}
             />
             
@@ -372,6 +433,7 @@ export function BiblicalTimeline({
         searchTerm={searchTerm}
         searchResults={searchResults}
         totalResults={totalResults}
+        eventLocationNames={searchEventLocationNames}
       />
 
       {/* Timeline Overview */}
@@ -430,7 +492,7 @@ export function BiblicalTimeline({
         {timelinePeriods
           .filter(period => isWithinDateRange(period.dateRange, minYear, maxYear))
           .map((period, index) => (
-          <div key={index} className="relative mb-16">
+          <div key={index} id={`period-${period.slug}`} className="relative mb-16">
             {/* Timeline dot */}
             <div className="absolute left-6 w-5 h-5 bg-white border-4 border-gray-600 rounded-full z-10 shadow-lg"></div>
             
@@ -449,6 +511,8 @@ export function BiblicalTimeline({
                 showPeriodEvents={showPeriodEvents}
                 showPeriodPeople={showPeriodPeople}
                 showPeriodRegions={showPeriodRegions}
+                minYear={minYear}
+                maxYear={maxYear}
               />
             </div>
           </div>

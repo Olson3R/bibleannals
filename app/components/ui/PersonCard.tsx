@@ -5,6 +5,7 @@ interface PersonCardProps {
   person: BiblicalPerson;
   className?: string;
   showDates?: boolean;
+  periodSlug?: string;
 }
 
 // Color scheme function for person cards
@@ -24,12 +25,16 @@ export function getPersonColorScheme(person: BiblicalPerson) {
   return { bg: 'bg-blue-100', border: 'border-blue-300', text: 'text-blue-800' };
 }
 
-export function PersonCard({ person, className = '', showDates = false }: PersonCardProps) {
+export function PersonCard({ person, className = '', showDates = false, periodSlug }: PersonCardProps) {
   const colorScheme = getPersonColorScheme(person);
+
+  const href = periodSlug 
+    ? `/people/${person.id}?from=period&period=${periodSlug}`
+    : `/people/${person.id}`;
 
   return (
     <Link
-      href={`/people/${person.id}`}
+      href={href}
       className={`block px-3 py-2 rounded-lg border ${colorScheme.bg} ${colorScheme.border} ${colorScheme.text} hover:shadow-md transition-shadow ${className}`}
     >
       <div className="flex items-center justify-between">
