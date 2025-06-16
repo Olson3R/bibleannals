@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import Link from 'next/link';
-import { useRouter, useSearchParams, usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { isWithinDateRange } from '../utils/date-parsing';
 import { TimelinePeriodCard } from './timeline';
 import { SearchResultsDisplay } from './search';
-import { DateRangeSlider } from './ui/DateRangeSlider';
+import { DateRangeSlider, NavLink } from './ui';
+import { useDateFilter } from '../hooks/useDateFilter';
 import type { TimelinePeriod } from '../types/biblical';
 
 interface BiblicalPerson {
@@ -63,9 +63,21 @@ export function BiblicalTimeline({
   timelinePeriods: TimelinePeriod[];
 }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
   const getPersonById = (id: string) => persons.find(p => p.id === id);
+  
+  // Use the date filter hook
+  const {
+    minYear,
+    maxYear,
+    minEra,
+    maxEra,
+    setMinYear,
+    setMaxYear,
+    setMinEra,
+    setMaxEra,
+    updateDateRange,
+    resetFilter
+  } = useDateFilter();
   
   
   // Client-side location name resolver
@@ -73,23 +85,6 @@ export function BiblicalTimeline({
     const region = regions.find(r => r.id === locationId);
     return region ? region.name : locationId;
   };
-
-  // Function to update URL parameters
-  const updateUrlParams = useCallback((params: Record<string, string | null>) => {
-    const current = new URLSearchParams(Array.from(searchParams.entries()));
-    
-    Object.entries(params).forEach(([key, value]) => {
-      if (value === null) {
-        current.delete(key);
-      } else {
-        current.set(key, value);
-      }
-    });
-
-    const search = current.toString();
-    const query = search ? `?${search}` : '';
-    router.replace(`${pathname}${query}`, { scroll: false });
-  }, [searchParams, router, pathname]);
   
   // State for timeline features
   const [showEvents, setShowEvents] = useState(true);
@@ -97,24 +92,6 @@ export function BiblicalTimeline({
   const [showRegions, setShowRegions] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [prevSearchTerm, setPrevSearchTerm] = useState('');
-  
-  // Initialize date filter state from URL parameters
-  const [minYear, setMinYear] = useState<number | null>(() => {
-    const param = searchParams.get('minYear');
-    return param ? parseInt(param, 10) : null;
-  });
-  const [maxYear, setMaxYear] = useState<number | null>(() => {
-    const param = searchParams.get('maxYear');
-    return param ? parseInt(param, 10) : null;
-  });
-  const [minEra, setMinEra] = useState<'BC' | 'AD'>(() => {
-    const param = searchParams.get('minEra');
-    return param === 'AD' ? 'AD' : 'BC';
-  });
-  const [maxEra, setMaxEra] = useState<'AD' | 'BC'>(() => {
-    const param = searchParams.get('maxEra');
-    return param === 'BC' ? 'BC' : 'AD';
-  });
   
 
   // Handle search scroll - scroll to search results when new search is performed
@@ -146,54 +123,6 @@ export function BiblicalTimeline({
     }
   }, []);
 
-
-  // Function to update URL parameters
-  const updateUrlParamsWithState = useCallback((params: Record<string, string | null>) => {
-    updateUrlParams(params);
-  }, [updateUrlParams]);
-
-  // Combined update function for year and era changes
-  const updateDateRange = useCallback((type: 'min' | 'max', year: number | null, era: 'BC' | 'AD') => {
-    if (type === 'min') {
-      setMinYear(year);
-      setMinEra(era);
-      updateUrlParamsWithState({ 
-        minYear: year?.toString() ?? null,
-        minEra: era 
-      });
-    } else {
-      setMaxYear(year);
-      setMaxEra(era);
-      updateUrlParamsWithState({ 
-        maxYear: year?.toString() ?? null,
-        maxEra: era 
-      });
-    }
-  }, [updateUrlParamsWithState]);
-
-  // Sync URL params to state (for browser back/forward navigation only)
-  // TEMPORARILY DISABLED TO TEST SLIDER ISSUE
-  /*
-  useEffect(() => {
-    if (isUpdatingFromUrl.current) return;
-
-    const newMinYear = searchParams.get('minYear');
-    const newMaxYear = searchParams.get('maxYear');
-    const newMinEra = searchParams.get('minEra');
-    const newMaxEra = searchParams.get('maxEra');
-
-    const urlMinYear = newMinYear ? parseInt(newMinYear, 10) : null;
-    const urlMaxYear = newMaxYear ? parseInt(newMaxYear, 10) : null;
-    const urlMinEra = newMinEra === 'AD' ? 'AD' : 'BC';
-    const urlMaxEra = newMaxEra === 'BC' ? 'BC' : 'AD';
-
-    // Only update state if URL values are different from current state
-    if (urlMinYear !== minYear) setMinYear(urlMinYear);
-    if (urlMaxYear !== maxYear) setMaxYear(urlMaxYear);
-    if (urlMinEra !== minEra) setMinEra(urlMinEra);
-    if (urlMaxEra !== maxEra) setMaxEra(urlMaxEra);
-  }, [searchParams]); // Only depend on searchParams
-  */
 
 
   // Navigation functions
@@ -378,34 +307,11 @@ export function BiblicalTimeline({
               minEra={minEra}
               maxEra={maxEra}
               onDateRangeChange={updateDateRange}
-              onMinYearChange={(year) => {
-                setMinYear(year);
-                updateUrlParamsWithState({ minYear: year?.toString() ?? null });
-              }}
-              onMaxYearChange={(year) => {
-                setMaxYear(year);
-                updateUrlParamsWithState({ maxYear: year?.toString() ?? null });
-              }}
-              onMinEraChange={(era) => {
-                setMinEra(era);
-                updateUrlParamsWithState({ minEra: era });
-              }}
-              onMaxEraChange={(era) => {
-                setMaxEra(era);
-                updateUrlParamsWithState({ maxEra: era });
-              }}
-              onReset={() => {
-                setMinYear(null);
-                setMaxYear(null);
-                setMinEra('BC');
-                setMaxEra('AD');
-                updateUrlParamsWithState({
-                  minYear: null,
-                  maxYear: null,
-                  minEra: null,
-                  maxEra: null
-                });
-              }}
+              onMinYearChange={setMinYear}
+              onMaxYearChange={setMaxYear}
+              onMinEraChange={setMinEra}
+              onMaxEraChange={setMaxEra}
+              onReset={resetFilter}
             />
             
             {/* Content Toggles in Header - Compact for Mobile */}
@@ -461,7 +367,7 @@ export function BiblicalTimeline({
             .map((period, index) => {
             return (
             <div key={index} className="relative group">
-              <Link
+              <NavLink
                 href={`/periods/${period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')}`}
                 className={`block px-4 py-2 rounded-full border-2 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer ${period.color}`}
               >
@@ -469,7 +375,7 @@ export function BiblicalTimeline({
                   <div className="font-semibold text-sm text-gray-800">{period.name}</div>
                   <div className="text-xs text-gray-600">{period.dateRange}</div>
                 </div>
-              </Link>
+              </NavLink>
               
               {/* Copy Link Button */}
               <button

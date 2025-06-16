@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { getTimelinePeriods, getPeriodEvents } from '../../../utils/data-loader';
 import { getLocationName } from '../../../utils/location-resolver';
@@ -31,10 +32,12 @@ export default function PeriodEventsPage({ params }: PeriodEventsPageProps) {
   );
 
   return (
-    <PeriodEventsClient 
-      period={period}
-      allEvents={allEvents}
-      eventLocationNames={eventLocationNames}
-    />
+    <Suspense fallback={<div className="flex justify-center items-center min-h-screen">Loading...</div>}>
+      <PeriodEventsClient 
+        period={period}
+        allEvents={allEvents}
+        eventLocationNames={eventLocationNames}
+      />
+    </Suspense>
   );
 }

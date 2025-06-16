@@ -1,9 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { EventCard, PersonCard, RegionCard } from '../../components/ui';
+import { EventCard, PersonCard, RegionCard, NavLink } from '../../components/ui';
 import { DateRangeSlider } from '../../components/ui/DateRangeSlider';
+import { useDateFilter } from '../../hooks/useDateFilter';
 import { isWithinDateRange } from '../../utils/date-parsing';
 
 interface BiblicalPerson {
@@ -61,10 +60,19 @@ interface PeriodClientProps {
 }
 
 export function PeriodClient({ period, events: allEvents, people: allPeople, regions: allRegions, allPeriods, eventLocationNames }: PeriodClientProps) {
-  const [minYear, setMinYear] = useState<number | null>(null);
-  const [maxYear, setMaxYear] = useState<number | null>(null);
-  const [minEra, setMinEra] = useState<'BC' | 'AD'>('BC');
-  const [maxEra, setMaxEra] = useState<'AD' | 'BC'>('AD');
+  // Use the date filter hook
+  const {
+    minYear,
+    maxYear,
+    minEra,
+    maxEra,
+    setMinYear,
+    setMaxYear,
+    setMinEra,
+    setMaxEra,
+    updateDateRange,
+    resetFilter
+  } = useDateFilter();
 
   // Find adjacent periods for navigation
   const currentIndex = allPeriods.findIndex(p => p.slug === period.slug);
@@ -101,24 +109,20 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
               maxYear={maxYear}
               minEra={minEra}
               maxEra={maxEra}
+              onDateRangeChange={updateDateRange}
               onMinYearChange={setMinYear}
               onMaxYearChange={setMaxYear}
               onMinEraChange={setMinEra}
               onMaxEraChange={setMaxEra}
-              onReset={() => {
-                setMinYear(null);
-                setMaxYear(null);
-                setMinEra('BC');
-                setMaxEra('AD');
-              }}
+              onReset={resetFilter}
             />
             
-            <Link
+            <NavLink
               href="/"
               className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
               ← Back to Timeline
-            </Link>
+            </NavLink>
           </div>
         </div>
       </div>
@@ -139,7 +143,7 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
             <div className="flex justify-between items-center mb-8 bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
               <div className="flex-1">
                 {previousPeriod && (
-                  <Link
+                  <NavLink
                     href={`/periods/${previousPeriod.slug}`}
                     className="flex items-center text-blue-600 hover:text-blue-800 group"
                   >
@@ -149,13 +153,13 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
                       <div className="font-semibold group-hover:underline">{previousPeriod.name}</div>
                       <div className="text-sm text-gray-600">{previousPeriod.dateRange}</div>
                     </div>
-                  </Link>
+                  </NavLink>
                 )}
               </div>
               
               <div className="flex-1 text-right">
                 {nextPeriod && (
-                  <Link
+                  <NavLink
                     href={`/periods/${nextPeriod.slug}`}
                     className="flex items-center justify-end text-blue-600 hover:text-blue-800 group"
                   >
@@ -165,7 +169,7 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
                       <div className="text-sm text-gray-600">{nextPeriod.dateRange}</div>
                     </div>
                     <span className="ml-2">→</span>
-                  </Link>
+                  </NavLink>
                 )}
               </div>
             </div>
@@ -173,7 +177,7 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
 
           {/* Navigation Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <Link
+            <NavLink
               href={`/periods/${period.slug}/events`}
               className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
             >
@@ -186,9 +190,9 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
               <p className="text-gray-600 text-sm">
                 Explore all the major events that occurred during this period
               </p>
-            </Link>
+            </NavLink>
 
-            <Link
+            <NavLink
               href={`/periods/${period.slug}/people`}
               className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
             >
@@ -201,9 +205,9 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
               <p className="text-gray-600 text-sm">
                 Learn about the key figures who lived during this time
               </p>
-            </Link>
+            </NavLink>
 
-            <Link
+            <NavLink
               href={`/periods/${period.slug}/regions`}
               className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
             >
@@ -216,7 +220,7 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
               <p className="text-gray-600 text-sm">
                 Discover the important places and locations of this era
               </p>
-            </Link>
+            </NavLink>
           </div>
 
           {/* Quick Preview */}
@@ -236,12 +240,12 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
                   />
                 ))}
                 {events.length > 3 && (
-                  <Link
+                  <NavLink
                     href={`/periods/${period.slug}/events`}
                     className="block text-center text-sm text-blue-600 hover:text-blue-800 mt-2"
                   >
                     View all {events.length} events →
-                  </Link>
+                  </NavLink>
                 )}
                 {events.length === 0 && (
                   <p className="text-gray-500 text-sm">No events found for the selected date range.</p>
@@ -257,12 +261,12 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
                   <PersonCard key={person.id} person={person} showDates={true} className="p-3" periodSlug={period.slug} />
                 ))}
                 {people.length > 3 && (
-                  <Link
+                  <NavLink
                     href={`/periods/${period.slug}/people`}
                     className="block text-center text-sm text-blue-600 hover:text-blue-800 mt-2"
                   >
                     View all {people.length} people →
-                  </Link>
+                  </NavLink>
                 )}
                 {people.length === 0 && (
                   <p className="text-gray-500 text-sm">No people found for the selected date range.</p>
@@ -278,12 +282,12 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
                   <RegionCard key={region.id} region={region} showDescription={false} className="p-3" periodSlug={period.slug} />
                 ))}
                 {regions.length > 3 && (
-                  <Link
+                  <NavLink
                     href={`/periods/${period.slug}/regions`}
                     className="block text-center text-sm text-blue-600 hover:text-blue-800 mt-2"
                   >
                     View all {regions.length} regions →
-                  </Link>
+                  </NavLink>
                 )}
                 {regions.length === 0 && (
                   <p className="text-gray-500 text-sm">No regions found for the selected date range.</p>

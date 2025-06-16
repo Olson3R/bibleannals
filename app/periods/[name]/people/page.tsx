@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { getTimelinePeriods, getPeriodPeople } from '../../../utils/data-loader';
 import { PeriodPeopleClient } from './PeriodPeopleClient';
@@ -25,9 +26,11 @@ export default function PeriodPeoplePage({ params }: PeriodPeoplePageProps) {
   const allPeople = getPeriodPeople(period.name);
 
   return (
-    <PeriodPeopleClient 
-      period={period}
-      allPeople={allPeople}
-    />
+    <Suspense fallback={<div className="flex justify-center items-center min-h-screen">Loading...</div>}>
+      <PeriodPeopleClient 
+        period={period}
+        allPeople={allPeople}
+      />
+    </Suspense>
   );
 }

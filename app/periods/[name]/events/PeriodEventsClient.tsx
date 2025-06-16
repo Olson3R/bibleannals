@@ -1,10 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { isWithinDateRange } from '../../../utils/date-parsing';
 import { EventCard } from '../../../components/ui';
 import { DateRangeSlider } from '../../../components/ui/DateRangeSlider';
+import { NavLink } from '../../../components/ui/NavLink';
+import { useDateFilter } from '../../../hooks/useDateFilter';
 import type { BiblicalEvent } from '../../../types/biblical';
 
 interface PeriodEventsClientProps {
@@ -25,11 +26,20 @@ export function PeriodEventsClient({ period, allEvents, eventLocationNames }: Pe
     const urlParams = new URLSearchParams(window.location.search);
     setFromTimeline(urlParams.get('from') === 'timeline');
   }, []);
-  // Date filtering state
-  const [minYear, setMinYear] = useState<number | null>(null);
-  const [maxYear, setMaxYear] = useState<number | null>(null);
-  const [minEra, setMinEra] = useState<'BC' | 'AD'>('BC');
-  const [maxEra, setMaxEra] = useState<'BC' | 'AD'>('AD');
+  
+  // Use the date filter hook
+  const {
+    minYear,
+    maxYear,
+    minEra,
+    maxEra,
+    setMinYear,
+    setMaxYear,
+    setMinEra,
+    setMaxEra,
+    updateDateRange,
+    resetFilter
+  } = useDateFilter();
 
   // Filter events based on date range
   const events = allEvents.filter(event => {
@@ -49,19 +59,19 @@ export function PeriodEventsClient({ period, allEvents, eventLocationNames }: Pe
             </div>
             <div className="flex gap-2">
               {!fromTimeline && (
-                <Link
+                <NavLink
                   href={`/periods/${period.slug}`}
                   className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm font-medium transition-colors"
                 >
                   ← Back to Period
-                </Link>
+                </NavLink>
               )}
-              <Link
+              <NavLink
                 href={fromTimeline ? `/#period-${period.slug}` : "/"}
                 className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 {fromTimeline ? "← Back to Timeline" : "Timeline"}
-              </Link>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -76,16 +86,12 @@ export function PeriodEventsClient({ period, allEvents, eventLocationNames }: Pe
               maxYear={maxYear}
               minEra={minEra}
               maxEra={maxEra}
+              onDateRangeChange={updateDateRange}
               onMinYearChange={setMinYear}
               onMaxYearChange={setMaxYear}
               onMinEraChange={setMinEra}
               onMaxEraChange={setMaxEra}
-              onReset={() => {
-                setMinYear(null);
-                setMaxYear(null);
-                setMinEra('BC');
-                setMaxEra('AD');
-              }}
+              onReset={resetFilter}
             />
           </div>
         </div>

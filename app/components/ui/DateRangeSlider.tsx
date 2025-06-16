@@ -83,30 +83,30 @@ export function DateRangeSlider({
       setMinSliderValue(newValue);
       const { year, era } = sliderValueToYear(newValue);
       
+      // Always call both - combined first, then individual as backup
       if (onDateRangeChange) {
-        // Use combined update function
         onDateRangeChange('min', era === 'BC' ? -year : year, era);
-      } else {
-        // Fallback to separate calls
-        onMinYearChange(era === 'BC' ? -year : year);
-        if (era !== minEra) {
-          onMinEraChange(era);
-        }
+      }
+      
+      // Also call individual handlers for immediate state update
+      onMinYearChange(era === 'BC' ? -year : year);
+      if (era !== minEra) {
+        onMinEraChange(era);
       }
     } else if (isDragging === 'max') {
       const newValue = Math.max(value, minSliderValue + 1);
       setMaxSliderValue(newValue);
       const { year, era } = sliderValueToYear(newValue);
       
+      // Always call both - combined first, then individual as backup
       if (onDateRangeChange) {
-        // Use combined update function
         onDateRangeChange('max', era === 'BC' ? -year : year, era);
-      } else {
-        // Fallback to separate calls
-        onMaxYearChange(era === 'BC' ? -year : year);
-        if (era !== maxEra) {
-          onMaxEraChange(era);
-        }
+      }
+      
+      // Also call individual handlers for immediate state update
+      onMaxYearChange(era === 'BC' ? -year : year);
+      if (era !== maxEra) {
+        onMaxEraChange(era);
       }
     }
   }, [isDragging, maxSliderValue, minSliderValue, TOTAL_RANGE, sliderValueToYear, onMinYearChange, onMinEraChange, onMaxYearChange, onMaxEraChange, onDateRangeChange, minEra, maxEra]);

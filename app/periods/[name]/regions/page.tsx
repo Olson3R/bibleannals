@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { getTimelinePeriods, getPeriodRegions } from '../../../utils/data-loader';
 import { PeriodRegionsClient } from './PeriodRegionsClient';
@@ -25,9 +26,11 @@ export default function PeriodRegionsPage({ params }: PeriodRegionsPageProps) {
   const allRegions = getPeriodRegions(period.name);
 
   return (
-    <PeriodRegionsClient 
-      period={period}
-      allRegions={allRegions}
-    />
+    <Suspense fallback={<div className="flex justify-center items-center min-h-screen">Loading...</div>}>
+      <PeriodRegionsClient 
+        period={period}
+        allRegions={allRegions}
+      />
+    </Suspense>
   );
 }
