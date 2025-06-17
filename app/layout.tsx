@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Navigation } from "./components/Navigation";
+import { Footer } from "./components/Footer";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
 const geistSans = localFont({
@@ -32,7 +33,10 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <Navigation />
-          {children}
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

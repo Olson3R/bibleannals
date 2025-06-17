@@ -1,14 +1,9 @@
 # Bible Annals - TODO List
 
-## Bugs
-- ~~**Dark Mode**~~ ✅ FIXED
-  - ~~On the timeline page, event date and reference texts are difficult to read~~ ✅ FIXED
-  - ~~On the timeline page, region location description text is difficult to read~~ ✅ FIXED
-
 ## SEO & Discoverability
+- **XML sitemap**: Generate XML sitemap for search engines
 - **Meta tags**: Add comprehensive meta tags for all pages
 - **Schema markup**: Implement structured data markup for search engines
-- **XML sitemap**: Generate XML sitemap for search engines
 
 ## User Experience & Interface
 - **Theme**: Save selection to local storage from any page.
@@ -22,8 +17,8 @@
 - **Error boundaries**: Implement React error boundaries for graceful error handling
 
 ## Features & Functionality
-- **Timeline visualization**: Create interactive timeline chart/graph visualization
 - **Cross-references**: Add cross-references linking related people, events, and locations
+- **Timeline visualization**: Create interactive timeline chart/graph visualization
 
 ## Technical Improvements
 - **Type safety**: Strengthen TypeScript types and eliminate any 'any' types
