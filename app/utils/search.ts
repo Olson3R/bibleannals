@@ -1,4 +1,4 @@
-// Search utility functions for biblical timeline
+// Search utility functions for Bible Annals
 
 import type { BiblicalPerson, BiblicalEvent, BiblicalRegion, TimelinePeriod, SearchResults } from '../types/biblical';
 import { isWithinDateRange } from './date-parsing';

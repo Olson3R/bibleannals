@@ -56,7 +56,7 @@ export function calculateDateRangeFromPeriods(periods: TimelinePeriod[]): { minY
   return { minYear, maxYear };
 }
 
-// Default date range based on known biblical timeline (4004 BC to 60 AD)
+// Default date range based on known biblical chronology (4004 BC to 60 AD)
 export const DEFAULT_DATE_RANGE = {
   minYear: -4004,
   maxYear: 60

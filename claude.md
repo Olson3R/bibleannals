@@ -1,4 +1,4 @@
-# Biblical Timeline Project
+# Bible Annals Project
 
 ## Project Overview
 A comprehensive interactive timeline website showcasing biblical people, events, and regions with accurate historical information. Built with Next.js 14, TypeScript, and Tailwind CSS for responsive design across desktop and mobile platforms.

@@ -8,7 +8,7 @@ export function Navigation() {
   const pathname = usePathname();
 
   const navItems = [
-    { href: '/', label: 'Biblical Timeline', description: 'Comprehensive biblical history with events, people, and regions' }
+    { href: '/', label: 'Timeline', description: 'Comprehensive biblical history with events, people, and regions' }
   ];
 
   return (
@@ -17,7 +17,7 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-8">
             <Link href="/" className="text-xl font-bold text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-              Biblical Timeline
+              Bible Annals
             </Link>
             <div className="hidden md:flex space-x-6">
               {navItems.map(({ href, label, description }) => (

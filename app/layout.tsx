@@ -16,7 +16,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Biblical Timeline - From Creation to the Early Church",
+  title: "Bible Annals - From Creation to the Early Church",
   description: "A comprehensive journey through biblical history, showcasing key events, influential people, and significant locations from Creation to the early church era.",
 };
 

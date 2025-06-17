@@ -1,4 +1,4 @@
-// TypeScript interfaces for Biblical Timeline application
+// TypeScript interfaces for Bible Annals application
 
 export interface BiblicalPerson {
   id: string;

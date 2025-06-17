@@ -348,7 +348,7 @@ export function BiblicalTimeline({
       <div className="sticky top-0 z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm">
         <div className="container mx-auto px-4 py-3 lg:py-6">
           <div className="text-center mb-3 lg:mb-6">
-            <h1 className="text-2xl lg:text-4xl font-bold text-gray-800 dark:text-gray-200 mb-1 lg:mb-2">Biblical Timeline</h1>
+            <h1 className="text-2xl lg:text-4xl font-bold text-gray-800 dark:text-gray-200 mb-1 lg:mb-2">Bible Annals</h1>
             <p className="text-sm lg:text-lg text-gray-600 dark:text-gray-400 hidden lg:block">
               A comprehensive journey through biblical history
             </p>
