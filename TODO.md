@@ -1,15 +1,10 @@
 # Bible Annals - TODO List
 
 ## SEO & Discoverability
-- **Meta tags**: Add comprehensive meta tags for all pages
 - **Schema markup**: Implement structured data markup for search engines
 
 ## User Experience & Interface
-- **Theme**: Save theme selection to local storage from any page.
-- **Timeline Advanced Filtering**: Save timeline advanced filter selection to local storage.
 - **Timeline page: event, person, region toggles**: Save timeline model toggle selection to local storage.
-- **Accessibility**: Add ARIA labels, keyboard navigation, and screen reader support
-- **404 page**: Create custom 404 page with navigation back to main timeline
 - **Search improvements**: Add autocomplete and search suggestions to search functionality
 - **Mobile responsiveness**: Test and optimize mobile responsiveness across devices
 - **Loading states**: Add skeleton loading components for better perceived performance
@@ -25,7 +20,6 @@
 - **Testing**: Add comprehensive unit tests, integration tests, and E2E tests
 
 ## Data & Content
-- **Books for Periods**: List primary books of the bible for each period.
 - **Additional content**: Add more detailed biographical information and content
 - **Source references**: Add citations and source references for historical accuracy
 - **Data validation**: Add comprehensive data validation and error checking

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Navigation } from "./components/Navigation";
@@ -16,10 +15,7 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: "Bible Annals - From Creation to the Early Church",
-  description: "A comprehensive journey through biblical history, showcasing key events, influential people, and significant locations from Creation to the early church era.",
-};
+export { defaultMetaTags as metadata } from "./utils/meta-tags";
 
 export default function RootLayout({
   children,

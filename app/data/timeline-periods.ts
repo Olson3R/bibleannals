@@ -8,69 +8,79 @@ export const timelinePeriods: TimelinePeriod[] = [
     slug: "creation-pre-flood-era",
     dateRange: "4004-2348 BC",
     description: "From Creation to Noah's Flood",
-    colorIndex: 0 // Emerald - Creation & Nature
+    colorIndex: 0, // Emerald - Creation & Nature
+    primaryBooks: ["Genesis 1-8"]
   },
   {
     name: "Post-Flood & Patriarchs",
     slug: "post-flood-patriarchs",
     dateRange: "2348-1805 BC",
     description: "From Noah to Joseph's death",
-    colorIndex: 1 // Blue - Waters & Covenant
+    colorIndex: 1, // Blue - Waters & Covenant
+    primaryBooks: ["Genesis 9-50"]
   },
   {
     name: "Egyptian Bondage",
     slug: "egyptian-bondage",
     dateRange: "1804-1491 BC",
     description: "Israel enslaved in Egypt",
-    colorIndex: 2 // Amber - Desert & Bondage
+    colorIndex: 2, // Amber - Desert & Bondage
+    primaryBooks: ["Exodus 1-11"]
   },
   {
     name: "Wilderness & Conquest",
     slug: "wilderness-conquest",
     dateRange: "1491-1427 BC",
     description: "Exodus and conquest of Canaan",
-    colorIndex: 3 // Orange - Journey & Wilderness
+    colorIndex: 3, // Orange - Journey & Wilderness
+    primaryBooks: ["Exodus 12-40", "Leviticus", "Numbers", "Deuteronomy", "Joshua"]
   },
   {
     name: "Judges Period",
     slug: "judges-period",
     dateRange: "1427-1043 BC",
     description: "Time of the Judges",
-    colorIndex: 4 // Purple - Judges & Transition
+    colorIndex: 4, // Purple - Judges & Transition
+    primaryBooks: ["Judges", "Ruth", "1 Samuel 1-7"]
   },
   {
     name: "United Kingdom",
     slug: "united-kingdom",
     dateRange: "1043-930 BC",
     description: "Reigns of Saul, David, and Solomon",
-    colorIndex: 5 // Red - Kingdom & Power
+    colorIndex: 5, // Red - Kingdom & Power
+    primaryBooks: ["1 Samuel 8-31", "2 Samuel", "1 Kings 1-11", "1 Chronicles", "2 Chronicles 1-9", "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon"]
   },
   {
     name: "Divided Kingdom",
     slug: "divided-kingdom",
     dateRange: "930-586 BC",
     description: "Israel and Judah divided",
-    colorIndex: 6 // Pink - Division & Conflict
+    colorIndex: 6, // Pink - Division & Conflict
+    primaryBooks: ["1 Kings 12-22", "2 Kings", "2 Chronicles 10-36", "Isaiah", "Jeremiah", "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk", "Zephaniah"]
   },
   {
     name: "Exile & Return",
     slug: "exile-return",
     dateRange: "586-430 BC",
     description: "Babylonian exile and return",
-    colorIndex: 7 // Indigo - Exile & Return
+    colorIndex: 7, // Indigo - Exile & Return
+    primaryBooks: ["Ezra", "Nehemiah", "Esther", "Daniel", "Ezekiel", "Haggai", "Zechariah", "Malachi"]
   },
   {
     name: "Intertestamental Period",
     slug: "intertestamental-period",
     dateRange: "430-6 BC",
     description: "Between Old and New Testaments",
-    colorIndex: 8 // Slate - Silent Period
+    colorIndex: 8, // Slate - Silent Period
+    primaryBooks: ["Apocrypha (1-2 Maccabees, etc.)"]
   },
   {
     name: "New Testament Era",
     slug: "new-testament-era",
     dateRange: "6 BC-60 AD",
     description: "Life of Christ and early church",
-    colorIndex: 9 // Teal - New Testament & Life
+    colorIndex: 9, // Teal - New Testament & Life
+    primaryBooks: ["Matthew", "Mark", "Luke", "John", "Acts", "Romans", "1-2 Corinthians", "Galatians", "Ephesians", "Philippians", "Colossians", "1-2 Thessalonians", "1-2 Timothy", "Titus", "Philemon", "Hebrews", "James", "1-2 Peter", "1-3 John", "Jude", "Revelation"]
   }
 ];

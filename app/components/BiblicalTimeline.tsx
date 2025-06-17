@@ -379,17 +379,26 @@ export function BiblicalTimeline({
           {/* Search and Controls in Header */}
           <div className="flex flex-col lg:flex-row items-center justify-between gap-2 lg:gap-4">
             <div className="w-full max-w-md relative">
+              <label htmlFor="timeline-search" className="sr-only">
+                Search biblical events, people, regions, and periods
+              </label>
               <input
+                id="timeline-search"
                 type="text"
                 placeholder="Search..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full px-3 py-2 pr-8 text-sm border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                aria-describedby="search-description"
               />
+              <div id="search-description" className="sr-only">
+                Search across {events.length} events, {persons.length} people, {regions.length} regions, and {timelinePeriods.length} periods
+              </div>
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm('')}
                   className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 text-sm"
+                  aria-label="Clear search"
                   title="Clear search"
                 >
                   ✕
@@ -409,15 +418,18 @@ export function BiblicalTimeline({
             />
             
             {/* Content Toggles in Header - Compact for Mobile */}
-            <div className="flex gap-2 lg:gap-4">
+            <fieldset className="flex gap-2 lg:gap-4">
+              <legend className="sr-only">Content type visibility controls</legend>
               <label className="flex items-center">
                 <input
                   type="checkbox"
                   checked={showEvents}
                   onChange={(e) => setShowEvents(e.target.checked)}
                   className="mr-1"
+                  aria-describedby="events-toggle-desc"
                 />
                 <span className="text-xs lg:text-sm font-medium text-gray-700 dark:text-gray-300">📅 <span className="hidden lg:inline">Events</span></span>
+                <span id="events-toggle-desc" className="sr-only">Toggle visibility of biblical events</span>
               </label>
               <label className="flex items-center">
                 <input
@@ -425,8 +437,10 @@ export function BiblicalTimeline({
                   checked={showPeople}
                   onChange={(e) => setShowPeople(e.target.checked)}
                   className="mr-1"
+                  aria-describedby="people-toggle-desc"
                 />
                 <span className="text-xs lg:text-sm font-medium text-gray-700 dark:text-gray-300">👥 <span className="hidden lg:inline">People</span></span>
+                <span id="people-toggle-desc" className="sr-only">Toggle visibility of biblical people</span>
               </label>
               <label className="flex items-center">
                 <input
@@ -434,10 +448,12 @@ export function BiblicalTimeline({
                   checked={showRegions}
                   onChange={(e) => setShowRegions(e.target.checked)}
                   className="mr-1"
+                  aria-describedby="regions-toggle-desc"
                 />
                 <span className="text-xs lg:text-sm font-medium text-gray-700 dark:text-gray-300">🗺️ <span className="hidden lg:inline">Regions</span></span>
+                <span id="regions-toggle-desc" className="sr-only">Toggle visibility of biblical regions</span>
               </label>
-            </div>
+            </fieldset>
           </div>
         </div>
       </div>
@@ -462,8 +478,11 @@ export function BiblicalTimeline({
       />
 
       {/* Timeline Overview */}
-      <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900 dark:to-purple-900 rounded-xl p-8 mb-12 border border-gray-200 dark:border-gray-700">
-        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200">Timeline Overview</h2>
+      <section 
+        className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900 dark:to-purple-900 rounded-xl p-8 mb-12 border border-gray-200 dark:border-gray-700"
+        aria-labelledby="timeline-overview-heading"
+      >
+        <h2 id="timeline-overview-heading" className="text-2xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200">Timeline Overview</h2>
         <div className="flex flex-wrap justify-center gap-3">
           {timelinePeriods
             .filter(period => 
@@ -515,12 +534,13 @@ export function BiblicalTimeline({
           );
           })}
         </div>
-      </div>
+      </section>
 
       {/* Main Timeline Content */}
-      <div className="relative">
+      <main className="relative" role="main" aria-labelledby="main-timeline-heading">
+        <h2 id="main-timeline-heading" className="sr-only">Detailed Biblical Timeline</h2>
         {/* Vertical Timeline Line */}
-        <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-gray-600"></div>
+        <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-gray-600" aria-hidden="true"></div>
         
         {timelinePeriods
           .filter(period => 
@@ -533,9 +553,9 @@ export function BiblicalTimeline({
             )
           )
           .map((period, index) => (
-          <div key={index} id={`period-${period.slug}`} className="relative mb-16">
+          <article key={index} id={`period-${period.slug}`} className="relative mb-16" aria-labelledby={`period-${period.slug}-heading`}>
             {/* Timeline dot */}
-            <div className="absolute left-6 w-5 h-5 bg-white dark:bg-gray-800 border-4 border-gray-600 dark:border-gray-400 rounded-full z-10 shadow-lg"></div>
+            <div className="absolute left-6 w-5 h-5 bg-white dark:bg-gray-800 border-4 border-gray-600 dark:border-gray-400 rounded-full z-10 shadow-lg" aria-hidden="true"></div>
             
             {/* Content */}
             <div className="ml-20">
@@ -560,9 +580,9 @@ export function BiblicalTimeline({
                 matchesLocationFilter={matchesLocationFilter}
               />
             </div>
-          </div>
+          </article>
         ))}
-      </div>
+      </main>
 
       {/* Color Legend */}
       <div className="bg-white dark:bg-gray-800 rounded-xl p-6 mb-12 border border-gray-200 dark:border-gray-700 shadow-sm">
@@ -598,7 +618,7 @@ export function BiblicalTimeline({
           </div>
         </div>
       </div>
-    </div>
+      </div>
     </div>
   );
 }

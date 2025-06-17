@@ -74,18 +74,25 @@ export function AdvancedFilters({
         <button
           onClick={() => setIsExpanded(!isExpanded)}
           className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+          aria-expanded={isExpanded}
+          aria-controls="advanced-filters-content"
+          aria-label={`${isExpanded ? 'Collapse' : 'Expand'} advanced filters`}
         >
           <svg 
             className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-90' : ''}`}
             fill="none" 
             stroke="currentColor" 
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
           Advanced Filters
           {hasActiveFilters && (
-            <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full">
+            <span 
+              className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full"
+              aria-label={`${filters.personTypes.length + filters.eventTypes.length + filters.locations.length} active filters`}
+            >
               {filters.personTypes.length + filters.eventTypes.length + filters.locations.length}
             </span>
           )}
@@ -95,6 +102,7 @@ export function AdvancedFilters({
           <button
             onClick={clearAllFilters}
             className="text-xs text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400"
+            aria-label="Clear all active filters"
           >
             Clear All
           </button>
@@ -102,25 +110,12 @@ export function AdvancedFilters({
       </div>
 
       {isExpanded && (
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Person Types */}
-          <div>
-            <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Person Types</h4>
-            <div className="max-h-32 overflow-y-auto space-y-1">
-              {personTypeOptions.map(type => (
-                <label key={type} className="flex items-center text-sm">
-                  <input
-                    type="checkbox"
-                    checked={filters.personTypes.includes(type)}
-                    onChange={(e) => handlePersonTypeChange(type, e.target.checked)}
-                    className="mr-2"
-                  />
-                  <span className="text-gray-600 dark:text-gray-400">{type}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-
+        <div 
+          id="advanced-filters-content"
+          className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4"
+          role="region"
+          aria-label="Advanced filtering options"
+        >
           {/* Event Types */}
           <div>
             <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Event Types</h4>
@@ -131,6 +126,24 @@ export function AdvancedFilters({
                     type="checkbox"
                     checked={filters.eventTypes.includes(type)}
                     onChange={(e) => handleEventTypeChange(type, e.target.checked)}
+                    className="mr-2"
+                  />
+                  <span className="text-gray-600 dark:text-gray-400">{type}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Person Types */}
+          <div>
+            <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Person Types</h4>
+            <div className="max-h-32 overflow-y-auto space-y-1">
+              {personTypeOptions.map(type => (
+                <label key={type} className="flex items-center text-sm">
+                  <input
+                    type="checkbox"
+                    checked={filters.personTypes.includes(type)}
+                    onChange={(e) => handlePersonTypeChange(type, e.target.checked)}
                     className="mr-2"
                   />
                   <span className="text-gray-600 dark:text-gray-400">{type}</span>

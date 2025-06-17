@@ -1,7 +1,9 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import { loadTimelineData, getPersonById } from '../../utils/data-loader';
 import { getPersonPeriod } from '../../utils/period-detection';
+import { generateMetaTags } from '../../utils/meta-tags';
 import { PersonDetailClient } from './PersonDetailClient';
 
 interface PersonPageProps {
@@ -15,6 +17,34 @@ export async function generateStaticParams() {
   return data.persons.map((person) => ({
     id: person.id,
   }));
+}
+
+export async function generateMetadata({ params }: PersonPageProps): Promise<Metadata> {
+  const person = getPersonById(params.id);
+  
+  if (!person) {
+    return generateMetaTags({
+      title: 'Person Not Found - Bible Annals',
+      description: 'The requested biblical person could not be found.',
+      url: `/people/${params.id}/`,
+    });
+  }
+
+  const dates = person.birth_date && person.death_date 
+    ? `(${person.birth_date} - ${person.death_date})`
+    : person.birth_date 
+    ? `(born ${person.birth_date})`
+    : '';
+    
+  const description = `Learn about ${person.name} ${dates}, a significant figure in biblical history. ${person.ethnicity ? `A member of the ${person.ethnicity} people.` : ''}`;
+  
+  return generateMetaTags({
+    title: `${person.name} - Bible Annals`,
+    description,
+    url: `/people/${person.id}/`,
+    type: 'article',
+    keywords: ['biblical person', person.name, 'bible', 'biography', person.ethnicity || '', person.gender || ''].filter(Boolean)
+  });
 }
 
 export default function PersonPage({ params }: PersonPageProps) {

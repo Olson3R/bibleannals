@@ -50,6 +50,7 @@ interface TimelinePeriod {
   dateRange: string;
   colorIndex: number;
   description: string;
+  primaryBooks: string[];
 }
 
 interface PeriodClientProps {
@@ -131,7 +132,24 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
           <div className={`rounded-lg border-2 ${getPeriodColors(period.colorIndex)} shadow-lg mb-8 overflow-hidden`}>
             <div className={`p-6 ${getPeriodColors(period.colorIndex)}`}>
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{period.name}</h2>
-              <p className="text-gray-800 dark:text-gray-100">{period.description}</p>
+              <p className="text-gray-800 dark:text-gray-100 mb-4">{period.description}</p>
+              
+              {/* Primary Books */}
+              {period.primaryBooks && period.primaryBooks.length > 0 && (
+                <div>
+                  <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-2">📖 Primary Biblical Books:</h3>
+                  <div className="flex flex-wrap gap-1">
+                    {period.primaryBooks.map((book, index) => (
+                      <span
+                        key={index}
+                        className="inline-block bg-white dark:bg-gray-800 bg-opacity-60 dark:bg-opacity-60 text-gray-800 dark:text-gray-200 text-xs px-2 py-1 rounded border border-gray-400 dark:border-gray-600"
+                      >
+                        {book}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 

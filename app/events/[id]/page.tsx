@@ -1,7 +1,9 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import { loadTimelineData, getEventById, getPersonById, getRegionById } from '../../utils/data-loader';
 import { getEventPeriod } from '../../utils/period-detection';
+import { generateMetaTags } from '../../utils/meta-tags';
 import { EventDetailClient } from './EventDetailClient';
 import type { BiblicalPerson } from '../../types/biblical';
 
@@ -34,6 +36,29 @@ export async function generateStaticParams() {
   return data.events.map((event) => ({
     id: event.id,
   }));
+}
+
+export async function generateMetadata({ params }: EventPageProps): Promise<Metadata> {
+  const event = getEventById(params.id);
+  
+  if (!event) {
+    return generateMetaTags({
+      title: 'Event Not Found - Bible Annals',
+      description: 'The requested biblical event could not be found.',
+      url: `/events/${params.id}/`,
+    });
+  }
+
+  const region = getRegionById(event.location);
+  const locationName = region ? region.name : event.location;
+  
+  return generateMetaTags({
+    title: `${event.name} - Bible Annals`,
+    description: `${event.description} This biblical event occurred in ${event.date} at ${locationName}.`,
+    url: `/events/${event.id}/`,
+    type: 'article',
+    keywords: ['biblical event', event.name, 'bible', 'history', locationName, event.date]
+  });
 }
 
 export default function EventPage({ params }: EventPageProps) {

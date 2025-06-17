@@ -46,6 +46,7 @@ export interface TimelinePeriod {
   dateRange: string;
   description: string;
   colorIndex: number;
+  primaryBooks: string[];
 }
 
 export interface SearchResults {
