@@ -58,14 +58,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const sitemap: MetadataRoute.Sitemap = [
     // Home page
     {
-      url: baseUrl,
+      url: `${baseUrl}/`,
       lastModified,
       changeFrequency: 'weekly',
       priority: 1,
     },
     // Timeline periods
     ...timelinePeriods.map(period => ({
-      url: `${baseUrl}/periods/${period.slug}`,
+      url: `${baseUrl}/periods/${period.slug}/`,
       lastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
@@ -73,19 +73,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Period sub-pages
     ...timelinePeriods.flatMap(period => [
       {
-        url: `${baseUrl}/periods/${period.slug}/events`,
+        url: `${baseUrl}/periods/${period.slug}/events/`,
         lastModified,
         changeFrequency: 'monthly' as const,
         priority: 0.7,
       },
       {
-        url: `${baseUrl}/periods/${period.slug}/people`,
+        url: `${baseUrl}/periods/${period.slug}/people/`,
         lastModified,
         changeFrequency: 'monthly' as const,
         priority: 0.7,
       },
       {
-        url: `${baseUrl}/periods/${period.slug}/regions`,
+        url: `${baseUrl}/periods/${period.slug}/regions/`,
         lastModified,
         changeFrequency: 'monthly' as const,
         priority: 0.7,
@@ -93,21 +93,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ]),
     // Events
     ...events.map(event => ({
-      url: `${baseUrl}/events/${event.id}`,
+      url: `${baseUrl}/events/${event.id}/`,
       lastModified,
       changeFrequency: 'yearly' as const,
       priority: 0.6,
     })),
     // People
     ...persons.map(person => ({
-      url: `${baseUrl}/people/${person.id}`,
+      url: `${baseUrl}/people/${person.id}/`,
       lastModified,
       changeFrequency: 'yearly' as const,
       priority: 0.6,
     })),
     // Regions
     ...regions.map(region => ({
-      url: `${baseUrl}/regions/${region.id}`,
+      url: `${baseUrl}/regions/${region.id}/`,
       lastModified,
       changeFrequency: 'yearly' as const,
       priority: 0.6,

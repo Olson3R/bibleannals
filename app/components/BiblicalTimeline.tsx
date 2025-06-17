@@ -94,12 +94,34 @@ export function BiblicalTimeline({
   const [searchTerm, setSearchTerm] = useState('');
   const [prevSearchTerm, setPrevSearchTerm] = useState('');
   
-  // Advanced filters state
+  // Advanced filters state with localStorage persistence
   const [advancedFilters, setAdvancedFilters] = useState<AdvancedFiltersType>({
     personTypes: [],
     eventTypes: [],
     locations: []
   });
+
+  // Load advanced filters from localStorage on mount
+  useEffect(() => {
+    try {
+      const savedFilters = localStorage.getItem('timelineAdvancedFilters');
+      if (savedFilters) {
+        const parsedFilters = JSON.parse(savedFilters);
+        setAdvancedFilters(parsedFilters);
+      }
+    } catch (error) {
+      console.warn('Failed to load advanced filters from localStorage:', error);
+    }
+  }, []);
+
+  // Save advanced filters to localStorage when they change
+  useEffect(() => {
+    try {
+      localStorage.setItem('timelineAdvancedFilters', JSON.stringify(advancedFilters));
+    } catch (error) {
+      console.warn('Failed to save advanced filters to localStorage:', error);
+    }
+  }, [advancedFilters]);
   
   // Generate filter options from data
   const personTypeOptions = Array.from(new Set(
