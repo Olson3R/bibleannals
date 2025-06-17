@@ -3546,16 +3546,6 @@ biblical_events:
     references:
       - EZR.3.8-13.KJV
 
-  - id: TEMPLE_COMPLETED
-    name: Second Temple Completed
-    date: "~516 BC"
-    location: JERUSALEM
-    description: "Second temple is completed and dedicated after delays"
-    participants:
-      - ZERUBBABEL
-    references:
-      - EZR.6.13-22.KJV
-
   - id: EZRA_RETURNS
     name: Ezra Returns to Jerusalem
     date: "~458 BC"
@@ -3607,19 +3597,6 @@ biblical_events:
       - MORDECAI
     references:
       - EST.7.1-10.3.KJV
-
-  - id: BIRTH_OF_JESUS
-    name: Birth of Jesus Christ
-    date: "~4 BC"
-    location: BETHLEHEM
-    description: "Jesus is born to Mary in Bethlehem during Roman census"
-    participants:
-      - JESUS
-      - MARY_MOTHER_OF_JESUS
-      - JOSEPH_HUSBAND_OF_MARY
-    references:
-      - MAT.1.18-25.KJV
-      - LUK.2.1-20.KJV
 
   - id: JESUS_PRESENTATION
     name: Presentation of Jesus

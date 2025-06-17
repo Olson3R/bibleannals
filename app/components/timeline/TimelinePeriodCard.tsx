@@ -6,7 +6,8 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { NavLink } from '../ui';
 import type { BiblicalPerson, BiblicalEvent, BiblicalRegion, TimelinePeriod } from '../../types/biblical';
-import { getBibleUrl, getRegionStudyUrl, isElementVisible, scrollToElementWithOffset } from '../../utils';
+import { getBibleUrl, getRegionStudyUrl, isElementVisible, scrollToElementWithOffset, getEventPeriod } from '../../utils';
+import { getPeriodColors } from '../../utils/color-palette';
 import { isWithinDateRange } from '../../utils/date-parsing';
 
 
@@ -56,6 +57,7 @@ interface TimelinePeriodCardProps {
   period: TimelinePeriod;
   events: BiblicalEvent[];
   regions: BiblicalRegion[];
+  allPeriods: TimelinePeriod[];
   getPersonById: (id: string) => BiblicalPerson | undefined;
   showEvents: boolean;
   showPeople: boolean;
@@ -77,6 +79,7 @@ export function hasDisplayableContent(
   period: TimelinePeriod,
   events: BiblicalEvent[],
   regions: BiblicalRegion[],
+  allPeriods: TimelinePeriod[],
   getPersonById: (id: string) => BiblicalPerson | undefined,
   showEvents: boolean,
   showPeople: boolean,
@@ -89,35 +92,11 @@ export function hasDisplayableContent(
 ): boolean {
   // Apply the same filtering logic as in TimelinePeriodCard
   const periodEvents = events.filter(event => {
-    // ... (same filtering logic as in TimelinePeriodCard)
-    // First, check if event belongs to this period
-    let eventYear = parseInt(event.date.replace(/[^\d-]/g, ''));
-    const isAD = event.date.includes('AD');
-    if (isAD) eventYear = -eventYear;
-    
-    const [startStr, endStr] = period.dateRange.split('-');
-    let startYear = parseInt(startStr.replace(/[^\d]/g, ''));
-    let endYear = parseInt(endStr.replace(/[^\d]/g, ''));
-    
-    if (startStr.includes('BC')) startYear = Math.abs(startYear);
-    if (endStr.includes('BC')) endYear = Math.abs(endYear);
-    if (startStr.includes('AD')) startYear = -Math.abs(startYear);
-    if (endStr.includes('AD')) endYear = -Math.abs(endYear);
-    
-    let belongsToPeriod = false;
-    
-    if (period.dateRange === "6 BC-60 AD") {
-      const eventYearOriginal = parseInt(event.date.replace(/[^\d-]/g, ''));
-      if (event.date.includes('BC')) {
-        belongsToPeriod = eventYearOriginal <= 6;
-      } else if (event.date.includes('AD')) {
-        belongsToPeriod = eventYearOriginal <= 60;
-      }
-    } else {
-      belongsToPeriod = eventYear >= endYear && eventYear <= startYear;
+    // Check if event belongs to this specific period using the new assignment logic
+    const assignedPeriod = getEventPeriod(event, allPeriods);
+    if (!assignedPeriod || assignedPeriod.slug !== period.slug) {
+      return false;
     }
-    
-    if (!belongsToPeriod) return false;
     
     // Apply date range filter
     if (minYear !== null || maxYear !== null) {
@@ -188,6 +167,7 @@ export function TimelinePeriodCard({
   period,
   events,
   regions,
+  allPeriods,
   getPersonById,
   showEvents,
   showPeople,
@@ -207,40 +187,11 @@ export function TimelinePeriodCard({
   const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
   const periodEvents = events.filter(event => {
-    // First, check if event belongs to this period
-    // Parse event date
-    let eventYear = parseInt(event.date.replace(/[^\d-]/g, ''));
-    const isAD = event.date.includes('AD');
-    if (isAD) eventYear = -eventYear; // Convert AD to negative for comparison
-    
-    // Parse period range
-    const [startStr, endStr] = period.dateRange.split('-');
-    let startYear = parseInt(startStr.replace(/[^\d]/g, ''));
-    let endYear = parseInt(endStr.replace(/[^\d]/g, ''));
-    
-    // Handle BC/AD in period range
-    if (startStr.includes('BC')) startYear = Math.abs(startYear);
-    if (endStr.includes('BC')) endYear = Math.abs(endYear);
-    if (startStr.includes('AD')) startYear = -Math.abs(startYear);
-    if (endStr.includes('AD')) endYear = -Math.abs(endYear);
-    
-    let belongsToPeriod = false;
-    
-    // For periods spanning BC to AD, we need special handling
-    if (period.dateRange === "6 BC-60 AD") {
-      const eventYearOriginal = parseInt(event.date.replace(/[^\d-]/g, ''));
-      if (event.date.includes('BC')) {
-        belongsToPeriod = eventYearOriginal <= 6;
-      } else if (event.date.includes('AD')) {
-        belongsToPeriod = eventYearOriginal <= 60;
-      }
-    } else {
-      // Normal filtering for other periods
-      belongsToPeriod = eventYear >= endYear && eventYear <= startYear;
+    // Check if event belongs to this specific period using the new assignment logic
+    const assignedPeriod = getEventPeriod(event, allPeriods);
+    if (!assignedPeriod || assignedPeriod.slug !== period.slug) {
+      return false;
     }
-    
-    // If event doesn't belong to this period, exclude it
-    if (!belongsToPeriod) return false;
     
     // Then, apply the date range filter if specified
     if (minYear !== null || maxYear !== null) {
@@ -263,34 +214,11 @@ export function TimelinePeriodCard({
 
   // Get ALL participants from all events in this period (not just the first 8 displayed)
   const allPeriodEvents = events.filter(event => {
-    // Same filtering logic as above but for all events
-    let eventYear = parseInt(event.date.replace(/[^\d-]/g, ''));
-    const isAD = event.date.includes('AD');
-    if (isAD) eventYear = -eventYear;
-    
-    const [startStr, endStr] = period.dateRange.split('-');
-    let startYear = parseInt(startStr.replace(/[^\d]/g, ''));
-    let endYear = parseInt(endStr.replace(/[^\d]/g, ''));
-    
-    if (startStr.includes('BC')) startYear = Math.abs(startYear);
-    if (endStr.includes('BC')) endYear = Math.abs(endYear);
-    if (startStr.includes('AD')) startYear = -Math.abs(startYear);
-    if (endStr.includes('AD')) endYear = -Math.abs(endYear);
-    
-    let belongsToPeriod = false;
-    
-    if (period.dateRange === "6 BC-60 AD") {
-      const eventYearOriginal = parseInt(event.date.replace(/[^\d-]/g, ''));
-      if (event.date.includes('BC')) {
-        belongsToPeriod = eventYearOriginal <= 6;
-      } else if (event.date.includes('AD')) {
-        belongsToPeriod = eventYearOriginal <= 60;
-      }
-    } else {
-      belongsToPeriod = eventYear >= endYear && eventYear <= startYear;
+    // Check if event belongs to this specific period using the new assignment logic
+    const assignedPeriod = getEventPeriod(event, allPeriods);
+    if (!assignedPeriod || assignedPeriod.slug !== period.slug) {
+      return false;
     }
-    
-    if (!belongsToPeriod) return false;
     
     // Apply date range filter
     if (minYear !== null || maxYear !== null) {
@@ -384,19 +312,19 @@ export function TimelinePeriodCard({
   }, [searchParams, periodSlug, periodEvents, relevantRegions]);
 
   return (
-    <div className={`rounded-lg border-2 ${period.color} shadow-lg mb-8`} data-period-id={periodSlug} id={`period-${periodSlug}`}>
+    <div className={`rounded-lg border-2 ${getPeriodColors(period.colorIndex)} shadow-lg mb-8`} data-period-id={periodSlug} id={`period-${periodSlug}`}>
       {/* Sticky Period Header */}
-      <div className="sticky top-[120px] lg:top-[180px] z-20 bg-white border-b-2 border-gray-200 rounded-t-lg">
-        <div className={`p-4 ${period.color} rounded-t-lg relative group`}>
-          <h3 className="text-2xl font-bold text-gray-800 mb-1">
+      <div className="sticky top-[120px] lg:top-[180px] z-20 bg-white dark:bg-gray-800 border-b-2 border-gray-200 dark:border-gray-700 rounded-t-lg">
+        <div className={`p-4 ${getPeriodColors(period.colorIndex)} rounded-t-lg relative group`}>
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
             <NavLink
               href={`/periods/${periodSlug}`}
-              className="text-left hover:text-blue-600 hover:underline cursor-pointer"
+              className="text-left hover:text-blue-600 dark:hover:text-blue-400 hover:underline cursor-pointer"
             >
               {period.name}
             </NavLink>
           </h3>
-          <p className="text-lg font-semibold text-gray-700">{period.dateRange}</p>
+          <p className="text-lg font-semibold text-gray-800 dark:text-gray-100">{period.dateRange}</p>
           
           {/* Copy Link Button */}
           <button
@@ -415,7 +343,7 @@ export function TimelinePeriodCard({
                 button.classList.remove('bg-green-100', 'text-green-600');
               }, 1000);
             }}
-            className="absolute top-2 right-2 w-6 h-6 bg-white border border-gray-300 rounded-full shadow-sm hover:shadow-md transition-all duration-200 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xs text-gray-600 hover:text-gray-800"
+            className="absolute top-2 right-2 w-6 h-6 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full shadow-sm hover:shadow-md transition-all duration-200 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xs text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100"
             title="Copy link to this period on timeline"
           >
             🔗
@@ -425,7 +353,7 @@ export function TimelinePeriodCard({
       
       {/* Period Content */}
       <div className="p-6">
-        <p className="text-gray-600 mb-4">{period.description}</p>
+        <p className="text-gray-600 dark:text-gray-300 mb-4">{period.description}</p>
 
         <div className={`grid grid-cols-1 gap-6 ${
           [showEvents, showPeople, showRegions].filter(Boolean).length === 3 ? 'lg:grid-cols-3' :
@@ -469,14 +397,14 @@ export function TimelinePeriodCard({
                         </button>
                       </h5>
                       <p className={`text-xs mb-2 ${
-                        isEventSelected ? 'text-green-700' : 'text-gray-600'
+                        isEventSelected ? 'text-green-700' : 'text-gray-600 dark:text-gray-400'
                       }`}>{event.date}</p>
                       <p className={`text-xs mb-2 ${
                         isEventSelected ? 'text-green-800' : 'text-gray-700'
                       }`}>{event.description}</p>
                       {event.references && event.references.length > 0 && (
                         <div className="mb-2">
-                          <span className="text-xs text-gray-500">References: </span>
+                          <span className="text-xs text-gray-500 dark:text-gray-400">References: </span>
                           {event.references.slice(0, 2).map((ref, refIndex) => (
                             <span key={refIndex}>
                               <a 
@@ -491,7 +419,7 @@ export function TimelinePeriodCard({
                             </span>
                           ))}
                           {event.references.length > 2 && (
-                            <span className="text-xs text-gray-500"> +{event.references.length - 2} more</span>
+                            <span className="text-xs text-gray-500 dark:text-gray-400"> +{event.references.length - 2} more</span>
                           )}
                         </div>
                       )}
@@ -510,7 +438,7 @@ export function TimelinePeriodCard({
                             ) : null;
                           })}
                           {event.participants.length > 3 && (
-                            <span className="text-xs text-gray-500 ml-1">+{event.participants.length - 3} more</span>
+                            <span className="text-xs text-gray-500 dark:text-gray-400 ml-1">+{event.participants.length - 3} more</span>
                           )}
                         </div>
                       )}
@@ -544,7 +472,7 @@ export function TimelinePeriodCard({
                     ) : null;
                   })}
                   {allParticipants.size > 12 && (
-                    <p className="text-xs text-gray-500 mt-2">+{allParticipants.size - 12} more people</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">+{allParticipants.size - 12} more people</p>
                   )}
                 </div>
               </div>
@@ -597,7 +525,7 @@ export function TimelinePeriodCard({
                         </a>
                       </h5>
                       <p className={`text-xs mb-1 ${
-                        isRegionSelected ? 'text-purple-700' : 'text-gray-600'
+                        isRegionSelected ? 'text-purple-700' : 'text-gray-600 dark:text-gray-400'
                       }`}>{region.location}</p>
                       <p className={`text-xs mb-2 ${
                         isRegionSelected ? 'text-purple-800' : 'text-gray-700'

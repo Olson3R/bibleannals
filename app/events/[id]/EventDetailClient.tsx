@@ -9,13 +9,15 @@ interface EventDetailClientProps {
   eventPeriod: string | null;
   participants: BiblicalPerson[];
   bibleReferences: { reference: string; url: string }[];
+  locationName: string;
 }
 
 export function EventDetailClient({ 
   event, 
   eventPeriod, 
   participants,
-  bibleReferences
+  bibleReferences,
+  locationName
 }: EventDetailClientProps) {
   const [fromTimeline, setFromTimeline] = useState(false);
   const [fromPeriod, setFromPeriod] = useState(false);
@@ -89,7 +91,7 @@ export function EventDetailClient({
                 </div>
                 <div>
                   <span className="font-semibold text-gray-600 dark:text-gray-400">Location:</span>
-                  <span className="ml-2 text-gray-800 dark:text-gray-200">{event.location}</span>
+                  <span className="ml-2 text-gray-800 dark:text-gray-200">{locationName}</span>
                 </div>
               </div>
               

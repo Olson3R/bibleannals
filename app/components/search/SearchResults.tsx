@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import type { SearchResults } from '../../types/biblical';
 import { PersonCard, EventCard, RegionCard } from '../ui';
+import { getPeriodBackgroundColors } from '../../utils/color-palette';
 
 interface SearchResultsProps {
   searchTerm: string;
@@ -98,11 +99,7 @@ export function SearchResultsDisplay({
                 <Link
                   key={index}
                   href={`/periods/${periodSlug}`}
-                  className={`block p-3 bg-white dark:bg-gray-800 border-2 hover:shadow-md transition-shadow text-sm rounded-lg ${
-                    period.color.includes('border-') 
-                      ? period.color.split(' ').find(c => c.includes('border-')) || 'border-gray-300' 
-                      : 'border-gray-300'
-                  }`}
+                  className={`block p-3 bg-white dark:bg-gray-800 border-2 hover:shadow-md transition-shadow text-sm rounded-lg ${getPeriodBackgroundColors(period.colorIndex).border}`}
                 >
                   <div className="font-medium text-gray-900 dark:text-gray-100">{period.name}</div>
                   <div className="text-xs text-gray-700 dark:text-gray-300 mb-1">{period.dateRange}</div>

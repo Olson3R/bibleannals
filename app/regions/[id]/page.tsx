@@ -42,7 +42,7 @@ export default function RegionPage({ params }: RegionPageProps) {
   const regionStudyUrl = getRegionStudyUrl(region.name);
 
   return (
-    <Suspense fallback={<div className="flex justify-center items-center min-h-screen">Loading...</div>}>
+    <Suspense fallback={<div className="flex justify-center items-center min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">Loading...</div>}>
       <RegionDetailClient
         region={region}
         regionPeriod={regionPeriod}

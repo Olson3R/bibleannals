@@ -5,6 +5,7 @@ import { DateRangeSlider } from '../../components/ui/DateRangeSlider';
 import { useDateFilter } from '../../hooks/useDateFilter';
 import { isWithinDateRange } from '../../utils/date-parsing';
 import { calculateDateRangeFromPeriods } from '../../utils/date-range';
+import { getPeriodColors } from '../../utils/color-palette';
 
 interface BiblicalPerson {
   id: string;
@@ -47,7 +48,7 @@ interface TimelinePeriod {
   name: string;
   slug: string;
   dateRange: string;
-  color: string;
+  colorIndex: number;
   description: string;
 }
 
@@ -127,10 +128,10 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
           {/* Period Overview */}
-          <div className={`rounded-lg border-2 ${period.color} shadow-lg mb-8 overflow-hidden`}>
-            <div className={`p-6 ${period.color}`}>
-              <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">{period.name}</h2>
-              <p className="text-gray-700 dark:text-gray-300">{period.description}</p>
+          <div className={`rounded-lg border-2 ${getPeriodColors(period.colorIndex)} shadow-lg mb-8 overflow-hidden`}>
+            <div className={`p-6 ${getPeriodColors(period.colorIndex)}`}>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{period.name}</h2>
+              <p className="text-gray-800 dark:text-gray-100">{period.description}</p>
             </div>
           </div>
 
@@ -179,7 +180,7 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
             >
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">📅 Events</h3>
-                <span className="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded">
+                <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm font-medium px-2.5 py-0.5 rounded">
                   {events.length}
                 </span>
               </div>
@@ -194,7 +195,7 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
             >
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">👥 People</h3>
-                <span className="bg-green-100 text-green-800 text-sm font-medium px-2.5 py-0.5 rounded">
+                <span className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm font-medium px-2.5 py-0.5 rounded">
                   {people.length}
                 </span>
               </div>
@@ -209,7 +210,7 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
             >
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">🗺️ Regions</h3>
-                <span className="bg-purple-100 text-purple-800 text-sm font-medium px-2.5 py-0.5 rounded">
+                <span className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm font-medium px-2.5 py-0.5 rounded">
                   {regions.length}
                 </span>
               </div>

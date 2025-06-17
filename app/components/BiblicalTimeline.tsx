@@ -9,6 +9,7 @@ import { TimelinePeriodCard, hasDisplayableContent } from './timeline';
 import { SearchResultsDisplay } from './search';
 import { DateRangeSlider, NavLink, AdvancedFilters, type AdvancedFiltersType } from './ui';
 import { useDateFilter } from '../hooks/useDateFilter';
+import { getPeriodColors } from '../utils/color-palette';
 import type { TimelinePeriod } from '../types/biblical';
 
 interface BiblicalPerson {
@@ -446,7 +447,7 @@ export function BiblicalTimeline({
             .filter(period => 
               isWithinDateRange(period.dateRange, minYear, maxYear) &&
               hasDisplayableContent(
-                period, events, regions, getPersonById, 
+                period, events, regions, timelinePeriods, getPersonById, 
                 showEvents, showPeople, showRegions,
                 minYear, maxYear,
                 matchesPersonTypeFilter, matchesEventTypeFilter, matchesLocationFilter
@@ -457,7 +458,7 @@ export function BiblicalTimeline({
             <div key={index} className="relative group">
               <NavLink
                 href={`/periods/${period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')}`}
-                className={`block px-4 py-2 rounded-full border-2 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer ${period.color}`}
+                className={`block px-4 py-2 rounded-full border-2 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer ${getPeriodColors(period.colorIndex)}`}
               >
                 <div className="text-center">
                   <div className="font-semibold text-sm text-gray-800 dark:text-gray-200">{period.name}</div>
@@ -477,13 +478,13 @@ export function BiblicalTimeline({
                   const button = e.currentTarget as HTMLButtonElement;
                   const originalText = button.innerHTML;
                   button.innerHTML = '✓';
-                  button.classList.add('bg-green-100', 'text-green-600');
+                  button.classList.add('bg-green-100', 'dark:bg-green-800', 'text-green-600', 'dark:text-green-300');
                   setTimeout(() => {
                     button.innerHTML = originalText;
-                    button.classList.remove('bg-green-100', 'text-green-600');
+                    button.classList.remove('bg-green-100', 'dark:bg-green-800', 'text-green-600', 'dark:text-green-300');
                   }, 1000);
                 }}
-                className="absolute -top-2 -right-2 w-6 h-6 bg-white border border-gray-300 rounded-full shadow-sm hover:shadow-md transition-all duration-200 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xs text-gray-600 hover:text-gray-800"
+                className="absolute -top-2 -right-2 w-6 h-6 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full shadow-sm hover:shadow-md transition-all duration-200 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xs text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100"
                 title="Copy link to this period on timeline"
               >
                 🔗
@@ -497,13 +498,13 @@ export function BiblicalTimeline({
       {/* Main Timeline Content */}
       <div className="relative">
         {/* Vertical Timeline Line */}
-        <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-300"></div>
+        <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-gray-600"></div>
         
         {timelinePeriods
           .filter(period => 
             isWithinDateRange(period.dateRange, minYear, maxYear) &&
             hasDisplayableContent(
-              period, events, regions, getPersonById, 
+              period, events, regions, timelinePeriods, getPersonById, 
               showEvents, showPeople, showRegions,
               minYear, maxYear,
               matchesPersonTypeFilter, matchesEventTypeFilter, matchesLocationFilter
@@ -512,7 +513,7 @@ export function BiblicalTimeline({
           .map((period, index) => (
           <div key={index} id={`period-${period.slug}`} className="relative mb-16">
             {/* Timeline dot */}
-            <div className="absolute left-6 w-5 h-5 bg-white border-4 border-gray-600 rounded-full z-10 shadow-lg"></div>
+            <div className="absolute left-6 w-5 h-5 bg-white dark:bg-gray-800 border-4 border-gray-600 dark:border-gray-400 rounded-full z-10 shadow-lg"></div>
             
             {/* Content */}
             <div className="ml-20">
@@ -520,6 +521,7 @@ export function BiblicalTimeline({
                 period={period}
                 events={events}
                 regions={regions}
+                allPeriods={timelinePeriods}
                 getPersonById={getPersonById}
                 showEvents={showEvents}
                 showPeople={showPeople}
@@ -541,36 +543,36 @@ export function BiblicalTimeline({
       </div>
 
       {/* Color Legend */}
-      <div className="bg-white rounded-xl p-6 mb-12 border border-gray-200 shadow-sm">
-        <h3 className="text-xl font-bold text-center mb-4 text-gray-800">Person Color Guide</h3>
+      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 mb-12 border border-gray-200 dark:border-gray-700 shadow-sm">
+        <h3 className="text-xl font-bold text-center mb-4 text-gray-800 dark:text-gray-200">Person Color Guide</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
           <div className="flex items-center">
             <div className="w-4 h-4 bg-yellow-200 border border-yellow-400 rounded mr-2"></div>
-            <span className="text-sm text-gray-700">Divine</span>
+            <span className="text-sm text-gray-700 dark:text-gray-300">Divine</span>
           </div>
           <div className="flex items-center">
             <div className="w-4 h-4 bg-purple-200 border border-purple-400 rounded mr-2"></div>
-            <span className="text-sm text-gray-700">Patriarchs</span>
+            <span className="text-sm text-gray-700 dark:text-gray-300">Patriarchs</span>
           </div>
           <div className="flex items-center">
             <div className="w-4 h-4 bg-red-200 border border-red-400 rounded mr-2"></div>
-            <span className="text-sm text-gray-700">Royalty</span>
+            <span className="text-sm text-gray-700 dark:text-gray-300">Royalty</span>
           </div>
           <div className="flex items-center">
             <div className="w-4 h-4 bg-green-200 border border-green-400 rounded mr-2"></div>
-            <span className="text-sm text-gray-700">Prophets</span>
+            <span className="text-sm text-gray-700 dark:text-gray-300">Prophets</span>
           </div>
           <div className="flex items-center">
             <div className="w-4 h-4 bg-indigo-200 border border-indigo-400 rounded mr-2"></div>
-            <span className="text-sm text-gray-700">Apostles</span>
+            <span className="text-sm text-gray-700 dark:text-gray-300">Apostles</span>
           </div>
           <div className="flex items-center">
             <div className="w-4 h-4 bg-pink-200 border border-pink-400 rounded mr-2"></div>
-            <span className="text-sm text-gray-700">Women</span>
+            <span className="text-sm text-gray-700 dark:text-gray-300">Women</span>
           </div>
           <div className="flex items-center">
             <div className="w-4 h-4 bg-blue-200 border border-blue-400 rounded mr-2"></div>
-            <span className="text-sm text-gray-700">Others</span>
+            <span className="text-sm text-gray-700 dark:text-gray-300">Others</span>
           </div>
         </div>
       </div>

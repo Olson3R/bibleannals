@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { NavLink } from '../../components/ui';
+import { getPeriodColors } from '../../utils/color-palette';
 import type { BiblicalRegion, BiblicalPerson, TimelinePeriod } from '../../types/biblical';
 
 interface RegionDetailClientProps {
@@ -115,7 +116,7 @@ export function RegionDetailClient({
                       <NavLink
                         key={period.slug}
                         href={`/periods/${period.slug}`}
-                        className={`px-3 py-1 rounded-full text-sm hover:opacity-80 transition-all ${period.color} border-2`}
+                        className={`px-3 py-1 rounded-full text-sm hover:opacity-80 transition-all ${getPeriodColors(period.colorIndex)} border-2 text-gray-800 dark:text-gray-100`}
                       >
                         {period.name}
                       </NavLink>

@@ -45,7 +45,7 @@ export interface TimelinePeriod {
   slug: string;
   dateRange: string;
   description: string;
-  color: string;
+  colorIndex: number;
 }
 
 export interface SearchResults {

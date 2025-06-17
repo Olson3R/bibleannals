@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
-import { loadTimelineData, getEventById, getPersonById } from '../../utils/data-loader';
+import { loadTimelineData, getEventById, getPersonById, getRegionById } from '../../utils/data-loader';
 import { getEventPeriod } from '../../utils/period-detection';
 import { EventDetailClient } from './EventDetailClient';
 import type { BiblicalPerson } from '../../types/biblical';
@@ -54,13 +54,18 @@ export default function EventPage({ params }: EventPageProps) {
     url: getBibleUrl(ref)
   }));
 
+  // Resolve location name on server side
+  const region = getRegionById(event.location);
+  const locationName = region ? region.name : event.location;
+
   return (
-    <Suspense fallback={<div className="flex justify-center items-center min-h-screen">Loading...</div>}>
+    <Suspense fallback={<div className="flex justify-center items-center min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">Loading...</div>}>
       <EventDetailClient
         event={event}
         eventPeriod={eventPeriod}
         participants={participants}
         bibleReferences={bibleReferences}
+        locationName={locationName}
       />
     </Suspense>
   );

@@ -63,70 +63,70 @@ export function getTimelinePeriods() {
       name: "Creation & Pre-Flood Era",
       slug: "creation-pre-flood-era",
       dateRange: "4004-2348 BC",
-      color: "bg-green-100 border-green-400",
+      colorIndex: 0,
       description: "From the creation of the world to Noah's flood, spanning approximately 1,656 years"
     },
     {
       name: "Post-Flood & Patriarchs",
       slug: "post-flood-patriarchs",
       dateRange: "2348-1805 BC", 
-      color: "bg-blue-100 border-blue-400",
+      colorIndex: 1,
       description: "From Noah's family repopulating the earth to the death of Joseph in Egypt"
     },
     {
       name: "Egyptian Bondage",
       slug: "egyptian-bondage",
       dateRange: "1804-1491 BC",
-      color: "bg-yellow-100 border-yellow-400", 
+      colorIndex: 2, 
       description: "Israel's 400+ years of slavery in Egypt until the Exodus under Moses"
     },
     {
       name: "Wilderness & Conquest",
       slug: "wilderness-conquest",
       dateRange: "1491-1427 BC",
-      color: "bg-orange-100 border-orange-400",
+      colorIndex: 3,
       description: "40 years in wilderness and conquest of the Promised Land under Joshua"
     },
     {
       name: "Judges Period",
       slug: "judges-period", 
       dateRange: "1427-1043 BC",
-      color: "bg-purple-100 border-purple-400",
+      colorIndex: 4,
       description: "Cycles of sin, oppression, and deliverance through judges like Gideon and Samson"
     },
     {
       name: "United Kingdom",
       slug: "united-kingdom",
       dateRange: "1043-930 BC", 
-      color: "bg-red-100 border-red-400",
+      colorIndex: 5,
       description: "Israel united under kings Saul, David, and Solomon; temple built"
     },
     {
       name: "Divided Kingdom",
       slug: "divided-kingdom",
       dateRange: "930-586 BC",
-      color: "bg-pink-100 border-pink-400", 
+      colorIndex: 6, 
       description: "Kingdom splits into Israel and Judah; prophets warn of judgment"
     },
     {
       name: "Exile & Return",
       slug: "exile-return",
       dateRange: "586-430 BC",
-      color: "bg-indigo-100 border-indigo-400",
+      colorIndex: 7,
       description: "Babylonian exile, return under Cyrus, temple rebuilt, walls restored"
     },
     {
       name: "Intertestamental Period",
       slug: "intertestamental-period",
       dateRange: "430-6 BC", 
-      color: "bg-gray-100 border-gray-400",
+      colorIndex: 8,
       description: "400 years of prophetic silence; Greek and Roman influence"
     },
     {
       name: "New Testament Era",
       slug: "new-testament-era",
       dateRange: "6 BC-60 AD",
-      color: "bg-emerald-100 border-emerald-400", 
+      colorIndex: 9, 
       description: "Birth, life, death, and resurrection of Jesus; early church established"
     }
   ];

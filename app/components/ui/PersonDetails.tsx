@@ -55,7 +55,7 @@ export function PersonDetails({
           {onBackClick && (
             <button
               onClick={onBackClick}
-              className="text-gray-600 hover:text-gray-800 text-sm"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 text-sm"
             >
               ← Back
             </button>
@@ -66,22 +66,22 @@ export function PersonDetails({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {person.birth_date && (
             <div>
-              <span className="font-medium text-gray-700">Born:</span> {person.birth_date}
+              <span className="font-medium text-gray-700 dark:text-gray-300">Born:</span> {person.birth_date}
             </div>
           )}
           {person.death_date && (
             <div>
-              <span className="font-medium text-gray-700">Died:</span> {person.death_date}
+              <span className="font-medium text-gray-700 dark:text-gray-300">Died:</span> {person.death_date}
             </div>
           )}
           {person.gender && (
             <div>
-              <span className="font-medium text-gray-700">Gender:</span> {person.gender}
+              <span className="font-medium text-gray-700 dark:text-gray-300">Gender:</span> {person.gender}
             </div>
           )}
           {person.ethnicity && (
             <div>
-              <span className="font-medium text-gray-700">Ethnicity:</span> {person.ethnicity}
+              <span className="font-medium text-gray-700 dark:text-gray-300">Ethnicity:</span> {person.ethnicity}
             </div>
           )}
         </div>
@@ -89,22 +89,22 @@ export function PersonDetails({
         {/* Special Status */}
         <div className="mt-4 flex flex-wrap gap-2">
           {person.created && (
-            <span className="px-2 py-1 bg-green-100 text-green-800 rounded text-sm">Created by God</span>
+            <span className="px-2 py-1 bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-200 rounded text-sm">Created by God</span>
           )}
           {person.translated && (
-            <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded text-sm">Translated</span>
+            <span className="px-2 py-1 bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 rounded text-sm">Translated</span>
           )}
         </div>
       </div>
 
       {/* Family Relationships */}
       {(parents.length > 0 || children.length > 0 || spouses.length > 0) && (
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">👨‍👩‍👧‍👦 Family</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">👨‍👩‍👧‍👦 Family</h3>
           
           {parents.length > 0 && (
             <div className="mb-4">
-              <h4 className="font-medium text-gray-700 mb-2">Parents:</h4>
+              <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">Parents:</h4>
               <div className="flex flex-wrap gap-2">
                 {parents.map(parent => (
                   <PersonCard key={parent.id} person={parent} className="text-sm" />
@@ -115,7 +115,7 @@ export function PersonDetails({
 
           {spouses.length > 0 && (
             <div className="mb-4">
-              <h4 className="font-medium text-gray-700 mb-2">Spouses:</h4>
+              <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">Spouses:</h4>
               <div className="flex flex-wrap gap-2">
                 {spouses.map(spouse => (
                   <PersonCard key={spouse.id} person={spouse} className="text-sm" />
@@ -126,7 +126,7 @@ export function PersonDetails({
 
           {children.length > 0 && (
             <div>
-              <h4 className="font-medium text-gray-700 mb-2">Children:</h4>
+              <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">Children:</h4>
               <div className="flex flex-wrap gap-2">
                 {children.map(child => (
                   <PersonCard key={child.id} person={child} className="text-sm" />
@@ -139,18 +139,18 @@ export function PersonDetails({
 
       {/* Other Names */}
       {person.names && person.names.length > 0 && (
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">📝 Other Names</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">📝 Other Names</h3>
           <div className="space-y-2">
             {person.names.map((nameEntry, index) => (
-              <div key={index} className="flex items-center justify-between p-2 bg-gray-50 rounded">
+              <div key={index} className="flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-700 rounded">
                 <span className="font-medium">{nameEntry.name}</span>
                 {nameEntry.reference && (
                   <a
                     href={getBibleUrl(nameEntry.reference)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 text-sm hover:underline"
+                    className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm hover:underline"
                   >
                     {nameEntry.reference.replace('.KJV', '')}
                   </a>
@@ -163,8 +163,8 @@ export function PersonDetails({
 
       {/* Events Participated In */}
       {personEvents.length > 0 && (
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">📅 Events Participated In</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">📅 Events Participated In</h3>
           <div className="space-y-3">
             {personEvents.map(event => (
               <EventCard 
@@ -179,8 +179,8 @@ export function PersonDetails({
 
       {/* Biblical References */}
       {person.references && person.references.length > 0 && (
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">📖 Biblical References</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">📖 Biblical References</h3>
           <div className="flex flex-wrap gap-2">
             {person.references.map((ref, index) => (
               <a
@@ -188,7 +188,7 @@ export function PersonDetails({
                 href={getBibleUrl(ref)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 transition-colors text-sm hover:underline"
+                className="px-3 py-1 bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 rounded-full hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors text-sm hover:underline"
               >
                 {ref.replace('.KJV', '')}
               </a>
