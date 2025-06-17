@@ -1,0 +1,44 @@
+name: Build and Deploy Next.js to SFTP
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.12.0'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Next.js app
+        run: npm run build # or your build command
+
+      - name: Publish site
+        uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
+        with:
+          host: ${{ secrets.SFTP_HOST }}
+          port: 22 # optional, default is 22
+          user:  ${{ secrets.SFTP_USERNAME }}
+          pass: ${{ secrets.SFTP_PASSWORD }}
+          # execute pre-commands before scp
+          first_ssh: rm -rf uploads/*
+          scp: |
+            ./out/*' => upload/
+          # execute post-commands after scp
+          last_ssh: |
+            timestamp=$(date +%Y%m%d-%H%M%S)
+            echo "Created $timestamp"
+            mkdir "$timestamp"
+            mv uploads/* "$timestamp/"
+            ln -snf "$timestamp" bibleannals.com
