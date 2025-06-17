@@ -48,4 +48,3 @@ jobs:
             mkdir "$timestamp"
             mv uploads/* "$timestamp/"
             ln -snf "$timestamp" bibleannals.com
-            echo "Deployment completed at $(date)" >> /var/log/deployments.log
