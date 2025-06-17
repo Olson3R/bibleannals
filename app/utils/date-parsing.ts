@@ -81,3 +81,36 @@ export function isWithinDateRange(
   
   return overlapStart <= overlapEnd;
 }
+
+/**
+ * Parses a single date string and returns a year value
+ * @param dateStr - Date string like "4004 BC", "~4004 BC", "60 AD", etc.
+ * @returns Year as number (BC as negative, AD as positive) or null if unparseable
+ */
+export function parseDate(dateStr: string): number | null {
+  if (!dateStr) return null;
+  
+  // Remove tildes and extra whitespace
+  const cleanDate = dateStr.replace(/~/, '').trim();
+  
+  // Handle BC dates
+  const bcMatch = cleanDate.match(/(\d+)\s*BC/i);
+  if (bcMatch) {
+    return -parseInt(bcMatch[1]); // BC as negative
+  }
+  
+  // Handle AD dates
+  const adMatch = cleanDate.match(/(\d+)\s*AD/i);
+  if (adMatch) {
+    return parseInt(adMatch[1]); // AD as positive
+  }
+  
+  // Handle bare numbers (assume AD for positive, BC for negative)
+  const numberMatch = cleanDate.match(/^-?(\d+)$/);
+  if (numberMatch) {
+    const num = parseInt(cleanDate);
+    return num;
+  }
+  
+  return null;
+}

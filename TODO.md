@@ -10,9 +10,6 @@
 - **Loading states**: Add skeleton loading components for better perceived performance
 - **Error boundaries**: Implement React error boundaries for graceful error handling
 
-## Features & Functionality
-- **Timeline visualization**: Create interactive timeline chart/graph visualization
-
 ## Technical Improvements
 - **Type safety**: Strengthen TypeScript types and eliminate any 'any' types
 - **ESLint warnings**: Fix ESLint warnings in useDateFilter.ts React Hook dependencies

@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
-import { getTimelinePeriods, getPeriodEvents } from '../../../utils/data-loader';
+import { getTimelinePeriods, getPeriodEvents, getPersons } from '../../../utils/data-loader';
 import { getLocationName } from '../../../utils/location-resolver';
 import { calculateDateRangeFromPeriods } from '../../../utils/date-range';
 import { PeriodEventsClient } from './PeriodEventsClient';
@@ -27,6 +27,7 @@ export default function PeriodEventsPage({ params }: PeriodEventsPageProps) {
   }
 
   const allEvents = getPeriodEvents(period.name);
+  const allPeople = getPersons();
   const { minYear: dataMinYear, maxYear: dataMaxYear } = calculateDateRangeFromPeriods(allPeriods);
 
   // Create a map of event IDs to resolved location names
@@ -39,6 +40,8 @@ export default function PeriodEventsPage({ params }: PeriodEventsPageProps) {
       <PeriodEventsClient 
         period={period}
         allEvents={allEvents}
+        allPeople={allPeople}
+        timelinePeriods={allPeriods}
         eventLocationNames={eventLocationNames}
         dataMinYear={dataMinYear}
         dataMaxYear={dataMaxYear}

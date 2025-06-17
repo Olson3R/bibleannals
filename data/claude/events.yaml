@@ -2,7 +2,6 @@
 # This file documents significant events throughout biblical history with dates, locations, and participants
 
 biblical_events:
-  # Creation and Pre-Flood Events
   - id: CREATION_OF_WORLD
     name: Creation of the World
     date: "~4004 BC"
@@ -713,8 +712,10 @@ biblical_events:
     description: "Joshua leads Israel in conquering the promised land"
     participants:
       - JOSHUA
+      - CALEB
     references:
-      - JOS.8.1-12.24.KJV
+      - JOS.11.23.KJV
+      - JOS.21.43-45.KJV
 
   - id: DEATH_OF_JOSHUA
     name: Death of Joshua
@@ -745,16 +746,6 @@ biblical_events:
       - DEBORAH
     references:
       - JDG.4.1-5.31.KJV
-
-  - id: GIDEON_DEFEATS_MIDIANITES
-    name: Gideon Defeats the Midianites
-    date: "~1162 BC"
-    location: CANAAN
-    description: "Gideon defeats the Midianite army with only 300 men"
-    participants:
-      - GIDEON
-    references:
-      - JDG.6.1-8.35.KJV
 
   - id: SAMSON_JUDGES
     name: Samson Judges Israel
@@ -818,17 +809,6 @@ biblical_events:
       - 1SA.4.1-22.KJV
 
   # United Kingdom Period
-  - id: ISRAEL_DEMANDS_KING
-    name: Israel Demands a King
-    date: "~1043 BC"
-    location: RAMAH
-    description: "The elders of Israel ask Samuel to appoint a king to rule over them"
-    participants:
-      - SAMUEL
-      - GOD_FATHER
-    references:
-      - 1SA.8.1-22.KJV
-
   - id: SAUL_ANOINTED_KING
     name: Saul Anointed as First King
     date: "~1043 BC"
@@ -850,18 +830,6 @@ biblical_events:
       - SAUL
     references:
       - 1SA.11.1-15.KJV
-
-  - id: SAUL_REJECTED_BY_GOD
-    name: Saul Rejected by God
-    date: "~1025 BC"
-    location: CANAAN
-    description: "God rejects Saul as king because of his disobedience"
-    participants:
-      - SAUL
-      - SAMUEL
-      - GOD_FATHER
-    references:
-      - 1SA.15.1-35.KJV
 
   - id: DAVID_ANOINTED
     name: David Anointed by Samuel
@@ -953,12 +921,13 @@ biblical_events:
 
   - id: DAVIDIC_COVENANT
     name: God's Covenant with David
-    date: "~998 BC"
+    date: "~1000 BC"
     location: JERUSALEM
-    description: "God promises David that his throne will be established forever"
+    description: "God promises David an eternal dynasty through the prophet Nathan"
     participants:
-      - GOD_FATHER
       - DAVID
+      - NATHAN_PROPHET
+      - GOD_FATHER
     references:
       - 2SA.7.1-29.KJV
 
@@ -1073,21 +1042,22 @@ biblical_events:
     name: Death of Solomon
     date: "~930 BC"
     location: JERUSALEM
-    description: "Solomon dies after reigning 40 years; Rehoboam becomes king"
+    description: "Solomon dies after 40 years of reign, kingdom passes to Rehoboam"
     participants:
       - SOLOMON
       - REHOBOAM
     references:
       - 1KI.11.41-43.KJV
 
-  # Divided Kingdom
+  # Divided Kingdom Period
   - id: KINGDOM_DIVIDES
     name: Kingdom Divides
     date: "~930 BC"
     location: SHECHEM
-    description: "The kingdom splits into Israel (north) and Judah (south) under Rehoboam's harsh rule"
+    description: "Israel splits into northern and southern kingdoms after Rehoboam's harsh response"
     participants:
       - REHOBOAM
+      - JEROBOAM_I
     references:
       - 1KI.12.1-24.KJV
 
@@ -1589,11 +1559,12 @@ biblical_events:
     name: Martyrdom of Stephen
     date: "~34 AD"
     location: JERUSALEM
-    description: "Stephen becomes the first Christian martyr; Saul witnesses his stoning"
+    description: "Stephen becomes first Christian martyr, stoned by Jewish leaders"
     participants:
+      - STEPHEN
       - PAUL
     references:
-      - ACT.7.54-8.3.KJV
+      - ACT.7.54-60.KJV
 
   - id: SAUL_CONVERSION
     name: Conversion of Saul
@@ -2472,17 +2443,6 @@ biblical_events:
     references:
       - EXO.11.1-10.KJV
 
-  - id: PASSOVER_INSTITUTED
-    name: Passover Instituted
-    date: "~1491 BC"
-    location: EGYPT
-    description: "God institutes the Passover meal and commands Israel to mark their doorposts"
-    participants:
-      - GOD_FATHER
-      - MOSES
-    references:
-      - EXO.12.1-28.KJV
-
   - id: FIRSTBORN_SLAIN
     name: Firstborn of Egypt Slain
     date: "~1491 BC"
@@ -2752,16 +2712,6 @@ biblical_events:
     references:
       - EXO.25.1-31.18.KJV
 
-  - id: GOLDEN_CALF_MADE
-    name: Golden Calf Made
-    date: "~1490 BC"
-    location: MOUNT_SINAI
-    description: "While Moses is on the mountain, the people make a golden calf to worship"
-    participants:
-      - AARON
-    references:
-      - EXO.32.1-6.KJV
-
   - id: MOSES_BREAKS_TABLETS
     name: Moses Breaks the Stone Tablets
     date: "~1490 BC"
@@ -2816,18 +2766,6 @@ biblical_events:
       - EXO.34.29-35.KJV
 
   # Conquest Period Events
-  - id: DEATH_OF_MOSES
-    name: Death of Moses
-    date: "~1451 BC"
-    location: MOUNT_NEBO
-    description: "Moses dies after viewing the promised land from Mount Nebo"
-    participants:
-      - MOSES
-      - GOD_FATHER
-      - JOSHUA
-    references:
-      - DEU.34.1-12.KJV
-
   - id: JOSHUA_COMMISSIONED
     name: Joshua Commissioned as Leader
     date: "~1451 BC"
@@ -2839,28 +2777,6 @@ biblical_events:
     references:
       - JOS.1.1-9.KJV
 
-  - id: CROSSING_JORDAN
-    name: Crossing the Jordan River
-    date: "~1451 BC"
-    location: JORDAN_RIVER
-    description: "God parts the Jordan River for Israel to cross into the promised land"
-    participants:
-      - JOSHUA
-      - RAHAB
-    references:
-      - JOS.3.1-17.KJV
-
-  - id: FALL_OF_JERICHO
-    name: Fall of Jericho
-    date: "~1451 BC"
-    location: JERICHO
-    description: "The walls of Jericho fall down after Israel marches around the city"
-    participants:
-      - JOSHUA
-      - RAHAB
-    references:
-      - JOS.6.1-27.KJV
-
   - id: BATTLE_OF_AI
     name: Battle of Ai
     date: "~1450 BC"
@@ -2870,38 +2786,6 @@ biblical_events:
       - JOSHUA
     references:
       - JOS.7.1-8.35.KJV
-
-  - id: CONQUEST_OF_CANAAN
-    name: Conquest of Canaan
-    date: "~1451-1444 BC"
-    location: CANAAN
-    description: "Joshua leads Israel in conquering the promised land"
-    participants:
-      - JOSHUA
-      - CALEB
-    references:
-      - JOS.11.23.KJV
-      - JOS.21.43-45.KJV
-
-  - id: DEATH_OF_JOSHUA
-    name: Death of Joshua
-    date: "~1427 BC"
-    location: EPHRAIM_TERRITORY
-    description: "Joshua dies at age 110 after leading Israel's conquest"
-    participants:
-      - JOSHUA
-    references:
-      - JOS.24.29-30.KJV
-
-  # Judges Period Events
-  - id: FIRST_APOSTASY
-    name: Israel's First Apostasy
-    date: "~1425 BC"
-    location: CANAAN
-    description: "Israel begins cycle of sin, serving other gods after Joshua's death"
-    participants: []
-    references:
-      - JDG.2.10-19.KJV
 
   - id: OTHNIEL_JUDGES
     name: Othniel Becomes First Judge
@@ -3014,42 +2898,6 @@ biblical_events:
       - JDG.16.23-31.KJV
 
   # Samuel and Transition to Monarchy
-  - id: BIRTH_OF_SAMUEL
-    name: Birth of Samuel
-    date: "~1100 BC"
-    location: RAMAH
-    description: "Hannah gives birth to Samuel after praying for a son"
-    participants:
-      - HANNAH
-      - ELKANAH
-      - SAMUEL
-    references:
-      - 1SA.1.19-20.KJV
-
-  - id: SAMUEL_CALLED
-    name: God Calls Samuel
-    date: "~1090 BC"
-    location: SHILOH
-    description: "God calls young Samuel to be a prophet while serving under Eli"
-    participants:
-      - SAMUEL
-      - ELI
-      - GOD_FATHER
-    references:
-      - 1SA.3.1-21.KJV
-
-  - id: ARK_CAPTURED
-    name: Ark of Covenant Captured
-    date: "~1075 BC"
-    location: APHEK
-    description: "Philistines capture the ark; Eli dies upon hearing the news"
-    participants:
-      - ELI
-      - HOPHNI
-      - PHINEHAS_SON_OF_ELI
-    references:
-      - 1SA.4.1-22.KJV
-
   - id: ARK_RETURNED
     name: Ark Returned by Philistines
     date: "~1068 BC"
@@ -3071,17 +2919,6 @@ biblical_events:
       - 1SA.8.1-22.KJV
 
   # United Kingdom Period
-  - id: SAUL_ANOINTED
-    name: Saul Anointed as King
-    date: "~1043 BC"
-    location: RAMAH
-    description: "Samuel secretly anoints Saul as Israel's first king"
-    participants:
-      - SAUL
-      - SAMUEL
-    references:
-      - 1SA.9.1-10.16.KJV
-
   - id: SAUL_CONFIRMED_KING
     name: Saul Confirmed as King
     date: "~1043 BC"
@@ -3092,16 +2929,6 @@ biblical_events:
       - SAMUEL
     references:
       - 1SA.10.17-27.KJV
-
-  - id: SAUL_DEFEATS_AMMONITES
-    name: Saul Defeats Ammonites
-    date: "~1042 BC"
-    location: JABESH_GILEAD
-    description: "Saul's first victory, rescuing Jabesh-gilead from Ammonite siege"
-    participants:
-      - SAUL
-    references:
-      - 1SA.11.1-15.KJV
 
   - id: SAUL_REJECTED
     name: Saul Rejected by God
@@ -3114,18 +2941,7 @@ biblical_events:
       - GOD_FATHER
     references:
       - 1SA.13.1-15.KJV
-
-  - id: DAVID_ANOINTED
-    name: David Anointed by Samuel
-    date: "~1025 BC"
-    location: BETHLEHEM
-    description: "Samuel secretly anoints young David as future king of Israel"
-    participants:
-      - DAVID
-      - SAMUEL
-      - JESSE
-    references:
-      - 1SA.16.1-13.KJV
+      - 1SA.15.1-35.KJV
 
   - id: DAVID_GOLIATH
     name: David Defeats Goliath
@@ -3160,29 +2976,6 @@ biblical_events:
     references:
       - 1SA.19.1-26.25.KJV
 
-  - id: DEATH_OF_SAUL
-    name: Death of Saul and Jonathan
-    date: "~1010 BC"
-    location: MOUNT_GILBOA
-    description: "Saul and Jonathan die in battle against the Philistines"
-    participants:
-      - SAUL
-      - JONATHAN
-      - MALCHISHUA
-      - ABINADAB_SON_OF_SAUL
-    references:
-      - 1SA.31.1-13.KJV
-
-  - id: DAVID_KING_JUDAH
-    name: David Becomes King of Judah
-    date: "~1010 BC"
-    location: HEBRON
-    description: "David is anointed king over the tribe of Judah"
-    participants:
-      - DAVID
-    references:
-      - 2SA.2.1-7.KJV
-
   - id: DAVID_KING_ALL_ISRAEL
     name: David Becomes King of All Israel
     date: "~1003 BC"
@@ -3193,16 +2986,6 @@ biblical_events:
     references:
       - 2SA.5.1-5.KJV
 
-  - id: DAVID_CAPTURES_JERUSALEM
-    name: David Captures Jerusalem
-    date: "~1003 BC"
-    location: JERUSALEM
-    description: "David conquers Jerusalem from the Jebusites, making it his capital"
-    participants:
-      - DAVID
-    references:
-      - 2SA.5.6-10.KJV
-
   - id: ARK_TO_JERUSALEM
     name: Ark Brought to Jerusalem
     date: "~1000 BC"
@@ -3212,18 +2995,6 @@ biblical_events:
       - DAVID
     references:
       - 2SA.6.1-23.KJV
-
-  - id: DAVIDIC_COVENANT
-    name: God's Covenant with David
-    date: "~1000 BC"
-    location: JERUSALEM
-    description: "God promises David an eternal dynasty through the prophet Nathan"
-    participants:
-      - DAVID
-      - NATHAN_PROPHET
-      - GOD_FATHER
-    references:
-      - 2SA.7.1-29.KJV
 
   - id: DAVID_BATHSHEBA
     name: David's Sin with Bathsheba
@@ -3246,28 +3017,6 @@ biblical_events:
       - NATHAN_PROPHET
     references:
       - 2SA.12.1-25.KJV
-
-  - id: ABSALOM_REBELLION
-    name: Absalom's Rebellion
-    date: "~980 BC"
-    location: JERUSALEM
-    description: "David's son Absalom rebels against him and temporarily takes the throne"
-    participants:
-      - DAVID
-      - ABSALOM
-    references:
-      - 2SA.15.1-18.33.KJV
-
-  - id: DEATH_OF_DAVID
-    name: Death of King David
-    date: "~970 BC"
-    location: JERUSALEM
-    description: "David dies after reigning 40 years, leaving throne to Solomon"
-    participants:
-      - DAVID
-      - SOLOMON
-    references:
-      - 1KI.2.1-12.KJV
 
   - id: SOLOMON_CROWNED
     name: Solomon Crowned King
@@ -3302,26 +3051,6 @@ biblical_events:
       - 1KI.6.1.KJV
       - 2CH.3.1-2.KJV
 
-  - id: TEMPLE_DEDICATED
-    name: Temple Dedicated
-    date: "~959 BC"
-    location: JERUSALEM
-    description: "Solomon dedicates the completed temple with great ceremony"
-    participants:
-      - SOLOMON
-    references:
-      - 1KI.8.1-66.KJV
-
-  - id: QUEEN_OF_SHEBA
-    name: Visit of Queen of Sheba
-    date: "~950 BC"
-    location: JERUSALEM
-    description: "Queen of Sheba visits Solomon to test his wisdom"
-    participants:
-      - SOLOMON
-    references:
-      - 1KI.10.1-13.KJV
-
   - id: SOLOMONS_APOSTASY
     name: Solomon's Apostasy
     date: "~940 BC"
@@ -3331,29 +3060,6 @@ biblical_events:
       - SOLOMON
     references:
       - 1KI.11.1-13.KJV
-
-  - id: DEATH_OF_SOLOMON
-    name: Death of Solomon
-    date: "~930 BC"
-    location: JERUSALEM
-    description: "Solomon dies after 40 years of reign, kingdom passes to Rehoboam"
-    participants:
-      - SOLOMON
-      - REHOBOAM
-    references:
-      - 1KI.11.41-43.KJV
-
-  # Divided Kingdom Period
-  - id: KINGDOM_DIVIDES
-    name: Kingdom Divides
-    date: "~930 BC"
-    location: SHECHEM
-    description: "Israel splits into northern and southern kingdoms after Rehoboam's harsh response"
-    participants:
-      - REHOBOAM
-      - JEROBOAM_I
-    references:
-      - 1KI.12.1-24.KJV
 
   - id: JEROBOAM_GOLDEN_CALVES
     name: Jeroboam Makes Golden Calves
@@ -3440,25 +3146,6 @@ biblical_events:
     references:
       - 2KI.2.9-25.KJV
 
-  - id: FALL_OF_SAMARIA
-    name: Fall of Samaria
-    date: "~722 BC"
-    location: SAMARIA
-    description: "Assyria conquers northern kingdom of Israel, ending it forever"
-    participants: []
-    references:
-      - 2KI.17.1-23.KJV
-
-  - id: HEZEKIAH_REFORMS
-    name: Hezekiah's Reforms
-    date: "~715 BC"
-    location: JERUSALEM
-    description: "King Hezekiah destroys idols and restores true worship in Judah"
-    participants:
-      - HEZEKIAH
-    references:
-      - 2KI.18.1-8.KJV
-
   - id: SENNACHERIB_INVASION
     name: Sennacherib Invades Judah
     date: "~701 BC"
@@ -3469,16 +3156,6 @@ biblical_events:
       - ISAIAH
     references:
       - 2KI.18.13-19.37.KJV
-
-  - id: JOSIAH_REFORMS
-    name: Josiah's Reforms
-    date: "~621 BC"
-    location: JERUSALEM
-    description: "King Josiah discovers Book of Law and leads great religious reformation"
-    participants:
-      - JOSIAH
-    references:
-      - 2KI.22.1-23.30.KJV
 
   - id: JERUSALEM_FALLS
     name: Fall of Jerusalem
@@ -3504,38 +3181,6 @@ biblical_events:
     references:
       - DAN.1.1-21.KJV
 
-  - id: FIERY_FURNACE
-    name: Fiery Furnace
-    date: "~589 BC"
-    location: BABYLON
-    description: "Shadrach, Meshach, and Abednego refuse to bow to image and are delivered from furnace"
-    participants:
-      - SHADRACH
-      - MESHACH
-      - ABEDNEGO
-    references:
-      - DAN.3.1-30.KJV
-
-  - id: DANIEL_LIONS_DEN
-    name: Daniel in Lions' Den
-    date: "~539 BC"
-    location: BABYLON
-    description: "Daniel continues praying despite decree and is delivered from lions"
-    participants:
-      - DANIEL
-    references:
-      - DAN.6.1-28.KJV
-
-  - id: CYRUS_DECREE
-    name: Cyrus' Decree
-    date: "~538 BC"
-    location: BABYLON
-    description: "Persian king Cyrus allows Jews to return and rebuild temple"
-    participants:
-      - EZRA
-    references:
-      - EZR.1.1-11.KJV
-
   - id: TEMPLE_FOUNDATION
     name: Temple Foundation Laid
     date: "~536 BC"
@@ -3545,16 +3190,6 @@ biblical_events:
       - ZERUBBABEL
     references:
       - EZR.3.8-13.KJV
-
-  - id: EZRA_RETURNS
-    name: Ezra Returns to Jerusalem
-    date: "~458 BC"
-    location: JERUSALEM
-    description: "Ezra leads second group of exiles back to Jerusalem with religious reforms"
-    participants:
-      - EZRA
-    references:
-      - EZR.7.1-10.KJV
 
   - id: NEHEMIAH_RETURNS
     name: Nehemiah Returns
@@ -3610,28 +3245,6 @@ biblical_events:
     references:
       - LUK.2.21-38.KJV
 
-  - id: WISE_MEN_VISIT
-    name: Visit of Wise Men
-    date: "~3 BC"
-    location: BETHLEHEM
-    description: "Wise men from the east come to worship infant Jesus"
-    participants:
-      - JESUS
-    references:
-      - MAT.2.1-12.KJV
-
-  - id: FLIGHT_TO_EGYPT
-    name: Flight to Egypt
-    date: "~3 BC"
-    location: EGYPT
-    description: "Joseph and Mary flee to Egypt with Jesus to escape Herod"
-    participants:
-      - JESUS
-      - MARY_MOTHER_OF_JESUS
-      - JOSEPH_HUSBAND_OF_MARY
-    references:
-      - MAT.2.13-18.KJV
-
   - id: JESUS_BOY_TEMPLE
     name: Boy Jesus at Temple
     date: "~8 AD"
@@ -3665,16 +3278,6 @@ biblical_events:
     references:
       - MAT.3.13-17.KJV
 
-  - id: TEMPTATION_OF_JESUS
-    name: Temptation of Jesus
-    date: "~27 AD"
-    location: WILDERNESS
-    description: "Jesus is tempted by Satan in wilderness for 40 days"
-    participants:
-      - JESUS
-    references:
-      - MAT.4.1-11.KJV
-
   - id: CALLING_DISCIPLES
     name: Calling of First Disciples
     date: "~27 AD"
@@ -3688,16 +3291,6 @@ biblical_events:
       - JOHN_THE_APOSTLE
     references:
       - MAT.4.18-22.KJV
-
-  - id: SERMON_ON_MOUNT
-    name: Sermon on the Mount
-    date: "~28 AD"
-    location: GALILEE
-    description: "Jesus preaches the Beatitudes and other teachings"
-    participants:
-      - JESUS
-    references:
-      - MAT.5.1-7.29.KJV
 
   - id: WATER_TO_WINE
     name: Water Turned to Wine
@@ -3934,17 +3527,6 @@ biblical_events:
       - MAT.15.21-28.KJV
       - MAR.7.24-30.KJV
 
-  - id: FEEDING_FOUR_THOUSAND
-    name: Feeding the Four Thousand
-    date: "~29 AD"
-    location: DECAPOLIS
-    description: "Jesus feeds 4000 people with seven loaves and few fish"
-    participants:
-      - JESUS
-    references:
-      - MAT.15.32-39.KJV
-      - MAR.8.1-10.KJV
-
   - id: HEALING_DROPSICAL_MAN
     name: Healing Man with Dropsy
     date: "~29 AD"
@@ -3990,39 +3572,6 @@ biblical_events:
     references:
       - MAT.17.1-13.KJV
 
-  - id: TRIUMPHAL_ENTRY
-    name: Triumphal Entry
-    date: "~30 AD"
-    location: JERUSALEM
-    description: "Jesus enters Jerusalem riding on donkey as crowds shout 'Hosanna'"
-    participants:
-      - JESUS
-    references:
-      - MAT.21.1-11.KJV
-
-  - id: CLEANSING_TEMPLE
-    name: Cleansing of Temple
-    date: "~30 AD"
-    location: JERUSALEM
-    description: "Jesus drives money changers from temple, saying 'My house is house of prayer'"
-    participants:
-      - JESUS
-    references:
-      - MAT.21.12-17.KJV
-
-  - id: LAST_SUPPER
-    name: Last Supper
-    date: "~30 AD"
-    location: JERUSALEM
-    description: "Jesus institutes communion at Passover meal with disciples"
-    participants:
-      - JESUS
-      - PETER
-      - JOHN_THE_APOSTLE
-      - JUDAS_ISCARIOT
-    references:
-      - MAT.26.17-30.KJV
-
   - id: GETHSEMANE_PRAYER
     name: Prayer in Gethsemane
     date: "~30 AD"
@@ -4043,58 +3592,6 @@ biblical_events:
       - JUDAS_ISCARIOT
     references:
       - MAT.26.47-56.KJV
-
-  - id: CRUCIFIXION
-    name: Crucifixion of Jesus
-    date: "~30 AD"
-    location: GOLGOTHA
-    description: "Jesus is crucified on cross, dying for sins of the world"
-    participants:
-      - JESUS
-    references:
-      - MAT.27.32-56.KJV
-
-  - id: RESURRECTION
-    name: Resurrection of Jesus
-    date: "~30 AD"
-    location: JERUSALEM
-    description: "Jesus rises from the dead on third day, conquering death"
-    participants:
-      - JESUS
-      - MARY_MAGDALENE
-    references:
-      - MAT.28.1-10.KJV
-
-  - id: ASCENSION
-    name: Ascension of Jesus
-    date: "~30 AD"
-    location: MOUNT_OF_OLIVES
-    description: "Jesus ascends to heaven after 40 days, promising to return"
-    participants:
-      - JESUS
-    references:
-      - ACT.1.9-11.KJV
-
-  - id: PENTECOST
-    name: Day of Pentecost
-    date: "~30 AD"
-    location: JERUSALEM
-    description: "Holy Spirit comes upon apostles; Peter preaches and 3000 are saved"
-    participants:
-      - PETER
-    references:
-      - ACT.2.1-47.KJV
-
-  - id: STEPHEN_MARTYRED
-    name: Martyrdom of Stephen
-    date: "~34 AD"
-    location: JERUSALEM
-    description: "Stephen becomes first Christian martyr, stoned by Jewish leaders"
-    participants:
-      - STEPHEN
-      - PAUL
-    references:
-      - ACT.7.54-60.KJV
 
   - id: PAUL_CONVERSION
     name: Conversion of Paul
@@ -4160,19 +3657,6 @@ biblical_events:
     references:
       - ACT.13.1-14.28.KJV
 
-  - id: JERUSALEM_COUNCIL
-    name: Jerusalem Council
-    date: "~50 AD"
-    location: JERUSALEM
-    description: "Apostles decide that Gentiles don't need to be circumcised to become Christians"
-    participants:
-      - PAUL
-      - BARNABAS
-      - PETER
-      - JAMES_BROTHER_OF_JESUS
-    references:
-      - ACT.15.1-35.KJV
-
   - id: SECOND_MISSIONARY_JOURNEY
     name: Paul's Second Missionary Journey
     date: "~50-52 AD"
@@ -4205,61 +3689,6 @@ biblical_events:
     references:
       - ACT.10.1-48.KJV
 
-  - id: PAUL_FIRST_JOURNEY
-    name: Paul's First Missionary Journey
-    date: "~46-48 AD"
-    location: ASIA_MINOR
-    description: "Paul and Barnabas take gospel to Cyprus and Asia Minor"
-    participants:
-      - PAUL
-      - BARNABAS
-    references:
-      - ACT.13.1-14.28.KJV
-
-  - id: JERUSALEM_COUNCIL
-    name: Jerusalem Council
-    date: "~50 AD"
-    location: JERUSALEM
-    description: "Apostles decide Gentiles don't need to be circumcised to be Christians"
-    participants:
-      - PAUL
-      - PETER
-      - BARNABAS
-    references:
-      - ACT.15.1-35.KJV
-
-  - id: PAUL_SECOND_JOURNEY
-    name: Paul's Second Missionary Journey
-    date: "~50-52 AD"
-    location: GREECE
-    description: "Paul takes gospel to Macedonia and Greece, establishing churches"
-    participants:
-      - PAUL
-      - SILAS
-      - TIMOTHY
-    references:
-      - ACT.15.36-18.22.KJV
-
-  - id: PAUL_THIRD_JOURNEY
-    name: Paul's Third Missionary Journey
-    date: "~53-57 AD"
-    location: ASIA_MINOR
-    description: "Paul strengthens churches and ministers in Ephesus for three years"
-    participants:
-      - PAUL
-    references:
-      - ACT.18.23-21.17.KJV
-
-  - id: PAUL_ARRESTED
-    name: Paul Arrested in Jerusalem
-    date: "~57 AD"
-    location: JERUSALEM
-    description: "Paul is arrested in temple and begins series of trials"
-    participants:
-      - PAUL
-    references:
-      - ACT.21.27-23.35.KJV
-
   - id: PAUL_APPEALS_CAESAR
     name: Paul Appeals to Caesar
     date: "~59 AD"
@@ -4269,26 +3698,6 @@ biblical_events:
       - PAUL
     references:
       - ACT.25.10-12.KJV
-
-  - id: PAUL_SHIPWRECKED
-    name: Paul Shipwrecked
-    date: "~60 AD"
-    location: MALTA
-    description: "Paul is shipwrecked on way to Rome but survives and ministers"
-    participants:
-      - PAUL
-    references:
-      - ACT.27.1-28.10.KJV
-
-  - id: PAUL_ROME
-    name: Paul Reaches Rome
-    date: "~60 AD"
-    location: ROME
-    description: "Paul arrives in Rome and preaches under house arrest"
-    participants:
-      - PAUL
-    references:
-      - ACT.28.11-31.KJV
 
   # Location References
 locations:
@@ -4354,4 +3763,3 @@ chronology_notes:
   - "Many Old Testament dates are calculated from the reigns of kings"
   - "New Testament dates are more historically certain due to Roman records"
   - "The biblical calendar and modern calendar differ"
-  - "Some events span multiple years and are listed by their starting date"

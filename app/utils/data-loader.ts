@@ -132,3 +132,19 @@ export function getPeriodRegions(periodName: string): BiblicalRegion[] {
     return true; // For now, include all regions
   });
 }
+
+// Export functions to get all data
+export function getPersons(): BiblicalPerson[] {
+  const data = loadTimelineData();
+  return data.persons;
+}
+
+export function getEvents(): BiblicalEvent[] {
+  const data = loadTimelineData();
+  return data.events;
+}
+
+export function getRegions(): BiblicalRegion[] {
+  const data = loadTimelineData();
+  return data.regions;
+}

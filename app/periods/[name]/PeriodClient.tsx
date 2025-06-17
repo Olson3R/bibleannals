@@ -1,12 +1,10 @@
 'use client';
 
-import { EventCard, PersonCard, RegionCard, NavLink } from '../../components/ui';
+import { NavLink } from '../../components/ui';
 import { DateRangeSlider } from '../../components/ui/DateRangeSlider';
 import { useDateFilter } from '../../hooks/useDateFilter';
 import { isWithinDateRange } from '../../utils/date-parsing';
-import { calculateDateRangeFromPeriods } from '../../utils/date-range';
 import { getPeriodColors } from '../../utils/color-palette';
-import { parseBibleBookString, getBookDisplayName } from '../../utils/bible-links';
 
 interface BiblicalPerson {
   id: string;
@@ -59,11 +57,12 @@ interface PeriodClientProps {
   events: BiblicalEvent[];
   people: BiblicalPerson[];
   regions: BiblicalRegion[];
-  allPeriods: TimelinePeriod[];
-  eventLocationNames: Record<string, string>;
+  dataMinYear: number;
+  dataMaxYear: number;
 }
 
-export function PeriodClient({ period, events: allEvents, people: allPeople, regions: allRegions, allPeriods, eventLocationNames }: PeriodClientProps) {
+export function PeriodClient({ period, events: periodEvents, people: periodPeople, regions: periodRegions, dataMinYear, dataMaxYear }: PeriodClientProps) {
+  
   // Use the date filter hook
   const {
     minYear,
@@ -72,25 +71,17 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
     setMaxYear,
     resetFilter
   } = useDateFilter();
-  
-  // Get dynamic date range from timeline periods data
-  const { minYear: dataMinYear, maxYear: dataMaxYear } = calculateDateRangeFromPeriods(allPeriods);
-
-  // Find adjacent periods for navigation
-  const currentIndex = allPeriods.findIndex(p => p.slug === period.slug);
-  const previousPeriod = currentIndex > 0 ? allPeriods[currentIndex - 1] : null;
-  const nextPeriod = currentIndex < allPeriods.length - 1 ? allPeriods[currentIndex + 1] : null;
 
   // Filter data based on date range
-  const events = allEvents.filter(event => 
+  const events = periodEvents.filter(event => 
     isWithinDateRange(event.date, minYear, maxYear)
   );
   
-  const people = allPeople.filter(person => 
+  const people = periodPeople.filter(person => 
     isWithinDateRange(person.birth_date || '', minYear, maxYear)
   );
   
-  const regions = allRegions.filter(region => 
+  const regions = periodRegions.filter(region => 
     isWithinDateRange(region.estimated_dates || '', minYear, maxYear)
   );
 
@@ -105,23 +96,25 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
               <p className="text-gray-600 dark:text-gray-400">{period.dateRange}</p>
             </div>
             
-            {/* Date Range Filter */}
-            <DateRangeSlider
-              minYear={minYear}
-              maxYear={maxYear}
-              onMinYearChange={setMinYear}
-              onMaxYearChange={setMaxYear}
-              onReset={resetFilter}
-              dataMinYear={dataMinYear}
-              dataMaxYear={dataMaxYear}
-            />
-            
-            <NavLink
-              href="/"
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              ← Back to Timeline
-            </NavLink>
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              {/* Date Range Filter */}
+              <DateRangeSlider
+                minYear={minYear}
+                maxYear={maxYear}
+                onMinYearChange={setMinYear}
+                onMaxYearChange={setMaxYear}
+                onReset={resetFilter}
+                dataMinYear={dataMinYear}
+                dataMaxYear={dataMaxYear}
+              />
+              
+              <NavLink
+                href="/"
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                ← Back to Timeline
+              </NavLink>
+            </div>
           </div>
         </div>
       </div>
@@ -134,202 +127,24 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
             <div className={`p-6 ${getPeriodColors(period.colorIndex)}`}>
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{period.name}</h2>
               <p className="text-gray-800 dark:text-gray-100 mb-4">{period.description}</p>
-              
-              {/* Primary Books */}
-              {period.primaryBooks && period.primaryBooks.length > 0 && (
-                <div>
-                  <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-2">📖 Primary Biblical Books:</h3>
-                  <div className="flex flex-wrap gap-1">
-                    {period.primaryBooks.map((book, index) => {
-                      const bookUrl = parseBibleBookString(book);
-                      
-                      if (bookUrl) {
-                        // Biblical book - create link
-                        return (
-                          <a
-                            key={index}
-                            href={bookUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-block bg-white dark:bg-gray-800 bg-opacity-60 dark:bg-opacity-60 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 text-xs px-2 py-1 rounded border border-gray-400 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-200"
-                            title={`Read ${getBookDisplayName(book)} on Bible.com`}
-                          >
-                            {getBookDisplayName(book)}
-                          </a>
-                        );
-                      } else {
-                        // Non-biblical content - display as text only
-                        return (
-                          <span
-                            key={index}
-                            className="inline-block bg-white dark:bg-gray-800 bg-opacity-60 dark:bg-opacity-60 text-gray-800 dark:text-gray-200 text-xs px-2 py-1 rounded border border-gray-400 dark:border-gray-600 italic"
-                          >
-                            {getBookDisplayName(book)}
-                          </span>
-                        );
-                      }
-                    })}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
-
-          {/* Period Navigation */}
-          {(previousPeriod || nextPeriod) && (
-            <div className="flex justify-between items-center mb-8 bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 shadow-sm">
-              <div className="flex-1">
-                {previousPeriod && (
-                  <NavLink
-                    href={`/periods/${previousPeriod.slug}`}
-                    className="flex items-center text-blue-600 hover:text-blue-800 group"
-                  >
-                    <span className="mr-2">←</span>
-                    <div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400">Previous Period</div>
-                      <div className="font-semibold group-hover:underline">{previousPeriod.name}</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">{previousPeriod.dateRange}</div>
-                    </div>
-                  </NavLink>
-                )}
-              </div>
-              
-              <div className="flex-1 text-right">
-                {nextPeriod && (
-                  <NavLink
-                    href={`/periods/${nextPeriod.slug}`}
-                    className="flex items-center justify-end text-blue-600 hover:text-blue-800 group"
-                  >
-                    <div className="text-right">
-                      <div className="text-sm text-gray-500 dark:text-gray-400">Next Period</div>
-                      <div className="font-semibold group-hover:underline">{nextPeriod.name}</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">{nextPeriod.dateRange}</div>
-                    </div>
-                    <span className="ml-2">→</span>
-                  </NavLink>
-                )}
-              </div>
-            </div>
-          )}
-
-          {/* Navigation Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <NavLink
-              href={`/periods/${period.slug}/events`}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">📅 Events</h3>
-                <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm font-medium px-2.5 py-0.5 rounded">
-                  {events.length}
-                </span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
-                Explore all the major events that occurred during this period
-              </p>
-            </NavLink>
-
-            <NavLink
-              href={`/periods/${period.slug}/people`}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">👥 People</h3>
-                <span className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm font-medium px-2.5 py-0.5 rounded">
-                  {people.length}
-                </span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
-                Learn about the key figures who lived during this time
-              </p>
-            </NavLink>
-
-            <NavLink
-              href={`/periods/${period.slug}/regions`}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">🗺️ Regions</h3>
-                <span className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm font-medium px-2.5 py-0.5 rounded">
-                  {regions.length}
-                </span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
-                Discover the important places and locations of this era
-              </p>
-            </NavLink>
-          </div>
-
-          {/* Quick Preview */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Featured Events */}
+          
+          {/* Content Summary */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Featured Events</h3>
-              <div className="space-y-3">
-                {events.slice(0, 3).map(event => (
-                  <EventCard 
-                    key={event.id} 
-                    event={event} 
-                    showDescription={false} 
-                    className="p-3"
-                    locationName={eventLocationNames[event.id]}
-                    periodSlug={period.slug}
-                  />
-                ))}
-                {events.length > 3 && (
-                  <NavLink
-                    href={`/periods/${period.slug}/events`}
-                    className="block text-center text-sm text-blue-600 hover:text-blue-800 mt-2"
-                  >
-                    View all {events.length} events →
-                  </NavLink>
-                )}
-                {events.length === 0 && (
-                  <p className="text-gray-500 dark:text-gray-400 text-sm">No events found for the selected date range.</p>
-                )}
-              </div>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">📅 Events ({events.length})</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">Events from this period</p>
             </div>
-
-            {/* Featured People */}
+            
             <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Featured People</h3>
-              <div className="space-y-3">
-                {people.slice(0, 3).map(person => (
-                  <PersonCard key={person.id} person={person} showDates={true} className="p-3" periodSlug={period.slug} />
-                ))}
-                {people.length > 3 && (
-                  <NavLink
-                    href={`/periods/${period.slug}/people`}
-                    className="block text-center text-sm text-blue-600 hover:text-blue-800 mt-2"
-                  >
-                    View all {people.length} people →
-                  </NavLink>
-                )}
-                {people.length === 0 && (
-                  <p className="text-gray-500 dark:text-gray-400 text-sm">No people found for the selected date range.</p>
-                )}
-              </div>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">👥 People ({people.length})</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">People from this period</p>
             </div>
-
-            {/* Featured Regions */}
+            
             <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Featured Regions</h3>
-              <div className="space-y-3">
-                {regions.slice(0, 3).map(region => (
-                  <RegionCard key={region.id} region={region} showDescription={false} className="p-3" periodSlug={period.slug} />
-                ))}
-                {regions.length > 3 && (
-                  <NavLink
-                    href={`/periods/${period.slug}/regions`}
-                    className="block text-center text-sm text-blue-600 hover:text-blue-800 mt-2"
-                  >
-                    View all {regions.length} regions →
-                  </NavLink>
-                )}
-                {regions.length === 0 && (
-                  <p className="text-gray-500 dark:text-gray-400 text-sm">No regions found for the selected date range.</p>
-                )}
-              </div>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">🗺️ Regions ({regions.length})</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">Regions from this period</p>
             </div>
           </div>
         </div>

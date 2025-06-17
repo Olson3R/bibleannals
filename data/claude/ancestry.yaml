@@ -171,6 +171,8 @@ biblical_persons:
     gender: male
     ethnicity: "Antediluvian"
     age: 969y
+    birth_date: "~3317 BC"
+    death_date: "~2348 BC"
     parents:
       - ENOCH
     references:

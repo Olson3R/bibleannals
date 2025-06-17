@@ -74,20 +74,28 @@ export function DateRangeSlider({
     const percentage = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
     const value = Math.round(percentage * TOTAL_RANGE);
     
+    // Minimum gap of 10 years between handles to prevent confusion
+    const MIN_GAP = Math.round(10 * TOTAL_RANGE / (BC_START + AD_END));
+    
     if (isDragging === 'min') {
-      const newValue = Math.min(value, maxSliderValue - 1);
+      const newValue = Math.min(value, maxSliderValue - MIN_GAP);
       setMinSliderValue(newValue);
       const year = sliderValueToYear(newValue);
       onMinYearChange(year);
     } else if (isDragging === 'max') {
-      const newValue = Math.max(value, minSliderValue + 1);
+      const newValue = Math.max(value, minSliderValue + MIN_GAP);
       setMaxSliderValue(newValue);
       const year = sliderValueToYear(newValue);
       onMaxYearChange(year);
     }
-  }, [isDragging, maxSliderValue, minSliderValue, TOTAL_RANGE, sliderValueToYear, onMinYearChange, onMaxYearChange]);
+  }, [isDragging, maxSliderValue, minSliderValue, TOTAL_RANGE, BC_START, AD_END, sliderValueToYear, onMinYearChange, onMaxYearChange]);
   
   const handleMouseDown = (type: 'min' | 'max') => (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsDragging(type);
+  };
+
+  const handleTouchStart = (type: 'min' | 'max') => (e: React.TouchEvent) => {
     e.preventDefault();
     setIsDragging(type);
   };
@@ -99,18 +107,33 @@ export function DateRangeSlider({
       }
     };
     
+    const handleTouchMove = (e: TouchEvent) => {
+      if (isDragging && e.touches.length > 0) {
+        e.preventDefault();
+        handleSliderChange(e.touches[0].clientX);
+      }
+    };
+    
     const handleMouseUp = () => {
+      setIsDragging(null);
+    };
+    
+    const handleTouchEnd = () => {
       setIsDragging(null);
     };
     
     if (isDragging) {
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener('touchmove', handleTouchMove, { passive: false });
+      document.addEventListener('touchend', handleTouchEnd);
     }
     
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
     };
   }, [isDragging, handleSliderChange]);
   
@@ -218,16 +241,27 @@ export function DateRangeSlider({
           
           {/* Min handle */}
           <div
-            className="absolute w-3 h-3 bg-blue-600 border border-white rounded-full shadow-sm cursor-grab active:cursor-grabbing transform -translate-y-0.5"
-            style={{ left: `${minPercentage}%`, marginLeft: '-6px' }}
+            className="absolute w-4 h-4 bg-blue-600 border-2 border-white rounded-full shadow-md cursor-grab active:cursor-grabbing -translate-x-1/2 touch-manipulation"
+            style={{ 
+              left: `${minPercentage}%`,
+              padding: '6px',
+              margin: '-6px 3px 0 4px'
+            }}
             onMouseDown={handleMouseDown('min')}
+            onTouchStart={handleTouchStart('min')}
           />
           
           {/* Max handle */}
           <div
-            className="absolute w-3 h-3 bg-blue-600 border border-white rounded-full shadow-sm cursor-grab active:cursor-grabbing transform -translate-y-0.5"
-            style={{ left: `${maxPercentage}%`, marginLeft: '-6px' }}
+            className="absolute w-4 h-4 bg-blue-600 border-2 border-white rounded-full shadow-md cursor-grab active:cursor-grabbing -translate-x-1/2 touch-manipulation"
+            style={{ 
+              left: `${maxPercentage}%`,
+              marginTop: '3px',
+              padding: '6px',
+              margin: '-6px 0 0 -8px'
+            }}
             onMouseDown={handleMouseDown('max')}
+            onTouchStart={handleTouchStart('max')}
           />
         </div>
         

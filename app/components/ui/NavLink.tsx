@@ -34,9 +34,6 @@ export function NavLink({
     const minEra = searchParams.get('minEra');
     const maxEra = searchParams.get('maxEra');
     
-    console.log('NavLink: current search params:', { minYear, maxYear, minEra, maxEra });
-    console.log('NavLink: building URL for href:', href);
-    
     if (minYear) currentParams.set('minYear', minYear);
     if (maxYear) currentParams.set('maxYear', maxYear);
     if (minEra) currentParams.set('minEra', minEra);
@@ -53,8 +50,6 @@ export function NavLink({
     const separator = href.includes('?') ? '&' : '?';
     const queryString = currentParams.toString();
     const finalUrl = queryString ? `${href}${separator}${queryString}` : href;
-    
-    console.log('NavLink: final URL:', finalUrl);
     return finalUrl;
   })() : href;
 

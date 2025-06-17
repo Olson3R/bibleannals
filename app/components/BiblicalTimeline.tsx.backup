@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { isWithinDateRange } from '../utils/date-parsing';
 import { calculateDateRangeFromPeriods } from '../utils/date-range';
 import { scrollToElementWithOffset } from '../utils/scroll';
 import { TimelinePeriodCard, hasDisplayableContent } from './timeline';
 import { SearchResultsDisplay } from './search';
-import { DateRangeSlider, NavLink, AdvancedFilters, OverlapChart, type AdvancedFiltersType } from './ui';
+import { DateRangeSlider, NavLink, AdvancedFilters, TimelineChart, type AdvancedFiltersType } from './ui';
 import { useDateFilter } from '../hooks/useDateFilter';
 import { getPeriodColors } from '../utils/color-palette';
 import type { TimelinePeriod } from '../types/biblical';
@@ -66,7 +66,6 @@ export function BiblicalTimeline({
   timelinePeriods: TimelinePeriod[];
 }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const getPersonById = (id: string) => persons.find(p => p.id === id);
   
   // Get dynamic date range from timeline periods data
@@ -94,29 +93,7 @@ export function BiblicalTimeline({
   const [showRegions, setShowRegions] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [prevSearchTerm, setPrevSearchTerm] = useState('');
-  // Initialize view mode from query params (client-side only)
   const [viewMode, setViewMode] = useState<'timeline' | 'chart'>('timeline');
-  const [isMobile, setIsMobile] = useState(false);
-  
-  // Set view mode from URL params after hydration and check mobile
-  useEffect(() => {
-    // Check screen size
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768); // md breakpoint
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    const view = searchParams.get('view');
-    if (view === 'chart' && window.innerWidth >= 768) {
-      setViewMode('chart');
-    } else {
-      setViewMode('timeline');
-    }
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, [searchParams]);
   
   // Advanced filters state with localStorage persistence
   const [advancedFilters, setAdvancedFilters] = useState<AdvancedFiltersType>({
@@ -146,18 +123,6 @@ export function BiblicalTimeline({
       console.warn('Failed to save advanced filters to localStorage:', error);
     }
   }, [advancedFilters]);
-
-  // Handle view mode changes with URL updates
-  const handleViewModeChange = (newViewMode: 'timeline' | 'chart') => {
-    setViewMode(newViewMode);
-    const params = new URLSearchParams(searchParams);
-    if (newViewMode === 'chart') {
-      params.set('view', 'chart');
-    } else {
-      params.delete('view');
-    }
-    router.replace(`/?${params.toString()}`);
-  };
   
   // Generate filter options from data
   const personTypeOptions = Array.from(new Set(
@@ -294,17 +259,6 @@ export function BiblicalTimeline({
     const locationName = getLocationName(event.location);
     return advancedFilters.locations.includes(locationName);
   };
-
-  // Filter data for chart view based on date range and advanced filters
-  const filteredEvents = events.filter(event => {
-    const withinDateRange = !minYear && !maxYear ? true : isWithinDateRange(event.date, minYear, maxYear);
-    return withinDateRange && matchesEventTypeFilter(event) && matchesLocationFilter(event);
-  });
-
-  const filteredPersons = persons.filter(person => {
-    const withinDateRange = !minYear && !maxYear ? true : isWithinDateRange(person.birth_date || '', minYear, maxYear);
-    return withinDateRange && matchesPersonTypeFilter(person);
-  });
 
   // Relevance scoring function
   const calculateRelevance = (text: string, search: string, isMainField = false): number => {
@@ -464,10 +418,10 @@ export function BiblicalTimeline({
               dataMaxYear={dataMaxYear}
             />
             
-            {/* View Mode Toggle - Hidden on mobile */}
-            <div className="hidden md:flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+            {/* View Mode Toggle */}
+            <div className="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
               <button
-                onClick={() => handleViewModeChange('timeline')}
+                onClick={() => setViewMode('timeline')}
                 className={`px-3 py-1 rounded text-xs lg:text-sm font-medium transition-colors ${
                   viewMode === 'timeline'
                     ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-gray-200 shadow-sm'
@@ -478,7 +432,7 @@ export function BiblicalTimeline({
                 📜 <span className="hidden lg:inline">Timeline</span>
               </button>
               <button
-                onClick={() => handleViewModeChange('chart')}
+                onClick={() => setViewMode('chart')}
                 className={`px-3 py-1 rounded text-xs lg:text-sm font-medium transition-colors ${
                   viewMode === 'chart'
                     ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-gray-200 shadow-sm'
@@ -551,10 +505,10 @@ export function BiblicalTimeline({
       />
 
       {/* Chart View */}
-      {viewMode === 'chart' && !isMobile && (
-        <OverlapChart
-          events={filteredEvents}
-          persons={filteredPersons}
+      {viewMode === 'chart' && (
+        <TimelineChart
+          events={events}
+          persons={persons}
           timelinePeriods={timelinePeriods}
           showEvents={showEvents}
           showPeople={showPeople}
@@ -576,66 +530,65 @@ export function BiblicalTimeline({
 
       {/* Timeline Overview */}
       {viewMode === 'timeline' && (
-        <>
-          <section 
-            className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900 dark:to-purple-900 rounded-xl p-8 mb-12 border border-gray-200 dark:border-gray-700"
-            aria-labelledby="timeline-overview-heading"
-          >
-            <h2 id="timeline-overview-heading" className="text-2xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200">Timeline Overview</h2>
-            <div className="flex flex-wrap justify-center gap-3">
-              {timelinePeriods
-                .filter(period => 
-                  isWithinDateRange(period.dateRange, minYear, maxYear) &&
-                  hasDisplayableContent(
-                    period, events, regions, timelinePeriods, getPersonById, 
-                    showEvents, showPeople, showRegions,
-                    minYear, maxYear,
-                    matchesPersonTypeFilter, matchesEventTypeFilter, matchesLocationFilter
-                  )
-                )
-                .map((period, index) => {
-                return (
-                <div key={index} className="relative group">
-                  <NavLink
-                    href={`/periods/${period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')}`}
-                    className={`block px-4 py-2 rounded-full border-2 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer ${getPeriodColors(period.colorIndex)}`}
-                  >
-                    <div className="text-center">
-                      <div className="font-semibold text-sm text-gray-800 dark:text-gray-200">{period.name}</div>
-                      <div className="text-xs text-gray-600 dark:text-gray-400">{period.dateRange}</div>
-                    </div>
-                  </NavLink>
-                  
-                  {/* Copy Link Button */}
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-                      const url = `${window.location.origin}/#period-${periodSlug}`;
-                      navigator.clipboard.writeText(url);
-                      
-                      // Show temporary feedback
-                      const button = e.currentTarget as HTMLButtonElement;
-                      const originalText = button.innerHTML;
-                      button.innerHTML = '✓';
-                      button.classList.add('bg-green-100', 'dark:bg-green-800', 'text-green-600', 'dark:text-green-300');
-                      setTimeout(() => {
-                        button.innerHTML = originalText;
-                        button.classList.remove('bg-green-100', 'dark:bg-green-800', 'text-green-600', 'dark:text-green-300');
-                      }, 1000);
-                    }}
-                    className="absolute -top-2 -right-2 w-6 h-6 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full shadow-sm hover:shadow-md transition-all duration-200 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xs text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100"
-                    title="Copy link to this period on timeline"
-                  >
-                    🔗
-                  </button>
+        <section 
+          className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900 dark:to-purple-900 rounded-xl p-8 mb-12 border border-gray-200 dark:border-gray-700"
+          aria-labelledby="timeline-overview-heading"
+        >
+        <h2 id="timeline-overview-heading" className="text-2xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200">Timeline Overview</h2>
+        <div className="flex flex-wrap justify-center gap-3">
+          {timelinePeriods
+            .filter(period => 
+              isWithinDateRange(period.dateRange, minYear, maxYear) &&
+              hasDisplayableContent(
+                period, events, regions, timelinePeriods, getPersonById, 
+                showEvents, showPeople, showRegions,
+                minYear, maxYear,
+                matchesPersonTypeFilter, matchesEventTypeFilter, matchesLocationFilter
+              )
+            )
+            .map((period, index) => {
+            return (
+            <div key={index} className="relative group">
+              <NavLink
+                href={`/periods/${period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')}`}
+                className={`block px-4 py-2 rounded-full border-2 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer ${getPeriodColors(period.colorIndex)}`}
+              >
+                <div className="text-center">
+                  <div className="font-semibold text-sm text-gray-800 dark:text-gray-200">{period.name}</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400">{period.dateRange}</div>
                 </div>
-              );
-              })}
+              </NavLink>
+              
+              {/* Copy Link Button */}
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+                  const url = `${window.location.origin}/#period-${periodSlug}`;
+                  navigator.clipboard.writeText(url);
+                  
+                  // Show temporary feedback
+                  const button = e.currentTarget as HTMLButtonElement;
+                  const originalText = button.innerHTML;
+                  button.innerHTML = '✓';
+                  button.classList.add('bg-green-100', 'dark:bg-green-800', 'text-green-600', 'dark:text-green-300');
+                  setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('bg-green-100', 'dark:bg-green-800', 'text-green-600', 'dark:text-green-300');
+                  }, 1000);
+                }}
+                className="absolute -top-2 -right-2 w-6 h-6 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full shadow-sm hover:shadow-md transition-all duration-200 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xs text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100"
+                title="Copy link to this period on timeline"
+              >
+                🔗
+              </button>
             </div>
-          </section>
+          );
+          })}
+        </div>
+        </section>
 
-          {/* Main Timeline Content */}
+        {/* Main Timeline Content */}
         <main className="relative" role="main" aria-labelledby="main-timeline-heading">
         <h2 id="main-timeline-heading" className="sr-only">Detailed Biblical Timeline</h2>
         {/* Vertical Timeline Line */}
@@ -681,43 +634,44 @@ export function BiblicalTimeline({
             </div>
           </article>
         ))}
-          </main>
+        </main>
+      )}
 
-          {/* Color Legend */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 mb-12 border border-gray-200 dark:border-gray-700 shadow-sm">
-            <h3 className="text-xl font-bold text-center mb-4 text-gray-800 dark:text-gray-200">Person Color Guide</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
-              <div className="flex items-center">
-                <div className="w-4 h-4 bg-yellow-200 border border-yellow-400 rounded mr-2"></div>
-                <span className="text-sm text-gray-700 dark:text-gray-300">Divine</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-4 h-4 bg-purple-200 border border-purple-400 rounded mr-2"></div>
-                <span className="text-sm text-gray-700 dark:text-gray-300">Patriarchs</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-4 h-4 bg-red-200 border border-red-400 rounded mr-2"></div>
-                <span className="text-sm text-gray-700 dark:text-gray-300">Royalty</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-4 h-4 bg-green-200 border border-green-400 rounded mr-2"></div>
-                <span className="text-sm text-gray-700 dark:text-gray-300">Prophets</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-4 h-4 bg-indigo-200 border border-indigo-400 rounded mr-2"></div>
-                <span className="text-sm text-gray-700 dark:text-gray-300">Apostles</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-4 h-4 bg-pink-200 border border-pink-400 rounded mr-2"></div>
-                <span className="text-sm text-gray-700 dark:text-gray-300">Women</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-4 h-4 bg-blue-200 border border-blue-400 rounded mr-2"></div>
-                <span className="text-sm text-gray-700 dark:text-gray-300">Others</span>
-              </div>
-            </div>
+      {/* Color Legend */}
+      {viewMode === 'timeline' && (
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 mb-12 border border-gray-200 dark:border-gray-700 shadow-sm">
+        <h3 className="text-xl font-bold text-center mb-4 text-gray-800 dark:text-gray-200">Person Color Guide</h3>
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-yellow-200 border border-yellow-400 rounded mr-2"></div>
+            <span className="text-sm text-gray-700 dark:text-gray-300">Divine</span>
           </div>
-        </>
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-purple-200 border border-purple-400 rounded mr-2"></div>
+            <span className="text-sm text-gray-700 dark:text-gray-300">Patriarchs</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-red-200 border border-red-400 rounded mr-2"></div>
+            <span className="text-sm text-gray-700 dark:text-gray-300">Royalty</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-green-200 border border-green-400 rounded mr-2"></div>
+            <span className="text-sm text-gray-700 dark:text-gray-300">Prophets</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-indigo-200 border border-indigo-400 rounded mr-2"></div>
+            <span className="text-sm text-gray-700 dark:text-gray-300">Apostles</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-pink-200 border border-pink-400 rounded mr-2"></div>
+            <span className="text-sm text-gray-700 dark:text-gray-300">Women</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-blue-200 border border-blue-400 rounded mr-2"></div>
+            <span className="text-sm text-gray-700 dark:text-gray-300">Others</span>
+          </div>
+        </div>
+        </div>
       )}
       </div>
     </div>
