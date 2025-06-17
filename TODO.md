@@ -1,14 +1,13 @@
 # Bible Annals - TODO List
 
 ## SEO & Discoverability
-- **XML sitemap**: Generate XML sitemap for search engines
 - **Meta tags**: Add comprehensive meta tags for all pages
 - **Schema markup**: Implement structured data markup for search engines
 
 ## User Experience & Interface
-- **Theme**: Save selection to local storage from any page.
-- **Timeline Advanced Filtering**: Save selection to local storage.
-- **Timeline page: event, person, region toggles**: Save selection to local storage.
+- **Theme**: Save theme selection to local storage from any page.
+- **Timeline Advanced Filtering**: Save timeline advanced filter selection to local storage.
+- **Timeline page: event, person, region toggles**: Save timeline model toggle selection to local storage.
 - **Accessibility**: Add ARIA labels, keyboard navigation, and screen reader support
 - **404 page**: Create custom 404 page with navigation back to main timeline
 - **Search improvements**: Add autocomplete and search suggestions to search functionality

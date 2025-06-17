@@ -34,7 +34,7 @@ jobs:
           remote_path: '/home/${{ secrets.SFTP_USERNAME }}/uploads/'
           sftpArgs: '-o ConnectTimeout=5'
           sftp_only: true
-          delete_remote_files: true
+          delete_remote_files: false
         
       - name: Publish site
         uses: appleboy/ssh-action@v1.0.3
