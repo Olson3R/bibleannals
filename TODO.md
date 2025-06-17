@@ -11,7 +11,6 @@
 - **Error boundaries**: Implement React error boundaries for graceful error handling
 
 ## Features & Functionality
-- **Cross-references**: Add cross-references linking related people, events, and locations
 - **Timeline visualization**: Create interactive timeline chart/graph visualization
 
 ## Technical Improvements
@@ -20,7 +19,6 @@
 - **Testing**: Add comprehensive unit tests, integration tests, and E2E tests
 
 ## Data & Content
-- **Additional content**: Add more detailed biographical information and content
 - **Source references**: Add citations and source references for historical accuracy
 - **Data validation**: Add comprehensive data validation and error checking
 

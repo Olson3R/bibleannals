@@ -1,23 +1,29 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { NavLink } from '../../components/ui';
-import type { BiblicalEvent, BiblicalPerson } from '../../types/biblical';
+import { NavLink, EventCard, RegionCard } from '../../components/ui';
+import type { BiblicalEvent, BiblicalPerson, BiblicalRegion } from '../../types/biblical';
 
 interface EventDetailClientProps {
   event: BiblicalEvent;
   eventPeriod: string | null;
   participants: BiblicalPerson[];
+  relatedEvents: BiblicalEvent[];
+  relatedRegions: BiblicalRegion[];
   bibleReferences: { reference: string; url: string }[];
   locationName: string;
+  eventLocationNames: Record<string, string>;
 }
 
 export function EventDetailClient({ 
   event, 
   eventPeriod, 
   participants,
+  relatedEvents,
+  relatedRegions,
   bibleReferences,
-  locationName
+  locationName,
+  eventLocationNames
 }: EventDetailClientProps) {
   const [fromTimeline, setFromTimeline] = useState(false);
   const [fromPeriod, setFromPeriod] = useState(false);
@@ -137,6 +143,85 @@ export function EventDetailClient({
               )}
             </div>
           </div>
+          
+          {/* Cross References */}
+          {(relatedEvents.length > 0 || relatedRegions.length > 0 || participants.length > 0) && (
+            <div className="mt-8 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+              <div className="p-6">
+                <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">🔗 Related Content</h2>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                  {/* Participants */}
+                  {participants.length > 0 && (
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">👥 Participants</h3>
+                      <div className="space-y-2">
+                        {participants.map(person => (
+                          <NavLink
+                            key={person.id}
+                            href={`/people/${person.id}/`}
+                            className="block p-2 bg-gray-50 dark:bg-gray-700 rounded hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+                          >
+                            <div className="text-sm font-medium text-gray-800 dark:text-gray-200">
+                              {person.name}
+                            </div>
+                            {person.ethnicity && (
+                              <div className="text-xs text-gray-600 dark:text-gray-400">
+                                {person.ethnicity}
+                              </div>
+                            )}
+                          </NavLink>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Related Events */}
+                  {relatedEvents.length > 0 && (
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">📅 Related Events</h3>
+                      <div className="space-y-3">
+                        {relatedEvents.slice(0, 4).map(relatedEvent => (
+                          <EventCard
+                            key={relatedEvent.id}
+                            event={relatedEvent}
+                            locationName={eventLocationNames[relatedEvent.id]}
+                            showDescription={false}
+                          />
+                        ))}
+                        {relatedEvents.length > 4 && (
+                          <p className="text-sm text-gray-500 dark:text-gray-400">
+                            +{relatedEvents.length - 4} more events
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Related Regions */}
+                  {relatedRegions.length > 0 && (
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">🗺️ Regions</h3>
+                      <div className="space-y-3">
+                        {relatedRegions.slice(0, 3).map(region => (
+                          <RegionCard
+                            key={region.id}
+                            region={region}
+                            showDescription={false}
+                          />
+                        ))}
+                        {relatedRegions.length > 3 && (
+                          <p className="text-sm text-gray-500 dark:text-gray-400">
+                            +{relatedRegions.length - 3} more regions
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

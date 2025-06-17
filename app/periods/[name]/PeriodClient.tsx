@@ -6,6 +6,7 @@ import { useDateFilter } from '../../hooks/useDateFilter';
 import { isWithinDateRange } from '../../utils/date-parsing';
 import { calculateDateRangeFromPeriods } from '../../utils/date-range';
 import { getPeriodColors } from '../../utils/color-palette';
+import { parseBibleBookString, getBookDisplayName } from '../../utils/bible-links';
 
 interface BiblicalPerson {
   id: string;
@@ -139,14 +140,35 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
                 <div>
                   <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-2">📖 Primary Biblical Books:</h3>
                   <div className="flex flex-wrap gap-1">
-                    {period.primaryBooks.map((book, index) => (
-                      <span
-                        key={index}
-                        className="inline-block bg-white dark:bg-gray-800 bg-opacity-60 dark:bg-opacity-60 text-gray-800 dark:text-gray-200 text-xs px-2 py-1 rounded border border-gray-400 dark:border-gray-600"
-                      >
-                        {book}
-                      </span>
-                    ))}
+                    {period.primaryBooks.map((book, index) => {
+                      const bookUrl = parseBibleBookString(book);
+                      
+                      if (bookUrl) {
+                        // Biblical book - create link
+                        return (
+                          <a
+                            key={index}
+                            href={bookUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-white dark:bg-gray-800 bg-opacity-60 dark:bg-opacity-60 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 text-xs px-2 py-1 rounded border border-gray-400 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-200"
+                            title={`Read ${getBookDisplayName(book)} on Bible.com`}
+                          >
+                            {getBookDisplayName(book)}
+                          </a>
+                        );
+                      } else {
+                        // Non-biblical content - display as text only
+                        return (
+                          <span
+                            key={index}
+                            className="inline-block bg-white dark:bg-gray-800 bg-opacity-60 dark:bg-opacity-60 text-gray-800 dark:text-gray-200 text-xs px-2 py-1 rounded border border-gray-400 dark:border-gray-600 italic"
+                          >
+                            {getBookDisplayName(book)}
+                          </span>
+                        );
+                      }
+                    })}
                   </div>
                 </div>
               )}

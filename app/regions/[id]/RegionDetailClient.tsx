@@ -1,16 +1,19 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { NavLink } from '../../components/ui';
+import { NavLink, EventCard, RegionCard } from '../../components/ui';
 import { getPeriodColors } from '../../utils/color-palette';
-import type { BiblicalRegion, BiblicalPerson, TimelinePeriod } from '../../types/biblical';
+import type { BiblicalRegion, BiblicalPerson, BiblicalEvent, TimelinePeriod } from '../../types/biblical';
 
 interface RegionDetailClientProps {
   region: BiblicalRegion;
   regionPeriod: string | null;
   regionPeriods: TimelinePeriod[];
   notablePeople: BiblicalPerson[];
+  relatedEvents: BiblicalEvent[];
+  relatedRegions: BiblicalRegion[];
   regionStudyUrl: string;
+  eventLocationNames: Record<string, string>;
 }
 
 export function RegionDetailClient({ 
@@ -18,7 +21,10 @@ export function RegionDetailClient({
   regionPeriod, 
   regionPeriods,
   notablePeople,
-  regionStudyUrl
+  relatedEvents,
+  relatedRegions,
+  regionStudyUrl,
+  eventLocationNames
 }: RegionDetailClientProps) {
   const [fromTimeline, setFromTimeline] = useState(false);
   const [fromPeriod, setFromPeriod] = useState(false);
@@ -154,6 +160,90 @@ export function RegionDetailClient({
               </div>
             </div>
           </div>
+          
+          {/* Cross References */}
+          {(relatedEvents.length > 0 || relatedRegions.length > 0 || notablePeople.length > 0) && (
+            <div className="mt-8 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+              <div className="p-6">
+                <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">🔗 Related Content</h2>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                  {/* Notable People */}
+                  {notablePeople.length > 0 && (
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">👥 Notable People</h3>
+                      <div className="space-y-2">
+                        {notablePeople.slice(0, 6).map(person => (
+                          <NavLink
+                            key={person.id}
+                            href={`/people/${person.id}/`}
+                            className="block p-2 bg-gray-50 dark:bg-gray-700 rounded hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+                          >
+                            <div className="text-sm font-medium text-gray-800 dark:text-gray-200">
+                              {person.name}
+                            </div>
+                            {person.ethnicity && (
+                              <div className="text-xs text-gray-600 dark:text-gray-400">
+                                {person.ethnicity}
+                              </div>
+                            )}
+                          </NavLink>
+                        ))}
+                        {notablePeople.length > 6 && (
+                          <p className="text-sm text-gray-500 dark:text-gray-400">
+                            +{notablePeople.length - 6} more people
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Related Events */}
+                  {relatedEvents.length > 0 && (
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">📅 Events in this Region</h3>
+                      <div className="space-y-3">
+                        {relatedEvents.slice(0, 4).map(event => (
+                          <EventCard
+                            key={event.id}
+                            event={event}
+                            locationName={eventLocationNames[event.id]}
+                            showDescription={false}
+                          />
+                        ))}
+                        {relatedEvents.length > 4 && (
+                          <p className="text-sm text-gray-500 dark:text-gray-400">
+                            +{relatedEvents.length - 4} more events
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Related Regions */}
+                  {relatedRegions.length > 0 && (
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">🗺️ Related Regions</h3>
+                      <div className="space-y-3">
+                        {relatedRegions.slice(0, 3).map(relatedRegion => (
+                          <RegionCard
+                            key={relatedRegion.id}
+                            region={relatedRegion}
+                            showDescription={false}
+                          />
+                        ))}
+                        {relatedRegions.length > 3 && (
+                          <p className="text-sm text-gray-500 dark:text-gray-400">
+                            +{relatedRegions.length - 3} more regions
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

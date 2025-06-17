@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import { loadTimelineData, getEventById, getPersonById, getRegionById } from '../../utils/data-loader';
 import { getEventPeriod } from '../../utils/period-detection';
 import { generateMetaTags } from '../../utils/meta-tags';
+import { getEventCrossReferences } from '../../utils/cross-references';
 import { EventDetailClient } from './EventDetailClient';
 import type { BiblicalPerson } from '../../types/biblical';
 
@@ -83,14 +84,26 @@ export default function EventPage({ params }: EventPageProps) {
   const region = getRegionById(event.location);
   const locationName = region ? region.name : event.location;
 
+  // Get comprehensive cross-references
+  const data = loadTimelineData();
+  const crossRefs = getEventCrossReferences(event, data.persons, data.events, data.regions);
+
+  // Create location names mapping for related events
+  const eventLocationNames = Object.fromEntries(
+    crossRefs.relatedEvents.map(e => [e.id, getRegionById(e.location)?.name || e.location])
+  );
+
   return (
     <Suspense fallback={<div className="flex justify-center items-center min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">Loading...</div>}>
       <EventDetailClient
         event={event}
         eventPeriod={eventPeriod}
         participants={participants}
+        relatedEvents={crossRefs.relatedEvents}
+        relatedRegions={crossRefs.relatedRegions}
         bibleReferences={bibleReferences}
         locationName={locationName}
+        eventLocationNames={eventLocationNames}
       />
     </Suspense>
   );

@@ -1,9 +1,10 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { loadTimelineData, getPersonById } from '../../utils/data-loader';
+import { loadTimelineData, getPersonById, getRegionById } from '../../utils/data-loader';
 import { getPersonPeriod } from '../../utils/period-detection';
 import { generateMetaTags } from '../../utils/meta-tags';
+import { getPersonCrossReferences } from '../../utils/cross-references';
 import { PersonDetailClient } from './PersonDetailClient';
 
 interface PersonPageProps {
@@ -57,31 +58,21 @@ export default function PersonPage({ params }: PersonPageProps) {
 
   const personPeriod = getPersonPeriod(params.id);
 
-  // Pre-calculate related data to avoid passing entire datasets
-  const relatedPersonIds = new Set([
-    ...(person.parents || []),
-    ...(person.spouses || []),
-    ...data.persons.filter(p => p.parents?.includes(person.id)).map(p => p.id)
-  ]);
-  
-  const relatedPersons = data.persons.filter(p => relatedPersonIds.has(p.id));
-  
-  // Find events this person participated in (limit to 10)
-  const relatedEvents = data.events
-    .filter(event => event.participants.includes(person.id))
-    .slice(0, 10);
+  // Get comprehensive cross-references
+  const crossRefs = getPersonCrossReferences(person, data.persons, data.events, data.regions);
 
   // Create location names mapping for events
   const eventLocationNames = Object.fromEntries(
-    relatedEvents.map(event => [event.id, data.regions.find(r => r.id === event.location)?.name || event.location])
+    crossRefs.relatedEvents.map(event => [event.id, getRegionById(event.location)?.name || event.location])
   );
 
   return (
     <Suspense fallback={<div className="flex justify-center items-center min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">Loading...</div>}>
       <PersonDetailClient
         person={person}
-        relatedPersons={relatedPersons}
-        relatedEvents={relatedEvents}
+        relatedPersons={crossRefs.relatedPeople}
+        relatedEvents={crossRefs.relatedEvents}
+        relatedRegions={crossRefs.relatedRegions}
         eventLocationNames={eventLocationNames}
         personPeriod={personPeriod}
       />

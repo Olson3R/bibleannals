@@ -73,7 +73,7 @@ export const timelinePeriods: TimelinePeriod[] = [
     dateRange: "430-6 BC",
     description: "Between Old and New Testaments",
     colorIndex: 8, // Slate - Silent Period
-    primaryBooks: ["Apocrypha (1-2 Maccabees, etc.)"]
+    primaryBooks: ["Historical period between testaments - no canonical biblical books"]
   },
   {
     name: "New Testament Era",
