@@ -1,3 +1,3 @@
 // Timeline components barrel export
 
-export { TimelinePeriodCard } from './TimelinePeriodCard';
+export { TimelinePeriodCard, hasDisplayableContent } from './TimelinePeriodCard';

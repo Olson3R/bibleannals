@@ -5,9 +5,9 @@ import { useRouter } from 'next/navigation';
 import { isWithinDateRange } from '../utils/date-parsing';
 import { calculateDateRangeFromPeriods } from '../utils/date-range';
 import { scrollToElementWithOffset } from '../utils/scroll';
-import { TimelinePeriodCard } from './timeline';
+import { TimelinePeriodCard, hasDisplayableContent } from './timeline';
 import { SearchResultsDisplay } from './search';
-import { DateRangeSlider, NavLink } from './ui';
+import { DateRangeSlider, NavLink, AdvancedFilters, type AdvancedFiltersType } from './ui';
 import { useDateFilter } from '../hooks/useDateFilter';
 import type { TimelinePeriod } from '../types/biblical';
 
@@ -74,13 +74,8 @@ export function BiblicalTimeline({
   const {
     minYear,
     maxYear,
-    minEra,
-    maxEra,
     setMinYear,
     setMaxYear,
-    setMinEra,
-    setMaxEra,
-    updateDateRange,
     resetFilter
   } = useDateFilter();
   
@@ -98,6 +93,38 @@ export function BiblicalTimeline({
   const [searchTerm, setSearchTerm] = useState('');
   const [prevSearchTerm, setPrevSearchTerm] = useState('');
   
+  // Advanced filters state
+  const [advancedFilters, setAdvancedFilters] = useState<AdvancedFiltersType>({
+    personTypes: [],
+    eventTypes: [],
+    locations: []
+  });
+  
+  // Generate filter options from data
+  const personTypeOptions = Array.from(new Set(
+    persons.map(p => p.ethnicity).filter((ethnicity): ethnicity is string => Boolean(ethnicity))
+  )).sort();
+  
+  const eventTypeOptions = Array.from(new Set(
+    events.map(e => {
+      const name = e.name.toLowerCase();
+      if (name.includes('birth')) return 'Birth';
+      if (name.includes('death')) return 'Death';
+      if (name.includes('marriage') || name.includes('marries')) return 'Marriage';
+      if (name.includes('covenant')) return 'Covenant';
+      if (name.includes('plague')) return 'Plague';
+      if (name.includes('miracle') || name.includes('healing')) return 'Miracle';
+      if (name.includes('prophecy') || name.includes('vision')) return 'Prophecy';
+      if (name.includes('battle') || name.includes('war')) return 'Battle';
+      if (name.includes('temple') || name.includes('tabernacle')) return 'Temple/Worship';
+      if (name.includes('exile') || name.includes('captivity')) return 'Exile';
+      return 'Other';
+    })
+  )).sort();
+  
+  const locationOptions = Array.from(new Set(
+    events.map(e => getLocationName(e.location))
+  )).sort().slice(0, 20); // Top 20 most common locations
 
   // Handle search scroll - scroll to search results when new search is performed
   useEffect(() => {
@@ -156,12 +183,6 @@ export function BiblicalTimeline({
     if (maxYear !== null) {
       params.set('maxYear', maxYear.toString());
     }
-    if (minEra !== 'BC') {
-      params.set('minEra', minEra);
-    }
-    if (maxEra !== 'AD') {
-      params.set('maxEra', maxEra);
-    }
     router.push(`/events/${event.id}?${params.toString()}`);
   };
 
@@ -177,12 +198,6 @@ export function BiblicalTimeline({
     if (maxYear !== null) {
       params.set('maxYear', maxYear.toString());
     }
-    if (minEra !== 'BC') {
-      params.set('minEra', minEra);
-    }
-    if (maxEra !== 'AD') {
-      params.set('maxEra', maxEra);
-    }
     router.push(`/regions/${region.id}?${params.toString()}`);
   };
 
@@ -190,6 +205,36 @@ export function BiblicalTimeline({
 
 
   // timelinePeriods is now passed as a prop
+
+  // Advanced filter helper functions
+  const matchesPersonTypeFilter = (person: BiblicalPerson): boolean => {
+    if (advancedFilters.personTypes.length === 0) return true;
+    return person.ethnicity ? advancedFilters.personTypes.includes(person.ethnicity) : false;
+  };
+
+  const matchesEventTypeFilter = (event: BiblicalEvent): boolean => {
+    if (advancedFilters.eventTypes.length === 0) return true;
+    const name = event.name.toLowerCase();
+    let eventType = 'Other';
+    if (name.includes('birth')) eventType = 'Birth';
+    else if (name.includes('death')) eventType = 'Death';
+    else if (name.includes('marriage') || name.includes('marries')) eventType = 'Marriage';
+    else if (name.includes('covenant')) eventType = 'Covenant';
+    else if (name.includes('plague')) eventType = 'Plague';
+    else if (name.includes('miracle') || name.includes('healing')) eventType = 'Miracle';
+    else if (name.includes('prophecy') || name.includes('vision')) eventType = 'Prophecy';
+    else if (name.includes('battle') || name.includes('war')) eventType = 'Battle';
+    else if (name.includes('temple') || name.includes('tabernacle')) eventType = 'Temple/Worship';
+    else if (name.includes('exile') || name.includes('captivity')) eventType = 'Exile';
+    
+    return advancedFilters.eventTypes.includes(eventType);
+  };
+
+  const matchesLocationFilter = (event: BiblicalEvent): boolean => {
+    if (advancedFilters.locations.length === 0) return true;
+    const locationName = getLocationName(event.location);
+    return advancedFilters.locations.includes(locationName);
+  };
 
   // Relevance scoring function
   const calculateRelevance = (text: string, search: string, isMainField = false): number => {
@@ -244,7 +289,7 @@ export function BiblicalTimeline({
       }
       
       return { item: person, score: maxScore };
-    }).filter(result => result.score > 0 && isWithinDateRange(result.item.birth_date || '', minYear, maxYear))
+    }).filter(result => result.score > 0 && isWithinDateRange(result.item.birth_date || '', minYear, maxYear) && matchesPersonTypeFilter(result.item))
       .sort((a, b) => b.score - a.score)
       .slice(0, 8)
       .map(result => result.item);
@@ -255,7 +300,7 @@ export function BiblicalTimeline({
       maxScore = Math.max(maxScore, calculateRelevance(event.location, searchTerm, false));
       
       return { item: event, score: maxScore };
-    }).filter(result => result.score > 0 && isWithinDateRange(result.item.date, minYear, maxYear))
+    }).filter(result => result.score > 0 && isWithinDateRange(result.item.date, minYear, maxYear) && matchesEventTypeFilter(result.item) && matchesLocationFilter(result.item))
       .sort((a, b) => b.score - a.score)
       .slice(0, 8)
       .map(result => result.item);
@@ -297,13 +342,13 @@ export function BiblicalTimeline({
   );
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       {/* Sticky Main Header - Compact for Mobile */}
-      <div className="sticky top-0 z-30 bg-white border-b border-gray-200 shadow-sm">
+      <div className="sticky top-0 z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm">
         <div className="container mx-auto px-4 py-3 lg:py-6">
           <div className="text-center mb-3 lg:mb-6">
-            <h1 className="text-2xl lg:text-4xl font-bold text-gray-800 mb-1 lg:mb-2">Biblical Timeline</h1>
-            <p className="text-sm lg:text-lg text-gray-600 hidden lg:block">
+            <h1 className="text-2xl lg:text-4xl font-bold text-gray-800 dark:text-gray-200 mb-1 lg:mb-2">Biblical Timeline</h1>
+            <p className="text-sm lg:text-lg text-gray-600 dark:text-gray-400 hidden lg:block">
               A comprehensive journey through biblical history
             </p>
           </div>
@@ -316,12 +361,12 @@ export function BiblicalTimeline({
                 placeholder="Search..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-3 py-2 pr-8 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 pr-8 text-sm border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm('')}
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 text-sm"
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 text-sm"
                   title="Clear search"
                 >
                   ✕
@@ -333,13 +378,8 @@ export function BiblicalTimeline({
             <DateRangeSlider
               minYear={minYear}
               maxYear={maxYear}
-              minEra={minEra}
-              maxEra={maxEra}
-              onDateRangeChange={updateDateRange}
               onMinYearChange={setMinYear}
               onMaxYearChange={setMaxYear}
-              onMinEraChange={setMinEra}
-              onMaxEraChange={setMaxEra}
               onReset={resetFilter}
               dataMinYear={dataMinYear}
               dataMaxYear={dataMaxYear}
@@ -354,7 +394,7 @@ export function BiblicalTimeline({
                   onChange={(e) => setShowEvents(e.target.checked)}
                   className="mr-1"
                 />
-                <span className="text-xs lg:text-sm font-medium text-gray-700">📅 <span className="hidden lg:inline">Events</span></span>
+                <span className="text-xs lg:text-sm font-medium text-gray-700 dark:text-gray-300">📅 <span className="hidden lg:inline">Events</span></span>
               </label>
               <label className="flex items-center">
                 <input
@@ -363,7 +403,7 @@ export function BiblicalTimeline({
                   onChange={(e) => setShowPeople(e.target.checked)}
                   className="mr-1"
                 />
-                <span className="text-xs lg:text-sm font-medium text-gray-700">👥 <span className="hidden lg:inline">People</span></span>
+                <span className="text-xs lg:text-sm font-medium text-gray-700 dark:text-gray-300">👥 <span className="hidden lg:inline">People</span></span>
               </label>
               <label className="flex items-center">
                 <input
@@ -372,7 +412,7 @@ export function BiblicalTimeline({
                   onChange={(e) => setShowRegions(e.target.checked)}
                   className="mr-1"
                 />
-                <span className="text-xs lg:text-sm font-medium text-gray-700">🗺️ <span className="hidden lg:inline">Regions</span></span>
+                <span className="text-xs lg:text-sm font-medium text-gray-700 dark:text-gray-300">🗺️ <span className="hidden lg:inline">Regions</span></span>
               </label>
             </div>
           </div>
@@ -380,6 +420,15 @@ export function BiblicalTimeline({
       </div>
       
       <div className="container mx-auto px-4 py-8">
+      
+      {/* Advanced Filters */}
+      <AdvancedFilters
+        filters={advancedFilters}
+        onFiltersChange={setAdvancedFilters}
+        personTypeOptions={personTypeOptions}
+        eventTypeOptions={eventTypeOptions}
+        locationOptions={locationOptions}
+      />
 
       {/* Search Results */}
       <SearchResultsDisplay
@@ -390,11 +439,19 @@ export function BiblicalTimeline({
       />
 
       {/* Timeline Overview */}
-      <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 mb-12 border border-gray-200">
-        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Timeline Overview</h2>
+      <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900 dark:to-purple-900 rounded-xl p-8 mb-12 border border-gray-200 dark:border-gray-700">
+        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200">Timeline Overview</h2>
         <div className="flex flex-wrap justify-center gap-3">
           {timelinePeriods
-            .filter(period => isWithinDateRange(period.dateRange, minYear, maxYear))
+            .filter(period => 
+              isWithinDateRange(period.dateRange, minYear, maxYear) &&
+              hasDisplayableContent(
+                period, events, regions, getPersonById, 
+                showEvents, showPeople, showRegions,
+                minYear, maxYear,
+                matchesPersonTypeFilter, matchesEventTypeFilter, matchesLocationFilter
+              )
+            )
             .map((period, index) => {
             return (
             <div key={index} className="relative group">
@@ -403,8 +460,8 @@ export function BiblicalTimeline({
                 className={`block px-4 py-2 rounded-full border-2 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer ${period.color}`}
               >
                 <div className="text-center">
-                  <div className="font-semibold text-sm text-gray-800">{period.name}</div>
-                  <div className="text-xs text-gray-600">{period.dateRange}</div>
+                  <div className="font-semibold text-sm text-gray-800 dark:text-gray-200">{period.name}</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400">{period.dateRange}</div>
                 </div>
               </NavLink>
               
@@ -443,7 +500,15 @@ export function BiblicalTimeline({
         <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-300"></div>
         
         {timelinePeriods
-          .filter(period => isWithinDateRange(period.dateRange, minYear, maxYear))
+          .filter(period => 
+            isWithinDateRange(period.dateRange, minYear, maxYear) &&
+            hasDisplayableContent(
+              period, events, regions, getPersonById, 
+              showEvents, showPeople, showRegions,
+              minYear, maxYear,
+              matchesPersonTypeFilter, matchesEventTypeFilter, matchesLocationFilter
+            )
+          )
           .map((period, index) => (
           <div key={index} id={`period-${period.slug}`} className="relative mb-16">
             {/* Timeline dot */}
@@ -466,6 +531,9 @@ export function BiblicalTimeline({
                 showPeriodRegions={showPeriodRegions}
                 minYear={minYear}
                 maxYear={maxYear}
+                matchesPersonTypeFilter={matchesPersonTypeFilter}
+                matchesEventTypeFilter={matchesEventTypeFilter}
+                matchesLocationFilter={matchesLocationFilter}
               />
             </div>
           </div>

@@ -5,13 +5,8 @@ import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 interface DateRangeSliderProps {
   minYear: number | null;
   maxYear: number | null;
-  minEra: 'BC' | 'AD';
-  maxEra: 'BC' | 'AD';
   onMinYearChange: (year: number | null) => void;
   onMaxYearChange: (year: number | null) => void;
-  onMinEraChange: (era: 'BC' | 'AD') => void;
-  onMaxEraChange: (era: 'BC' | 'AD') => void;
-  onDateRangeChange?: (type: 'min' | 'max', year: number | null, era: 'BC' | 'AD') => void;
   onReset: () => void;
   dataMinYear?: number; // Optional: actual minimum year in the data
   dataMaxYear?: number; // Optional: actual maximum year in the data
@@ -20,13 +15,8 @@ interface DateRangeSliderProps {
 export function DateRangeSlider({
   minYear,
   maxYear,
-  minEra,
-  maxEra,
   onMinYearChange,
   onMaxYearChange,
-  onMinEraChange,
-  onMaxEraChange,
-  onDateRangeChange,
   onReset,
   dataMinYear = -4004, // Default to 4004 BC
   dataMaxYear = 60      // Default to 60 AD
@@ -36,42 +26,46 @@ export function DateRangeSlider({
   const AD_END = Math.max(0, dataMaxYear); // e.g., 60 for 60 AD
   const TOTAL_RANGE = BC_START + AD_END; // Total years span
   
-  const yearToSliderValue = useCallback((year: number | null, era: 'BC' | 'AD'): number => {
-    if (year === null) return era === 'BC' ? 0 : TOTAL_RANGE;
-    if (era === 'BC') {
+  const yearToSliderValue = useCallback((year: number | null): number => {
+    if (year === null) return 0;
+    if (year < 0) {
+      // BC year (negative value)
       return BC_START - Math.abs(year);
     } else {
-      return BC_START + Math.abs(year);
+      // AD year (positive value)
+      return BC_START + year;
     }
-  }, [BC_START, TOTAL_RANGE]);
+  }, [BC_START]);
   
-  const sliderValueToYear = useCallback((value: number): { year: number; era: 'BC' | 'AD' } => {
+  const sliderValueToYear = useCallback((value: number): number => {
     if (value <= BC_START) {
-      return { year: BC_START - value, era: 'BC' };
+      // BC year - return negative value
+      return -(BC_START - value);
     } else {
-      return { year: value - BC_START, era: 'AD' };
+      // AD year - return positive value
+      return value - BC_START;
     }
   }, [BC_START]);
   
   const [minSliderValue, setMinSliderValue] = useState(() => 
-    yearToSliderValue(minYear, minEra)
+    yearToSliderValue(minYear ?? dataMinYear)
   );
   const [maxSliderValue, setMaxSliderValue] = useState(() => 
-    yearToSliderValue(maxYear, maxEra)
+    yearToSliderValue(maxYear ?? dataMaxYear)
   );
   
   const sliderRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState<'min' | 'max' | null>(null);
   
   useEffect(() => {
-    const newValue = yearToSliderValue(minYear, minEra);
+    const newValue = yearToSliderValue(minYear ?? dataMinYear);
     setMinSliderValue(newValue);
-  }, [minYear, minEra, yearToSliderValue]);
+  }, [minYear, yearToSliderValue, dataMinYear]);
   
   useEffect(() => {
-    const newValue = yearToSliderValue(maxYear, maxEra);
+    const newValue = yearToSliderValue(maxYear ?? dataMaxYear);
     setMaxSliderValue(newValue);
-  }, [maxYear, maxEra, yearToSliderValue]);
+  }, [maxYear, yearToSliderValue, dataMaxYear]);
   
   const handleSliderChange = useCallback((clientX: number) => {
     if (!sliderRef.current || !isDragging) return;
@@ -83,35 +77,15 @@ export function DateRangeSlider({
     if (isDragging === 'min') {
       const newValue = Math.min(value, maxSliderValue - 1);
       setMinSliderValue(newValue);
-      const { year, era } = sliderValueToYear(newValue);
-      
-      // Always call both - combined first, then individual as backup
-      if (onDateRangeChange) {
-        onDateRangeChange('min', era === 'BC' ? -year : year, era);
-      }
-      
-      // Also call individual handlers for immediate state update
-      onMinYearChange(era === 'BC' ? -year : year);
-      if (era !== minEra) {
-        onMinEraChange(era);
-      }
+      const year = sliderValueToYear(newValue);
+      onMinYearChange(year);
     } else if (isDragging === 'max') {
       const newValue = Math.max(value, minSliderValue + 1);
       setMaxSliderValue(newValue);
-      const { year, era } = sliderValueToYear(newValue);
-      
-      // Always call both - combined first, then individual as backup
-      if (onDateRangeChange) {
-        onDateRangeChange('max', era === 'BC' ? -year : year, era);
-      }
-      
-      // Also call individual handlers for immediate state update
-      onMaxYearChange(era === 'BC' ? -year : year);
-      if (era !== maxEra) {
-        onMaxEraChange(era);
-      }
+      const year = sliderValueToYear(newValue);
+      onMaxYearChange(year);
     }
-  }, [isDragging, maxSliderValue, minSliderValue, TOTAL_RANGE, sliderValueToYear, onMinYearChange, onMinEraChange, onMaxYearChange, onMaxEraChange, onDateRangeChange, minEra, maxEra]);
+  }, [isDragging, maxSliderValue, minSliderValue, TOTAL_RANGE, sliderValueToYear, onMinYearChange, onMaxYearChange]);
   
   const handleMouseDown = (type: 'min' | 'max') => (e: React.MouseEvent) => {
     e.preventDefault();
@@ -147,7 +121,7 @@ export function DateRangeSlider({
     <div className="w-full max-w-sm">
       {/* Combined input and slider header */}
       <div className="flex items-center gap-2 mb-2">
-        <span className="text-sm font-medium text-gray-700 flex items-center gap-1">
+        <span className="text-sm font-medium text-gray-700 dark:text-gray-400 flex items-center gap-1">
           📅
           <span className="hidden sm:inline">Filter</span>
         </span>
@@ -157,48 +131,58 @@ export function DateRangeSlider({
           <input
             type="number"
             placeholder="4004"
-            value={minYear ? Math.abs(minYear) : ''}
+            value={minYear !== null ? Math.abs(minYear) : ''}
             onChange={(e) => {
               const val = e.target.value ? parseInt(e.target.value) : null;
-              onMinYearChange(val ? (minEra === 'BC' ? -Math.abs(val) : Math.abs(val)) : null);
+              if (val !== null) {
+                // Preserve current era, or default to BC if no previous value
+                const currentEra = minYear !== null ? (minYear < 0 ? 'BC' : 'AD') : 'BC';
+                onMinYearChange(currentEra === 'BC' ? -Math.abs(val) : Math.abs(val));
+              } else {
+                onMinYearChange(null);
+              }
             }}
-            className="w-16 px-1 py-1 border border-gray-300 rounded text-center focus:ring-1 focus:ring-blue-500 focus:border-transparent"
+            className="w-16 px-1 py-1 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded text-center focus:ring-1 focus:ring-blue-500 focus:border-transparent"
           />
           <select
-            value={minEra}
+            value={minYear !== null ? (minYear < 0 ? 'BC' : 'AD') : 'BC'}
             onChange={(e) => {
               const newEra = e.target.value as 'BC' | 'AD';
-              onMinEraChange(newEra);
-              if (minYear) {
+              if (minYear !== null) {
                 onMinYearChange(newEra === 'BC' ? -Math.abs(minYear) : Math.abs(minYear));
               }
             }}
-            className="border border-gray-300 rounded px-1 py-1 focus:ring-1 focus:ring-blue-500 focus:border-transparent"
+            className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded px-1 py-1 focus:ring-1 focus:ring-blue-500 focus:border-transparent"
           >
             <option value="BC">BC</option>
             <option value="AD">AD</option>
           </select>
-          <span className="text-gray-400">—</span>
+          <span className="text-gray-400 dark:text-gray-500">—</span>
           <input
             type="number"
             placeholder="100"
-            value={maxYear ? Math.abs(maxYear) : ''}
+            value={maxYear !== null ? Math.abs(maxYear) : ''}
             onChange={(e) => {
               const val = e.target.value ? parseInt(e.target.value) : null;
-              onMaxYearChange(val ? (maxEra === 'BC' ? -Math.abs(val) : Math.abs(val)) : null);
+              if (val !== null) {
+                // Preserve current era, or default to AD if no previous value
+                const currentEra = maxYear !== null ? (maxYear < 0 ? 'BC' : 'AD') : 'AD';
+                onMaxYearChange(currentEra === 'BC' ? -Math.abs(val) : Math.abs(val));
+              } else {
+                onMaxYearChange(null);
+              }
             }}
-            className="w-16 px-1 py-1 border border-gray-300 rounded text-center focus:ring-1 focus:ring-blue-500 focus:border-transparent"
+            className="w-16 px-1 py-1 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded text-center focus:ring-1 focus:ring-blue-500 focus:border-transparent"
           />
           <select
-            value={maxEra}
+            value={maxYear !== null ? (maxYear < 0 ? 'BC' : 'AD') : 'AD'}
             onChange={(e) => {
               const newEra = e.target.value as 'BC' | 'AD';
-              onMaxEraChange(newEra);
-              if (maxYear) {
+              if (maxYear !== null) {
                 onMaxYearChange(newEra === 'BC' ? -Math.abs(maxYear) : Math.abs(maxYear));
               }
             }}
-            className="border border-gray-300 rounded px-1 py-1 focus:ring-1 focus:ring-blue-500 focus:border-transparent"
+            className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded px-1 py-1 focus:ring-1 focus:ring-blue-500 focus:border-transparent"
           >
             <option value="AD">AD</option>
             <option value="BC">BC</option>
@@ -209,7 +193,7 @@ export function DateRangeSlider({
         {(minYear || maxYear) && (
           <button
             onClick={onReset}
-            className="text-xs text-gray-500 hover:text-gray-700 p-1"
+            className="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 p-1"
             title="Clear date filter"
           >
             ✕
@@ -221,7 +205,7 @@ export function DateRangeSlider({
       <div className="relative">
         <div
           ref={sliderRef}
-          className="relative h-1.5 bg-gray-200 rounded-full cursor-pointer"
+          className="relative h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full cursor-pointer"
         >
           {/* Active range */}
           <div
@@ -343,7 +327,7 @@ function DynamicScaleMarkers({ bcStart, adEnd, totalRange }: DynamicScaleMarkers
   }, [bcStart, adEnd, totalRange]);
   
   return (
-    <div className="hidden sm:flex absolute w-full top-2 text-xs text-gray-400">
+    <div className="hidden sm:flex absolute w-full top-2 text-xs text-gray-400 dark:text-gray-500">
       {markers.map((marker) => (
         <span
           key={marker.key}

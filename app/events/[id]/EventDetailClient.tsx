@@ -52,14 +52,14 @@ export function EventDetailClient({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 shadow-sm">
+      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-gray-800">{event.name}</h1>
-              <p className="text-gray-600">Event Details</p>
+              <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-200">{event.name}</h1>
+              <p className="text-gray-600 dark:text-gray-400">Event Details</p>
             </div>
             <div className="flex gap-2">
               <NavLink
@@ -76,37 +76,37 @@ export function EventDetailClient({
       {/* Content */}
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
             <div className="space-y-6">
               <div>
-                <h2 className="text-xl font-semibold text-gray-800 mb-4">{event.name}</h2>
+                <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">{event.name}</h2>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <span className="font-semibold text-gray-600">Date:</span>
-                  <span className="ml-2 text-gray-800">{event.date}</span>
+                  <span className="font-semibold text-gray-600 dark:text-gray-400">Date:</span>
+                  <span className="ml-2 text-gray-800 dark:text-gray-200">{event.date}</span>
                 </div>
                 <div>
-                  <span className="font-semibold text-gray-600">Location:</span>
-                  <span className="ml-2 text-gray-800">{event.location}</span>
+                  <span className="font-semibold text-gray-600 dark:text-gray-400">Location:</span>
+                  <span className="ml-2 text-gray-800 dark:text-gray-200">{event.location}</span>
                 </div>
               </div>
               
               <div>
-                <span className="font-semibold text-gray-600">Description:</span>
-                <p className="mt-2 text-gray-800">{event.description}</p>
+                <span className="font-semibold text-gray-600 dark:text-gray-400">Description:</span>
+                <p className="mt-2 text-gray-800 dark:text-gray-200">{event.description}</p>
               </div>
               
               {participants.length > 0 && (
                 <div>
-                  <span className="font-semibold text-gray-600">Participants:</span>
+                  <span className="font-semibold text-gray-600 dark:text-gray-400">Participants:</span>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {participants.map(person => (
                       <NavLink
                         key={person.id}
                         href={`/people/${person.id}${fromTimeline && timelinePeriodSlug ? `?from=timeline&period=${timelinePeriodSlug}` : ''}`}
-                        className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm hover:bg-blue-200 transition-colors"
+                        className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm hover:bg-blue-200 dark:bg-blue-800 dark:text-blue-200 dark:hover:bg-blue-700 transition-colors"
                       >
                         {person.name}
                       </NavLink>
@@ -117,7 +117,7 @@ export function EventDetailClient({
               
               {bibleReferences.length > 0 && (
                 <div>
-                  <span className="font-semibold text-gray-600">Biblical References:</span>
+                  <span className="font-semibold text-gray-600 dark:text-gray-400">Biblical References:</span>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {bibleReferences.map((ref, index) => (
                       <a
@@ -125,7 +125,7 @@ export function EventDetailClient({
                         href={ref.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm hover:bg-blue-200 transition-colors"
+                        className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm hover:bg-blue-200 dark:bg-blue-800 dark:text-blue-200 dark:hover:bg-blue-700 transition-colors"
                       >
                         {ref.reference}
                       </a>

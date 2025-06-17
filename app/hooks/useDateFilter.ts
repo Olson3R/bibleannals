@@ -6,16 +6,11 @@ import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 export interface DateFilterState {
   minYear: number | null;
   maxYear: number | null;
-  minEra: 'BC' | 'AD';
-  maxEra: 'BC' | 'AD';
 }
 
 export interface DateFilterActions {
   setMinYear: (year: number | null) => void;
   setMaxYear: (year: number | null) => void;
-  setMinEra: (era: 'BC' | 'AD') => void;
-  setMaxEra: (era: 'BC' | 'AD') => void;
-  updateDateRange: (type: 'min' | 'max', year: number | null, era: 'BC' | 'AD') => void;
   resetFilter: () => void;
 }
 
@@ -35,14 +30,6 @@ export function useDateFilter(): DateFilterState & DateFilterActions {
   const [maxYear, setMaxYearState] = useState<number | null>(() => {
     const param = searchParams.get('maxYear');
     return param ? parseInt(param, 10) : null;
-  });
-  const [minEra, setMinEraState] = useState<'BC' | 'AD'>(() => {
-    const param = searchParams.get('minEra');
-    return param === 'AD' ? 'AD' : 'BC';
-  });
-  const [maxEra, setMaxEraState] = useState<'BC' | 'AD'>(() => {
-    const param = searchParams.get('maxEra');
-    return param === 'BC' ? 'BC' : 'AD';
   });
 
   // Function to update URL parameters
@@ -73,46 +60,13 @@ export function useDateFilter(): DateFilterState & DateFilterActions {
     updateUrlParams({ maxYear: year?.toString() ?? null });
   }, [updateUrlParams]);
 
-  const setMinEra = useCallback((era: 'BC' | 'AD') => {
-    setMinEraState(era);
-    updateUrlParams({ minEra: era });
-  }, [updateUrlParams]);
-
-  const setMaxEra = useCallback((era: 'BC' | 'AD') => {
-    setMaxEraState(era);
-    updateUrlParams({ maxEra: era });
-  }, [updateUrlParams]);
-
-  // Combined update function for atomic year and era changes
-  const updateDateRange = useCallback((type: 'min' | 'max', year: number | null, era: 'BC' | 'AD') => {
-    if (type === 'min') {
-      setMinYearState(year);
-      setMinEraState(era);
-      updateUrlParams({ 
-        minYear: year?.toString() ?? null,
-        minEra: era 
-      });
-    } else {
-      setMaxYearState(year);
-      setMaxEraState(era);
-      updateUrlParams({ 
-        maxYear: year?.toString() ?? null,
-        maxEra: era 
-      });
-    }
-  }, [updateUrlParams]);
-
-  // Reset function
+  // Reset function to clear all filters
   const resetFilter = useCallback(() => {
     setMinYearState(null);
     setMaxYearState(null);
-    setMinEraState('BC');
-    setMaxEraState('AD');
-    updateUrlParams({
+    updateUrlParams({ 
       minYear: null,
-      maxYear: null,
-      minEra: null,
-      maxEra: null
+      maxYear: null 
     });
   }, [updateUrlParams]);
 
@@ -120,31 +74,20 @@ export function useDateFilter(): DateFilterState & DateFilterActions {
   useEffect(() => {
     const newMinYear = searchParams.get('minYear');
     const newMaxYear = searchParams.get('maxYear');
-    const newMinEra = searchParams.get('minEra');
-    const newMaxEra = searchParams.get('maxEra');
 
     const urlMinYear = newMinYear ? parseInt(newMinYear, 10) : null;
     const urlMaxYear = newMaxYear ? parseInt(newMaxYear, 10) : null;
-    const urlMinEra = newMinEra === 'AD' ? 'AD' : 'BC';
-    const urlMaxEra = newMaxEra === 'BC' ? 'BC' : 'AD';
 
     // Update state from URL (for navigation/initial load)
     setMinYearState(urlMinYear);
     setMaxYearState(urlMaxYear);
-    setMinEraState(urlMinEra);
-    setMaxEraState(urlMaxEra);
   }, [searchParams.toString()]); // Use toString to avoid infinite loops
 
   return {
     minYear,
     maxYear,
-    minEra,
-    maxEra,
     setMinYear,
     setMaxYear,
-    setMinEra,
-    setMaxEra,
-    updateDateRange,
     resetFilter
   };
 }

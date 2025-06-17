@@ -54,14 +54,14 @@ export function PersonDetailClient({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 shadow-sm">
+      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-gray-800">{person.name}</h1>
-              <p className="text-gray-600">Person Details</p>
+              <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-200">{person.name}</h1>
+              <p className="text-gray-600 dark:text-gray-400">Person Details</p>
             </div>
             <div className="flex gap-2">
               <NavLink

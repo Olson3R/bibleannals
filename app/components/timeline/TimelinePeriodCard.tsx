@@ -67,6 +67,121 @@ interface TimelinePeriodCardProps {
   showPeriodRegions: (periodName: string) => void;
   minYear?: number | null;
   maxYear?: number | null;
+  matchesPersonTypeFilter?: (person: BiblicalPerson) => boolean;
+  matchesEventTypeFilter?: (event: BiblicalEvent) => boolean;
+  matchesLocationFilter?: (event: BiblicalEvent) => boolean;
+}
+
+// Helper function to check if a period has any displayable content after filtering
+export function hasDisplayableContent(
+  period: TimelinePeriod,
+  events: BiblicalEvent[],
+  regions: BiblicalRegion[],
+  getPersonById: (id: string) => BiblicalPerson | undefined,
+  showEvents: boolean,
+  showPeople: boolean,
+  showRegions: boolean,
+  minYear?: number | null,
+  maxYear?: number | null,
+  matchesPersonTypeFilter?: (person: BiblicalPerson) => boolean,
+  matchesEventTypeFilter?: (event: BiblicalEvent) => boolean,
+  matchesLocationFilter?: (event: BiblicalEvent) => boolean
+): boolean {
+  // Apply the same filtering logic as in TimelinePeriodCard
+  const periodEvents = events.filter(event => {
+    // ... (same filtering logic as in TimelinePeriodCard)
+    // First, check if event belongs to this period
+    let eventYear = parseInt(event.date.replace(/[^\d-]/g, ''));
+    const isAD = event.date.includes('AD');
+    if (isAD) eventYear = -eventYear;
+    
+    const [startStr, endStr] = period.dateRange.split('-');
+    let startYear = parseInt(startStr.replace(/[^\d]/g, ''));
+    let endYear = parseInt(endStr.replace(/[^\d]/g, ''));
+    
+    if (startStr.includes('BC')) startYear = Math.abs(startYear);
+    if (endStr.includes('BC')) endYear = Math.abs(endYear);
+    if (startStr.includes('AD')) startYear = -Math.abs(startYear);
+    if (endStr.includes('AD')) endYear = -Math.abs(endYear);
+    
+    let belongsToPeriod = false;
+    
+    if (period.dateRange === "6 BC-60 AD") {
+      const eventYearOriginal = parseInt(event.date.replace(/[^\d-]/g, ''));
+      if (event.date.includes('BC')) {
+        belongsToPeriod = eventYearOriginal <= 6;
+      } else if (event.date.includes('AD')) {
+        belongsToPeriod = eventYearOriginal <= 60;
+      }
+    } else {
+      belongsToPeriod = eventYear >= endYear && eventYear <= startYear;
+    }
+    
+    if (!belongsToPeriod) return false;
+    
+    // Apply date range filter
+    if (minYear !== null || maxYear !== null) {
+      if (!isWithinDateRange(event.date, minYear ?? null, maxYear ?? null)) {
+        return false;
+      }
+    }
+    
+    // Apply advanced filters
+    if (matchesEventTypeFilter && !matchesEventTypeFilter(event)) {
+      return false;
+    }
+    
+    if (matchesLocationFilter && !matchesLocationFilter(event)) {
+      return false;
+    }
+    
+    return true;
+  });
+
+  // Check if we have events to show
+  if (showEvents && periodEvents.length > 0) {
+    return true;
+  }
+
+  // Check if we have people to show
+  if (showPeople) {
+    const hasFilteredParticipants = periodEvents.some(event => 
+      event.participants.some(p => {
+        const person = getPersonById(p);
+        return person && (!matchesPersonTypeFilter || matchesPersonTypeFilter(person));
+      })
+    );
+    if (hasFilteredParticipants) {
+      return true;
+    }
+  }
+
+  // Check if we have regions to show
+  if (showRegions) {
+    const hasRelevantRegions = regions.some(region => {
+      const regionDates = region.estimated_dates.toLowerCase();
+      
+      if (period.dateRange === "6 BC-60 AD") {
+        return regionDates.includes('ad') || 
+               regionDates.includes('testament') ||
+               region.time_period.toLowerCase().includes('testament') ||
+               region.notable_people.some(personId => 
+                 ['JESUS', 'PETER', 'PAUL', 'JOHN_THE_APOSTLE', 'MARY_MOTHER_OF_JESUS'].includes(personId)
+               );
+      }
+      
+      return periodEvents.some(event => 
+        region.notable_people.some(personId => event.participants.includes(personId)) ||
+        event.location === region.id
+      );
+    });
+    
+    if (hasRelevantRegions) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 export function TimelinePeriodCard({
@@ -83,7 +198,10 @@ export function TimelinePeriodCard({
   showPeriodPeople,
   showPeriodRegions,
   minYear,
-  maxYear
+  maxYear,
+  matchesPersonTypeFilter,
+  matchesEventTypeFilter,
+  matchesLocationFilter
 }: TimelinePeriodCardProps) {
   const searchParams = useSearchParams();
   const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
@@ -126,7 +244,18 @@ export function TimelinePeriodCard({
     
     // Then, apply the date range filter if specified
     if (minYear !== null || maxYear !== null) {
-      return isWithinDateRange(event.date, minYear ?? null, maxYear ?? null);
+      if (!isWithinDateRange(event.date, minYear ?? null, maxYear ?? null)) {
+        return false;
+      }
+    }
+    
+    // Apply advanced filters
+    if (matchesEventTypeFilter && !matchesEventTypeFilter(event)) {
+      return false;
+    }
+    
+    if (matchesLocationFilter && !matchesLocationFilter(event)) {
+      return false;
     }
     
     return true;
@@ -148,21 +277,48 @@ export function TimelinePeriodCard({
     if (startStr.includes('AD')) startYear = -Math.abs(startYear);
     if (endStr.includes('AD')) endYear = -Math.abs(endYear);
     
+    let belongsToPeriod = false;
+    
     if (period.dateRange === "6 BC-60 AD") {
       const eventYearOriginal = parseInt(event.date.replace(/[^\d-]/g, ''));
       if (event.date.includes('BC')) {
-        return eventYearOriginal <= 6;
+        belongsToPeriod = eventYearOriginal <= 6;
       } else if (event.date.includes('AD')) {
-        return eventYearOriginal <= 60;
+        belongsToPeriod = eventYearOriginal <= 60;
+      }
+    } else {
+      belongsToPeriod = eventYear >= endYear && eventYear <= startYear;
+    }
+    
+    if (!belongsToPeriod) return false;
+    
+    // Apply date range filter
+    if (minYear !== null || maxYear !== null) {
+      if (!isWithinDateRange(event.date, minYear ?? null, maxYear ?? null)) {
+        return false;
       }
     }
     
-    return eventYear >= endYear && eventYear <= startYear;
+    // Apply advanced filters
+    if (matchesEventTypeFilter && !matchesEventTypeFilter(event)) {
+      return false;
+    }
+    
+    if (matchesLocationFilter && !matchesLocationFilter(event)) {
+      return false;
+    }
+    
+    return true;
   });
   
   const allParticipants = new Set<string>();
   allPeriodEvents.forEach(event => {
-    event.participants.forEach(p => allParticipants.add(p));
+    event.participants.forEach(p => {
+      const person = getPersonById(p);
+      if (person && (!matchesPersonTypeFilter || matchesPersonTypeFilter(person))) {
+        allParticipants.add(p);
+      }
+    });
   });
 
   // Calculate ALL relevant regions first (for accurate count)

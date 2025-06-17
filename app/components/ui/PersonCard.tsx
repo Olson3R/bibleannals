@@ -11,18 +11,18 @@ interface PersonCardProps {
 // Color scheme function for person cards
 export function getPersonColorScheme(person: BiblicalPerson) {
   if (['GOD_FATHER', 'JESUS'].includes(person.id)) {
-    return { bg: 'bg-yellow-200', border: 'border-yellow-400', text: 'text-yellow-800' };
+    return { bg: 'bg-yellow-200 dark:bg-yellow-900', border: 'border-yellow-400 dark:border-yellow-600', text: 'text-yellow-800 dark:text-yellow-200' };
   }
   if (['ABRAHAM', 'ISAAC', 'JACOB'].includes(person.id)) {
-    return { bg: 'bg-purple-200', border: 'border-purple-400', text: 'text-purple-800' };
+    return { bg: 'bg-purple-200 dark:bg-purple-900', border: 'border-purple-400 dark:border-purple-600', text: 'text-purple-800 dark:text-purple-200' };
   }
   if (['DAVID', 'SOLOMON'].includes(person.id) || person.name.includes('King')) {
-    return { bg: 'bg-red-200', border: 'border-red-400', text: 'text-red-800' };
+    return { bg: 'bg-red-200 dark:bg-red-900', border: 'border-red-400 dark:border-red-600', text: 'text-red-800 dark:text-red-200' };
   }
   if (['MOSES', 'ELIJAH', 'ELISHA', 'ISAIAH', 'JEREMIAH', 'DANIEL'].includes(person.id)) {
-    return { bg: 'bg-green-200', border: 'border-green-400', text: 'text-green-800' };
+    return { bg: 'bg-green-200 dark:bg-green-900', border: 'border-green-400 dark:border-green-600', text: 'text-green-800 dark:text-green-200' };
   }
-  return { bg: 'bg-blue-100', border: 'border-blue-300', text: 'text-blue-800' };
+  return { bg: 'bg-blue-100 dark:bg-blue-900', border: 'border-blue-300 dark:border-blue-600', text: 'text-blue-800 dark:text-blue-200' };
 }
 
 export function PersonCard({ person, className = '', showDates = false, periodSlug }: PersonCardProps) {

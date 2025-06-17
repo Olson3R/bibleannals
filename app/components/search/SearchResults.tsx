@@ -22,9 +22,9 @@ export function SearchResultsDisplay({
   if (totalResults === 0) {
     return (
       <div className="mb-8 text-center">
-        <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-800 mb-2">No Results Found</h3>
-          <p className="text-gray-600">Try searching for different terms or check your spelling.</p>
+        <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700">
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">No Results Found</h3>
+          <p className="text-gray-600 dark:text-gray-400">Try searching for different terms or check your spelling.</p>
         </div>
       </div>
     );
@@ -32,14 +32,14 @@ export function SearchResultsDisplay({
 
   return (
     <div id="search-results" className="mb-8">
-      <h3 className="text-lg font-semibold text-gray-800 mb-4">
+      <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
         Search Results ({totalResults})
       </h3>
       
       {/* People Results */}
       {searchResults.persons.length > 0 && (
         <div className="mb-6">
-          <h4 className="text-md font-medium text-gray-700 mb-3">
+          <h4 className="text-md font-medium text-gray-700 dark:text-gray-300 mb-3">
             👥 People ({searchResults.persons.length})
           </h4>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -53,7 +53,7 @@ export function SearchResultsDisplay({
       {/* Events Results */}
       {searchResults.events.length > 0 && (
         <div className="mb-6">
-          <h4 className="text-md font-medium text-gray-700 mb-3">
+          <h4 className="text-md font-medium text-gray-700 dark:text-gray-300 mb-3">
             📅 Events ({searchResults.events.length})
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -71,7 +71,7 @@ export function SearchResultsDisplay({
       {/* Regions Results */}
       {searchResults.regions.length > 0 && (
         <div className="mb-6">
-          <h4 className="text-md font-medium text-gray-700 mb-3">
+          <h4 className="text-md font-medium text-gray-700 dark:text-gray-300 mb-3">
             🗺️ Regions ({searchResults.regions.length})
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -85,7 +85,7 @@ export function SearchResultsDisplay({
       {/* Periods Results */}
       {searchResults.periods.length > 0 && (
         <div className="mb-6">
-          <h4 className="text-md font-medium text-gray-700 mb-3">
+          <h4 className="text-md font-medium text-gray-700 dark:text-gray-300 mb-3">
             📜 Time Periods ({searchResults.periods.length})
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -98,15 +98,15 @@ export function SearchResultsDisplay({
                 <Link
                   key={index}
                   href={`/periods/${periodSlug}`}
-                  className={`block p-3 bg-white border-2 hover:shadow-md transition-shadow text-sm rounded-lg ${
+                  className={`block p-3 bg-white dark:bg-gray-800 border-2 hover:shadow-md transition-shadow text-sm rounded-lg ${
                     period.color.includes('border-') 
                       ? period.color.split(' ').find(c => c.includes('border-')) || 'border-gray-300' 
                       : 'border-gray-300'
                   }`}
                 >
-                  <div className="font-medium text-gray-900">{period.name}</div>
-                  <div className="text-xs text-gray-700 mb-1">{period.dateRange}</div>
-                  <div className="text-xs text-gray-600">{period.description}</div>
+                  <div className="font-medium text-gray-900 dark:text-gray-100">{period.name}</div>
+                  <div className="text-xs text-gray-700 dark:text-gray-300 mb-1">{period.dateRange}</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400">{period.description}</div>
                 </Link>
               );
             })}

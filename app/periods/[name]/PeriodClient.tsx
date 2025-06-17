@@ -65,13 +65,8 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
   const {
     minYear,
     maxYear,
-    minEra,
-    maxEra,
     setMinYear,
     setMaxYear,
-    setMinEra,
-    setMaxEra,
-    updateDateRange,
     resetFilter
   } = useDateFilter();
   
@@ -97,27 +92,22 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 shadow-sm">
+      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
             <div>
-              <h1 className="text-2xl font-bold text-gray-800">{period.name}</h1>
-              <p className="text-gray-600">{period.dateRange}</p>
+              <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-200">{period.name}</h1>
+              <p className="text-gray-600 dark:text-gray-400">{period.dateRange}</p>
             </div>
             
             {/* Date Range Filter */}
             <DateRangeSlider
               minYear={minYear}
               maxYear={maxYear}
-              minEra={minEra}
-              maxEra={maxEra}
-              onDateRangeChange={updateDateRange}
               onMinYearChange={setMinYear}
               onMaxYearChange={setMaxYear}
-              onMinEraChange={setMinEra}
-              onMaxEraChange={setMaxEra}
               onReset={resetFilter}
               dataMinYear={dataMinYear}
               dataMaxYear={dataMaxYear}
@@ -139,14 +129,14 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
           {/* Period Overview */}
           <div className={`rounded-lg border-2 ${period.color} shadow-lg mb-8 overflow-hidden`}>
             <div className={`p-6 ${period.color}`}>
-              <h2 className="text-xl font-semibold text-gray-800 mb-2">{period.name}</h2>
-              <p className="text-gray-700">{period.description}</p>
+              <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">{period.name}</h2>
+              <p className="text-gray-700 dark:text-gray-300">{period.description}</p>
             </div>
           </div>
 
           {/* Period Navigation */}
           {(previousPeriod || nextPeriod) && (
-            <div className="flex justify-between items-center mb-8 bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
+            <div className="flex justify-between items-center mb-8 bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 shadow-sm">
               <div className="flex-1">
                 {previousPeriod && (
                   <NavLink
@@ -155,9 +145,9 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
                   >
                     <span className="mr-2">←</span>
                     <div>
-                      <div className="text-sm text-gray-500">Previous Period</div>
+                      <div className="text-sm text-gray-500 dark:text-gray-400">Previous Period</div>
                       <div className="font-semibold group-hover:underline">{previousPeriod.name}</div>
-                      <div className="text-sm text-gray-600">{previousPeriod.dateRange}</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">{previousPeriod.dateRange}</div>
                     </div>
                   </NavLink>
                 )}
@@ -170,9 +160,9 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
                     className="flex items-center justify-end text-blue-600 hover:text-blue-800 group"
                   >
                     <div className="text-right">
-                      <div className="text-sm text-gray-500">Next Period</div>
+                      <div className="text-sm text-gray-500 dark:text-gray-400">Next Period</div>
                       <div className="font-semibold group-hover:underline">{nextPeriod.name}</div>
-                      <div className="text-sm text-gray-600">{nextPeriod.dateRange}</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">{nextPeriod.dateRange}</div>
                     </div>
                     <span className="ml-2">→</span>
                   </NavLink>
@@ -185,45 +175,45 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <NavLink
               href={`/periods/${period.slug}/events`}
-              className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-800">📅 Events</h3>
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">📅 Events</h3>
                 <span className="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded">
                   {events.length}
                 </span>
               </div>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
                 Explore all the major events that occurred during this period
               </p>
             </NavLink>
 
             <NavLink
               href={`/periods/${period.slug}/people`}
-              className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-800">👥 People</h3>
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">👥 People</h3>
                 <span className="bg-green-100 text-green-800 text-sm font-medium px-2.5 py-0.5 rounded">
                   {people.length}
                 </span>
               </div>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
                 Learn about the key figures who lived during this time
               </p>
             </NavLink>
 
             <NavLink
               href={`/periods/${period.slug}/regions`}
-              className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-800">🗺️ Regions</h3>
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">🗺️ Regions</h3>
                 <span className="bg-purple-100 text-purple-800 text-sm font-medium px-2.5 py-0.5 rounded">
                   {regions.length}
                 </span>
               </div>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
                 Discover the important places and locations of this era
               </p>
             </NavLink>
@@ -232,8 +222,8 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
           {/* Quick Preview */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Featured Events */}
-            <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">Featured Events</h3>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Featured Events</h3>
               <div className="space-y-3">
                 {events.slice(0, 3).map(event => (
                   <EventCard 
@@ -254,14 +244,14 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
                   </NavLink>
                 )}
                 {events.length === 0 && (
-                  <p className="text-gray-500 text-sm">No events found for the selected date range.</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm">No events found for the selected date range.</p>
                 )}
               </div>
             </div>
 
             {/* Featured People */}
-            <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">Featured People</h3>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Featured People</h3>
               <div className="space-y-3">
                 {people.slice(0, 3).map(person => (
                   <PersonCard key={person.id} person={person} showDates={true} className="p-3" periodSlug={period.slug} />
@@ -275,14 +265,14 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
                   </NavLink>
                 )}
                 {people.length === 0 && (
-                  <p className="text-gray-500 text-sm">No people found for the selected date range.</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm">No people found for the selected date range.</p>
                 )}
               </div>
             </div>
 
             {/* Featured Regions */}
-            <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">Featured Regions</h3>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Featured Regions</h3>
               <div className="space-y-3">
                 {regions.slice(0, 3).map(region => (
                   <RegionCard key={region.id} region={region} showDescription={false} className="p-3" periodSlug={period.slug} />
@@ -296,7 +286,7 @@ export function PeriodClient({ period, events: allEvents, people: allPeople, reg
                   </NavLink>
                 )}
                 {regions.length === 0 && (
-                  <p className="text-gray-500 text-sm">No regions found for the selected date range.</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm">No regions found for the selected date range.</p>
                 )}
               </div>
             </div>
