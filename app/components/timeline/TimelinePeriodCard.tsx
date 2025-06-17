@@ -14,24 +14,24 @@ import { isWithinDateRange } from '../../utils/date-parsing';
 function PersonCard({ person, periodSlug }: { person: BiblicalPerson; periodSlug?: string }) {
   const getColorScheme = (person: BiblicalPerson) => {
     if (['GOD_FATHER', 'JESUS'].includes(person.id)) {
-      return { bg: 'bg-yellow-200', border: 'border-yellow-400', text: 'text-yellow-800' };
+      return { bg: 'bg-yellow-200 dark:bg-yellow-900/30', border: 'border-yellow-400 dark:border-yellow-600', text: 'text-yellow-800 dark:text-yellow-200' };
     }
     if (['ABRAHAM', 'ISAAC', 'JACOB'].includes(person.id)) {
-      return { bg: 'bg-purple-200', border: 'border-purple-400', text: 'text-purple-800' };
+      return { bg: 'bg-purple-200 dark:bg-purple-900/30', border: 'border-purple-400 dark:border-purple-600', text: 'text-purple-800 dark:text-purple-200' };
     }
     if (['DAVID', 'SOLOMON'].includes(person.id) || person.name.includes('King')) {
-      return { bg: 'bg-red-200', border: 'border-red-400', text: 'text-red-800' };
+      return { bg: 'bg-red-200 dark:bg-red-900/30', border: 'border-red-400 dark:border-red-600', text: 'text-red-800 dark:text-red-200' };
     }
     if (['MOSES', 'ELIJAH', 'ELISHA', 'ISAIAH', 'JEREMIAH', 'DANIEL'].includes(person.id)) {
-      return { bg: 'bg-green-200', border: 'border-green-400', text: 'text-green-800' };
+      return { bg: 'bg-green-200 dark:bg-green-900/30', border: 'border-green-400 dark:border-green-600', text: 'text-green-800 dark:text-green-200' };
     }
     if (person.id.includes('APOSTLE') || ['PETER', 'PAUL', 'JOHN_THE_APOSTLE'].includes(person.id)) {
-      return { bg: 'bg-indigo-200', border: 'border-indigo-400', text: 'text-indigo-800' };
+      return { bg: 'bg-indigo-200 dark:bg-indigo-900/30', border: 'border-indigo-400 dark:border-indigo-600', text: 'text-indigo-800 dark:text-indigo-200' };
     }
     if (person.gender === 'female') {
-      return { bg: 'bg-pink-200', border: 'border-pink-400', text: 'text-pink-800' };
+      return { bg: 'bg-pink-200 dark:bg-pink-900/30', border: 'border-pink-400 dark:border-pink-600', text: 'text-pink-800 dark:text-pink-200' };
     }
-    return { bg: 'bg-blue-200', border: 'border-blue-400', text: 'text-blue-800' };
+    return { bg: 'bg-blue-200 dark:bg-blue-900/30', border: 'border-blue-400 dark:border-blue-600', text: 'text-blue-800 dark:text-blue-200' };
   };
   
   const colors = getColorScheme(person);
@@ -40,13 +40,13 @@ function PersonCard({ person, periodSlug }: { person: BiblicalPerson; periodSlug
     <div className="inline-block mb-2">
       <NavLink 
         href={`/people/${person.id}?from=timeline&period=${periodSlug || ''}`}
-        className={`block px-2 py-1 rounded border cursor-pointer transition-all duration-200 hover:shadow-md text-xs ${colors.bg} ${colors.border}`}
+        className={`block px-2 py-1 rounded border cursor-pointer transition-all duration-200 hover:shadow-md text-xs ${colors.bg} ${colors.border} ${colors.text}`}
         data-person-id={person.id}
       >
         <div className="flex items-center">
-          <span className="font-medium text-gray-800">{person.name}</span>
-          {person.created && <span className="ml-1 text-orange-600" title="Created by God">⭐</span>}
-          {person.translated && <span className="ml-1 text-cyan-600" title="Translated (taken up without death)">↗️</span>}
+          <span className="font-medium">{person.name}</span>
+          {person.created && <span className="ml-1 text-orange-600 dark:text-orange-400" title="Created by God">⭐</span>}
+          {person.translated && <span className="ml-1 text-cyan-600 dark:text-cyan-400" title="Translated (taken up without death)">↗️</span>}
         </div>
       </NavLink>
     </div>
@@ -364,7 +364,7 @@ export function TimelinePeriodCard({
           {showEvents && (
             <div>
               <div className="flex items-center justify-between mb-3">
-                <h4 className="font-bold text-gray-800 text-lg">📅 Key Events</h4>
+                <h4 className="font-bold text-gray-800 dark:text-gray-200 text-lg">📅 Key Events</h4>
                 {allPeriodEvents.length > 3 && (
                   <button
                     onClick={() => showPeriodEvents(period.name)}
@@ -381,15 +381,15 @@ export function TimelinePeriodCard({
                   return (
                     <div key={event.id} className={`rounded-lg p-3 border transition-all duration-200 ${
                       isEventSelected 
-                        ? 'bg-green-50 border-green-500 shadow-lg ring-2 ring-green-300' 
-                        : 'bg-white bg-opacity-80 border-gray-200'
+                        ? 'bg-green-50 dark:bg-green-900/20 border-green-500 dark:border-green-400 shadow-lg ring-2 ring-green-300 dark:ring-green-600' 
+                        : 'bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-90 border-gray-200 dark:border-gray-600'
                     }`} data-event-id={event.id}>
                       <h5 className={`font-semibold text-sm mb-1 ${
-                        isEventSelected ? 'text-green-900' : 'text-gray-800'
+                        isEventSelected ? 'text-green-900 dark:text-green-100' : 'text-gray-800 dark:text-gray-200'
                       }`}>
                         <button
                           className={`text-left hover:underline cursor-pointer ${
-                            isEventSelected ? 'text-green-900 hover:text-green-700' : 'hover:text-blue-600'
+                            isEventSelected ? 'text-green-900 dark:text-green-100 hover:text-green-700 dark:hover:text-green-200' : 'hover:text-blue-600'
                           }`}
                           onClick={() => onEventClick(event, periodSlug)}
                         >
@@ -397,10 +397,10 @@ export function TimelinePeriodCard({
                         </button>
                       </h5>
                       <p className={`text-xs mb-2 ${
-                        isEventSelected ? 'text-green-700' : 'text-gray-600 dark:text-gray-400'
+                        isEventSelected ? 'text-green-700 dark:text-green-200' : 'text-gray-600 dark:text-gray-400'
                       }`}>{event.date}</p>
                       <p className={`text-xs mb-2 ${
-                        isEventSelected ? 'text-green-800' : 'text-gray-700'
+                        isEventSelected ? 'text-green-800 dark:text-green-300' : 'text-gray-700 dark:text-gray-300'
                       }`}>{event.description}</p>
                       {event.references && event.references.length > 0 && (
                         <div className="mb-2">
@@ -453,7 +453,7 @@ export function TimelinePeriodCard({
           {showPeople && (
             <div>
               <div className="flex items-center justify-between mb-3">
-                <h4 className="font-bold text-gray-800 text-lg">👥 Key Figures</h4>
+                <h4 className="font-bold text-gray-800 dark:text-gray-200 text-lg">👥 Key Figures</h4>
                 {allParticipants.size > 6 && (
                   <button
                     onClick={() => showPeriodPeople(period.name)}
@@ -463,7 +463,7 @@ export function TimelinePeriodCard({
                   </button>
                 )}
               </div>
-              <div className="bg-white bg-opacity-80 rounded-lg p-3 border border-gray-200">
+              <div className="bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-90 rounded-lg p-3 border border-gray-200 dark:border-gray-600">
                 <div className="space-y-2">
                   {Array.from(allParticipants).slice(0, 12).map(participantId => {
                     const person = getPersonById(participantId);
@@ -483,7 +483,7 @@ export function TimelinePeriodCard({
           {showRegions && (
             <div>
               <div className="flex items-center justify-between mb-3">
-                <h4 className="font-bold text-gray-800 text-lg">🗺️ Regions</h4>
+                <h4 className="font-bold text-gray-800 dark:text-gray-200 text-lg">🗺️ Regions</h4>
                 {allRelevantRegions.length > 3 && (
                   <button
                     onClick={() => showPeriodRegions(period.name)}
@@ -500,15 +500,15 @@ export function TimelinePeriodCard({
                   return (
                     <div key={region.id} className={`rounded-lg p-3 border transition-all duration-200 ${
                       isRegionSelected 
-                        ? 'bg-purple-50 border-purple-500 shadow-lg ring-2 ring-purple-300' 
-                        : 'bg-white bg-opacity-80 border-gray-200'
+                        ? 'bg-purple-50 dark:bg-purple-900/20 border-purple-500 dark:border-purple-400 shadow-lg ring-2 ring-purple-300 dark:ring-purple-600' 
+                        : 'bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-90 border-gray-200 dark:border-gray-600'
                     }`} data-region-id={region.id}>
                       <h5 className={`font-semibold text-sm mb-1 flex items-center gap-2 ${
-                        isRegionSelected ? 'text-purple-900' : 'text-gray-800'
+                        isRegionSelected ? 'text-purple-900 dark:text-purple-100' : 'text-gray-800 dark:text-gray-200'
                       }`}>
                         <button
                           className={`text-left hover:underline cursor-pointer ${
-                            isRegionSelected ? 'text-purple-900 hover:text-purple-700' : 'hover:text-blue-600'
+                            isRegionSelected ? 'text-purple-900 dark:text-purple-100 hover:text-purple-700 dark:hover:text-purple-200' : 'hover:text-blue-600'
                           }`}
                           onClick={() => onRegionClick(region, periodSlug)}
                         >
@@ -525,10 +525,10 @@ export function TimelinePeriodCard({
                         </a>
                       </h5>
                       <p className={`text-xs mb-1 ${
-                        isRegionSelected ? 'text-purple-700' : 'text-gray-600 dark:text-gray-400'
+                        isRegionSelected ? 'text-purple-700 dark:text-purple-200' : 'text-gray-600 dark:text-gray-400'
                       }`}>{region.location}</p>
                       <p className={`text-xs mb-2 ${
-                        isRegionSelected ? 'text-purple-800' : 'text-gray-700'
+                        isRegionSelected ? 'text-purple-800 dark:text-purple-300' : 'text-gray-700 dark:text-gray-300'
                       }`}>{region.description}</p>
                       {showPeople && region.notable_people.length > 0 && (
                         <div className="flex flex-wrap">

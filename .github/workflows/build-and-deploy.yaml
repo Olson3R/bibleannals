@@ -33,6 +33,8 @@ jobs:
           local_path: './out/*'
           remote_path: 'uploads/'
           sftpArgs: '-o ConnectTimeout=5'
+          sftp_only: true
+          delete_remote_files: true
         
       - name: Publish site
         uses: appleboy/ssh-action@v1.0.3

@@ -1,9 +1,9 @@
 # Bible Annals - TODO List
 
 ## Bugs
-- **Dark Mode**
-  - On the timeline page, event date and reference texts are difficult to read
-  - On the timeline page, region location description text is difficult to read
+- ~~**Dark Mode**~~ ✅ FIXED
+  - ~~On the timeline page, event date and reference texts are difficult to read~~ ✅ FIXED
+  - ~~On the timeline page, region location description text is difficult to read~~ ✅ FIXED
 
 ## SEO & Discoverability
 - **Meta tags**: Add comprehensive meta tags for all pages
@@ -31,9 +31,10 @@
 - **Testing**: Add comprehensive unit tests, integration tests, and E2E tests
 
 ## Data & Content
-- **Data validation**: Add comprehensive data validation and error checking
+- **Books for Periods**: List primary books of the bible for each period.
 - **Additional content**: Add more detailed biographical information and content
 - **Source references**: Add citations and source references for historical accuracy
+- **Data validation**: Add comprehensive data validation and error checking
 
 ## Performance & Optimization
 - **Image optimization**: Implement next/image optimization for any future images or icons
