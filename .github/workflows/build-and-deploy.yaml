@@ -24,21 +24,26 @@ jobs:
       - name: Build Next.js app
         run: npm run build # or your build command
 
+      - name: Copy files via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          username: ${{ secrets.SFTP_USERNAME }}
+          server: ${{ secrets.SFTP_HOST }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          local_path: './out/*'
+          remote_path: 'uploads/'
+          sftpArgs: '-o ConnectTimeout=5'
+        
       - name: Publish site
-        uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SFTP_HOST }}
-          port: 22 # optional, default is 22
-          user:  ${{ secrets.SFTP_USERNAME }}
-          pass: ${{ secrets.SFTP_PASSWORD }}
-          # execute pre-commands before scp
-          first_ssh: rm -rf uploads/*
-          scp: |
-            ./out/*' => upload/
-          # execute post-commands after scp
-          last_ssh: |
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          script: |
             timestamp=$(date +%Y%m%d-%H%M%S)
             echo "Created $timestamp"
             mkdir "$timestamp"
             mv uploads/* "$timestamp/"
             ln -snf "$timestamp" bibleannals.com
+            echo "Deployment completed at $(date)" >> /var/log/deployments.log
