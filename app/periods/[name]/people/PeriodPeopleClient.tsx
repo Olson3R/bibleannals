@@ -314,7 +314,7 @@ export function PeriodPeopleClient({ period, allPeople, allEvents, timelinePerio
               events={scopedEvents}
               persons={people}
               timelinePeriods={timelinePeriods}
-              showEvents={true}
+              showEvents={false}
               showPeople={true}
               minYear={minYear}
               maxYear={maxYear}
@@ -328,7 +328,7 @@ export function PeriodPeopleClient({ period, allPeople, allEvents, timelinePerio
                 <p className="text-gray-600 dark:text-gray-400">{period.description}</p>
               </div>
               
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
                 {people.map(person => (
                   <PersonCard key={person.id} person={person} showDates={true} className="text-center" periodSlug={period.slug} />
                 ))}

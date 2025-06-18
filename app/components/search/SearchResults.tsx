@@ -43,7 +43,7 @@ export function SearchResultsDisplay({
           <h4 className="text-md font-medium text-gray-700 dark:text-gray-300 mb-3">
             👥 People ({searchResults.persons.length})
           </h4>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
             {searchResults.persons.map(person => (
               <PersonCard key={person.id} person={person} showDates={true} className="text-sm" />
             ))}

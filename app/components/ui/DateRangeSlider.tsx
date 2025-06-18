@@ -95,8 +95,9 @@ export function DateRangeSlider({
     setIsDragging(type);
   };
 
-  const handleTouchStart = (type: 'min' | 'max') => (e: React.TouchEvent) => {
-    e.preventDefault();
+  const handleTouchStart = (type: 'min' | 'max') => () => {
+    // Don't call preventDefault to avoid passive event listener issues
+    // Instead, rely on touchAction: 'none' CSS property to prevent scrolling
     setIsDragging(type);
   };
   
@@ -109,7 +110,7 @@ export function DateRangeSlider({
     
     const handleTouchMove = (e: TouchEvent) => {
       if (isDragging && e.touches.length > 0) {
-        e.preventDefault();
+        // Don't call preventDefault here either - let CSS touchAction handle it
         handleSliderChange(e.touches[0].clientX);
       }
     };
@@ -125,7 +126,7 @@ export function DateRangeSlider({
     if (isDragging) {
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
-      document.addEventListener('touchmove', handleTouchMove, { passive: false });
+      document.addEventListener('touchmove', handleTouchMove);
       document.addEventListener('touchend', handleTouchEnd);
     }
     
@@ -149,7 +150,7 @@ export function DateRangeSlider({
           <span className="hidden sm:inline">Filter</span>
         </span>
         
-        {/* Compact input fields */}
+        {/* Compact input fields - Better mobile layout */}
         <div className="flex items-center gap-1 text-xs">
           <input
             type="number"
@@ -165,7 +166,7 @@ export function DateRangeSlider({
                 onMinYearChange(null);
               }
             }}
-            className="w-16 px-1 py-1 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded text-center focus:ring-1 focus:ring-blue-500 focus:border-transparent"
+            className="w-16 sm:w-20 px-1 py-1 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded text-center focus:ring-1 focus:ring-blue-500 focus:border-transparent min-h-[44px] sm:min-h-0"
           />
           <select
             value={minYear !== null ? (minYear < 0 ? 'BC' : 'AD') : 'BC'}
@@ -175,12 +176,12 @@ export function DateRangeSlider({
                 onMinYearChange(newEra === 'BC' ? -Math.abs(minYear) : Math.abs(minYear));
               }
             }}
-            className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded px-1 py-1 focus:ring-1 focus:ring-blue-500 focus:border-transparent"
+            className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded px-1 py-1 focus:ring-1 focus:ring-blue-500 focus:border-transparent min-h-[44px] sm:min-h-0"
           >
             <option value="BC">BC</option>
             <option value="AD">AD</option>
           </select>
-          <span className="text-gray-400 dark:text-gray-500">—</span>
+          <span className="text-gray-400 dark:text-gray-500 mx-1">—</span>
           <input
             type="number"
             placeholder="100"
@@ -195,7 +196,7 @@ export function DateRangeSlider({
                 onMaxYearChange(null);
               }
             }}
-            className="w-16 px-1 py-1 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded text-center focus:ring-1 focus:ring-blue-500 focus:border-transparent"
+            className="w-16 sm:w-20 px-1 py-1 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded text-center focus:ring-1 focus:ring-blue-500 focus:border-transparent min-h-[44px] sm:min-h-0"
           />
           <select
             value={maxYear !== null ? (maxYear < 0 ? 'BC' : 'AD') : 'AD'}
@@ -205,23 +206,25 @@ export function DateRangeSlider({
                 onMaxYearChange(newEra === 'BC' ? -Math.abs(maxYear) : Math.abs(maxYear));
               }
             }}
-            className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded px-1 py-1 focus:ring-1 focus:ring-blue-500 focus:border-transparent"
+            className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded px-1 py-1 focus:ring-1 focus:ring-blue-500 focus:border-transparent min-h-[44px] sm:min-h-0"
           >
             <option value="AD">AD</option>
             <option value="BC">BC</option>
           </select>
         </div>
         
-        {/* Clear button */}
-        {(minYear || maxYear) && (
-          <button
-            onClick={onReset}
-            className="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 p-1"
-            title="Clear date filter"
-          >
-            ✕
-          </button>
-        )}
+        {/* Clear button - always reserve space */}
+        <div className="w-6 flex justify-center">
+          {(minYear || maxYear) && (
+            <button
+              onClick={onReset}
+              className="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 p-1"
+              title="Clear date filter"
+            >
+              ✕
+            </button>
+          )}
+        </div>
       </div>
       
       {/* Compact slider */}
@@ -241,11 +244,12 @@ export function DateRangeSlider({
           
           {/* Min handle */}
           <div
-            className="absolute w-4 h-4 bg-blue-600 border-2 border-white rounded-full shadow-md cursor-grab active:cursor-grabbing -translate-x-1/2 touch-manipulation"
+            className="absolute w-4 h-4 bg-blue-600 border-2 border-white rounded-full shadow-md cursor-grab active:cursor-grabbing -translate-x-1/2"
             style={{ 
               left: `${minPercentage}%`,
-              padding: '6px',
-              margin: '-6px 3px 0 4px'
+              padding: '12px',
+              margin: '-12px',
+              touchAction: 'none'
             }}
             onMouseDown={handleMouseDown('min')}
             onTouchStart={handleTouchStart('min')}
@@ -253,12 +257,12 @@ export function DateRangeSlider({
           
           {/* Max handle */}
           <div
-            className="absolute w-4 h-4 bg-blue-600 border-2 border-white rounded-full shadow-md cursor-grab active:cursor-grabbing -translate-x-1/2 touch-manipulation"
+            className="absolute w-4 h-4 bg-blue-600 border-2 border-white rounded-full shadow-md cursor-grab active:cursor-grabbing -translate-x-1/2"
             style={{ 
               left: `${maxPercentage}%`,
-              marginTop: '3px',
-              padding: '6px',
-              margin: '-6px 0 0 -8px'
+              padding: '12px',
+              margin: '-12px',
+              touchAction: 'none'
             }}
             onMouseDown={handleMouseDown('max')}
             onTouchStart={handleTouchStart('max')}

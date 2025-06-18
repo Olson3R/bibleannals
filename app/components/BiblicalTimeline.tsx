@@ -465,118 +465,128 @@ export function BiblicalTimeline({
           </div>
           
           {/* Search and Controls in Header */}
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-2 lg:gap-4">
-            <div className="w-full max-w-md relative">
-              <label htmlFor="timeline-search" className="sr-only">
-                Search biblical events, people, regions, and periods
-              </label>
-              <input
-                id="timeline-search"
-                type="text"
-                placeholder="Search..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-3 py-2 pr-8 text-sm border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                aria-describedby="search-description"
-              />
-              <div id="search-description" className="sr-only">
-                Search across {events.length} events, {persons.length} people, {regions.length} regions, and {timelinePeriods.length} periods
+          <div className="space-y-3 lg:space-y-0">
+            {/* Top row: Search */}
+            <div className="flex items-center gap-2">
+              <div className="flex-1 relative">
+                <label htmlFor="timeline-search" className="sr-only">
+                  Search biblical events, people, regions, and periods
+                </label>
+                <input
+                  id="timeline-search"
+                  type="text"
+                  placeholder="Search..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full px-3 py-2 pr-8 text-sm border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  aria-describedby="search-description"
+                />
+                <div id="search-description" className="sr-only">
+                  Search across {events.length} events, {persons.length} people, {regions.length} regions, and {timelinePeriods.length} periods
+                </div>
+                {searchTerm && (
+                  <button
+                    onClick={() => setSearchTerm('')}
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 text-sm"
+                    aria-label="Clear search"
+                    title="Clear search"
+                  >
+                    ✕
+                  </button>
+                )}
               </div>
-              {searchTerm && (
-                <button
-                  onClick={() => setSearchTerm('')}
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 text-sm"
-                  aria-label="Clear search"
-                  title="Clear search"
-                >
-                  ✕
-                </button>
-              )}
-            </div>
-            
-            {/* Date Range Filter */}
-            <DateRangeSlider
-              minYear={minYear}
-              maxYear={maxYear}
-              onMinYearChange={setMinYear}
-              onMaxYearChange={setMaxYear}
-              onReset={resetFilter}
-              dataMinYear={dataMinYear}
-              dataMaxYear={dataMaxYear}
-            />
-            
-            {/* View Mode Toggle - Hidden on mobile */}
-            <div className="hidden md:flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+              
+              {/* Download Button - More prominent on mobile */}
               <button
-                onClick={() => handleViewModeChange('timeline')}
-                className={`px-3 py-1 rounded text-xs lg:text-sm font-medium transition-colors ${
-                  viewMode === 'timeline'
-                    ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-gray-200 shadow-sm'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
-                }`}
-                title="Timeline view"
+                onClick={handleDownloadYaml}
+                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+                title="Download timeline data as YAML"
               >
-                📜 <span className="hidden lg:inline">Timeline</span>
-              </button>
-              <button
-                onClick={() => handleViewModeChange('chart')}
-                className={`px-3 py-1 rounded text-xs lg:text-sm font-medium transition-colors ${
-                  viewMode === 'chart'
-                    ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-gray-200 shadow-sm'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
-                }`}
-                title="Chart view"
-              >
-                📊 <span className="hidden lg:inline">Chart</span>
+                📥
               </button>
             </div>
 
-            {/* Download Button - More subtle */}
-            <button
-              onClick={handleDownloadYaml}
-              className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
-              title="Download timeline data as YAML"
-            >
-              📥
-            </button>
+            {/* Bottom row: Controls */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              {/* Date Range Filter */}
+              <div className="w-full sm:w-auto">
+                <DateRangeSlider
+                  minYear={minYear}
+                  maxYear={maxYear}
+                  onMinYearChange={setMinYear}
+                  onMaxYearChange={setMaxYear}
+                  onReset={resetFilter}
+                  dataMinYear={dataMinYear}
+                  dataMaxYear={dataMaxYear}
+                />
+              </div>
+              
+              <div className="flex items-center gap-3">
+                {/* View Mode Toggle - Hidden on mobile */}
+                <div className="hidden md:flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+                  <button
+                    onClick={() => handleViewModeChange('timeline')}
+                    className={`px-3 py-1 rounded text-xs lg:text-sm font-medium transition-colors ${
+                      viewMode === 'timeline'
+                        ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-gray-200 shadow-sm'
+                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
+                    }`}
+                    title="Timeline view"
+                  >
+                    📜 <span className="hidden lg:inline">Timeline</span>
+                  </button>
+                  <button
+                    onClick={() => handleViewModeChange('chart')}
+                    className={`px-3 py-1 rounded text-xs lg:text-sm font-medium transition-colors ${
+                      viewMode === 'chart'
+                        ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-gray-200 shadow-sm'
+                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
+                    }`}
+                    title="Chart view"
+                  >
+                    📊 <span className="hidden lg:inline">Chart</span>
+                  </button>
+                </div>
 
-            {/* Content Toggles in Header - Compact for Mobile */}
-            <fieldset className="flex gap-2 lg:gap-4">
-              <legend className="sr-only">Content type visibility controls</legend>
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  checked={showEvents}
-                  onChange={(e) => setShowEvents(e.target.checked)}
-                  className="mr-1"
-                  aria-describedby="events-toggle-desc"
-                />
-                <span className="text-xs lg:text-sm font-medium text-gray-700 dark:text-gray-300">📅 <span className="hidden lg:inline">Events</span></span>
-                <span id="events-toggle-desc" className="sr-only">Toggle visibility of biblical events</span>
-              </label>
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  checked={showPeople}
-                  onChange={(e) => setShowPeople(e.target.checked)}
-                  className="mr-1"
-                  aria-describedby="people-toggle-desc"
-                />
-                <span className="text-xs lg:text-sm font-medium text-gray-700 dark:text-gray-300">👥 <span className="hidden lg:inline">People</span></span>
-                <span id="people-toggle-desc" className="sr-only">Toggle visibility of biblical people</span>
-              </label>
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  checked={showRegions}
-                  onChange={(e) => setShowRegions(e.target.checked)}
-                  className="mr-1"
-                  aria-describedby="regions-toggle-desc"
-                />
-                <span className="text-xs lg:text-sm font-medium text-gray-700 dark:text-gray-300">🗺️ <span className="hidden lg:inline">Regions</span></span>
-                <span id="regions-toggle-desc" className="sr-only">Toggle visibility of biblical regions</span>
-              </label>
-            </fieldset>
+                {/* Content Toggles - Better mobile layout */}
+                <fieldset className="flex flex-wrap gap-2 lg:gap-3">
+                  <legend className="sr-only">Content type visibility controls</legend>
+                  <label className="flex items-center min-w-0">
+                    <input
+                      type="checkbox"
+                      checked={showEvents}
+                      onChange={(e) => setShowEvents(e.target.checked)}
+                      className="mr-1 min-w-0"
+                      aria-describedby="events-toggle-desc"
+                    />
+                    <span className="text-xs lg:text-sm font-medium text-gray-700 dark:text-gray-300 truncate">📅 <span className="hidden sm:inline">Events</span></span>
+                    <span id="events-toggle-desc" className="sr-only">Toggle visibility of biblical events</span>
+                  </label>
+                  <label className="flex items-center min-w-0">
+                    <input
+                      type="checkbox"
+                      checked={showPeople}
+                      onChange={(e) => setShowPeople(e.target.checked)}
+                      className="mr-1 min-w-0"
+                      aria-describedby="people-toggle-desc"
+                    />
+                    <span className="text-xs lg:text-sm font-medium text-gray-700 dark:text-gray-300 truncate">👥 <span className="hidden sm:inline">People</span></span>
+                    <span id="people-toggle-desc" className="sr-only">Toggle visibility of biblical people</span>
+                  </label>
+                  <label className="flex items-center min-w-0">
+                    <input
+                      type="checkbox"
+                      checked={showRegions}
+                      onChange={(e) => setShowRegions(e.target.checked)}
+                      className="mr-1 min-w-0"
+                      aria-describedby="regions-toggle-desc"
+                    />
+                    <span className="text-xs lg:text-sm font-medium text-gray-700 dark:text-gray-300 truncate">🗺️ <span className="hidden sm:inline">Regions</span></span>
+                    <span id="regions-toggle-desc" className="sr-only">Toggle visibility of biblical regions</span>
+                  </label>
+                </fieldset>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -632,7 +642,7 @@ export function BiblicalTimeline({
             aria-labelledby="timeline-overview-heading"
           >
             <h2 id="timeline-overview-heading" className="text-2xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200">Timeline Overview</h2>
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
               {timelinePeriods
                 .filter(period => 
                   isWithinDateRange(period.dateRange, minYear, maxYear) &&
@@ -648,7 +658,7 @@ export function BiblicalTimeline({
                 <div key={index} className="relative group">
                   <NavLink
                     href={`/periods/${period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')}`}
-                    className={`block px-4 py-2 rounded-full border-2 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer ${getPeriodColors(period.colorIndex)}`}
+                    className={`block px-3 py-3 sm:px-4 sm:py-2 rounded-full border-2 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer min-h-[44px] flex items-center justify-center ${getPeriodColors(period.colorIndex)}`}
                   >
                     <div className="text-center">
                       <div className="font-semibold text-sm text-gray-800 dark:text-gray-200">{period.name}</div>

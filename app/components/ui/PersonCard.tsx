@@ -35,7 +35,7 @@ export function PersonCard({ person, className = '', showDates = false, periodSl
   return (
     <NavLink
       href={href}
-      className={`block px-3 py-2 rounded-lg border ${colorScheme.bg} ${colorScheme.border} ${colorScheme.text} hover:shadow-md transition-shadow ${className}`}
+      className={`block px-3 py-3 sm:py-2 rounded-lg border ${colorScheme.bg} ${colorScheme.border} ${colorScheme.text} hover:shadow-md transition-shadow min-h-[44px] ${className}`}
     >
       <div className="flex items-center justify-between">
         <div>

@@ -1,6 +1,8 @@
 'use client';
 
-import { NavLink, EventCard, PersonCard, RegionCard } from '../../components/ui';
+import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { NavLink, EventCard, PersonCard, RegionCard, OverlapChart } from '../../components/ui';
 import { DateRangeSlider } from '../../components/ui/DateRangeSlider';
 import { useDateFilter } from '../../hooks/useDateFilter';
 import { isWithinDateRange } from '../../utils/date-parsing';
@@ -63,6 +65,8 @@ interface PeriodClientProps {
 }
 
 export function PeriodClient({ period, events: periodEvents, people: periodPeople, regions: periodRegions, dataMinYear, dataMaxYear }: PeriodClientProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   
   // Use the date filter hook
   const {
@@ -72,6 +76,42 @@ export function PeriodClient({ period, events: periodEvents, people: periodPeopl
     setMaxYear,
     resetFilter
   } = useDateFilter();
+
+  // View mode state
+  const [viewMode, setViewMode] = useState<'timeline' | 'chart'>('timeline');
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Set view mode from URL params after hydration and check mobile
+  useEffect(() => {
+    // Check screen size
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    const view = searchParams.get('view');
+    if (view === 'chart' && window.innerWidth >= 768) {
+      setViewMode('chart');
+    } else {
+      setViewMode('timeline');
+    }
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, [searchParams]);
+
+  // Handle view mode changes with URL updates
+  const handleViewModeChange = (newViewMode: 'timeline' | 'chart') => {
+    setViewMode(newViewMode);
+    const params = new URLSearchParams(searchParams);
+    if (newViewMode === 'chart') {
+      params.set('view', 'chart');
+    } else {
+      params.delete('view');
+    }
+    router.replace(`/periods/${period.slug}?${params.toString()}`);
+  };
 
   // Filter data based on date range
   const events = periodEvents.filter(event => 
@@ -145,6 +185,32 @@ export function PeriodClient({ period, events: periodEvents, people: periodPeopl
                 dataMaxYear={dataMaxYear}
               />
               
+              {/* View Mode Toggle - Hidden on mobile */}
+              <div className="hidden md:flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+                <button
+                  onClick={() => handleViewModeChange('timeline')}
+                  className={`px-3 py-1 rounded text-xs lg:text-sm font-medium transition-colors ${
+                    viewMode === 'timeline'
+                      ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-gray-200 shadow-sm'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
+                  }`}
+                  title="Timeline view"
+                >
+                  📜 <span className="hidden lg:inline">Timeline</span>
+                </button>
+                <button
+                  onClick={() => handleViewModeChange('chart')}
+                  className={`px-3 py-1 rounded text-xs lg:text-sm font-medium transition-colors ${
+                    viewMode === 'chart'
+                      ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-gray-200 shadow-sm'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
+                  }`}
+                  title="Chart view"
+                >
+                  📊 <span className="hidden lg:inline">Chart</span>
+                </button>
+              </div>
+              
               {/* Download Button - More subtle */}
               <button
                 onClick={handleDownloadYaml}
@@ -175,14 +241,52 @@ export function PeriodClient({ period, events: periodEvents, people: periodPeopl
               <p className="text-gray-800 dark:text-gray-100 mb-4">{period.description}</p>
             </div>
           </div>
+
+          {/* Chart View */}
+          {viewMode === 'chart' && !isMobile && (
+            <div className="mb-8">
+              <OverlapChart
+                events={events}
+                persons={people}
+                timelinePeriods={[period]}
+                showEvents={true}
+                showPeople={true}
+                minYear={minYear}
+                maxYear={maxYear}
+                onEventClick={(event) => {
+                  const params = new URLSearchParams({ from: 'period' });
+                  if (minYear !== null) {
+                    params.set('minYear', minYear.toString());
+                  }
+                  if (maxYear !== null) {
+                    params.set('maxYear', maxYear.toString());
+                  }
+                  router.push(`/events/${event.id}?${params.toString()}`);
+                }}
+                onPersonClick={(person) => {
+                  const params = new URLSearchParams({ from: 'period' });
+                  if (minYear !== null) {
+                    params.set('minYear', minYear.toString());
+                  }
+                  if (maxYear !== null) {
+                    params.set('maxYear', maxYear.toString());
+                  }
+                  router.push(`/people/${person.id}?${params.toString()}`);
+                }}
+              />
+            </div>
+          )}
           
-          {/* Events Section */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm mb-8">
+          {/* Timeline View Content */}
+          {viewMode === 'timeline' && (
+            <>
+              {/* Events Section */}
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm mb-8">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">📅 Events ({events.length})</h3>
               <NavLink
                 href={`/periods/${period.slug}/events?from=period`}
-                className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-lg text-sm hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
+                className="px-3 py-2 sm:py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-lg text-sm hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors min-h-[44px] sm:min-h-0 flex items-center"
               >
                 View All →
               </NavLink>
@@ -221,14 +325,14 @@ export function PeriodClient({ period, events: periodEvents, people: periodPeopl
               <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">👥 People ({people.length})</h3>
               <NavLink
                 href={`/periods/${period.slug}/people?from=period`}
-                className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-lg text-sm hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
+                className="px-3 py-2 sm:py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-lg text-sm hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors min-h-[44px] sm:min-h-0 flex items-center"
               >
                 View All →
               </NavLink>
             </div>
             
             {people.length > 0 ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
                 {people.slice(0, 12).map(person => (
                   <PersonCard 
                     key={person.id} 
@@ -261,7 +365,7 @@ export function PeriodClient({ period, events: periodEvents, people: periodPeopl
               <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">🗺️ Regions ({regions.length})</h3>
               <NavLink
                 href={`/periods/${period.slug}/regions?from=period`}
-                className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-lg text-sm hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
+                className="px-3 py-2 sm:py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-lg text-sm hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors min-h-[44px] sm:min-h-0 flex items-center"
               >
                 View All →
               </NavLink>
@@ -292,6 +396,8 @@ export function PeriodClient({ period, events: periodEvents, people: periodPeopl
               </div>
             )}
           </div>
+            </>
+          )}
         </div>
       </div>
     </div>

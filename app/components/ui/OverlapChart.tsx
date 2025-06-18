@@ -246,7 +246,7 @@ export function OverlapChart({
   // Calculate total items for height
   const totalItems = Object.values(groupedItems).reduce((sum, items) => sum + items.length, 0);
   const itemHeight = 24;
-  const sectionSpacing = 40;
+  const sectionSpacing = 50; // Reduced from 60 to 50 
   const chartHeight = marginTop + marginBottom + (totalItems * itemHeight) + (Object.keys(groupedItems).length * sectionSpacing);
 
   // Calculate year scale
@@ -266,7 +266,8 @@ export function OverlapChart({
       yOffset += groupedItems[prevType].length * itemHeight + sectionSpacing;
     }
     
-    return yOffset + index * itemHeight + itemHeight / 2;
+    // Add extra spacing after the section header
+    return yOffset + 10 + index * itemHeight + itemHeight / 2;
   };
 
   // Generate tick marks for years
@@ -448,9 +449,9 @@ export function OverlapChart({
                 {/* Section background */}
                 <rect
                   x={marginLeft - 190}
-                  y={yOffset - 15}
+                  y={yOffset - 20}
                   width={190}
-                  height={groupedItems[type].length * itemHeight + 20}
+                  height={groupedItems[type].length * itemHeight + 30}
                   fill="#f9fafb"
                   stroke="#e5e7eb"
                   strokeWidth="1"
@@ -458,7 +459,7 @@ export function OverlapChart({
                 {/* Section title */}
                 <text
                   x={marginLeft - 10}
-                  y={yOffset + 5}
+                  y={yOffset}
                   textAnchor="end"
                   className="text-lg font-bold fill-gray-800 dark:fill-gray-200"
                 >
@@ -508,14 +509,25 @@ export function OverlapChart({
                    onClick={handleClick}
                    className={item.type !== 'ethnicity' ? 'cursor-pointer' : ''}>
                   {/* Item label */}
-                  <text
-                    x={marginLeft - 15}
-                    y={y + 3}
-                    textAnchor="end"
-                    className="text-xs fill-gray-600 dark:fill-gray-400"
+                  <foreignObject
+                    x={marginLeft - 195}
+                    y={y - 8}
+                    width="180"
+                    height="16"
                   >
-                    {item.name.length > 20 ? item.name.substring(0, 20) + '...' : item.name}
-                  </text>
+                    <div
+                      className="text-xs text-gray-600 dark:text-gray-400 text-right truncate leading-4"
+                      style={{
+                        width: '180px',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap'
+                      }}
+                      title={item.name}
+                    >
+                      {item.name}
+                    </div>
+                  </foreignObject>
                   
                   {isRange ? (
                     // Gantt-style bar for people lifespans and ethnicity periods

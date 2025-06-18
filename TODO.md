@@ -4,9 +4,7 @@
 - **Schema markup**: Implement structured data markup for search engines
 
 ## User Experience & Interface
-- **Timeline page: event, person, region toggles**: Save timeline model toggle selection to local storage.
 - **Search improvements**: Add autocomplete and search suggestions to search functionality
-- **Mobile responsiveness**: Test and optimize mobile responsiveness across devices
 - **Loading states**: Add skeleton loading components for better perceived performance
 - **Error boundaries**: Implement React error boundaries for graceful error handling
 

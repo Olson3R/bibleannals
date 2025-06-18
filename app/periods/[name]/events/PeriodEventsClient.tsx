@@ -312,7 +312,7 @@ export function PeriodEventsClient({ period, allEvents, allPeople, timelinePerio
               persons={scopedPeople}
               timelinePeriods={timelinePeriods}
               showEvents={true}
-              showPeople={true}
+              showPeople={false}
               minYear={minYear}
               maxYear={maxYear}
               onEventClick={handleEventClick}
