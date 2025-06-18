@@ -14,6 +14,7 @@ interface OverlapChartProps {
   maxYear: number | null;
   onEventClick?: (event: BiblicalEvent) => void;
   onPersonClick?: (person: BiblicalPerson) => void;
+  periodSlug?: string; // For making headers clickable on period pages
 }
 
 interface ChartItem {
@@ -26,6 +27,10 @@ interface ChartItem {
   ethnicity?: string;
   originalIndex: number; // For consistent coloring
   data?: BiblicalEvent | BiblicalPerson; // Store original data for click handlers
+  truncatedStart?: boolean; // Indicates if start was truncated
+  truncatedEnd?: boolean; // Indicates if end was truncated
+  originalStartYear?: number; // Original start year before truncation
+  originalEndYear?: number | null; // Original end year before truncation
 }
 
 const TYPE_COLORS = {
@@ -75,22 +80,89 @@ export function OverlapChart({
   minYear,
   maxYear,
   onEventClick,
-  onPersonClick
+  onPersonClick,
+  periodSlug
 }: OverlapChartProps) {
   const [selectedType, setSelectedType] = useState<'all' | 'person' | 'event' | 'ethnicity'>('all');
   const [selectedEthnicity, setSelectedEthnicity] = useState<string | null>(null);
   const [isClient, setIsClient] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   // Ensure component only renders on client to prevent hydration errors
   useEffect(() => {
     setIsClient(true);
+    
+    // Check for dark mode
+    const checkDarkMode = () => {
+      setIsDarkMode(document.documentElement.classList.contains('dark'));
+    };
+    
+    checkDarkMode();
+    
+    // Watch for theme changes
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    
+    return () => observer.disconnect();
   }, []);
+
+  // Handle chart download
+  const handleDownloadChart = () => {
+    const svgElement = document.querySelector('svg');
+    if (!svgElement) return;
+
+    // Clone the SVG to avoid modifying the original
+    const svgClone = svgElement.cloneNode(true) as SVGElement;
+    
+    // Add inline styles for dark mode compatibility
+    const style = document.createElement('style');
+    style.textContent = `
+      .dark-section-bg { fill: #374151; }
+      .dark-section-border { stroke: #6b7280; }
+      .dark-text { fill: #f9fafb; }
+      .light-section-bg { fill: #f9fafb; }
+      .light-section-border { stroke: #e5e7eb; }
+      .light-text { fill: #1f2937; }
+    `;
+    svgClone.insertBefore(style, svgClone.firstChild);
+
+    // Create blob and download
+    const svgData = new XMLSerializer().serializeToString(svgClone);
+    const blob = new Blob([svgData], { type: 'image/svg+xml' });
+    const url = URL.createObjectURL(blob);
+    
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `biblical-timeline-chart-${new Date().toISOString().split('T')[0]}.svg`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
 
   const { chartItems, yearRange, ethnicities } = useMemo(() => {
     const items: ChartItem[] = [];
     let minChartYear = Infinity;
     let maxChartYear = -Infinity;
     const ethnicitySet = new Set<string>();
+
+    // Detect if we're viewing a single period (period-specific page)
+    const isSinglePeriod = timelinePeriods.length === 1;
+    let periodStartYear = null;
+    let periodEndYear = null;
+    
+    if (isSinglePeriod && timelinePeriods[0]) {
+      try {
+        const { startYear, endYear } = parseDateRange(timelinePeriods[0].dateRange);
+        periodStartYear = startYear;
+        periodEndYear = endYear;
+      } catch (error) {
+        console.warn('Error parsing period range:', error);
+      }
+    }
 
     try {
 
@@ -105,20 +177,49 @@ export function OverlapChart({
           if ((minYear === null || birthYear >= minYear) && 
               (maxYear === null || (deathYear || birthYear) <= maxYear)) {
             
+            let displayStartYear = birthYear;
+            let displayEndYear = deathYear;
+            let truncatedStart = false;
+            let truncatedEnd = false;
+            
+            // For period-specific pages, truncate lifespans based on period dates with buffer
+            if (isSinglePeriod && periodStartYear !== null && periodEndYear !== null && deathYear !== null) {
+              // Add 2% of period range as buffer before truncating
+              const periodSpan = periodEndYear - periodStartYear;
+              const buffer = Math.round(periodSpan * 0.02);
+              const truncateStartBound = periodStartYear - buffer;
+              const truncateEndBound = periodEndYear + buffer;
+              
+              // Apply truncation if the person's lifespan extends beyond the buffer zone
+              if (birthYear < truncateStartBound || deathYear > truncateEndBound) {
+                const newStartYear = Math.max(birthYear, truncateStartBound);
+                const newEndYear = Math.min(deathYear, truncateEndBound);
+                
+                truncatedStart = newStartYear > birthYear;
+                truncatedEnd = newEndYear < deathYear;
+                displayStartYear = newStartYear;
+                displayEndYear = newEndYear;
+              }
+            }
+            
             items.push({
               id: person.id,
               name: person.name,
               type: 'person',
-              startYear: birthYear,
-              endYear: deathYear,
+              startYear: displayStartYear,
+              endYear: displayEndYear,
               color: TYPE_COLORS.person,
               ethnicity: person.ethnicity,
               originalIndex: index,
-              data: person
+              data: person,
+              truncatedStart,
+              truncatedEnd,
+              originalStartYear: birthYear,
+              originalEndYear: deathYear
             });
             
-            minChartYear = Math.min(minChartYear, birthYear);
-            maxChartYear = Math.max(maxChartYear, deathYear || birthYear);
+            minChartYear = Math.min(minChartYear, displayStartYear);
+            maxChartYear = Math.max(maxChartYear, displayEndYear || displayStartYear);
             
             if (person.ethnicity) {
               ethnicitySet.add(person.ethnicity);
@@ -164,8 +265,32 @@ export function OverlapChart({
       );
       
       if (ethnicityPeople.length > 0) {
-        const startYear = Math.min(...ethnicityPeople.map(p => p.startYear));
-        const endYear = Math.max(...ethnicityPeople.map(p => p.endYear || p.startYear));
+        const originalStartYear = Math.min(...ethnicityPeople.map(p => p.startYear));
+        const originalEndYear = Math.max(...ethnicityPeople.map(p => p.endYear || p.startYear));
+        let startYear = originalStartYear;
+        let endYear = originalEndYear;
+        let truncatedStart = false;
+        let truncatedEnd = false;
+        
+        // For period-specific pages, truncate ethnicities based on period dates with buffer
+        if (isSinglePeriod && periodStartYear !== null && periodEndYear !== null) {
+          // Add 2% of period range as buffer before truncating
+          const periodSpan = periodEndYear - periodStartYear;
+          const buffer = Math.round(periodSpan * 0.02);
+          const truncateStartBound = periodStartYear - buffer;
+          const truncateEndBound = periodEndYear + buffer;
+          
+          // Apply truncation if the entity extends beyond the buffer zone
+          if (startYear < truncateStartBound || endYear > truncateEndBound) {
+            const newStartYear = Math.max(startYear, truncateStartBound);
+            const newEndYear = Math.min(endYear, truncateEndBound);
+            
+            truncatedStart = newStartYear > startYear;
+            truncatedEnd = newEndYear < endYear;
+            startYear = newStartYear;
+            endYear = newEndYear;
+          }
+        }
         
         items.push({
           id: `ethnicity-${ethnicity}`,
@@ -175,7 +300,11 @@ export function OverlapChart({
           endYear,
           color: ETHNICITY_COLORS[index % ETHNICITY_COLORS.length],
           ethnicity,
-          originalIndex: index
+          originalIndex: index,
+          truncatedStart,
+          truncatedEnd,
+          originalStartYear,
+          originalEndYear
         });
       }
     });
@@ -309,6 +438,15 @@ export function OverlapChart({
         </h3>
         
         <div className="flex flex-col sm:flex-row gap-2">
+          {/* Download Button */}
+          <button
+            onClick={handleDownloadChart}
+            className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+            title="Download chart as SVG"
+          >
+            📥 Download
+          </button>
+          
           {/* Type Filter */}
           <select
             value={selectedType}
@@ -444,6 +582,16 @@ export function OverlapChart({
               yOffset += groupedItems[typeOrder[i]].length * itemHeight + sectionSpacing;
             }
             
+            const getHeaderUrl = () => {
+              if (!periodSlug) return null;
+              if (type === 'person') return `/periods/${periodSlug}/people`;
+              if (type === 'event') return `/periods/${periodSlug}/events`;
+              if (type === 'ethnicity') return `/periods/${periodSlug}/regions`;
+              return null;
+            };
+
+            const headerUrl = getHeaderUrl();
+
             return (
               <g key={type}>
                 {/* Section background */}
@@ -452,19 +600,38 @@ export function OverlapChart({
                   y={yOffset - 20}
                   width={190}
                   height={groupedItems[type].length * itemHeight + 30}
-                  fill="#f9fafb"
-                  stroke="#e5e7eb"
+                  fill={isDarkMode ? "#374151" : "#f9fafb"}
+                  stroke={isDarkMode ? "#6b7280" : "#e5e7eb"}
                   strokeWidth="1"
+                  className={headerUrl ? "cursor-pointer hover:opacity-80" : ""}
+                  onClick={headerUrl ? () => window.open(headerUrl, '_self') : undefined}
                 />
                 {/* Section title */}
                 <text
                   x={marginLeft - 10}
                   y={yOffset}
                   textAnchor="end"
-                  className="text-lg font-bold fill-gray-800 dark:fill-gray-200"
+                  fill={isDarkMode ? "#f9fafb" : "#1f2937"}
+                  fontSize="18"
+                  fontWeight="bold"
+                  className={headerUrl ? 'cursor-pointer hover:opacity-70' : ''}
+                  onClick={headerUrl ? () => window.open(headerUrl, '_self') : undefined}
                 >
                   {type === 'ethnicity' ? '🏛️ Ethnicities' : type === 'person' ? '👥 People' : '📅 Events'}
                 </text>
+                {/* Link indicator */}
+                {headerUrl && (
+                  <text
+                    x={marginLeft - 195}
+                    y={yOffset}
+                    textAnchor="start"
+                    fill="#3b82f6"
+                    fontSize="14"
+                    opacity="0.7"
+                  >
+                    →
+                  </text>
+                )}
               </g>
             );
           })}
@@ -531,18 +698,57 @@ export function OverlapChart({
                   
                   {isRange ? (
                     // Gantt-style bar for people lifespans and ethnicity periods
-                    <rect
-                      x={x1}
-                      y={y - 8}
-                      width={barWidth}
-                      height={16}
-                      fill={item.color}
-                      opacity={0.8}
-                      rx={8}
-                      stroke="#fff"
-                      strokeWidth="1"
-                      className={item.type !== 'ethnicity' ? 'hover:opacity-100' : ''}
-                    />
+                    <>
+                      <rect
+                        x={x1}
+                        y={y - 8}
+                        width={barWidth}
+                        height={16}
+                        fill={item.color}
+                        opacity={0.8}
+                        rx={8}
+                        stroke="#fff"
+                        strokeWidth="1"
+                        className={item.type !== 'ethnicity' ? 'hover:opacity-100' : ''}
+                      />
+                      
+                      {/* Truncation indicators */}
+                      {item.truncatedStart && (
+                        <g>
+                          {/* Jagged edge indicator at start */}
+                          <path
+                            d={`M${x1} ${y - 8} L${x1 + 6} ${y - 4} L${x1} ${y} L${x1 + 6} ${y + 4} L${x1} ${y + 8}`}
+                            fill={item.color}
+                            stroke="#fff"
+                            strokeWidth="1"
+                          />
+                          {/* Arrow indicator */}
+                          <path
+                            d={`M${x1 - 8} ${y} L${x1 - 2} ${y - 3} L${x1 - 2} ${y + 3} Z`}
+                            fill="#666"
+                            opacity={0.7}
+                          />
+                        </g>
+                      )}
+                      
+                      {item.truncatedEnd && (
+                        <g>
+                          {/* Jagged edge indicator at end */}
+                          <path
+                            d={`M${x2} ${y - 8} L${x2 - 6} ${y - 4} L${x2} ${y} L${x2 - 6} ${y + 4} L${x2} ${y + 8}`}
+                            fill={item.color}
+                            stroke="#fff"
+                            strokeWidth="1"
+                          />
+                          {/* Arrow indicator */}
+                          <path
+                            d={`M${x2 + 8} ${y} L${x2 + 2} ${y - 3} L${x2 + 2} ${y + 3} Z`}
+                            fill="#666"
+                            opacity={0.7}
+                          />
+                        </g>
+                      )}
+                    </>
                   ) : (
                     // Diamond marker for events
                     <>
@@ -568,6 +774,9 @@ export function OverlapChart({
                       ? ` (${item.startYear < 0 ? Math.abs(item.startYear) + ' BC' : item.startYear + ' AD'} - ${item.endYear! < 0 ? Math.abs(item.endYear!) + ' BC' : item.endYear! + ' AD'})`
                       : ` (${item.startYear < 0 ? Math.abs(item.startYear) + ' BC' : item.startYear + ' AD'})`
                     }
+                    {(item.truncatedStart || item.truncatedEnd) && (
+                      `\n🔄 Truncated for focus - Full range: ${item.originalStartYear! < 0 ? Math.abs(item.originalStartYear!) + ' BC' : item.originalStartYear! + ' AD'} - ${item.originalEndYear! < 0 ? Math.abs(item.originalEndYear!) + ' BC' : item.originalEndYear! + ' AD'}`
+                    )}
                     {item.type !== 'ethnicity' && '\nClick to view details'}
                   </title>
                 </g>
@@ -592,7 +801,7 @@ export function OverlapChart({
           <span className="text-sm text-gray-700 dark:text-gray-300">🏛️ Ethnicities (periods)</span>
         </div>
         <div className="text-xs text-gray-500 dark:text-gray-400">
-          • Gantt-style chart • Hover for details • Filter by type or ethnicity
+          • Gantt-style chart • Hover for details • Filter by type or ethnicity • ⚡ Jagged edges = truncated ranges
         </div>
       </div>
     </div>

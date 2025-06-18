@@ -253,6 +253,7 @@ export function PeriodClient({ period, events: periodEvents, people: periodPeopl
                 showPeople={true}
                 minYear={minYear}
                 maxYear={maxYear}
+                periodSlug={period.slug}
                 onEventClick={(event) => {
                   const params = new URLSearchParams({ from: 'period' });
                   if (minYear !== null) {

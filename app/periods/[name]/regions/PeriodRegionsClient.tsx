@@ -25,7 +25,7 @@ interface PeriodRegionsClientProps {
   dataMaxYear: number;
 }
 
-export function PeriodRegionsClient({ period, allRegions, allEvents, allPeople, timelinePeriods, eventLocationNames, dataMinYear, dataMaxYear }: PeriodRegionsClientProps) {
+export function PeriodRegionsClient({ period, allRegions, allEvents, allPeople, eventLocationNames, dataMinYear, dataMaxYear }: PeriodRegionsClientProps) {
   const router = useRouter();
   const [fromTimeline, setFromTimeline] = useState(false);
   const [viewMode, setViewMode] = useState<'list' | 'chart'>('list');
@@ -321,11 +321,19 @@ export function PeriodRegionsClient({ period, allRegions, allEvents, allPeople, 
             <OverlapChart
               events={scopedEvents}
               persons={scopedPeople}
-              timelinePeriods={timelinePeriods}
+              timelinePeriods={[{
+                name: period.name,
+                slug: period.slug,
+                dateRange: period.dateRange,
+                description: period.description,
+                primaryBooks: [],
+                colorIndex: 0
+              }]}
               showEvents={true}
               showPeople={true}
               minYear={minYear}
               maxYear={maxYear}
+              periodSlug={period.slug}
               onEventClick={handleEventClick}
               onPersonClick={handlePersonClick}
             />
