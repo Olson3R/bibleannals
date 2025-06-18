@@ -6,6 +6,7 @@ import { isWithinDateRange } from '../../../utils/date-parsing';
 import { RegionCard, NavLink, OverlapChart, AdvancedFilters, type AdvancedFiltersType } from '../../../components/ui';
 import { DateRangeSlider } from '../../../components/ui/DateRangeSlider';
 import { useDateFilter } from '../../../hooks/useDateFilter';
+import { downloadYaml, generateYamlFilename, extractUniqueValues } from '../../../utils/yaml-export';
 import type { BiblicalRegion, BiblicalEvent, BiblicalPerson, TimelinePeriod } from '../../../types/biblical';
 
 interface PeriodRegionsClientProps {
@@ -184,6 +185,44 @@ export function PeriodRegionsClient({ period, allRegions, allEvents, allPeople, 
     router.push(`/people/${person.id}?${params.toString()}`);
   };
 
+  // Download period regions data as YAML
+  const handleDownloadYaml = () => {
+    const exportData = {
+      metadata: {
+        exported_at: new Date().toISOString(),
+        page_type: 'period-regions',
+        page_title: `Regions in ${period.name}`,
+        date_range: period.dateRange,
+        filters_applied: {
+          date_range: minYear || maxYear ? { 
+            min_year: minYear ?? undefined, 
+            max_year: maxYear ?? undefined 
+          } : undefined,
+          advanced_filters: {
+            person_types: advancedFilters.personTypes,
+            event_types: advancedFilters.eventTypes,
+            locations: advancedFilters.locations
+          }
+        }
+      },
+      period: {
+        name: period.name,
+        slug: period.slug,
+        date_range: period.dateRange,
+        description: period.description
+      },
+      regions: regions,
+      events: scopedEvents,
+      people: scopedPeople,
+      ethnicities: extractUniqueValues(scopedPeople, p => p.ethnicity),
+      event_types: eventTypeOptions,
+      locations: locationOptions
+    };
+
+    const filename = generateYamlFilename('period-regions', period.name);
+    downloadYaml(exportData, filename);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
@@ -220,6 +259,15 @@ export function PeriodRegionsClient({ period, allRegions, allEvents, allPeople, 
                   📊 <span className="hidden lg:inline">Chart</span>
                 </button>
               </div>
+
+              {/* Download Button - More subtle */}
+              <button
+                onClick={handleDownloadYaml}
+                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+                title="Download period regions data as YAML"
+              >
+                📥
+              </button>
               
               {!fromTimeline && (
                 <NavLink

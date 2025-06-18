@@ -10,6 +10,7 @@ import { SearchResultsDisplay } from './search';
 import { DateRangeSlider, NavLink, AdvancedFilters, OverlapChart, type AdvancedFiltersType } from './ui';
 import { useDateFilter } from '../hooks/useDateFilter';
 import { getPeriodColors } from '../utils/color-palette';
+import { downloadYaml, generateYamlFilename, extractUniqueValues } from '../utils/yaml-export';
 import type { TimelinePeriod } from '../types/biblical';
 
 interface BiblicalPerson {
@@ -306,6 +307,46 @@ export function BiblicalTimeline({
     return withinDateRange && matchesPersonTypeFilter(person);
   });
 
+  // Download timeline data as YAML
+  const handleDownloadYaml = () => {
+    const exportData = {
+      metadata: {
+        exported_at: new Date().toISOString(),
+        page_type: 'timeline',
+        page_title: 'Biblical Timeline',
+        date_range: minYear && maxYear ? `${Math.abs(minYear)} ${minYear < 0 ? 'BC' : 'AD'} - ${Math.abs(maxYear)} ${maxYear < 0 ? 'BC' : 'AD'}` : 'All periods',
+        filters_applied: {
+          date_range: minYear || maxYear ? { 
+            min_year: minYear ?? undefined, 
+            max_year: maxYear ?? undefined 
+          } : undefined,
+          advanced_filters: {
+            person_types: advancedFilters.personTypes,
+            event_types: advancedFilters.eventTypes,
+            locations: advancedFilters.locations
+          }
+        }
+      },
+      timeline_periods: timelinePeriods,
+      events: filteredEvents,
+      people: filteredPersons,
+      regions: regions,
+      ethnicities: extractUniqueValues(filteredPersons, p => p.ethnicity),
+      event_types: extractUniqueValues(filteredEvents, e => {
+        const name = e.name.toLowerCase();
+        if (name.includes('birth')) return 'Birth';
+        if (name.includes('death')) return 'Death';
+        if (name.includes('marriage')) return 'Marriage';
+        if (name.includes('covenant')) return 'Covenant';
+        return 'Other';
+      }),
+      locations: extractUniqueValues(filteredEvents, e => getLocationName(e.location))
+    };
+
+    const filename = generateYamlFilename('timeline', 'biblical-timeline');
+    downloadYaml(exportData, filename);
+  };
+
   // Relevance scoring function
   const calculateRelevance = (text: string, search: string, isMainField = false): number => {
     const searchLower = search.toLowerCase();
@@ -489,6 +530,15 @@ export function BiblicalTimeline({
                 📊 <span className="hidden lg:inline">Chart</span>
               </button>
             </div>
+
+            {/* Download Button - More subtle */}
+            <button
+              onClick={handleDownloadYaml}
+              className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+              title="Download timeline data as YAML"
+            >
+              📥
+            </button>
 
             {/* Content Toggles in Header - Compact for Mobile */}
             <fieldset className="flex gap-2 lg:gap-4">
