@@ -35,7 +35,8 @@ export function PeriodEventsClient({ period, allEvents, allPeople, eventLocation
   const [advancedFilters, setAdvancedFilters] = useState<AdvancedFiltersType>({
     personTypes: [],
     eventTypes: [],
-    locations: []
+    locations: [],
+    tags: []
   });
   
   useEffect(() => {
@@ -155,6 +156,12 @@ export function PeriodEventsClient({ period, allEvents, allPeople, eventLocation
   const locationOptions = Array.from(new Set(
     events.map(e => getLocationName(e.location))
   )).sort().slice(0, 20);
+
+  // Generate tag options from period data
+  const tagOptions = Array.from(new Set([
+    ...scopedPeople.flatMap(p => p.tags || []),
+    ...events.flatMap(e => e.tags || [])
+  ])).filter(tag => tag !== 'biblical').sort().slice(0, 20);
 
   // Navigation handlers for chart clicks
   const handleEventClick = (event: BiblicalEvent) => {
@@ -304,6 +311,7 @@ export function PeriodEventsClient({ period, allEvents, allPeople, eventLocation
             personTypeOptions={personTypeOptions}
             eventTypeOptions={eventTypeOptions}
             locationOptions={locationOptions}
+            tagOptions={tagOptions}
           />
 
           {viewMode === 'chart' && !isMobile ? (
@@ -340,6 +348,8 @@ export function PeriodEventsClient({ period, allEvents, allPeople, eventLocation
                     event={event} 
                     periodSlug={period.slug}
                     locationName={eventLocationNames[event.id]}
+                    showTags={true}
+                    maxTags={3}
                   />
                 ))}
               </div>

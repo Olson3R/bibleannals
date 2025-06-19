@@ -45,7 +45,7 @@ export function SearchResultsDisplay({
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
             {searchResults.persons.map(person => (
-              <PersonCard key={person.id} person={person} showDates={true} className="text-sm" />
+              <PersonCard key={person.id} person={person} showDates={true} showTags={true} maxTags={2} className="text-sm" />
             ))}
           </div>
         </div>
@@ -63,6 +63,8 @@ export function SearchResultsDisplay({
                 key={event.id} 
                 event={event} 
                 locationName={eventLocationNames?.[event.id]}
+                showTags={true}
+                maxTags={3}
               />
             ))}
           </div>

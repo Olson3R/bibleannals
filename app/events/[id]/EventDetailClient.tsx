@@ -122,6 +122,22 @@ export function EventDetailClient({
                   </div>
                 </div>
               )}
+
+              {event.tags && event.tags.length > 0 && (
+                <div>
+                  <span className="font-semibold text-gray-600 dark:text-gray-400">Tags:</span>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {event.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-full text-sm font-medium"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
               
               {bibleReferences.length > 0 && (
                 <div>

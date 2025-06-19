@@ -4,7 +4,6 @@
 - **Schema markup**: Implement structured data markup for search engines
 
 ## User Experience & Interface
-- **Search improvements**: Add autocomplete and search suggestions to search functionality
 - **Loading states**: Add skeleton loading components for better perceived performance
 - **Error boundaries**: Implement React error boundaries for graceful error handling
 

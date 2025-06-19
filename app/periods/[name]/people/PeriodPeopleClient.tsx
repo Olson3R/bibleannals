@@ -34,7 +34,8 @@ export function PeriodPeopleClient({ period, allPeople, allEvents, eventLocation
   const [advancedFilters, setAdvancedFilters] = useState<AdvancedFiltersType>({
     personTypes: [],
     eventTypes: [],
-    locations: []
+    locations: [],
+    tags: []
   });
   
   useEffect(() => {
@@ -158,6 +159,12 @@ export function PeriodPeopleClient({ period, allPeople, allEvents, eventLocation
   const locationOptions = Array.from(new Set(
     scopedEvents.map(e => getLocationName(e.location))
   )).sort().slice(0, 20);
+
+  // Generate tag options from period data
+  const tagOptions = Array.from(new Set([
+    ...people.flatMap(p => p.tags || []),
+    ...scopedEvents.flatMap(e => e.tags || [])
+  ])).filter(tag => tag !== 'biblical').sort().slice(0, 20);
 
   // Navigation handlers for chart clicks
   const handleEventClick = (event: BiblicalEvent) => {
@@ -307,6 +314,7 @@ export function PeriodPeopleClient({ period, allPeople, allEvents, eventLocation
             personTypeOptions={personTypeOptions}
             eventTypeOptions={eventTypeOptions}
             locationOptions={locationOptions}
+            tagOptions={tagOptions}
           />
 
           {viewMode === 'chart' && !isMobile ? (
@@ -338,7 +346,7 @@ export function PeriodPeopleClient({ period, allPeople, allEvents, eventLocation
               
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
                 {people.map(person => (
-                  <PersonCard key={person.id} person={person} showDates={true} className="text-center" periodSlug={period.slug} />
+                  <PersonCard key={person.id} person={person} showDates={true} showTags={true} maxTags={2} className="text-center" periodSlug={period.slug} />
                 ))}
               </div>
 

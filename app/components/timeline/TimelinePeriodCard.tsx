@@ -6,12 +6,13 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { NavLink } from '../ui';
 import type { BiblicalPerson, BiblicalEvent, BiblicalRegion, TimelinePeriod } from '../../types/biblical';
-import { getBibleUrl, getRegionStudyUrl, isElementVisible, scrollToElementWithOffset, getEventPeriod } from '../../utils';
+import { getBibleUrl, getRegionStudyUrl, isElementVisible, scrollToElementWithOffset } from '../../utils';
 import { getPeriodColors } from '../../utils/color-palette';
-import { isWithinDateRange } from '../../utils/date-parsing';
+import { isWithinDateRange, parseDate } from '../../utils/date-parsing';
+import { isRelevantToPeriod, getCombinedRelevance } from '../../utils/period-relevance';
 
 
-function PersonCard({ person, periodSlug }: { person: BiblicalPerson; periodSlug?: string }) {
+function PersonCard({ person, periodSlug, allPeriods }: { person: BiblicalPerson; periodSlug?: string; allPeriods?: TimelinePeriod[] }) {
   const getColorScheme = (person: BiblicalPerson) => {
     if (['GOD_FATHER', 'JESUS'].includes(person.id)) {
       return { bg: 'bg-yellow-200 dark:bg-yellow-900/30', border: 'border-yellow-400 dark:border-yellow-600', text: 'text-yellow-800 dark:text-yellow-200' };
@@ -35,6 +36,20 @@ function PersonCard({ person, periodSlug }: { person: BiblicalPerson; periodSlug
   };
   
   const colors = getColorScheme(person);
+  const displayTags = person.tags?.filter(tag => tag !== 'biblical').slice(0, 2) || [];
+  
+  // Get relevance info for this person in current period
+  const relevanceInfo = allPeriods && periodSlug ? 
+    getCombinedRelevance(person, allPeriods).find(rel => rel.period === periodSlug) : null;
+  
+  const getRelevanceIndicator = () => {
+    if (!relevanceInfo) return null;
+    
+    if (relevanceInfo.relevance >= 0.8) return '🔥'; // High relevance
+    if (relevanceInfo.relevance >= 0.6) return '⭐'; // Medium relevance
+    if (relevanceInfo.relevance >= 0.4) return '🔸'; // Lower relevance
+    return '▫️'; // Minimal relevance
+  };
   
   return (
     <div className="inline-block mb-2">
@@ -43,10 +58,32 @@ function PersonCard({ person, periodSlug }: { person: BiblicalPerson; periodSlug
         className={`block px-2 py-1 rounded border cursor-pointer transition-all duration-200 hover:shadow-md text-xs ${colors.bg} ${colors.border} ${colors.text}`}
         data-person-id={person.id}
       >
-        <div className="flex items-center">
-          <span className="font-medium">{person.name}</span>
-          {person.created && <span className="ml-1 text-orange-600 dark:text-orange-400" title="Created by God">⭐</span>}
-          {person.translated && <span className="ml-1 text-cyan-600 dark:text-cyan-400" title="Translated (taken up without death)">↗️</span>}
+        <div className="flex flex-col">
+          <div className="flex items-center">
+            <span className="font-medium">{person.name}</span>
+            {person.created && <span className="ml-1 text-orange-600 dark:text-orange-400" title="Created by God">⭐</span>}
+            {person.translated && <span className="ml-1 text-cyan-600 dark:text-cyan-400" title="Translated (taken up without death)">↗️</span>}
+            {getRelevanceIndicator() && (
+              <span 
+                className="ml-1" 
+                title={relevanceInfo ? `${relevanceInfo.reason.replace('-', ' ')} (${Math.round(relevanceInfo.relevance * 100)}% relevance)` : ''}
+              >
+                {getRelevanceIndicator()}
+              </span>
+            )}
+          </div>
+          {displayTags.length > 0 && (
+            <div className="flex flex-wrap gap-1 mt-1">
+              {displayTags.map((tag, index) => (
+                <span
+                  key={index}
+                  className="px-1 py-0.5 text-xs bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-30 rounded"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </NavLink>
     </div>
@@ -58,6 +95,7 @@ interface TimelinePeriodCardProps {
   events: BiblicalEvent[];
   regions: BiblicalRegion[];
   allPeriods: TimelinePeriod[];
+  persons: BiblicalPerson[];
   getPersonById: (id: string) => BiblicalPerson | undefined;
   showEvents: boolean;
   showPeople: boolean;
@@ -72,6 +110,13 @@ interface TimelinePeriodCardProps {
   matchesPersonTypeFilter?: (person: BiblicalPerson) => boolean;
   matchesEventTypeFilter?: (event: BiblicalEvent) => boolean;
   matchesLocationFilter?: (event: BiblicalEvent) => boolean;
+  matchesTagFilter?: (item: BiblicalPerson | BiblicalEvent) => boolean;
+  advancedFilters?: {
+    personTypes: string[];
+    eventTypes: string[];
+    locations: string[];
+    tags: string[];
+  };
 }
 
 // Helper function to check if a period has any displayable content after filtering
@@ -80,6 +125,7 @@ export function hasDisplayableContent(
   events: BiblicalEvent[],
   regions: BiblicalRegion[],
   allPeriods: TimelinePeriod[],
+  persons: BiblicalPerson[],
   getPersonById: (id: string) => BiblicalPerson | undefined,
   showEvents: boolean,
   showPeople: boolean,
@@ -88,13 +134,13 @@ export function hasDisplayableContent(
   maxYear?: number | null,
   matchesPersonTypeFilter?: (person: BiblicalPerson) => boolean,
   matchesEventTypeFilter?: (event: BiblicalEvent) => boolean,
-  matchesLocationFilter?: (event: BiblicalEvent) => boolean
+  matchesLocationFilter?: (event: BiblicalEvent) => boolean,
+  matchesTagFilter?: (item: BiblicalPerson | BiblicalEvent) => boolean
 ): boolean {
   // Apply the same filtering logic as in TimelinePeriodCard
   const periodEvents = events.filter(event => {
-    // Check if event belongs to this specific period using the new assignment logic
-    const assignedPeriod = getEventPeriod(event, allPeriods);
-    if (!assignedPeriod || assignedPeriod.slug !== period.slug) {
+    // Check if event is relevant to this specific period using period relevance
+    if (!isRelevantToPeriod(event, period.slug, allPeriods, 0.3)) {
       return false;
     }
     
@@ -114,6 +160,10 @@ export function hasDisplayableContent(
       return false;
     }
     
+    if (matchesTagFilter && !matchesTagFilter(event)) {
+      return false;
+    }
+    
     return true;
   });
 
@@ -122,15 +172,39 @@ export function hasDisplayableContent(
     return true;
   }
 
-  // Check if we have people to show
+  // Check if we have people to show (check ALL people relevant to period, not just event participants)
   if (showPeople) {
-    const hasFilteredParticipants = periodEvents.some(event => 
-      event.participants.some(p => {
-        const person = getPersonById(p);
-        return person && (!matchesPersonTypeFilter || matchesPersonTypeFilter(person));
-      })
-    );
-    if (hasFilteredParticipants) {
+    // Check if any people are directly relevant to this period (primary check)
+    const hasRelevantPeople = persons.some(person => {
+      const hasDateInfo = person.birth_date || person.death_date;
+      
+      let isRelevant = false;
+      if (hasDateInfo) {
+        isRelevant = isRelevantToPeriod(person, period.slug, allPeriods, 0.05); // Very low threshold
+      } else {
+        // For undated people, include them more broadly
+        isRelevant = periodEvents.some(event => event.participants.includes(person.id)) ||
+                    (person.additional_relevance && person.additional_relevance.some(rel => rel.period === period.slug)) ||
+                    ['GOD_FATHER', 'JESUS', 'HOLY_SPIRIT', 'ADAM', 'EVE', 'NOAH', 'ABRAHAM', 'ISAAC', 'JACOB', 'MOSES', 'DAVID', 'SOLOMON'].includes(person.id);
+      }
+      
+      if (!isRelevant) {
+        return false;
+      }
+      
+      // Apply date range filter (only for people with dates)
+      if (hasDateInfo && (minYear !== null || maxYear !== null)) {
+        if (!isWithinDateRange(person.birth_date || person.death_date || '', minYear ?? null, maxYear ?? null)) {
+          return false;
+        }
+      }
+      
+      // Apply person type and tag filters
+      return (matchesPersonTypeFilter ? matchesPersonTypeFilter(person) : true) && 
+             (matchesTagFilter ? matchesTagFilter(person) : true);
+    });
+    
+    if (hasRelevantPeople) {
       return true;
     }
   }
@@ -168,6 +242,7 @@ export function TimelinePeriodCard({
   events,
   regions,
   allPeriods,
+  persons,
   getPersonById,
   showEvents,
   showPeople,
@@ -181,15 +256,16 @@ export function TimelinePeriodCard({
   maxYear,
   matchesPersonTypeFilter,
   matchesEventTypeFilter,
-  matchesLocationFilter
+  matchesLocationFilter,
+  matchesTagFilter,
+  advancedFilters
 }: TimelinePeriodCardProps) {
   const searchParams = useSearchParams();
   const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
-  const periodEvents = events.filter(event => {
-    // Check if event belongs to this specific period using the new assignment logic
-    const assignedPeriod = getEventPeriod(event, allPeriods);
-    if (!assignedPeriod || assignedPeriod.slug !== period.slug) {
+  const filteredPeriodEvents = events.filter(event => {
+    // Check if event is relevant to this specific period using period relevance
+    if (!isRelevantToPeriod(event, period.slug, allPeriods, 0.3)) {
       return false;
     }
     
@@ -209,14 +285,45 @@ export function TimelinePeriodCard({
       return false;
     }
     
+    if (matchesTagFilter && !matchesTagFilter(event)) {
+      return false;
+    }
+    
     return true;
-  }).slice(0, 8); // Limit to 8 events per period
+  }).sort((a, b) => {
+    // Sort events in ascending chronological order (oldest to newest)
+    const dateA = parseDate(a.date);
+    const dateB = parseDate(b.date);
+    
+    // Handle null dates by putting them at the end
+    if (dateA === null && dateB === null) return 0;
+    if (dateA === null) return 1;
+    if (dateB === null) return -1;
+    
+    // Sort by date (ascending: earlier dates first)
+    // Note: BC dates are negative, so -4000 BC comes before -3000 BC
+    return dateA - dateB;
+  });
 
-  // Get ALL participants from all events in this period (not just the first 8 displayed)
+  // Configuration for entity limits
+  const MAX_EVENTS_DISPLAY = 6;
+  const MAX_PEOPLE_DISPLAY = 8;
+  const MAX_REGIONS_DISPLAY = 3;
+  
+  // Apply limit only when no advanced filters are active
+  // Check if any advanced filters are being applied
+  const hasAdvancedFilters = (advancedFilters?.personTypes.length ?? 0) > 0 ||
+                            (advancedFilters?.eventTypes.length ?? 0) > 0 ||
+                            (advancedFilters?.locations.length ?? 0) > 0 ||
+                            (advancedFilters?.tags.length ?? 0) > 0 ||
+                            minYear !== null || maxYear !== null;
+  
+  const periodEvents = hasAdvancedFilters ? filteredPeriodEvents : filteredPeriodEvents.slice(0, MAX_EVENTS_DISPLAY);
+
+  // Get ALL participants from all events in this period (for filtering and counting)
   const allPeriodEvents = events.filter(event => {
-    // Check if event belongs to this specific period using the new assignment logic
-    const assignedPeriod = getEventPeriod(event, allPeriods);
-    if (!assignedPeriod || assignedPeriod.slug !== period.slug) {
+    // Check if event is relevant to this specific period using period relevance
+    if (!isRelevantToPeriod(event, period.slug, allPeriods, 0.3)) {
       return false;
     }
     
@@ -236,18 +343,111 @@ export function TimelinePeriodCard({
       return false;
     }
     
+    if (matchesTagFilter && !matchesTagFilter(event)) {
+      return false;
+    }
+    
     return true;
+  }).sort((a, b) => {
+    // Sort events in ascending chronological order (oldest to newest)
+    const dateA = parseDate(a.date);
+    const dateB = parseDate(b.date);
+    
+    // Handle null dates by putting them at the end
+    if (dateA === null && dateB === null) return 0;
+    if (dateA === null) return 1;
+    if (dateB === null) return -1;
+    
+    // Sort by date (ascending: earlier dates first)
+    return dateA - dateB;
   });
   
-  const allParticipants = new Set<string>();
+  // Get ALL relevant people with relevance scoring for sorting
+  const allRelevantPeople: Array<{id: string, relevance: number, date: number | null}> = [];
+  
+  // Add event participants
   allPeriodEvents.forEach(event => {
     event.participants.forEach(p => {
       const person = getPersonById(p);
-      if (person && (!matchesPersonTypeFilter || matchesPersonTypeFilter(person))) {
-        allParticipants.add(p);
+      if (person && (matchesPersonTypeFilter ? matchesPersonTypeFilter(person) : true) && (matchesTagFilter ? matchesTagFilter(person) : true)) {
+        // Check if already added
+        const existing = allRelevantPeople.find(rp => rp.id === p);
+        if (!existing) {
+          const relevanceInfo = getCombinedRelevance(person, allPeriods).find(rel => rel.period === period.slug);
+          const relevanceScore = relevanceInfo?.relevance || 0.5; // Default relevance for event participants
+          const dateValue = parseDate(person.birth_date || person.death_date || '');
+          allRelevantPeople.push({ id: p, relevance: relevanceScore, date: dateValue });
+        }
       }
     });
   });
+  
+  // Also add people who are directly relevant to this period (not just event participants)
+  persons.forEach(person => {
+    // Check if already added as event participant
+    if (allRelevantPeople.some(rp => rp.id === person.id)) {
+      return;
+    }
+    
+    // Check if person has any date information
+    const hasDateInfo = person.birth_date || person.death_date;
+    
+    // For people with dates, use period relevance with very low threshold
+    // For people without dates, include them more broadly
+    let isRelevant = false;
+    if (hasDateInfo) {
+      isRelevant = isRelevantToPeriod(person, period.slug, allPeriods, 0.05); // Very low threshold
+    } else {
+      // For undated people, include them if they:
+      // 1. Participate in any events in this period, OR
+      // 2. Have any manual period relevance defined, OR
+      // 3. Are key biblical figures (God, Jesus, major prophets, etc.)
+      isRelevant = allPeriodEvents.some(event => event.participants.includes(person.id)) ||
+                   (person.additional_relevance && person.additional_relevance.some(rel => rel.period === period.slug)) ||
+                   ['GOD_FATHER', 'JESUS', 'HOLY_SPIRIT', 'ADAM', 'EVE', 'NOAH', 'ABRAHAM', 'ISAAC', 'JACOB', 'MOSES', 'DAVID', 'SOLOMON'].includes(person.id);
+    }
+    
+    if (!isRelevant) {
+      return;
+    }
+    
+    // Apply date range filter (only for people with dates)
+    if (hasDateInfo && (minYear !== null || maxYear !== null)) {
+      if (!isWithinDateRange(person.birth_date || person.death_date || '', minYear ?? null, maxYear ?? null)) {
+        return;
+      }
+    }
+    
+    // Apply person type and tag filters
+    if ((matchesPersonTypeFilter ? matchesPersonTypeFilter(person) : true) && 
+        (matchesTagFilter ? matchesTagFilter(person) : true)) {
+      const relevanceInfo = getCombinedRelevance(person, allPeriods).find(rel => rel.period === period.slug);
+      const relevanceScore = relevanceInfo?.relevance || 0.1; // Lower default for non-participants
+      const dateValue = parseDate(person.birth_date || person.death_date || '');
+      allRelevantPeople.push({ id: person.id, relevance: relevanceScore, date: dateValue });
+    }
+  });
+  
+  // Sort people by relevance (desc) then by date (asc)
+  const sortedRelevantPeople = allRelevantPeople.sort((a, b) => {
+    // First sort by relevance (higher relevance first)
+    if (b.relevance !== a.relevance) {
+      return b.relevance - a.relevance;
+    }
+    
+    // Then sort by date (ascending: earlier dates first)
+    if (a.date === null && b.date === null) return 0;
+    if (a.date === null) return 1; // Undated people go last
+    if (b.date === null) return -1;
+    
+    return a.date - b.date;
+  });
+  
+  // Create sets for display and counting
+  const allParticipants = new Set(allRelevantPeople.map(p => p.id));
+  const displayedParticipants = hasAdvancedFilters ? 
+    sortedRelevantPeople.map(p => p.id) : 
+    sortedRelevantPeople.slice(0, MAX_PEOPLE_DISPLAY).map(p => p.id);
 
   // Calculate ALL relevant regions first (for accurate count)
   const allRelevantRegions = regions.filter(region => {
@@ -271,8 +471,20 @@ export function TimelinePeriodCard({
     );
   });
 
-  // Then slice only for display (first 3)
-  const relevantRegions = allRelevantRegions.slice(0, 3);
+  // Sort regions by relevance and date, then slice for display
+  const sortedRelevantRegions = allRelevantRegions.sort((a, b) => {
+    // Sort by estimated date (ascending)
+    const dateA = parseDate(a.estimated_dates);
+    const dateB = parseDate(b.estimated_dates);
+    
+    if (dateA === null && dateB === null) return 0;
+    if (dateA === null) return 1;
+    if (dateB === null) return -1;
+    
+    return dateA - dateB;
+  });
+  
+  const relevantRegions = hasAdvancedFilters ? sortedRelevantRegions : sortedRelevantRegions.slice(0, MAX_REGIONS_DISPLAY);
 
   // Handle scrolling for linked periods, events, and regions
   useEffect(() => {
@@ -365,7 +577,7 @@ export function TimelinePeriodCard({
             <div>
               <div className="flex items-center justify-between mb-3">
                 <h4 className="font-bold text-gray-800 dark:text-gray-200 text-lg">📅 Key Events</h4>
-                {allPeriodEvents.length > 3 && (
+                {allPeriodEvents.length > MAX_EVENTS_DISPLAY && (
                   <button
                     onClick={() => showPeriodEvents(period.name)}
                     className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
@@ -454,7 +666,7 @@ export function TimelinePeriodCard({
             <div>
               <div className="flex items-center justify-between mb-3">
                 <h4 className="font-bold text-gray-800 dark:text-gray-200 text-lg">👥 Key Figures</h4>
-                {allParticipants.size > 6 && (
+                {allParticipants.size > MAX_PEOPLE_DISPLAY && (
                   <button
                     onClick={() => showPeriodPeople(period.name)}
                     className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
@@ -465,14 +677,14 @@ export function TimelinePeriodCard({
               </div>
               <div className="bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-90 rounded-lg p-3 border border-gray-200 dark:border-gray-600">
                 <div className="space-y-2">
-                  {Array.from(allParticipants).slice(0, 12).map(participantId => {
+                  {displayedParticipants.map(participantId => {
                     const person = getPersonById(participantId);
                     return person ? (
-                      <PersonCard key={participantId} person={person} periodSlug={periodSlug} />
+                      <PersonCard key={participantId} person={person} periodSlug={periodSlug} allPeriods={allPeriods} />
                     ) : null;
                   })}
-                  {allParticipants.size > 12 && (
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">+{allParticipants.size - 12} more people</p>
+                  {!hasAdvancedFilters && allParticipants.size > MAX_PEOPLE_DISPLAY && (
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">+{allParticipants.size - MAX_PEOPLE_DISPLAY} more people</p>
                   )}
                 </div>
               </div>
@@ -484,7 +696,7 @@ export function TimelinePeriodCard({
             <div>
               <div className="flex items-center justify-between mb-3">
                 <h4 className="font-bold text-gray-800 dark:text-gray-200 text-lg">🗺️ Regions</h4>
-                {allRelevantRegions.length > 3 && (
+                {allRelevantRegions.length > MAX_REGIONS_DISPLAY && (
                   <button
                     onClick={() => showPeriodRegions(period.name)}
                     className="text-sm text-blue-600 hover:text-blue-800 hover:underline"

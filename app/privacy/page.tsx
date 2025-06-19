@@ -25,7 +25,7 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-semibold text-slate-900 mt-8 mb-4">Our Commitment</h2>
             <p className="text-slate-700 mb-4">
               Bible Annals is committed to protecting your privacy. This Privacy Policy explains how we collect, 
-              use, and safeguard your information when you visit our website and use our biblical timeline services.
+              use, and safeguard your information when you visit our website and use our biblical timeline website.
             </p>
 
             <h2 className="text-2xl font-semibold text-slate-900 mt-8 mb-4">Information We Collect</h2>
@@ -48,7 +48,7 @@ export default function PrivacyPage() {
 
             <h2 className="text-2xl font-semibold text-slate-900 mt-8 mb-4">How We Use Your Information</h2>
             <ul className="text-slate-700 mb-4 list-disc list-inside">
-              <li>To provide and improve our biblical timeline services</li>
+              <li>To provide and improve our biblical timeline website</li>
               <li>To understand how visitors use our website</li>
               <li>To optimize website performance and user experience</li>
               <li>To respond to your inquiries and provide support</li>

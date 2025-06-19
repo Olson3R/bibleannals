@@ -350,6 +350,23 @@ export function PersonDetails({
         </div>
       )}
 
+      {/* Tags */}
+      {person.tags && person.tags.length > 0 && (
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">🏷️ Tags</h3>
+          <div className="flex flex-wrap gap-2">
+            {person.tags.map((tag, index) => (
+              <span
+                key={index}
+                className="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-full text-sm font-medium hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Other Names */}
       {person.names && person.names.length > 0 && (
         <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">

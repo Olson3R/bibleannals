@@ -9,3 +9,4 @@ export { NavLink } from './NavLink';
 export { ThemeToggle } from './ThemeToggle';
 export { AdvancedFilters, type AdvancedFilters as AdvancedFiltersType } from './AdvancedFilters';
 export { OverlapChart } from './OverlapChart';
+export { SearchAutocomplete } from './SearchAutocomplete';

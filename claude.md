@@ -62,7 +62,6 @@ A comprehensive interactive timeline website showcasing biblical people, events,
 - `npm run build`: Build the project for production
 - `npm run dev`: Start development server
 - `npm run lint`: Run ESLint for code quality
-- `npm run type-check`: Run TypeScript type checking
 
 ## Code Style Guidelines
 
@@ -157,3 +156,4 @@ A comprehensive interactive timeline website showcasing biblical people, events,
 - Mobile browsers (iOS Safari, Chrome Mobile)
 - Desktop browsers (Chrome, Firefox, Safari, Edge)
 - Progressive enhancement for older browsers
+

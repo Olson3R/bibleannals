@@ -1,9 +1,14 @@
 {
-  "name": "nextjs-boilerplate",
+  "name": "bible-annals",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:pm2": "pm2 start ecosystem.config.js",
+    "dev:restart": "pm2 restart bible-annals-dev",
+    "dev:stop": "pm2 stop bible-annals-dev",
+    "dev:logs": "pm2 logs bible-annals-dev",
+    "dev:status": "pm2 status",
     "build": "next build && cp app/og-image.png out/og-image.png && cp app/og-image.svg out/og-image.svg",
     "start": "next start",
     "lint": "next lint"
@@ -21,6 +26,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.13",
+    "pm2": "^6.0.8",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"

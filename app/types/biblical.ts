@@ -1,5 +1,13 @@
 // TypeScript interfaces for Bible Annals application
 
+export interface PeriodRelevance {
+  period: string;
+  relevance: number; // 0.0 to 1.0
+  reason: 'contemporary' | 'temporal-proximity' | 'genealogy' | 'prophecy' | 'reference' | 'symbolism' | 'covenant' | 'fulfillment';
+  references?: string[];
+  notes?: string;
+}
+
 export interface BiblicalPerson {
   id: string;
   name: string;
@@ -16,6 +24,8 @@ export interface BiblicalPerson {
   translated?: boolean;
   foster_father?: string;
   tags?: string[];
+  calculated_periods?: string[];
+  additional_relevance?: PeriodRelevance[];
 }
 
 export interface FamilyGroup {
@@ -36,6 +46,8 @@ export interface BiblicalEvent {
   participants: string[];
   references: string[];
   tags?: string[];
+  calculated_periods?: string[];
+  additional_relevance?: PeriodRelevance[];
 }
 
 export interface BiblicalRegion {
@@ -49,6 +61,8 @@ export interface BiblicalRegion {
   key_features?: string[];
   population_estimate?: string;
   government_type?: string;
+  calculated_periods?: string[];
+  additional_relevance?: PeriodRelevance[];
 }
 
 export interface TimelinePeriod {

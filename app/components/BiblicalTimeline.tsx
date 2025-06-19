@@ -7,53 +7,12 @@ import { calculateDateRangeFromPeriods } from '../utils/date-range';
 import { scrollToElementWithOffset } from '../utils/scroll';
 import { TimelinePeriodCard, hasDisplayableContent } from './timeline';
 import { SearchResultsDisplay } from './search';
-import { DateRangeSlider, NavLink, AdvancedFilters, OverlapChart, type AdvancedFiltersType } from './ui';
+import { DateRangeSlider, NavLink, AdvancedFilters, OverlapChart, SearchAutocomplete, type AdvancedFiltersType } from './ui';
 import { useDateFilter } from '../hooks/useDateFilter';
 import { getPeriodColors } from '../utils/color-palette';
 import { downloadYaml, generateYamlFilename, extractUniqueValues } from '../utils/yaml-export';
-import type { TimelinePeriod } from '../types/biblical';
-
-interface BiblicalPerson {
-  id: string;
-  name: string;
-  names?: { name: string; reference: string }[];
-  gender?: string;
-  ethnicity?: string;
-  age?: string;
-  birth_date?: string;
-  death_date?: string;
-  parents?: string[];
-  spouses?: string[];
-  references?: string[];
-  created?: boolean;
-  translated?: boolean;
-  foster_father?: string;
-}
-
-interface BiblicalEvent {
-  id: string;
-  name: string;
-  date: string;
-  location: string;
-  description: string;
-  participants: string[];
-  references: string[];
-}
-
-interface BiblicalRegion {
-  id: string;
-  name: string;
-  description: string;
-  location: string;
-  time_period: string;
-  estimated_dates: string;
-  notable_people: string[];
-}
-
-
-
-
-
+// Period relevance utilities are now used in TimelinePeriodCard
+import type { TimelinePeriod, BiblicalPerson, BiblicalEvent, BiblicalRegion } from '../types/biblical';
 
 export function BiblicalTimeline({ 
   events, 
@@ -123,7 +82,8 @@ export function BiblicalTimeline({
   const [advancedFilters, setAdvancedFilters] = useState<AdvancedFiltersType>({
     personTypes: [],
     eventTypes: [],
-    locations: []
+    locations: [],
+    tags: []
   });
 
   // Load advanced filters from localStorage on mount
@@ -184,7 +144,13 @@ export function BiblicalTimeline({
   
   const locationOptions = Array.from(new Set(
     events.map(e => getLocationName(e.location))
-  )).sort().slice(0, 20); // Top 20 most common locations
+  )).sort(); // All available locations
+
+  // Generate tag options from all persons and events
+  const tagOptions = Array.from(new Set([
+    ...persons.flatMap(p => p.tags || []),
+    ...events.flatMap(e => e.tags || [])
+  ])).filter(tag => tag !== 'biblical').sort(); // All available tags
 
   // Handle search scroll - scroll to search results when new search is performed
   useEffect(() => {
@@ -296,15 +262,21 @@ export function BiblicalTimeline({
     return advancedFilters.locations.includes(locationName);
   };
 
+  const matchesTagFilter = (item: BiblicalPerson | BiblicalEvent): boolean => {
+    if (advancedFilters.tags.length === 0) return true;
+    const itemTags = item.tags || [];
+    return advancedFilters.tags.some(tag => itemTags.includes(tag));
+  };
+
   // Filter data for chart view based on date range and advanced filters
   const filteredEvents = events.filter(event => {
     const withinDateRange = !minYear && !maxYear ? true : isWithinDateRange(event.date, minYear, maxYear);
-    return withinDateRange && matchesEventTypeFilter(event) && matchesLocationFilter(event);
+    return withinDateRange && matchesEventTypeFilter(event) && matchesLocationFilter(event) && matchesTagFilter(event);
   });
 
   const filteredPersons = persons.filter(person => {
     const withinDateRange = !minYear && !maxYear ? true : isWithinDateRange(person.birth_date || '', minYear, maxYear);
-    return withinDateRange && matchesPersonTypeFilter(person);
+    return withinDateRange && matchesPersonTypeFilter(person) && matchesTagFilter(person);
   });
 
   // Download timeline data as YAML
@@ -386,32 +358,58 @@ export function BiblicalTimeline({
     return score;
   };
 
+  // Check if search is a tag search
+  const isTagSearch = searchTerm.startsWith('tag:');
+  const actualSearchTerm = isTagSearch ? searchTerm.substring(4).trim() : searchTerm;
+
   // Search across all content types with relevance scoring
   const searchResults = searchTerm ? (() => {
     const personsWithScore = persons.map(person => {
-      let maxScore = calculateRelevance(person.name, searchTerm, true);
+      let maxScore = 0;
       
-      // Check alternative names
-      if (person.names) {
-        for (const name of person.names) {
-          const nameScore = calculateRelevance(name.name, searchTerm, true);
-          maxScore = Math.max(maxScore, nameScore);
+      if (isTagSearch) {
+        // For tag searches, check if person has the tag
+        const personTags = person.tags || [];
+        if (personTags.some(tag => tag.toLowerCase().includes(actualSearchTerm.toLowerCase()))) {
+          maxScore = 100; // High score for exact tag matches
+        }
+      } else {
+        // Normal search
+        maxScore = calculateRelevance(person.name, searchTerm, true);
+        
+        // Check alternative names
+        if (person.names) {
+          for (const name of person.names) {
+            const nameScore = calculateRelevance(name.name, searchTerm, true);
+            maxScore = Math.max(maxScore, nameScore);
+          }
         }
       }
       
       return { item: person, score: maxScore };
-    }).filter(result => result.score > 0 && isWithinDateRange(result.item.birth_date || '', minYear, maxYear) && matchesPersonTypeFilter(result.item))
+    }).filter(result => result.score > 0 && isWithinDateRange(result.item.birth_date || '', minYear, maxYear) && matchesPersonTypeFilter(result.item) && matchesTagFilter(result.item))
       .sort((a, b) => b.score - a.score)
       .slice(0, 8)
       .map(result => result.item);
 
     const eventsWithScore = events.map(event => {
-      let maxScore = calculateRelevance(event.name, searchTerm, true);
-      maxScore = Math.max(maxScore, calculateRelevance(event.description, searchTerm, false));
-      maxScore = Math.max(maxScore, calculateRelevance(event.location, searchTerm, false));
+      let maxScore = 0;
+      
+      if (isTagSearch) {
+        // For tag searches, check if event has the tag
+        const eventTags = event.tags || [];
+        if (eventTags.some(tag => tag.toLowerCase().includes(actualSearchTerm.toLowerCase()))) {
+          maxScore = 100; // High score for exact tag matches
+        }
+      } else {
+        // Normal search
+        maxScore = calculateRelevance(event.name, searchTerm, true);
+        maxScore = Math.max(maxScore, calculateRelevance(event.description, searchTerm, false));
+        maxScore = Math.max(maxScore, calculateRelevance(event.location, searchTerm, false));
+      }
       
       return { item: event, score: maxScore };
-    }).filter(result => result.score > 0 && isWithinDateRange(result.item.date, minYear, maxYear) && matchesEventTypeFilter(result.item) && matchesLocationFilter(result.item))
+    }).filter(result => result.score > 0 && isWithinDateRange(result.item.date, minYear, maxYear) && matchesEventTypeFilter(result.item) && matchesLocationFilter(result.item) && matchesTagFilter(result.item))
       .sort((a, b) => b.score - a.score)
       .slice(0, 8)
       .map(result => result.item);
@@ -468,32 +466,19 @@ export function BiblicalTimeline({
           <div className="space-y-3 lg:space-y-0">
             {/* Top row: Search */}
             <div className="flex items-center gap-2">
-              <div className="flex-1 relative">
+              <div className="flex-1">
                 <label htmlFor="timeline-search" className="sr-only">
                   Search biblical events, people, regions, and periods
                 </label>
-                <input
-                  id="timeline-search"
-                  type="text"
-                  placeholder="Search..."
+                <SearchAutocomplete
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full px-3 py-2 pr-8 text-sm border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  aria-describedby="search-description"
+                  onChange={setSearchTerm}
+                  persons={persons}
+                  events={events}
+                  regions={regions}
+                  periods={timelinePeriods}
+                  placeholder={`Search across ${events.length} events, ${persons.length} people, ${regions.length} regions, and ${timelinePeriods.length} periods...`}
                 />
-                <div id="search-description" className="sr-only">
-                  Search across {events.length} events, {persons.length} people, {regions.length} regions, and {timelinePeriods.length} periods
-                </div>
-                {searchTerm && (
-                  <button
-                    onClick={() => setSearchTerm('')}
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 text-sm"
-                    aria-label="Clear search"
-                    title="Clear search"
-                  >
-                    ✕
-                  </button>
-                )}
               </div>
               
               {/* Download Button - More prominent on mobile */}
@@ -600,6 +585,7 @@ export function BiblicalTimeline({
         personTypeOptions={personTypeOptions}
         eventTypeOptions={eventTypeOptions}
         locationOptions={locationOptions}
+        tagOptions={tagOptions}
       />
 
       {/* Search Results */}
@@ -647,10 +633,10 @@ export function BiblicalTimeline({
                 .filter(period => 
                   isWithinDateRange(period.dateRange, minYear, maxYear) &&
                   hasDisplayableContent(
-                    period, events, regions, timelinePeriods, getPersonById, 
+                    period, events, regions, timelinePeriods, persons, getPersonById, 
                     showEvents, showPeople, showRegions,
                     minYear, maxYear,
-                    matchesPersonTypeFilter, matchesEventTypeFilter, matchesLocationFilter
+                    matchesPersonTypeFilter, matchesEventTypeFilter, matchesLocationFilter, matchesTagFilter
                   )
                 )
                 .map((period, index) => {
@@ -705,10 +691,10 @@ export function BiblicalTimeline({
           .filter(period => 
             isWithinDateRange(period.dateRange, minYear, maxYear) &&
             hasDisplayableContent(
-              period, events, regions, timelinePeriods, getPersonById, 
+              period, events, regions, timelinePeriods, persons, getPersonById, 
               showEvents, showPeople, showRegions,
               minYear, maxYear,
-              matchesPersonTypeFilter, matchesEventTypeFilter, matchesLocationFilter
+              matchesPersonTypeFilter, matchesEventTypeFilter, matchesLocationFilter, matchesTagFilter
             )
           )
           .map((period, index) => (
@@ -723,6 +709,7 @@ export function BiblicalTimeline({
                 events={events}
                 regions={regions}
                 allPeriods={timelinePeriods}
+                persons={persons}
                 getPersonById={getPersonById}
                 showEvents={showEvents}
                 showPeople={showPeople}
@@ -737,6 +724,8 @@ export function BiblicalTimeline({
                 matchesPersonTypeFilter={matchesPersonTypeFilter}
                 matchesEventTypeFilter={matchesEventTypeFilter}
                 matchesLocationFilter={matchesLocationFilter}
+                matchesTagFilter={matchesTagFilter}
+                advancedFilters={advancedFilters}
               />
             </div>
           </article>

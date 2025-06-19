@@ -5,16 +5,21 @@ interface EventCardProps {
   event: BiblicalEvent;
   className?: string;
   showDescription?: boolean;
+  showTags?: boolean;
+  maxTags?: number;
   locationName?: string; // Optional override for location display
   periodSlug?: string;
 }
 
-export function EventCard({ event, className = '', showDescription = true, locationName, periodSlug }: EventCardProps) {
+export function EventCard({ event, className = '', showDescription = true, showTags = false, maxTags = 3, locationName, periodSlug }: EventCardProps) {
   const displayLocation = locationName || event.location;
   
   const href = periodSlug 
     ? `/events/${event.id}?from=period&period=${periodSlug}`
     : `/events/${event.id}`;
+
+  // Filter out 'biblical' tag and limit display
+  const displayTags = event.tags?.filter(tag => tag !== 'biblical').slice(0, maxTags) || [];
   
   return (
     <NavLink
@@ -25,6 +30,23 @@ export function EventCard({ event, className = '', showDescription = true, locat
       <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">{event.date} • {displayLocation}</div>
       {showDescription && (
         <div className="text-sm text-gray-700 dark:text-gray-300 mt-2 line-clamp-2">{event.description}</div>
+      )}
+      {showTags && displayTags.length > 0 && (
+        <div className="flex flex-wrap gap-1 mt-2">
+          {displayTags.map((tag, index) => (
+            <span
+              key={index}
+              className="px-2 py-0.5 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded"
+            >
+              {tag}
+            </span>
+          ))}
+          {event.tags && event.tags.length > maxTags + 1 && (
+            <span className="px-2 py-0.5 text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded">
+              +{event.tags.length - maxTags - 1}
+            </span>
+          )}
+        </div>
       )}
     </NavLink>
   );
