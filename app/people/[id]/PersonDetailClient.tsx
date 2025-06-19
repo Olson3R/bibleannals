@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { NavLink, PersonDetails, EventCard, RegionCard } from '../../components/ui';
-import type { BiblicalPerson, BiblicalEvent, BiblicalRegion } from '../../types/biblical';
+import type { BiblicalPerson, BiblicalEvent, BiblicalRegion, FamilyGroup } from '../../types/biblical';
 
 interface PersonDetailClientProps {
   person: BiblicalPerson;
@@ -11,6 +11,7 @@ interface PersonDetailClientProps {
   relatedRegions: BiblicalRegion[];
   eventLocationNames: Record<string, string>;
   personPeriod: string | null;
+  familyGroup?: FamilyGroup;
 }
 
 export function PersonDetailClient({ 
@@ -19,7 +20,8 @@ export function PersonDetailClient({
   relatedEvents, 
   relatedRegions,
   eventLocationNames,
-  personPeriod
+  personPeriod,
+  familyGroup
 }: PersonDetailClientProps) {
   const [fromTimeline, setFromTimeline] = useState(false);
   const [fromPeriod, setFromPeriod] = useState(false);
@@ -85,6 +87,7 @@ export function PersonDetailClient({
             relatedPersons={relatedPersons}
             relatedEvents={relatedEvents}
             eventLocationNames={eventLocationNames}
+            familyGroup={familyGroup}
           />
           
           {/* Cross References */}

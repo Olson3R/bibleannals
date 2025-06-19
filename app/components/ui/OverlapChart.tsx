@@ -109,38 +109,98 @@ export function OverlapChart({
     return () => observer.disconnect();
   }, []);
 
-  // Handle chart download
+  // Handle chart download with improved SVG processing
   const handleDownloadChart = () => {
-    const svgElement = document.querySelector('svg');
-    if (!svgElement) return;
-
-    // Clone the SVG to avoid modifying the original
-    const svgClone = svgElement.cloneNode(true) as SVGElement;
+    // Find the chart SVG by its unique ID
+    const svgElement = document.getElementById('overlap-chart-svg') as unknown as SVGSVGElement;
     
-    // Add inline styles for dark mode compatibility
-    const style = document.createElement('style');
-    style.textContent = `
-      .dark-section-bg { fill: #374151; }
-      .dark-section-border { stroke: #6b7280; }
-      .dark-text { fill: #f9fafb; }
-      .light-section-bg { fill: #f9fafb; }
-      .light-section-border { stroke: #e5e7eb; }
-      .light-text { fill: #1f2937; }
-    `;
-    svgClone.insertBefore(style, svgClone.firstChild);
+    if (!svgElement || svgElement.tagName.toLowerCase() !== 'svg') {
+      console.error('Chart SVG not found for download');
+      alert('Chart SVG not found. Please make sure you are on the chart view.');
+      return;
+    }
 
-    // Create blob and download
-    const svgData = new XMLSerializer().serializeToString(svgClone);
-    const blob = new Blob([svgData], { type: 'image/svg+xml' });
-    const url = URL.createObjectURL(blob);
-    
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `biblical-timeline-chart-${new Date().toISOString().split('T')[0]}.svg`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    // Debug: Log what we found
+    console.log('Found SVG element:', svgElement);
+    console.log('SVG ID:', svgElement.id);
+    console.log('SVG dimensions:', svgElement.getAttribute('width'), 'x', svgElement.getAttribute('height'));
+
+    try {
+      console.log('Starting chart download process...');
+      
+      // Clone the SVG element
+      const svgClone = svgElement.cloneNode(true) as SVGElement;
+      
+      // Get dimensions
+      const width = parseInt(svgElement.getAttribute('width') || '1000');
+      const height = parseInt(svgElement.getAttribute('height') || '600');
+      
+      // Set proper SVG attributes
+      svgClone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      svgClone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
+      svgClone.setAttribute('width', width.toString());
+      svgClone.setAttribute('height', height.toString());
+      svgClone.setAttribute('viewBox', `0 0 ${width} ${height}`);
+      
+      // Convert foreignObject elements to native SVG text elements to avoid taint issues
+      const foreignObjects = svgClone.querySelectorAll('foreignObject');
+      foreignObjects.forEach((foreignObj) => {
+        const div = foreignObj.querySelector('div');
+        if (div) {
+          const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          text.setAttribute('x', foreignObj.getAttribute('x') || '0');
+          text.setAttribute('y', (parseInt(foreignObj.getAttribute('y') || '0') + 12).toString()); // Adjust for baseline
+          text.setAttribute('font-size', '12');
+          text.setAttribute('font-family', 'Arial, sans-serif');
+          text.setAttribute('fill', isDarkMode ? '#9ca3af' : '#4b5563');
+          text.setAttribute('text-anchor', 'end');
+          text.textContent = div.textContent || div.title || '';
+          
+          // Replace foreignObject with text element
+          foreignObj.parentNode?.replaceChild(text, foreignObj);
+        }
+      });
+      
+      // Add comprehensive inline styles for standalone SVG
+      const style = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+      style.textContent = `
+        text { 
+          font-family: Arial, sans-serif; 
+          font-size: 12px;
+        }
+        .fill-gray-600 { fill: #4b5563; }
+        .dark\\:fill-gray-400 { fill: #9ca3af; }
+        .text-gray-600 { fill: #4b5563; }
+        .dark\\:text-gray-400 { fill: #9ca3af; }
+      `;
+      svgClone.insertBefore(style, svgClone.firstChild);
+      
+      // Serialize and create download
+      const svgData = new XMLSerializer().serializeToString(svgClone);
+      const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+      const downloadUrl = URL.createObjectURL(svgBlob);
+      
+      // Create and trigger download
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = `biblical-timeline-chart-${new Date().toISOString().split('T')[0]}.svg`;
+      link.style.display = 'none';
+      
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Clean up
+      setTimeout(() => {
+        URL.revokeObjectURL(downloadUrl);
+      }, 100);
+      
+      console.log('Chart download completed successfully');
+      
+    } catch (error) {
+      console.error('Error downloading chart:', error);
+      alert('Failed to download chart. Please try again.');
+    }
   };
 
   const { chartItems, yearRange, ethnicities } = useMemo(() => {
@@ -474,7 +534,7 @@ export function OverlapChart({
       </div>
 
       <div className="relative overflow-x-auto">
-        <svg width={chartWidth} height={chartHeight} className="border border-gray-200 dark:border-gray-600 rounded">
+        <svg id="overlap-chart-svg" width={chartWidth} height={chartHeight} className="border border-gray-200 dark:border-gray-600 rounded">
           {/* Background grid */}
           <defs>
             <pattern id="grid" width="40" height="20" patternUnits="userSpaceOnUse">

@@ -10,7 +10,6 @@
 
 ## Technical Improvements
 - **Type safety**: Strengthen TypeScript types and eliminate any 'any' types
-- **ESLint warnings**: Fix ESLint warnings in useDateFilter.ts React Hook dependencies
 - **Testing**: Add comprehensive unit tests, integration tests, and E2E tests
 
 ## Data & Content

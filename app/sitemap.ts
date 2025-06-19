@@ -40,15 +40,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Load data files
   const eventsData = yaml.load(
-    readFileSync(join(process.cwd(), 'data/claude/events.yaml'), 'utf8')
+    readFileSync(join(process.cwd(), 'data/events.yaml'), 'utf8')
   ) as { biblical_events: BiblicalEvent[] }
 
   const personsData = yaml.load(
-    readFileSync(join(process.cwd(), 'data/claude/ancestry.yaml'), 'utf8')
+    readFileSync(join(process.cwd(), 'data/people.yaml'), 'utf8')
   ) as { biblical_persons: BiblicalPerson[] }
 
   const regionsData = yaml.load(
-    readFileSync(join(process.cwd(), 'data/claude/regions.yaml'), 'utf8')
+    readFileSync(join(process.cwd(), 'data/regions.yaml'), 'utf8')
   ) as { biblical_regions: BiblicalRegion[] }
 
   const events = eventsData.biblical_events

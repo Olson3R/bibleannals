@@ -15,6 +15,16 @@ export interface BiblicalPerson {
   created?: boolean;
   translated?: boolean;
   foster_father?: string;
+  tags?: string[];
+}
+
+export interface FamilyGroup {
+  name: string;
+  founder: string;
+  territory?: string;
+  special_role?: string;
+  characteristics: string[];
+  references: string[];
 }
 
 export interface BiblicalEvent {
@@ -25,6 +35,7 @@ export interface BiblicalEvent {
   description: string;
   participants: string[];
   references: string[];
+  tags?: string[];
 }
 
 export interface BiblicalRegion {

@@ -58,9 +58,9 @@ interface RegionsData {
 
 export default async function Home() {
   // Read and parse all YAML files
-  const ancestryPath = path.join(process.cwd(), 'data', 'claude', 'ancestry.yaml');
-  const regionsPath = path.join(process.cwd(), 'data', 'claude', 'regions.yaml');
-  const eventsPath = path.join(process.cwd(), 'data', 'claude', 'events.yaml');
+  const ancestryPath = path.join(process.cwd(), 'data', 'people.yaml');
+  const regionsPath = path.join(process.cwd(), 'data', 'regions.yaml');
+  const eventsPath = path.join(process.cwd(), 'data', 'events.yaml');
   
   const ancestryContents = await fs.readFile(ancestryPath, 'utf8');
   const regionsContents = await fs.readFile(regionsPath, 'utf8');

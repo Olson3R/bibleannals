@@ -1,6 +1,6 @@
 // PersonDetails component for displaying detailed person information
 
-import type { BiblicalPerson, BiblicalEvent } from '../../types/biblical';
+import type { BiblicalPerson, BiblicalEvent, FamilyGroup } from '../../types/biblical';
 import { getBibleUrl } from '../../utils/bible-urls';
 import { PersonCard, getPersonColorScheme } from './PersonCard';
 import { EventCard } from './EventCard';
@@ -114,6 +114,7 @@ interface PersonDetailsProps {
   relatedPersons?: BiblicalPerson[];
   relatedEvents?: BiblicalEvent[];
   eventLocationNames?: Record<string, string>;
+  familyGroup?: FamilyGroup;
   // Legacy support for existing usage
   allPersons?: BiblicalPerson[];
   allEvents?: BiblicalEvent[];
@@ -125,6 +126,7 @@ export function PersonDetails({
   relatedPersons,
   relatedEvents,
   eventLocationNames,
+  familyGroup,
   allPersons, 
   allEvents, 
   onBackClick 
@@ -146,7 +148,6 @@ export function PersonDetails({
   
   // Use pre-calculated events or filter from all events
   const personEvents = eventsData;
-
 
   const colorScheme = getPersonColorScheme(person);
 
@@ -248,6 +249,66 @@ export function PersonDetails({
           {generateBiographicalSummary(person, personEvents)}
         </div>
       </div>
+
+      {/* Family Group Information */}
+      {familyGroup && (
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">🏛️ Family Group</h3>
+          
+          <div className="bg-amber-50 dark:bg-amber-900/30 rounded-lg border border-amber-200 dark:border-amber-700 p-4">
+            <h4 className="font-semibold text-amber-800 dark:text-amber-200 mb-2">{familyGroup.name}</h4>
+            
+            {familyGroup.territory && (
+              <div className="mb-2">
+                <span className="font-medium text-gray-700 dark:text-gray-300">Territory: </span>
+                <span className="text-gray-600 dark:text-gray-400">{familyGroup.territory}</span>
+              </div>
+            )}
+            
+            {familyGroup.special_role && (
+              <div className="mb-2">
+                <span className="font-medium text-gray-700 dark:text-gray-300">Special Role: </span>
+                <span className="text-gray-600 dark:text-gray-400">{familyGroup.special_role}</span>
+              </div>
+            )}
+            
+            {familyGroup.characteristics && familyGroup.characteristics.length > 0 && (
+              <div className="mb-3">
+                <span className="font-medium text-gray-700 dark:text-gray-300">Characteristics:</span>
+                <div className="flex flex-wrap gap-1 mt-1">
+                  {familyGroup.characteristics.map((char, index) => (
+                    <span 
+                      key={index} 
+                      className="px-2 py-1 bg-amber-100 dark:bg-amber-800 text-amber-800 dark:text-amber-200 rounded text-xs"
+                    >
+                      {char}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            {familyGroup.references && familyGroup.references.length > 0 && (
+              <div>
+                <span className="font-medium text-gray-700 dark:text-gray-300">References:</span>
+                <div className="flex flex-wrap gap-2 mt-1">
+                  {familyGroup.references.map((ref, index) => (
+                    <a
+                      key={index}
+                      href={getBibleUrl(ref)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-2 py-1 bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 rounded text-xs hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors hover:underline"
+                    >
+                      {ref.replace('.KJV', '')}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Family Relationships */}
       {(parents.length > 0 || children.length > 0 || spouses.length > 0) && (

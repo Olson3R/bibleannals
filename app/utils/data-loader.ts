@@ -1,13 +1,14 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import yaml from 'js-yaml';
-import type { BiblicalPerson, BiblicalEvent, BiblicalRegion, TimelinePeriod } from '../types/biblical';
+import type { BiblicalPerson, BiblicalEvent, BiblicalRegion, TimelinePeriod, FamilyGroup } from '../types/biblical';
 import { timelinePeriods } from '../data/timeline-periods';
 
 let cachedData: {
   persons: BiblicalPerson[];
   events: BiblicalEvent[];
   regions: BiblicalRegion[];
+  familyGroups: FamilyGroup[];
 } | null = null;
 
 export function loadTimelineData() {
@@ -16,20 +17,24 @@ export function loadTimelineData() {
   }
 
   try {
-    const dataDir = join(process.cwd(), 'data', 'claude');
+    const dataDir = join(process.cwd(), 'data');
     
-    const ancestryData = readFileSync(join(dataDir, 'ancestry.yaml'), 'utf-8');
+    const ancestryData = readFileSync(join(dataDir, 'people.yaml'), 'utf-8');
     const eventsData = readFileSync(join(dataDir, 'events.yaml'), 'utf-8');
     const regionsData = readFileSync(join(dataDir, 'regions.yaml'), 'utf-8');
     
-    const ancestryYaml = yaml.load(ancestryData) as { biblical_persons: BiblicalPerson[] };
+    const ancestryYaml = yaml.load(ancestryData) as { 
+      biblical_persons: BiblicalPerson[]; 
+      family_groups: FamilyGroup[] 
+    };
     const eventsYaml = yaml.load(eventsData) as { biblical_events: BiblicalEvent[] };
     const regionsYaml = yaml.load(regionsData) as { biblical_regions: BiblicalRegion[] };
     
     cachedData = {
       persons: ancestryYaml.biblical_persons,
       events: eventsYaml.biblical_events,
-      regions: regionsYaml.biblical_regions
+      regions: regionsYaml.biblical_regions,
+      familyGroups: ancestryYaml.family_groups || []
     };
     
     return cachedData;
@@ -38,7 +43,8 @@ export function loadTimelineData() {
     return {
       persons: [],
       events: [],
-      regions: []
+      regions: [],
+      familyGroups: []
     };
   }
 }
@@ -147,4 +153,14 @@ export function getEvents(): BiblicalEvent[] {
 export function getRegions(): BiblicalRegion[] {
   const data = loadTimelineData();
   return data.regions;
+}
+
+export function getFamilyGroups(): FamilyGroup[] {
+  const data = loadTimelineData();
+  return data.familyGroups;
+}
+
+export function getPersonFamilyGroup(personId: string): FamilyGroup | undefined {
+  const familyGroups = getFamilyGroups();
+  return familyGroups.find(group => group.founder === personId);
 }

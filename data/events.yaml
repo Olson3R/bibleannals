@@ -9,10 +9,13 @@ biblical_events:
     description: "God creates the heavens and the earth in six days"
     participants:
       - GOD_FATHER
+    tags:
+      - biblical
+      - creation
+      - pre-flood
     references:
       - GEN.1.1-31.KJV
       - GEN.2.1-3.KJV
-
   - id: CREATION_OF_ADAM
     name: Creation of Adam
     date: "~4004 BC"
@@ -21,9 +24,12 @@ biblical_events:
     participants:
       - GOD_FATHER
       - ADAM
+    tags:
+      - biblical
+      - creation
+      - pre-flood
     references:
       - GEN.2.7.KJV
-
   - id: CREATION_OF_EVE
     name: Creation of Eve
     date: "~4004 BC"
@@ -33,9 +39,12 @@ biblical_events:
       - GOD_FATHER
       - ADAM
       - EVE
+    tags:
+      - biblical
+      - creation
+      - pre-flood
     references:
       - GEN.2.21-22.KJV
-
   - id: THE_FALL
     name: The Fall of Man
     date: "~4004 BC"
@@ -45,9 +54,12 @@ biblical_events:
       - ADAM
       - EVE
       - GOD_FATHER
+    tags:
+      - biblical
+      - pre-flood
+      - sin
     references:
       - GEN.3.1-24.KJV
-
   - id: CAIN_KILLS_ABEL
     name: Cain Murders Abel
     date: "~3875 BC"
@@ -57,9 +69,13 @@ biblical_events:
       - CAIN
       - ABEL
       - GOD_FATHER
+    tags:
+      - biblical
+      - death
+      - pre-flood
+      - sacrifice
     references:
       - GEN.4.3-16.KJV
-
   - id: BIRTH_OF_SETH
     name: Birth of Seth
     date: "~3874 BC"
@@ -69,9 +85,12 @@ biblical_events:
       - ADAM
       - EVE
       - SETH
+    tags:
+      - biblical
+      - birth
+      - pre-flood
     references:
       - GEN.4.25.KJV
-
   - id: ENOCH_TRANSLATED
     name: Translation of Enoch
     date: "~3017 BC"
@@ -80,10 +99,13 @@ biblical_events:
     participants:
       - ENOCH
       - GOD_FATHER
+    tags:
+      - biblical
+      - death
+      - pre-flood
     references:
       - GEN.5.24.KJV
       - HEB.11.5.KJV
-
   - id: THE_FLOOD
     name: The Great Flood
     date: "~2348 BC"
@@ -96,9 +118,14 @@ biblical_events:
       - SHEM
       - HAM
       - JAPHETH
+    tags:
+      - biblical
+      - flood
+      - genealogy
+      - judgment
+      - noah
     references:
       - GEN.6.5-8.21.KJV
-
   - id: NOAH_BUILDS_ARK
     name: Noah Builds the Ark
     date: "~2349-2348 BC"
@@ -107,9 +134,13 @@ biblical_events:
     participants:
       - NOAH
       - GOD_FATHER
+    tags:
+      - biblical
+      - flood
+      - genealogy
+      - noah
     references:
       - GEN.6.14-22.KJV
-
   - id: RAINBOW_COVENANT
     name: God's Covenant with Noah
     date: "~2348 BC"
@@ -118,6 +149,12 @@ biblical_events:
     participants:
       - GOD_FATHER
       - NOAH
+    tags:
+      - biblical
+      - covenant
+      - flood
+      - noah
+      - sin
     references:
       - GEN.9.8-17.KJV
 
@@ -129,9 +166,10 @@ biblical_events:
     description: "Humanity attempts to build a tower to reach heaven; God confuses their language and scatters them"
     participants:
       - GOD_FATHER
+    tags:
+      - biblical
     references:
       - GEN.11.1-9.KJV
-
   - id: CALL_OF_ABRAHAM
     name: Call of Abraham
     date: "~2091 BC"
@@ -140,9 +178,11 @@ biblical_events:
     participants:
       - GOD_FATHER
       - ABRAHAM
+    tags:
+      - abraham
+      - biblical
     references:
       - GEN.12.1-3.KJV
-
   - id: ABRAHAM_ENTERS_CANAAN
     name: Abraham Enters Canaan
     date: "~2091 BC"
@@ -153,9 +193,13 @@ biblical_events:
       - SARAH
       - LOT
       - GOD_FATHER
+    tags:
+      - abraham
+      - biblical
+      - covenant
+      - temple
     references:
       - GEN.12.4-7.KJV
-
   - id: COVENANT_WITH_ABRAHAM
     name: God's Covenant with Abraham
     date: "1876 BC"
@@ -164,10 +208,14 @@ biblical_events:
     participants:
       - GOD_FATHER
       - ABRAHAM
+    tags:
+      - abraham
+      - biblical
+      - covenant
+      - sin
     references:
       - GEN.15.1-21.KJV
       - EXO.12.40.KJV
-
   - id: ABRAHAM_NAME_CHANGE
     name: Abraham's Name Changed
     date: "~2067 BC"
@@ -176,9 +224,12 @@ biblical_events:
     participants:
       - GOD_FATHER
       - ABRAHAM
+    tags:
+      - abraham
+      - biblical
+      - covenant
     references:
       - GEN.17.1-27.KJV
-
   - id: SODOM_GOMORRAH_DESTROYED
     name: Destruction of Sodom and Gomorrah
     date: "~2067 BC"
@@ -188,9 +239,12 @@ biblical_events:
       - GOD_FATHER
       - ABRAHAM
       - LOT
+    tags:
+      - abraham
+      - biblical
+      - judgment
     references:
       - GEN.19.1-29.KJV
-
   - id: BIRTH_OF_ISAAC
     name: Birth of Isaac
     date: "~2066 BC"
@@ -200,9 +254,13 @@ biblical_events:
       - ABRAHAM
       - SARAH
       - ISAAC
+    tags:
+      - abraham
+      - biblical
+      - birth
+      - covenant
     references:
       - GEN.21.1-7.KJV
-
   - id: SACRIFICE_OF_ISAAC
     name: Sacrifice of Isaac
     date: "~2041 BC"
@@ -212,9 +270,12 @@ biblical_events:
       - GOD_FATHER
       - ABRAHAM
       - ISAAC
+    tags:
+      - abraham
+      - biblical
+      - sacrifice
     references:
       - GEN.22.1-19.KJV
-
   - id: DEATH_OF_SARAH
     name: Death of Sarah
     date: "~2029 BC"
@@ -223,9 +284,13 @@ biblical_events:
     participants:
       - ABRAHAM
       - SARAH
+    tags:
+      - abraham
+      - biblical
+      - death
+      - new-testament
     references:
       - GEN.23.1-20.KJV
-
   - id: ISAAC_MARRIES_REBEKAH
     name: Isaac Marries Rebekah
     date: "~2026 BC"
@@ -235,9 +300,12 @@ biblical_events:
       - ISAAC
       - REBEKAH
       - ABRAHAM
+    tags:
+      - abraham
+      - biblical
+      - new-testament
     references:
       - GEN.24.1-67.KJV
-
   - id: BIRTH_OF_JACOB_ESAU
     name: Birth of Jacob and Esau
     date: "~2006 BC"
@@ -248,9 +316,12 @@ biblical_events:
       - REBEKAH
       - JACOB
       - ESAU
+    tags:
+      - biblical
+      - birth
+      - return
     references:
       - GEN.25.19-26.KJV
-
   - id: ESAU_SELLS_BIRTHRIGHT
     name: Esau Sells His Birthright
     date: "~1980 BC"
@@ -259,9 +330,11 @@ biblical_events:
     participants:
       - JACOB
       - ESAU
+    tags:
+      - biblical
+      - birth
     references:
       - GEN.25.29-34.KJV
-
   - id: JACOB_DECEIVES_ISAAC
     name: Jacob Deceives Isaac
     date: "~1929 BC"
@@ -272,9 +345,12 @@ biblical_events:
       - ISAAC
       - REBEKAH
       - ESAU
+    tags:
+      - biblical
+      - new-testament
+      - sin
     references:
       - GEN.27.1-45.KJV
-
   - id: JACOBS_LADDER
     name: Jacob's Ladder
     date: "~1929 BC"
@@ -283,9 +359,12 @@ biblical_events:
     participants:
       - JACOB
       - GOD_FATHER
+    tags:
+      - biblical
+      - new-testament
+      - prophecy
     references:
       - GEN.28.10-22.KJV
-
   - id: JACOB_MEETS_RACHEL
     name: Jacob Meets Rachel
     date: "~1929 BC"
@@ -295,9 +374,11 @@ biblical_events:
       - JACOB
       - RACHEL
       - LABAN
+    tags:
+      - biblical
+      - new-testament
     references:
       - GEN.29.1-14.KJV
-
   - id: JACOB_MARRIES_LEAH_RACHEL
     name: Jacob Marries Leah and Rachel
     date: "~1922 BC"
@@ -308,9 +389,10 @@ biblical_events:
       - LEAH
       - RACHEL
       - LABAN
+    tags:
+      - biblical
     references:
       - GEN.29.15-30.KJV
-
   - id: BIRTH_OF_TWELVE_SONS
     name: Birth of Jacob's Twelve Sons
     date: "~1922-1909 BC"
@@ -334,10 +416,12 @@ biblical_events:
       - ZEBULUN
       - JOSEPH
       - BENJAMIN
+    tags:
+      - biblical
+      - birth
     references:
       - GEN.29.31-30.24.KJV
       - GEN.35.16-18.KJV
-
   - id: JACOB_WRESTLES_ANGEL
     name: Jacob Wrestles with the Angel
     date: "~1909 BC"
@@ -346,9 +430,10 @@ biblical_events:
     participants:
       - JACOB
       - GOD_FATHER
+    tags:
+      - biblical
     references:
       - GEN.32.22-32.KJV
-
   - id: JOSEPH_SOLD_INTO_SLAVERY
     name: Joseph Sold into Slavery
     date: "~1898 BC"
@@ -367,9 +452,10 @@ biblical_events:
       - ISSACHAR
       - ZEBULUN
       - BENJAMIN
+    tags:
+      - biblical
     references:
       - GEN.37.12-36.KJV
-
   - id: JOSEPH_IN_PRISON
     name: Joseph Imprisoned in Egypt
     date: "~1888 BC"
@@ -377,9 +463,10 @@ biblical_events:
     description: "Joseph is falsely accused by Potiphar's wife and imprisoned"
     participants:
       - JOSEPH
+    tags:
+      - biblical
     references:
       - GEN.39.1-23.KJV
-
   - id: JOSEPH_INTERPRETS_DREAMS
     name: Joseph Interprets Pharaoh's Dreams
     date: "~1885 BC"
@@ -387,9 +474,11 @@ biblical_events:
     description: "Joseph interprets Pharaoh's dreams about seven years of plenty followed by seven years of famine"
     participants:
       - JOSEPH
+    tags:
+      - biblical
+      - prophecy
     references:
       - GEN.41.1-57.KJV
-
   - id: JOSEPH_BECOMES_RULER
     name: Joseph Becomes Ruler of Egypt
     date: "~1885 BC"
@@ -397,9 +486,10 @@ biblical_events:
     description: "Pharaoh makes Joseph ruler over all Egypt to prepare for the coming famine"
     participants:
       - JOSEPH
+    tags:
+      - biblical
     references:
       - GEN.41.37-57.KJV
-
   - id: JACOB_FAMILY_TO_EGYPT
     name: Jacob's Family Moves to Egypt
     date: "~1876 BC"
@@ -419,9 +509,11 @@ biblical_events:
       - ISSACHAR
       - ZEBULUN
       - BENJAMIN
+    tags:
+      - biblical
+      - genealogy
     references:
       - GEN.46.1-47.12.KJV
-
   - id: DEATH_OF_JACOB
     name: Death of Jacob
     date: "~1859 BC"
@@ -430,9 +522,11 @@ biblical_events:
     participants:
       - JACOB
       - JOSEPH
+    tags:
+      - biblical
+      - death
     references:
       - GEN.49.1-50.14.KJV
-
   - id: DEATH_OF_JOSEPH
     name: Death of Joseph
     date: "~1805 BC"
@@ -440,6 +534,11 @@ biblical_events:
     description: "Joseph dies in Egypt at age 110, making his brothers promise to carry his bones to the promised land"
     participants:
       - JOSEPH
+    tags:
+      - biblical
+      - covenant
+      - death
+      - kingdom
     references:
       - GEN.50.22-26.KJV
 
@@ -450,9 +549,10 @@ biblical_events:
     location: EGYPT
     description: "A new pharaoh arises who doesn't know Joseph, and the Israelites are enslaved"
     participants: []
+    tags:
+      - biblical
     references:
       - EXO.1.8-14.KJV
-
   - id: BIRTH_OF_MOSES
     name: Birth of Moses
     date: "~1571 BC"
@@ -463,9 +563,12 @@ biblical_events:
       - AMRAM
       - JOCHEBED
       - MIRIAM
+    tags:
+      - biblical
+      - birth
+      - moses
     references:
       - EXO.2.1-10.KJV
-
   - id: MOSES_FLEES_EGYPT
     name: Moses Flees to Midian
     date: "~1531 BC"
@@ -475,9 +578,12 @@ biblical_events:
       - MOSES
       - JETHRO
       - ZIPPORAH
+    tags:
+      - biblical
+      - moses
+      - new-testament
     references:
       - EXO.2.11-25.KJV
-
   - id: BURNING_BUSH
     name: The Burning Bush
     date: "~1491 BC"
@@ -486,9 +592,11 @@ biblical_events:
     participants:
       - GOD_FATHER
       - MOSES
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.3.1-4.17.KJV
-
   - id: MOSES_RETURNS_EGYPT
     name: Moses Returns to Egypt
     date: "~1491 BC"
@@ -497,9 +605,11 @@ biblical_events:
     participants:
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.4.18-31.KJV
-
   - id: TEN_PLAGUES
     name: The Ten Plagues of Egypt
     date: "~1491 BC"
@@ -509,9 +619,12 @@ biblical_events:
       - GOD_FATHER
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - judgment
+      - moses
     references:
       - EXO.7.14-12.30.KJV
-
   - id: PASSOVER
     name: The First Passover
     date: "~1491 BC"
@@ -520,9 +633,14 @@ biblical_events:
     participants:
       - GOD_FATHER
       - MOSES
+    tags:
+      - biblical
+      - death
+      - moses
+      - redemption
+      - sacrifice
     references:
       - EXO.12.1-30.KJV
-
   - id: THE_EXODUS
     name: The Exodus from Egypt
     date: "1446 BC"
@@ -531,10 +649,14 @@ biblical_events:
     participants:
       - MOSES
       - AARON
+    tags:
+      - abraham
+      - biblical
+      - covenant
+      - moses
     references:
       - EXO.12.31-51.KJV
       - 1KI.6.1.KJV
-
   - id: RED_SEA_CROSSING
     name: Crossing the Red Sea
     date: "~1491 BC"
@@ -543,9 +665,13 @@ biblical_events:
     participants:
       - GOD_FATHER
       - MOSES
+    tags:
+      - biblical
+      - moses
+      - sin
+      - warfare
     references:
       - EXO.14.1-31.KJV
-
   - id: MANNA_FROM_HEAVEN
     name: Manna from Heaven
     date: "~1491 BC"
@@ -555,9 +681,12 @@ biblical_events:
       - GOD_FATHER
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - miracle
+      - moses
     references:
       - EXO.16.1-36.KJV
-
   - id: WATER_FROM_ROCK
     name: Water from the Rock
     date: "~1491 BC"
@@ -566,9 +695,12 @@ biblical_events:
     participants:
       - GOD_FATHER
       - MOSES
+    tags:
+      - biblical
+      - miracle
+      - moses
     references:
       - EXO.17.1-7.KJV
-
   - id: TEN_COMMANDMENTS
     name: The Ten Commandments Given
     date: "~1491 BC"
@@ -577,9 +709,13 @@ biblical_events:
     participants:
       - GOD_FATHER
       - MOSES
+    tags:
+      - biblical
+      - law
+      - moses
+      - sin
     references:
       - EXO.19.1-20.21.KJV
-
   - id: GOLDEN_CALF
     name: The Golden Calf
     date: "~1491 BC"
@@ -588,9 +724,11 @@ biblical_events:
     participants:
       - AARON
       - MOSES
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.32.1-35.KJV
-
   - id: TABERNACLE_BUILT
     name: The Tabernacle Built
     date: "~1490 BC"
@@ -599,9 +737,12 @@ biblical_events:
     participants:
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - moses
+      - temple
     references:
       - EXO.35.1-40.38.KJV
-
   - id: SPIES_SENT_TO_CANAAN
     name: Twelve Spies Sent to Canaan
     date: "~1490 BC"
@@ -610,9 +751,12 @@ biblical_events:
     participants:
       - MOSES
       - JOSHUA
+    tags:
+      - biblical
+      - covenant
+      - moses
     references:
       - NUM.13.1-14.45.KJV
-
   - id: FORTY_YEARS_WILDERNESS
     name: Forty Years in the Wilderness
     date: "~1490-1451 BC"
@@ -622,9 +766,11 @@ biblical_events:
       - MOSES
       - AARON
       - JOSHUA
+    tags:
+      - biblical
+      - moses
     references:
       - NUM.14.26-35.KJV
-
   - id: DEATH_OF_AARON
     name: Death of Aaron
     date: "~1452 BC"
@@ -634,9 +780,12 @@ biblical_events:
       - AARON
       - MOSES
       - ELEAZAR
+    tags:
+      - biblical
+      - death
+      - moses
     references:
       - NUM.20.22-29.KJV
-
   - id: BRONZE_SERPENT
     name: The Bronze Serpent
     date: "~1452 BC"
@@ -645,9 +794,12 @@ biblical_events:
     participants:
       - GOD_FATHER
       - MOSES
+    tags:
+      - biblical
+      - miracle
+      - moses
     references:
       - NUM.21.4-9.KJV
-
   - id: DEATH_OF_MOSES
     name: Death of Moses
     date: "~1451 BC"
@@ -656,6 +808,11 @@ biblical_events:
     participants:
       - MOSES
       - GOD_FATHER
+    tags:
+      - biblical
+      - covenant
+      - death
+      - moses
     references:
       - DEU.34.1-12.KJV
 
@@ -669,10 +826,13 @@ biblical_events:
       - JOSHUA
       - MOSES
       - GOD_FATHER
+    tags:
+      - biblical
+      - covenant
+      - moses
     references:
       - DEU.31.1-8.KJV
       - JOS.1.1-9.KJV
-
   - id: CROSSING_JORDAN
     name: Crossing the Jordan River
     date: "~1451 BC"
@@ -681,9 +841,12 @@ biblical_events:
     participants:
       - JOSHUA
       - GOD_FATHER
+    tags:
+      - biblical
+      - covenant
+      - sin
     references:
       - JOS.3.1-4.24.KJV
-
   - id: FALL_OF_JERICHO
     name: Fall of Jericho
     date: "~1451 BC"
@@ -692,9 +855,10 @@ biblical_events:
     participants:
       - JOSHUA
       - RAHAB
+    tags:
+      - biblical
     references:
       - JOS.6.1-27.KJV
-
   - id: SIN_OF_ACHAN
     name: Sin of Achan
     date: "~1451 BC"
@@ -702,9 +866,13 @@ biblical_events:
     description: "Israel is defeated at Ai because of Achan's sin in taking forbidden items from Jericho"
     participants:
       - JOSHUA
+    tags:
+      - biblical
+      - kingdom
+      - sin
+      - warfare
     references:
       - JOS.7.1-26.KJV
-
   - id: CONQUEST_OF_CANAAN
     name: Conquest of Canaan
     date: "~1451-1444 BC"
@@ -713,10 +881,12 @@ biblical_events:
     participants:
       - JOSHUA
       - CALEB
+    tags:
+      - biblical
+      - covenant
     references:
       - JOS.11.23.KJV
       - JOS.21.43-45.KJV
-
   - id: DEATH_OF_JOSHUA
     name: Death of Joshua
     date: "~1427 BC"
@@ -724,6 +894,11 @@ biblical_events:
     description: "Joshua dies at age 110 after leading Israel to conquer most of the promised land"
     participants:
       - JOSHUA
+    tags:
+      - biblical
+      - covenant
+      - death
+      - new-testament
     references:
       - JOS.24.29-33.KJV
 
@@ -734,9 +909,13 @@ biblical_events:
     location: CANAAN
     description: "Israel enters a cycle of sin, oppression, crying out to God, and deliverance through judges"
     participants: []
+    tags:
+      - biblical
+      - new-testament
+      - redemption
+      - sin
     references:
       - JDG.2.10-23.KJV
-
   - id: DEBORAH_JUDGES
     name: Deborah Judges Israel
     date: "~1209-1169 BC"
@@ -744,9 +923,12 @@ biblical_events:
     description: "Deborah, a prophetess, judges Israel and leads them to victory over Sisera"
     participants:
       - DEBORAH
+    tags:
+      - biblical
+      - prophecy
+      - warfare
     references:
       - JDG.4.1-5.31.KJV
-
   - id: SAMSON_JUDGES
     name: Samson Judges Israel
     date: "~1075-1055 BC"
@@ -756,9 +938,11 @@ biblical_events:
       - SAMSON
       - MANOAH
       - DELILAH
+    tags:
+      - biblical
+      - noah
     references:
       - JDG.13.1-16.31.KJV
-
   - id: RUTH_MARRIES_BOAZ
     name: Ruth Marries Boaz
     date: "~1322 BC"
@@ -768,9 +952,12 @@ biblical_events:
       - RUTH
       - BOAZ
       - NAOMI
+    tags:
+      - biblical
+      - david
+      - new-testament
     references:
       - RUT.1.1-4.22.KJV
-
   - id: BIRTH_OF_SAMUEL
     name: Birth of Samuel
     date: "~1105 BC"
@@ -781,9 +968,11 @@ biblical_events:
       - HANNAH
       - ELKANAH
       - ELI
+    tags:
+      - biblical
+      - birth
     references:
       - 1SA.1.1-28.KJV
-
   - id: SAMUEL_CALLED_BY_GOD
     name: Samuel Called by God
     date: "~1095 BC"
@@ -793,9 +982,10 @@ biblical_events:
       - SAMUEL
       - GOD_FATHER
       - ELI
+    tags:
+      - biblical
     references:
       - 1SA.3.1-21.KJV
-
   - id: ARK_CAPTURED
     name: Ark of the Covenant Captured
     date: "~1078 BC"
@@ -805,6 +995,11 @@ biblical_events:
       - ELI
       - HOPHNI
       - PHINEHAS_SON_OF_ELI
+    tags:
+      - biblical
+      - covenant
+      - death
+      - flood
     references:
       - 1SA.4.1-22.KJV
 
@@ -818,9 +1013,11 @@ biblical_events:
       - SAMUEL
       - SAUL
       - GOD_FATHER
+    tags:
+      - biblical
+      - kingdom
     references:
       - 1SA.9.1-10.27.KJV
-
   - id: SAUL_DEFEATS_AMMONITES
     name: Saul Defeats the Ammonites
     date: "~1042 BC"
@@ -828,9 +1025,12 @@ biblical_events:
     description: "Saul's first military victory confirms his kingship"
     participants:
       - SAUL
+    tags:
+      - biblical
+      - kingdom
+      - warfare
     references:
       - 1SA.11.1-15.KJV
-
   - id: DAVID_ANOINTED
     name: David Anointed by Samuel
     date: "~1025 BC"
@@ -840,9 +1040,13 @@ biblical_events:
       - SAMUEL
       - DAVID
       - JESSE
+    tags:
+      - biblical
+      - david
+      - genealogy
+      - kingdom
     references:
       - 1SA.16.1-13.KJV
-
   - id: DAVID_KILLS_GOLIATH
     name: David Kills Goliath
     date: "~1022 BC"
@@ -851,9 +1055,12 @@ biblical_events:
     participants:
       - DAVID
       - SAUL
+    tags:
+      - biblical
+      - david
+      - warfare
     references:
       - 1SA.17.1-58.KJV
-
   - id: DAVID_FLEES_SAUL
     name: David Flees from Saul
     date: "~1020-1010 BC"
@@ -863,9 +1070,11 @@ biblical_events:
       - DAVID
       - SAUL
       - JONATHAN
+    tags:
+      - biblical
+      - david
     references:
       - 1SA.18.1-30.31.KJV
-
   - id: DEATH_OF_SAUL
     name: Death of Saul and Jonathan
     date: "~1010 BC"
@@ -876,9 +1085,12 @@ biblical_events:
       - JONATHAN
       - MALCHISHUA
       - ABINADAB_SON_OF_SAUL
+    tags:
+      - biblical
+      - death
+      - warfare
     references:
       - 1SA.31.1-13.KJV
-
   - id: DAVID_KING_OF_JUDAH
     name: David Becomes King of Judah
     date: "~1010 BC"
@@ -886,9 +1098,12 @@ biblical_events:
     description: "David is anointed king over the tribe of Judah"
     participants:
       - DAVID
+    tags:
+      - biblical
+      - david
+      - kingdom
     references:
       - 2SA.2.1-7.KJV
-
   - id: DAVID_KING_OF_ISRAEL
     name: David Becomes King of All Israel
     date: "~1003 BC"
@@ -896,9 +1111,13 @@ biblical_events:
     description: "David is anointed king over all twelve tribes of Israel"
     participants:
       - DAVID
+    tags:
+      - biblical
+      - david
+      - kingdom
+      - return
     references:
       - 2SA.5.1-5.KJV
-
   - id: DAVID_CAPTURES_JERUSALEM
     name: David Captures Jerusalem
     date: "~1003 BC"
@@ -906,9 +1125,12 @@ biblical_events:
     description: "David conquers Jerusalem from the Jebusites and makes it his capital"
     participants:
       - DAVID
+    tags:
+      - biblical
+      - david
+      - return
     references:
       - 2SA.5.6-10.KJV
-
   - id: ARK_BROUGHT_TO_JERUSALEM
     name: Ark Brought to Jerusalem
     date: "~1000 BC"
@@ -916,9 +1138,14 @@ biblical_events:
     description: "David brings the ark of the covenant to Jerusalem with great celebration"
     participants:
       - DAVID
+    tags:
+      - biblical
+      - covenant
+      - david
+      - flood
+      - kingdom
     references:
       - 2SA.6.1-23.KJV
-
   - id: DAVIDIC_COVENANT
     name: God's Covenant with David
     date: "~1000 BC"
@@ -928,9 +1155,14 @@ biblical_events:
       - DAVID
       - NATHAN_PROPHET
       - GOD_FATHER
+    tags:
+      - biblical
+      - covenant
+      - david
+      - kingdom
+      - prophecy
     references:
       - 2SA.7.1-29.KJV
-
   - id: DAVID_COMMITS_ADULTERY
     name: David's Sin with Bathsheba
     date: "~995 BC"
@@ -939,9 +1171,13 @@ biblical_events:
     participants:
       - DAVID
       - BATHSHEBA
+    tags:
+      - biblical
+      - david
+      - death
+      - sin
     references:
       - 2SA.11.1-27.KJV
-
   - id: NATHAN_REBUKES_DAVID
     name: Nathan Rebukes David
     date: "~995 BC"
@@ -949,9 +1185,13 @@ biblical_events:
     description: "The prophet Nathan confronts David about his sin through a parable"
     participants:
       - DAVID
+    tags:
+      - biblical
+      - david
+      - prophecy
+      - sin
     references:
       - 2SA.12.1-25.KJV
-
   - id: BIRTH_OF_SOLOMON
     name: Birth of Solomon
     date: "~991 BC"
@@ -961,9 +1201,13 @@ biblical_events:
       - DAVID
       - BATHSHEBA
       - SOLOMON
+    tags:
+      - biblical
+      - birth
+      - david
+      - solomon
     references:
       - 2SA.12.24-25.KJV
-
   - id: ABSALOM_REBELLION
     name: Absalom's Rebellion
     date: "~979 BC"
@@ -972,9 +1216,13 @@ biblical_events:
     participants:
       - DAVID
       - ABSALOM
+    tags:
+      - biblical
+      - david
+      - kingdom
+      - sin
     references:
       - 2SA.15.1-18.33.KJV
-
   - id: DEATH_OF_DAVID
     name: Death of David
     date: "~970 BC"
@@ -983,9 +1231,14 @@ biblical_events:
     participants:
       - DAVID
       - SOLOMON
+    tags:
+      - biblical
+      - david
+      - death
+      - kingdom
+      - solomon
     references:
       - 1KI.2.1-12.KJV
-
   - id: SOLOMON_REQUESTS_WISDOM
     name: Solomon Requests Wisdom
     date: "~970 BC"
@@ -994,9 +1247,12 @@ biblical_events:
     participants:
       - SOLOMON
       - GOD_FATHER
+    tags:
+      - biblical
+      - prophecy
+      - solomon
     references:
       - 1KI.3.1-15.KJV
-
   - id: SOLOMON_BUILDS_TEMPLE
     name: Solomon Builds the Temple
     date: "~966-959 BC"
@@ -1004,9 +1260,13 @@ biblical_events:
     description: "Solomon builds the first temple in Jerusalem according to David's plans"
     participants:
       - SOLOMON
+    tags:
+      - biblical
+      - david
+      - solomon
+      - temple
     references:
       - 1KI.6.1-8.66.KJV
-
   - id: TEMPLE_DEDICATION
     name: Dedication of the Temple
     date: "~959 BC"
@@ -1015,9 +1275,12 @@ biblical_events:
     participants:
       - SOLOMON
       - GOD_FATHER
+    tags:
+      - biblical
+      - solomon
+      - temple
     references:
       - 1KI.8.1-66.KJV
-
   - id: QUEEN_OF_SHEBA_VISITS
     name: Queen of Sheba Visits Solomon
     date: "~950 BC"
@@ -1025,9 +1288,11 @@ biblical_events:
     description: "The Queen of Sheba visits Solomon to test his wisdom"
     participants:
       - SOLOMON
+    tags:
+      - biblical
+      - solomon
     references:
       - 1KI.10.1-13.KJV
-
   - id: SOLOMON_TURNS_FROM_GOD
     name: Solomon Turns from God
     date: "~940 BC"
@@ -1035,9 +1300,12 @@ biblical_events:
     description: "Solomon's foreign wives turn his heart away from God to worship idols"
     participants:
       - SOLOMON
+    tags:
+      - biblical
+      - kingdom
+      - solomon
     references:
       - 1KI.11.1-13.KJV
-
   - id: DEATH_OF_SOLOMON
     name: Death of Solomon
     date: "~930 BC"
@@ -1046,6 +1314,12 @@ biblical_events:
     participants:
       - SOLOMON
       - REHOBOAM
+    tags:
+      - biblical
+      - death
+      - kingdom
+      - new-testament
+      - solomon
     references:
       - 1KI.11.41-43.KJV
 
@@ -1058,9 +1332,12 @@ biblical_events:
     participants:
       - REHOBOAM
       - JEROBOAM_I
+    tags:
+      - biblical
+      - kingdom
+      - new-testament
     references:
       - 1KI.12.1-24.KJV
-
   - id: ELIJAH_CHALLENGES_PROPHETS
     name: Elijah Challenges the Prophets of Baal
     date: "~862 BC"
@@ -1069,9 +1346,12 @@ biblical_events:
     participants:
       - ELIJAH
       - GOD_FATHER
+    tags:
+      - biblical
+      - prophecy
+      - warfare
     references:
       - 1KI.18.16-46.KJV
-
   - id: ELIJAH_TAKEN_UP
     name: Elijah Taken Up to Heaven
     date: "~852 BC"
@@ -1081,18 +1361,21 @@ biblical_events:
       - ELIJAH
       - ELISHA
       - GOD_FATHER
+    tags:
+      - biblical
     references:
       - 2KI.2.1-18.KJV
-
   - id: FALL_OF_SAMARIA
     name: Fall of Samaria
     date: "~722 BC"
     location: SAMARIA
     description: "The Assyrians conquer the northern kingdom of Israel and exile the people"
     participants: []
+    tags:
+      - biblical
+      - kingdom
     references:
       - 2KI.17.1-23.KJV
-
   - id: HEZEKIAH_REFORMS
     name: Hezekiah's Reforms
     date: "~715 BC"
@@ -1100,9 +1383,12 @@ biblical_events:
     description: "King Hezekiah destroys idols and restores proper worship in Judah"
     participants:
       - HEZEKIAH
+    tags:
+      - biblical
+      - judgment
+      - kingdom
     references:
       - 2KI.18.1-8.KJV
-
   - id: SENNACHERIB_THREATENS_JERUSALEM
     name: Sennacherib Threatens Jerusalem
     date: "~701 BC"
@@ -1112,9 +1398,11 @@ biblical_events:
       - HEZEKIAH
       - ISAIAH
       - GOD_FATHER
+    tags:
+      - biblical
+      - warfare
     references:
       - 2KI.19.1-37.KJV
-
   - id: JOSIAH_REFORMS
     name: Josiah's Reforms
     date: "~622 BC"
@@ -1122,9 +1410,12 @@ biblical_events:
     description: "King Josiah leads a great revival and reforms after finding the book of the law"
     participants:
       - JOSIAH
+    tags:
+      - biblical
+      - kingdom
+      - law
     references:
       - 2KI.22.1-23.30.KJV
-
   - id: FALL_OF_JERUSALEM
     name: Fall of Jerusalem
     date: "~586 BC"
@@ -1133,6 +1424,9 @@ biblical_events:
     participants:
       - ZEDEKIAH
       - JEREMIAH
+    tags:
+      - biblical
+      - temple
     references:
       - 2KI.25.1-21.KJV
 
@@ -1147,9 +1441,10 @@ biblical_events:
       - SHADRACH
       - MESHACH
       - ABEDNEGO
+    tags:
+      - biblical
     references:
       - DAN.1.1-21.KJV
-
   - id: FIERY_FURNACE
     name: Fiery Furnace
     date: "~594 BC"
@@ -1160,9 +1455,10 @@ biblical_events:
       - MESHACH
       - ABEDNEGO
       - GOD_FATHER
+    tags:
+      - biblical
     references:
       - DAN.3.1-30.KJV
-
   - id: DANIEL_LIONS_DEN
     name: Daniel in the Lions' Den
     date: "~539 BC"
@@ -1171,9 +1467,10 @@ biblical_events:
     participants:
       - DANIEL
       - GOD_FATHER
+    tags:
+      - biblical
     references:
       - DAN.6.1-28.KJV
-
   - id: CYRUS_DECREE
     name: Cyrus's Decree
     date: "~538 BC"
@@ -1181,9 +1478,12 @@ biblical_events:
     description: "King Cyrus of Persia allows the Jews to return to Jerusalem and rebuild the temple"
     participants:
       - ZERUBBABEL
+    tags:
+      - biblical
+      - kingdom
+      - temple
     references:
       - EZR.1.1-11.KJV
-
   - id: FOUNDATION_LAID
     name: Foundation of Second Temple Laid
     date: "~536 BC"
@@ -1191,9 +1491,11 @@ biblical_events:
     description: "The foundation of the second temple is laid amid joy and weeping"
     participants:
       - ZERUBBABEL
+    tags:
+      - biblical
+      - temple
     references:
       - EZR.3.1-13.KJV
-
   - id: TEMPLE_COMPLETED
     name: Second Temple Completed
     date: "~516 BC"
@@ -1201,9 +1503,11 @@ biblical_events:
     description: "The second temple is completed and dedicated despite opposition"
     participants:
       - ZERUBBABEL
+    tags:
+      - biblical
+      - temple
     references:
       - EZR.6.13-22.KJV
-
   - id: EZRA_RETURNS
     name: Ezra Returns to Jerusalem
     date: "~458 BC"
@@ -1211,9 +1515,10 @@ biblical_events:
     description: "Ezra the scribe leads a second group of exiles back to Jerusalem"
     participants:
       - EZRA
+    tags:
+      - biblical
     references:
       - EZR.7.1-8.36.KJV
-
   - id: NEHEMIAH_REBUILDS_WALLS
     name: Nehemiah Rebuilds the Walls
     date: "~445-433 BC"
@@ -1221,9 +1526,11 @@ biblical_events:
     description: "Nehemiah leads the rebuilding of Jerusalem's walls despite opposition"
     participants:
       - NEHEMIAH
+    tags:
+      - biblical
+      - new-testament
     references:
       - NEH.1.1-6.19.KJV
-
   - id: ESTHER_SAVES_JEWS
     name: Esther Saves the Jews
     date: "~473 BC"
@@ -1232,6 +1539,9 @@ biblical_events:
     participants:
       - ESTHER
       - MORDECAI
+    tags:
+      - biblical
+      - redemption
     references:
       - EST.1.1-10.3.KJV
 
@@ -1243,6 +1553,10 @@ biblical_events:
     description: "Malachi delivers God's final message before 400 years of prophetic silence"
     participants:
       - MALACHI
+    tags:
+      - biblical
+      - new-testament
+      - prophecy
     references:
       - MAL.1.1-4.6.KJV
 
@@ -1256,9 +1570,11 @@ biblical_events:
       - JOHN_THE_BAPTIST
       - ZACHARIAS
       - ELISABETH
+    tags:
+      - biblical
+      - birth
     references:
       - LUK.1.57-80.KJV
-
   - id: BIRTH_OF_JESUS
     name: Birth of Jesus Christ
     date: "~4 BC"
@@ -1268,10 +1584,17 @@ biblical_events:
       - JESUS
       - MARY_MOTHER_OF_JESUS
       - JOSEPH_HUSBAND_OF_MARY
+    tags:
+      - biblical
+      - birth
+      - christ
+      - incarnation
+      - jesus
+      - kingdom
+      - messiah
     references:
       - MAT.1.18-2.23.KJV
       - LUK.2.1-20.KJV
-
   - id: PRESENTATION_IN_TEMPLE
     name: Presentation in the Temple
     date: "~4 BC"
@@ -1281,9 +1604,15 @@ biblical_events:
       - JESUS
       - MARY_MOTHER_OF_JESUS
       - JOSEPH_HUSBAND_OF_MARY
+    tags:
+      - biblical
+      - christ
+      - incarnation
+      - jesus
+      - messiah
+      - temple
     references:
       - LUK.2.21-38.KJV
-
   - id: WISE_MEN_VISIT
     name: Visit of the Wise Men
     date: "~3 BC"
@@ -1292,9 +1621,14 @@ biblical_events:
     participants:
       - JESUS
       - MARY_MOTHER_OF_JESUS
+    tags:
+      - biblical
+      - christ
+      - incarnation
+      - jesus
+      - messiah
     references:
       - MAT.2.1-12.KJV
-
   - id: FLIGHT_TO_EGYPT
     name: Flight to Egypt
     date: "~3 BC"
@@ -1304,9 +1638,14 @@ biblical_events:
       - JESUS
       - MARY_MOTHER_OF_JESUS
       - JOSEPH_HUSBAND_OF_MARY
+    tags:
+      - biblical
+      - christ
+      - incarnation
+      - jesus
+      - messiah
     references:
       - MAT.2.13-18.KJV
-
   - id: JESUS_IN_TEMPLE
     name: Jesus in the Temple at Age 12
     date: "~8 AD"
@@ -1316,9 +1655,17 @@ biblical_events:
       - JESUS
       - MARY_MOTHER_OF_JESUS
       - JOSEPH_HUSBAND_OF_MARY
+    tags:
+      - biblical
+      - christ
+      - incarnation
+      - jesus
+      - messiah
+      - new-testament
+      - sin
+      - temple
     references:
       - LUK.2.41-52.KJV
-
   - id: JOHN_BAPTIZES_JESUS
     name: Baptism of Jesus
     date: "~26 AD"
@@ -1328,9 +1675,15 @@ biblical_events:
       - JESUS
       - JOHN_THE_BAPTIST
       - GOD_FATHER
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - ministry
+      - new-testament
     references:
       - MAT.3.13-17.KJV
-
   - id: TEMPTATION_OF_JESUS
     name: Temptation of Jesus
     date: "~26 AD"
@@ -1338,9 +1691,16 @@ biblical_events:
     description: "Jesus is tempted by Satan in the wilderness for 40 days but does not sin"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - ministry
+      - new-testament
+      - sin
     references:
       - MAT.4.1-11.KJV
-
   - id: JESUS_CALLS_DISCIPLES
     name: Jesus Calls His Disciples
     date: "~26-27 AD"
@@ -1360,10 +1720,17 @@ biblical_events:
       - THADDAEUS
       - SIMON_THE_CANAANITE
       - JUDAS_ISCARIOT
+    tags:
+      - apostolic
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - ministry
+      - new-testament
     references:
       - MAT.4.18-22.KJV
       - MAT.10.1-4.KJV
-
   - id: SERMON_ON_MOUNT
     name: Sermon on the Mount
     date: "~27 AD"
@@ -1371,9 +1738,15 @@ biblical_events:
     description: "Jesus preaches the Sermon on the Mount, including the Beatitudes and Lord's Prayer"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - ministry
+      - new-testament
     references:
       - MAT.5.1-7.29.KJV
-
   - id: JESUS_TRANSFIGURED
     name: Transfiguration of Jesus
     date: "~29 AD"
@@ -1386,9 +1759,16 @@ biblical_events:
       - JOHN_THE_APOSTLE
       - MOSES
       - ELIJAH
+    tags:
+      - apostolic
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - moses
+      - new-testament
     references:
       - MAT.17.1-13.KJV
-
   - id: TRIUMPHAL_ENTRY
     name: Triumphal Entry into Jerusalem
     date: "~30 AD"
@@ -1396,9 +1776,14 @@ biblical_events:
     description: "Jesus enters Jerusalem riding on a donkey while crowds shout 'Hosanna'"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - new-testament
     references:
       - MAT.21.1-11.KJV
-
   - id: CLEANSING_TEMPLE
     name: Cleansing of the Temple
     date: "~30 AD"
@@ -1406,9 +1791,17 @@ biblical_events:
     description: "Jesus drives out the money changers from the temple"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - incarnation
+      - jesus
+      - messiah
+      - new-testament
+      - sin
+      - temple
     references:
       - MAT.21.12-17.KJV
-
   - id: LAST_SUPPER
     name: The Last Supper
     date: "~30 AD"
@@ -1428,10 +1821,17 @@ biblical_events:
       - THADDAEUS
       - SIMON_THE_CANAANITE
       - JUDAS_ISCARIOT
+    tags:
+      - apostolic
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - ministry
+      - new-testament
     references:
       - MAT.26.17-30.KJV
       - JHN.13.1-30.KJV
-
   - id: GETHSEMANE
     name: Prayer in Gethsemane
     date: "~30 AD"
@@ -1442,9 +1842,15 @@ biblical_events:
       - PETER
       - JAMES_SON_OF_ZEBEDEE
       - JOHN_THE_APOSTLE
+    tags:
+      - apostolic
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - new-testament
     references:
       - MAT.26.36-46.KJV
-
   - id: BETRAYAL_AND_ARREST
     name: Betrayal and Arrest of Jesus
     date: "~30 AD"
@@ -1454,9 +1860,15 @@ biblical_events:
       - JESUS
       - JUDAS_ISCARIOT
       - PETER
+    tags:
+      - apostolic
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - new-testament
     references:
       - MAT.26.47-56.KJV
-
   - id: CRUCIFIXION
     name: Crucifixion of Jesus
     date: "~30 AD"
@@ -1466,10 +1878,20 @@ biblical_events:
       - JESUS
       - MARY_MOTHER_OF_JESUS
       - JOHN_THE_APOSTLE
+    tags:
+      - apostolic
+      - atonement
+      - biblical
+      - christ
+      - crucifixion
+      - death
+      - jesus
+      - messiah
+      - new-testament
+      - sin
     references:
       - MAT.27.32-56.KJV
       - JHN.19.17-37.KJV
-
   - id: RESURRECTION
     name: Resurrection of Jesus
     date: "~30 AD"
@@ -1478,10 +1900,20 @@ biblical_events:
     participants:
       - JESUS
       - MARY_MOTHER_OF_JESUS
+    tags:
+      - biblical
+      - christ
+      - death
+      - jesus
+      - messiah
+      - miracle
+      - new-testament
+      - resurrection
+      - sin
+      - victory
     references:
       - MAT.28.1-20.KJV
       - JHN.20.1-31.KJV
-
   - id: ROAD_TO_EMMAUS
     name: Road to Emmaus
     date: "~30 AD"
@@ -1489,9 +1921,15 @@ biblical_events:
     description: "Jesus appears to two disciples on the road to Emmaus"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - ministry
+      - new-testament
     references:
       - LUK.24.13-35.KJV
-
   - id: GREAT_COMMISSION
     name: The Great Commission
     date: "~30 AD"
@@ -1510,9 +1948,16 @@ biblical_events:
       - JAMES_SON_OF_ALPHAEUS
       - THADDAEUS
       - SIMON_THE_CANAANITE
+    tags:
+      - apostolic
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - ministry
+      - new-testament
     references:
       - MAT.28.16-20.KJV
-
   - id: ASCENSION
     name: Ascension of Jesus
     date: "~30 AD"
@@ -1531,9 +1976,17 @@ biblical_events:
       - JAMES_SON_OF_ALPHAEUS
       - THADDAEUS
       - SIMON_THE_CANAANITE
+    tags:
+      - apostolic
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - miracle
+      - new-testament
+      - resurrection
     references:
       - ACT.1.1-11.KJV
-
   - id: PENTECOST
     name: Day of Pentecost
     date: "~30 AD"
@@ -1552,9 +2005,13 @@ biblical_events:
       - THADDAEUS
       - SIMON_THE_CANAANITE
       - MATTHIAS
+    tags:
+      - apostolic
+      - biblical
+      - ministry
+      - new-testament
     references:
       - ACT.2.1-47.KJV
-
   - id: STEPHEN_MARTYRED
     name: Martyrdom of Stephen
     date: "~34 AD"
@@ -1563,9 +2020,12 @@ biblical_events:
     participants:
       - STEPHEN
       - PAUL
+    tags:
+      - apostolic
+      - biblical
+      - new-testament
     references:
       - ACT.7.54-60.KJV
-
   - id: SAUL_CONVERSION
     name: Conversion of Saul
     date: "~35 AD"
@@ -1574,9 +2034,15 @@ biblical_events:
     participants:
       - PAUL
       - JESUS
+    tags:
+      - apostolic
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - new-testament
     references:
       - ACT.9.1-19.KJV
-
   - id: PETER_VISION
     name: Peter's Vision
     date: "~40 AD"
@@ -1584,9 +2050,13 @@ biblical_events:
     description: "Peter receives a vision showing that the Gospel is for Gentiles too"
     participants:
       - PETER
+    tags:
+      - apostolic
+      - biblical
+      - new-testament
+      - prophecy
     references:
       - ACT.10.1-48.KJV
-
   - id: PAUL_FIRST_MISSIONARY_JOURNEY
     name: Paul's First Missionary Journey
     date: "~47-49 AD"
@@ -1595,9 +2065,12 @@ biblical_events:
     participants:
       - PAUL
       - BARNABAS
+    tags:
+      - apostolic
+      - biblical
+      - new-testament
     references:
       - ACT.13.1-14.28.KJV
-
   - id: JERUSALEM_COUNCIL
     name: Jerusalem Council
     date: "~50 AD"
@@ -1608,9 +2081,13 @@ biblical_events:
       - PAUL
       - BARNABAS
       - JAMES_SON_OF_ALPHAEUS
+    tags:
+      - apostolic
+      - biblical
+      - ministry
+      - new-testament
     references:
       - ACT.15.1-35.KJV
-
   - id: PAUL_SECOND_MISSIONARY_JOURNEY
     name: Paul's Second Missionary Journey
     date: "~50-52 AD"
@@ -1620,9 +2097,12 @@ biblical_events:
       - PAUL
       - SILAS
       - TIMOTHY
+    tags:
+      - apostolic
+      - biblical
+      - new-testament
     references:
       - ACT.15.36-18.22.KJV
-
   - id: PAUL_THIRD_MISSIONARY_JOURNEY
     name: Paul's Third Missionary Journey
     date: "~53-57 AD"
@@ -1632,9 +2112,13 @@ biblical_events:
       - PAUL
       - TIMOTHY
       - TITUS
+    tags:
+      - apostolic
+      - biblical
+      - ministry
+      - new-testament
     references:
       - ACT.18.23-21.17.KJV
-
   - id: PAUL_ARRESTED
     name: Paul Arrested in Jerusalem
     date: "~57 AD"
@@ -1642,9 +2126,13 @@ biblical_events:
     description: "Paul is arrested in Jerusalem and begins his journey toward Rome as a prisoner"
     participants:
       - PAUL
+    tags:
+      - apostolic
+      - biblical
+      - new-testament
+      - warfare
     references:
       - ACT.21.18-23.35.KJV
-
   - id: PAUL_SHIPWRECKED
     name: Paul's Shipwreck
     date: "~60 AD"
@@ -1652,9 +2140,12 @@ biblical_events:
     description: "Paul is shipwrecked on Malta while traveling to Rome as a prisoner"
     participants:
       - PAUL
+    tags:
+      - apostolic
+      - biblical
+      - new-testament
     references:
       - ACT.27.1-28.10.KJV
-
   - id: PAUL_IN_ROME
     name: Paul Reaches Rome
     date: "~60 AD"
@@ -1662,6 +2153,11 @@ biblical_events:
     description: "Paul arrives in Rome and preaches the Gospel while under house arrest"
     participants:
       - PAUL
+    tags:
+      - apostolic
+      - biblical
+      - ministry
+      - new-testament
     references:
       - ACT.28.11-31.KJV
 
@@ -1673,9 +2169,11 @@ biblical_events:
     description: "Cain builds the first city and names it after his son Enoch"
     participants:
       - CAIN
+    tags:
+      - biblical
+      - exile
     references:
       - GEN.4.17.KJV
-
   - id: SONS_OF_GOD_MARRY
     name: Sons of God Marry Daughters of Men
     date: "~3000 BC"
@@ -1683,9 +2181,11 @@ biblical_events:
     description: "The sons of God take wives from the daughters of men, leading to corruption"
     participants:
       - GOD_FATHER
+    tags:
+      - biblical
+      - return
     references:
       - GEN.6.1-4.KJV
-
   - id: GOD_GRIEVES
     name: God Grieves Over Man's Wickedness
     date: "~2400 BC"
@@ -1693,9 +2193,11 @@ biblical_events:
     description: "God sees the wickedness of man and grieves that He made man on earth"
     participants:
       - GOD_FATHER
+    tags:
+      - biblical
+      - return
     references:
       - GEN.6.5-7.KJV
-
   - id: NOAH_ANIMALS_ENTER_ARK
     name: Animals Enter the Ark
     date: "~2348 BC"
@@ -1704,9 +2206,12 @@ biblical_events:
     participants:
       - NOAH
       - GOD_FATHER
+    tags:
+      - biblical
+      - flood
+      - noah
     references:
       - GEN.7.1-16.KJV
-
   - id: FLOOD_WATERS_RECEDE
     name: Flood Waters Recede
     date: "~2347 BC"
@@ -1714,9 +2219,12 @@ biblical_events:
     description: "The flood waters recede and the ark rests on Mount Ararat"
     participants:
       - NOAH
+    tags:
+      - biblical
+      - flood
+      - noah
     references:
       - GEN.8.1-4.KJV
-
   - id: NOAH_SENDS_DOVE
     name: Noah Sends Out the Dove
     date: "~2347 BC"
@@ -1724,9 +2232,12 @@ biblical_events:
     description: "Noah sends out a dove to see if the waters have receded from the earth"
     participants:
       - NOAH
+    tags:
+      - biblical
+      - flood
+      - noah
     references:
       - GEN.8.8-12.KJV
-
   - id: NOAH_ALTAR
     name: Noah Builds an Altar
     date: "~2347 BC"
@@ -1735,9 +2246,14 @@ biblical_events:
     participants:
       - NOAH
       - GOD_FATHER
+    tags:
+      - biblical
+      - flood
+      - noah
+      - sacrifice
+      - temple
     references:
       - GEN.8.20-22.KJV
-
   - id: NOAH_DRUNK
     name: Noah's Drunkenness
     date: "~2340 BC"
@@ -1748,9 +2264,13 @@ biblical_events:
       - HAM
       - SHEM
       - JAPHETH
+    tags:
+      - biblical
+      - flood
+      - judgment
+      - noah
     references:
       - GEN.9.20-27.KJV
-
   - id: BABEL_LANGUAGES_CONFUSED
     name: Languages Confused at Babel
     date: "~2247 BC"
@@ -1758,9 +2278,10 @@ biblical_events:
     description: "God confuses the languages and scatters the people across the earth"
     participants:
       - GOD_FATHER
+    tags:
+      - biblical
     references:
       - GEN.11.1-9.KJV
-
   - id: ABRAHAM_EGYPT
     name: Abraham Goes to Egypt
     date: "~2085 BC"
@@ -1769,9 +2290,11 @@ biblical_events:
     participants:
       - ABRAHAM
       - SARAH
+    tags:
+      - abraham
+      - biblical
     references:
       - GEN.12.10-20.KJV
-
   - id: ABRAHAM_LOT_SEPARATE
     name: Abraham and Lot Separate
     date: "~2083 BC"
@@ -1780,9 +2303,11 @@ biblical_events:
     participants:
       - ABRAHAM
       - LOT
+    tags:
+      - abraham
+      - biblical
     references:
       - GEN.13.1-18.KJV
-
   - id: ABRAHAM_RESCUES_LOT
     name: Abraham Rescues Lot
     date: "~2082 BC"
@@ -1791,9 +2316,14 @@ biblical_events:
     participants:
       - ABRAHAM
       - LOT
+    tags:
+      - abraham
+      - biblical
+      - kingdom
+      - redemption
+      - warfare
     references:
       - GEN.14.1-16.KJV
-
   - id: MELCHIZEDEK_BLESSES
     name: Melchizedek Blesses Abraham
     date: "~2082 BC"
@@ -1802,9 +2332,12 @@ biblical_events:
     participants:
       - ABRAHAM
       - MELCHIZEDEK
+    tags:
+      - abraham
+      - biblical
+      - kingdom
     references:
       - GEN.14.17-24.KJV
-
   - id: HAGAR_FLEES
     name: Hagar Flees from Sarah
     date: "~2080 BC"
@@ -1814,9 +2347,10 @@ biblical_events:
       - HAGAR
       - SARAH
       - GOD_FATHER
+    tags:
+      - biblical
     references:
       - GEN.16.1-16.KJV
-
   - id: BIRTH_OF_ISHMAEL
     name: Birth of Ishmael
     date: "~2080 BC"
@@ -1826,9 +2360,12 @@ biblical_events:
       - ABRAHAM
       - HAGAR
       - ISHMAEL
+    tags:
+      - abraham
+      - biblical
+      - birth
     references:
       - GEN.16.15-16.KJV
-
   - id: CIRCUMCISION_COVENANT
     name: Covenant of Circumcision
     date: "~2067 BC"
@@ -1837,9 +2374,12 @@ biblical_events:
     participants:
       - GOD_FATHER
       - ABRAHAM
+    tags:
+      - abraham
+      - biblical
+      - covenant
     references:
       - GEN.17.9-14.KJV
-
   - id: THREE_VISITORS
     name: Three Visitors Promise Isaac
     date: "~2067 BC"
@@ -1849,9 +2389,12 @@ biblical_events:
       - ABRAHAM
       - SARAH
       - GOD_FATHER
+    tags:
+      - abraham
+      - biblical
+      - covenant
     references:
       - GEN.18.1-15.KJV
-
   - id: ABRAHAM_INTERCEDES
     name: Abraham Intercedes for Sodom
     date: "~2067 BC"
@@ -1860,9 +2403,11 @@ biblical_events:
     participants:
       - ABRAHAM
       - GOD_FATHER
+    tags:
+      - abraham
+      - biblical
     references:
       - GEN.18.16-33.KJV
-
   - id: ANGELS_VISIT_LOT
     name: Angels Visit Lot
     date: "~2067 BC"
@@ -1871,9 +2416,12 @@ biblical_events:
     participants:
       - LOT
       - GOD_FATHER
+    tags:
+      - biblical
+      - judgment
+      - warfare
     references:
       - GEN.19.1-14.KJV
-
   - id: LOTS_WIFE_SALT
     name: Lot's Wife Becomes Salt
     date: "~2067 BC"
@@ -1881,9 +2429,10 @@ biblical_events:
     description: "Lot's wife looks back at the burning cities and becomes a pillar of salt"
     participants:
       - LOT
+    tags:
+      - biblical
     references:
       - GEN.19.15-26.KJV
-
   - id: ABRAHAM_ABIMELECH
     name: Abraham and Abimelech
     date: "~2066 BC"
@@ -1892,9 +2441,11 @@ biblical_events:
     participants:
       - ABRAHAM
       - SARAH
+    tags:
+      - abraham
+      - biblical
     references:
       - GEN.20.1-18.KJV
-
   - id: HAGAR_ISHMAEL_EXPELLED
     name: Hagar and Ishmael Expelled
     date: "~2063 BC"
@@ -1905,9 +2456,11 @@ biblical_events:
       - SARAH
       - HAGAR
       - ISHMAEL
+    tags:
+      - abraham
+      - biblical
     references:
       - GEN.21.8-21.KJV
-
   - id: ABRAHAM_COVENANT_ABIMELECH
     name: Abraham's Covenant with Abimelech
     date: "~2063 BC"
@@ -1915,9 +2468,12 @@ biblical_events:
     description: "Abraham makes a covenant with Abimelech over the well at Beersheba"
     participants:
       - ABRAHAM
+    tags:
+      - abraham
+      - biblical
+      - covenant
     references:
       - GEN.21.22-34.KJV
-
   - id: ISAAC_WELLS
     name: Isaac Digs Wells
     date: "~1990 BC"
@@ -1925,9 +2481,10 @@ biblical_events:
     description: "Isaac digs wells in the valley of Gerar and has disputes with the Philistines"
     participants:
       - ISAAC
+    tags:
+      - biblical
     references:
       - GEN.26.12-33.KJV
-
   - id: ESAU_MARRIAGES
     name: Esau's Marriages
     date: "~1966 BC"
@@ -1937,9 +2494,11 @@ biblical_events:
       - ESAU
       - ISAAC
       - REBEKAH
+    tags:
+      - biblical
+      - sin
     references:
       - GEN.26.34-35.KJV
-
   - id: JACOB_FLEES_ESAU
     name: Jacob Flees from Esau
     date: "~1929 BC"
@@ -1949,9 +2508,12 @@ biblical_events:
       - JACOB
       - ISAAC
       - REBEKAH
+    tags:
+      - biblical
+      - new-testament
+      - sin
     references:
       - GEN.27.41-28.5.KJV
-
   - id: JACOB_SERVES_LABAN
     name: Jacob Serves Laban
     date: "~1922-1909 BC"
@@ -1960,9 +2522,10 @@ biblical_events:
     participants:
       - JACOB
       - LABAN
+    tags:
+      - biblical
     references:
       - GEN.29.15-30.43.KJV
-
   - id: RACHEL_STEALS_IDOLS
     name: Rachel Steals Household Gods
     date: "~1909 BC"
@@ -1972,9 +2535,11 @@ biblical_events:
       - RACHEL
       - LABAN
       - JACOB
+    tags:
+      - biblical
+      - genealogy
     references:
       - GEN.31.14-35.KJV
-
   - id: LABAN_PURSUES_JACOB
     name: Laban Pursues Jacob
     date: "~1909 BC"
@@ -1984,9 +2549,12 @@ biblical_events:
       - LABAN
       - JACOB
       - GOD_FATHER
+    tags:
+      - biblical
+      - prophecy
+      - warfare
     references:
       - GEN.31.22-42.KJV
-
   - id: JACOB_ESAU_RECONCILE
     name: Jacob and Esau Reconcile
     date: "~1909 BC"
@@ -1995,9 +2563,10 @@ biblical_events:
     participants:
       - JACOB
       - ESAU
+    tags:
+      - biblical
     references:
       - GEN.33.1-20.KJV
-
   - id: DINAH_DEFILED
     name: Dinah Defiled by Shechem
     date: "~1908 BC"
@@ -2008,9 +2577,10 @@ biblical_events:
       - SIMEON
       - LEVI
       - JACOB
+    tags:
+      - biblical
     references:
       - GEN.34.1-31.KJV
-
   - id: DEATH_OF_RACHEL
     name: Death of Rachel
     date: "~1888 BC"
@@ -2020,9 +2590,11 @@ biblical_events:
       - RACHEL
       - JACOB
       - BENJAMIN
+    tags:
+      - biblical
+      - death
     references:
       - GEN.35.16-20.KJV
-
   - id: DEATH_OF_ISAAC
     name: Death of Isaac
     date: "~1886 BC"
@@ -2032,9 +2604,11 @@ biblical_events:
       - ISAAC
       - JACOB
       - ESAU
+    tags:
+      - biblical
+      - death
     references:
       - GEN.35.27-29.KJV
-
   - id: JOSEPH_DREAMS
     name: Joseph's Dreams
     date: "~1898 BC"
@@ -2043,9 +2617,11 @@ biblical_events:
     participants:
       - JOSEPH
       - JACOB
+    tags:
+      - biblical
+      - prophecy
     references:
       - GEN.37.5-11.KJV
-
   - id: JUDAH_TAMAR
     name: Judah and Tamar
     date: "~1888 BC"
@@ -2056,9 +2632,10 @@ biblical_events:
       - TAMAR
       - PHAREZ
       - ZARAH
+    tags:
+      - biblical
     references:
       - GEN.38.1-30.KJV
-
   - id: JOSEPH_POTIPHARS_WIFE
     name: Joseph and Potiphar's Wife
     date: "~1885 BC"
@@ -2066,9 +2643,10 @@ biblical_events:
     description: "Potiphar's wife tries to seduce Joseph; he refuses and is falsely accused"
     participants:
       - JOSEPH
+    tags:
+      - biblical
     references:
       - GEN.39.6-20.KJV
-
   - id: JOSEPH_BUTLER_BAKER
     name: Joseph Interprets Dreams in Prison
     date: "~1887 BC"
@@ -2076,9 +2654,11 @@ biblical_events:
     description: "Joseph interprets the dreams of Pharaoh's butler and baker"
     participants:
       - JOSEPH
+    tags:
+      - biblical
+      - prophecy
     references:
       - GEN.40.1-23.KJV
-
   - id: JOSEPH_SECOND_IN_COMMAND
     name: Joseph Made Second in Command
     date: "~1885 BC"
@@ -2086,9 +2666,10 @@ biblical_events:
     description: "Pharaoh makes Joseph second in command over all Egypt"
     participants:
       - JOSEPH
+    tags:
+      - biblical
     references:
       - GEN.41.37-44.KJV
-
   - id: SEVEN_YEARS_PLENTY
     name: Seven Years of Plenty Begin
     date: "~1884 BC"
@@ -2096,9 +2677,10 @@ biblical_events:
     description: "Seven years of great abundance begin in Egypt under Joseph's management"
     participants:
       - JOSEPH
+    tags:
+      - biblical
     references:
       - GEN.41.47-49.KJV
-
   - id: JOSEPH_MARRIES_ASENATH
     name: Joseph Marries Asenath
     date: "~1884 BC"
@@ -2107,9 +2689,11 @@ biblical_events:
     participants:
       - JOSEPH
       - ASENATH
+    tags:
+      - biblical
+      - genealogy
     references:
       - GEN.41.45.KJV
-
   - id: BIRTH_OF_MANASSEH
     name: Birth of Manasseh
     date: "~1883 BC"
@@ -2119,9 +2703,11 @@ biblical_events:
       - JOSEPH
       - ASENATH
       - MANASSEH
+    tags:
+      - biblical
+      - birth
     references:
       - GEN.41.50-51.KJV
-
   - id: BIRTH_OF_EPHRAIM
     name: Birth of Ephraim
     date: "~1882 BC"
@@ -2131,9 +2717,11 @@ biblical_events:
       - JOSEPH
       - ASENATH
       - EPHRAIM
+    tags:
+      - biblical
+      - birth
     references:
       - GEN.41.52.KJV
-
   - id: SEVEN_YEARS_FAMINE
     name: Seven Years of Famine Begin
     date: "~1877 BC"
@@ -2141,9 +2729,10 @@ biblical_events:
     description: "Seven years of severe famine begin throughout all lands"
     participants:
       - JOSEPH
+    tags:
+      - biblical
     references:
       - GEN.41.53-57.KJV
-
   - id: BROTHERS_FIRST_TRIP
     name: Joseph's Brothers' First Trip to Egypt
     date: "~1876 BC"
@@ -2161,9 +2750,10 @@ biblical_events:
       - ASHER
       - ISSACHAR
       - ZEBULUN
+    tags:
+      - biblical
     references:
       - GEN.42.1-38.KJV
-
   - id: BROTHERS_SECOND_TRIP
     name: Joseph's Brothers' Second Trip to Egypt
     date: "~1875 BC"
@@ -2173,9 +2763,10 @@ biblical_events:
       - JOSEPH
       - BENJAMIN
       - JUDAH
+    tags:
+      - biblical
     references:
       - GEN.43.1-45.28.KJV
-
   - id: ISRAEL_BLESSES_PHARAOH
     name: Israel Blesses Pharaoh
     date: "~1876 BC"
@@ -2183,9 +2774,10 @@ biblical_events:
     description: "Jacob blesses Pharaoh when he is presented to him"
     participants:
       - JACOB
+    tags:
+      - biblical
     references:
       - GEN.47.7-10.KJV
-
   - id: JACOB_BLESSES_SONS
     name: Jacob Blesses His Sons
     date: "~1859 BC"
@@ -2205,9 +2797,12 @@ biblical_events:
       - NAPHTALI
       - JOSEPH
       - BENJAMIN
+    tags:
+      - biblical
+      - prophecy
+      - sin
     references:
       - GEN.49.1-28.KJV
-
   - id: JACOB_BURIED_CANAAN
     name: Jacob Buried in Canaan
     date: "~1859 BC"
@@ -2216,36 +2811,41 @@ biblical_events:
     participants:
       - JOSEPH
       - JACOB
+    tags:
+      - biblical
     references:
       - GEN.50.1-14.KJV
-
   - id: ISRAELITES_MULTIPLY
     name: Israelites Multiply in Egypt
     date: "~1805-1580 BC"
     location: EGYPT
     description: "The children of Israel multiply greatly and become mighty in Egypt"
     participants: []
+    tags:
+      - biblical
     references:
       - EXO.1.7.KJV
-
   - id: NEW_PHARAOH_OPPRESSION
     name: New Pharaoh Oppresses Israel
     date: "~1580 BC"
     location: EGYPT
     description: "A new pharaoh who doesn't know Joseph begins to oppress the Israelites"
     participants: []
+    tags:
+      - biblical
     references:
       - EXO.1.8-14.KJV
-
   - id: HEBREW_MIDWIVES_DISOBEY
     name: Hebrew Midwives Disobey Pharaoh
     date: "~1575 BC"
     location: EGYPT
     description: "Hebrew midwives fear God and refuse to kill Hebrew male babies"
     participants: []
+    tags:
+      - biblical
+      - sin
     references:
       - EXO.1.15-21.KJV
-
   - id: MOSES_HIDDEN_RIVER
     name: Moses Hidden in the River
     date: "~1571 BC"
@@ -2255,9 +2855,11 @@ biblical_events:
       - MOSES
       - JOCHEBED
       - MIRIAM
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.2.1-10.KJV
-
   - id: MOSES_KILLS_EGYPTIAN
     name: Moses Kills an Egyptian
     date: "~1531 BC"
@@ -2265,9 +2867,12 @@ biblical_events:
     description: "Moses kills an Egyptian who was beating a Hebrew slave"
     participants:
       - MOSES
+    tags:
+      - biblical
+      - moses
+      - new-testament
     references:
       - EXO.2.11-15.KJV
-
   - id: MOSES_MEETS_ZIPPORAH
     name: Moses Meets Zipporah
     date: "~1531 BC"
@@ -2277,9 +2882,12 @@ biblical_events:
       - MOSES
       - ZIPPORAH
       - JETHRO
+    tags:
+      - biblical
+      - moses
+      - new-testament
     references:
       - EXO.2.16-22.KJV
-
   - id: GOD_REMEMBERS_COVENANT
     name: God Remembers His Covenant
     date: "~1491 BC"
@@ -2287,9 +2895,11 @@ biblical_events:
     description: "God hears the groaning of Israel and remembers His covenant"
     participants:
       - GOD_FATHER
+    tags:
+      - biblical
+      - covenant
     references:
       - EXO.2.23-25.KJV
-
   - id: MOSES_COMMISSIONED
     name: Moses Commissioned by God
     date: "~1491 BC"
@@ -2298,9 +2908,11 @@ biblical_events:
     participants:
       - GOD_FATHER
       - MOSES
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.3.10-4.17.KJV
-
   - id: MOSES_AARON_MEET
     name: Moses and Aaron Meet
     date: "~1491 BC"
@@ -2309,9 +2921,11 @@ biblical_events:
     participants:
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.4.27-31.KJV
-
   - id: FIRST_MEETING_PHARAOH
     name: First Meeting with Pharaoh
     date: "~1491 BC"
@@ -2320,9 +2934,11 @@ biblical_events:
     participants:
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.5.1-23.KJV
-
   - id: ISRAELITES_MAKE_BRICKS
     name: Israelites Must Make Bricks Without Straw
     date: "~1491 BC"
@@ -2331,9 +2947,11 @@ biblical_events:
     participants:
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.5.6-21.KJV
-
   - id: PLAGUE_OF_BLOOD
     name: First Plague - Water Turned to Blood
     date: "~1491 BC"
@@ -2342,9 +2960,12 @@ biblical_events:
     participants:
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - judgment
+      - moses
     references:
       - EXO.7.14-25.KJV
-
   - id: PLAGUE_OF_FROGS
     name: Second Plague - Frogs
     date: "~1491 BC"
@@ -2353,9 +2974,12 @@ biblical_events:
     participants:
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - judgment
+      - moses
     references:
       - EXO.8.1-15.KJV
-
   - id: PLAGUE_OF_LICE
     name: Third Plague - Lice
     date: "~1491 BC"
@@ -2364,9 +2988,12 @@ biblical_events:
     participants:
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - judgment
+      - moses
     references:
       - EXO.8.16-19.KJV
-
   - id: PLAGUE_OF_FLIES
     name: Fourth Plague - Flies
     date: "~1491 BC"
@@ -2375,9 +3002,13 @@ biblical_events:
     participants:
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - judgment
+      - moses
+      - warfare
     references:
       - EXO.8.20-32.KJV
-
   - id: PLAGUE_OF_LIVESTOCK
     name: Fifth Plague - Death of Livestock
     date: "~1491 BC"
@@ -2386,9 +3017,13 @@ biblical_events:
     participants:
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - death
+      - judgment
+      - moses
     references:
       - EXO.9.1-7.KJV
-
   - id: PLAGUE_OF_BOILS
     name: Sixth Plague - Boils
     date: "~1491 BC"
@@ -2397,9 +3032,13 @@ biblical_events:
     participants:
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - judgment
+      - moses
+      - warfare
     references:
       - EXO.9.8-12.KJV
-
   - id: PLAGUE_OF_HAIL
     name: Seventh Plague - Hail
     date: "~1491 BC"
@@ -2408,9 +3047,12 @@ biblical_events:
     participants:
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - judgment
+      - moses
     references:
       - EXO.9.13-35.KJV
-
   - id: PLAGUE_OF_LOCUSTS
     name: Eighth Plague - Locusts
     date: "~1491 BC"
@@ -2419,9 +3061,12 @@ biblical_events:
     participants:
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - judgment
+      - moses
     references:
       - EXO.10.1-20.KJV
-
   - id: PLAGUE_OF_DARKNESS
     name: Ninth Plague - Darkness
     date: "~1491 BC"
@@ -2430,9 +3075,13 @@ biblical_events:
     participants:
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - flood
+      - judgment
+      - moses
     references:
       - EXO.10.21-29.KJV
-
   - id: TENTH_PLAGUE_ANNOUNCED
     name: Tenth Plague Announced
     date: "~1491 BC"
@@ -2440,9 +3089,12 @@ biblical_events:
     description: "Moses announces that all firstborn in Egypt will die at midnight"
     participants:
       - MOSES
+    tags:
+      - biblical
+      - judgment
+      - moses
     references:
       - EXO.11.1-10.KJV
-
   - id: FIRSTBORN_SLAIN
     name: Firstborn of Egypt Slain
     date: "~1491 BC"
@@ -2450,9 +3102,11 @@ biblical_events:
     description: "At midnight God strikes down all firstborn in Egypt but passes over Israel"
     participants:
       - GOD_FATHER
+    tags:
+      - biblical
+      - birth
     references:
       - EXO.12.29-30.KJV
-
   - id: ISRAEL_PLUNDERS_EGYPT
     name: Israel Plunders Egypt
     date: "~1491 BC"
@@ -2460,9 +3114,11 @@ biblical_events:
     description: "Egyptians give Israel silver, gold, and clothing as they leave"
     participants:
       - MOSES
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.12.35-36.KJV
-
   - id: PHARAOH_PURSUES
     name: Pharaoh Pursues Israel
     date: "~1491 BC"
@@ -2470,9 +3126,12 @@ biblical_events:
     description: "Pharaoh changes his mind and pursues Israel with his army"
     participants:
       - MOSES
+    tags:
+      - biblical
+      - moses
+      - warfare
     references:
       - EXO.14.5-9.KJV
-
   - id: ISRAEL_FEARS_EGYPTIANS
     name: Israel Fears the Egyptians
     date: "~1491 BC"
@@ -2480,9 +3139,12 @@ biblical_events:
     description: "Israel sees the Egyptian army approaching and fears greatly"
     participants:
       - MOSES
+    tags:
+      - biblical
+      - moses
+      - warfare
     references:
       - EXO.14.10-14.KJV
-
   - id: PILLAR_OF_CLOUD
     name: Pillar of Cloud Protects Israel
     date: "~1491 BC"
@@ -2491,9 +3153,12 @@ biblical_events:
     participants:
       - GOD_FATHER
       - MOSES
+    tags:
+      - biblical
+      - moses
+      - warfare
     references:
       - EXO.14.19-20.KJV
-
   - id: EGYPTIAN_ARMY_DESTROYED
     name: Egyptian Army Destroyed
     date: "~1491 BC"
@@ -2502,9 +3167,13 @@ biblical_events:
     participants:
       - GOD_FATHER
       - MOSES
+    tags:
+      - biblical
+      - judgment
+      - moses
+      - warfare
     references:
       - EXO.14.26-31.KJV
-
   - id: SONG_OF_MOSES
     name: Song of Moses and Miriam
     date: "~1491 BC"
@@ -2513,9 +3182,12 @@ biblical_events:
     participants:
       - MOSES
       - MIRIAM
+    tags:
+      - biblical
+      - moses
+      - warfare
     references:
       - EXO.15.1-21.KJV
-
   - id: BITTER_WATERS_MARAH
     name: Bitter Waters at Marah
     date: "~1491 BC"
@@ -2524,9 +3196,11 @@ biblical_events:
     participants:
       - MOSES
       - GOD_FATHER
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.15.22-27.KJV
-
   - id: TWELVE_WELLS_ELIM
     name: Twelve Wells at Elim
     date: "~1491 BC"
@@ -2534,9 +3208,11 @@ biblical_events:
     description: "Israel camps at Elim where there are twelve wells and seventy palm trees"
     participants:
       - MOSES
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.15.27.KJV
-
   - id: ISRAEL_MURMURS_FOOD
     name: Israel Murmurs for Food
     date: "~1491 BC"
@@ -2545,9 +3221,11 @@ biblical_events:
     participants:
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.16.1-12.KJV
-
   - id: QUAILS_PROVIDED
     name: Quails Provided
     date: "~1491 BC"
@@ -2556,9 +3234,11 @@ biblical_events:
     participants:
       - GOD_FATHER
       - MOSES
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.16.13.KJV
-
   - id: SABBATH_MANNA
     name: Sabbath and Manna Rules
     date: "~1491 BC"
@@ -2567,9 +3247,13 @@ biblical_events:
     participants:
       - GOD_FATHER
       - MOSES
+    tags:
+      - biblical
+      - miracle
+      - moses
+      - prophecy
     references:
       - EXO.16.22-30.KJV
-
   - id: MANNA_PRESERVED
     name: Manna Preserved in Golden Pot
     date: "~1491 BC"
@@ -2578,9 +3262,12 @@ biblical_events:
     participants:
       - AARON
       - MOSES
+    tags:
+      - biblical
+      - miracle
+      - moses
     references:
       - EXO.16.32-36.KJV
-
   - id: ISRAEL_MURMURS_WATER
     name: Israel Murmurs for Water
     date: "~1491 BC"
@@ -2588,9 +3275,11 @@ biblical_events:
     description: "Israel complains about lack of water and tempts the Lord"
     participants:
       - MOSES
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.17.1-7.KJV
-
   - id: AMALEK_ATTACKS
     name: Amalek Attacks Israel
     date: "~1491 BC"
@@ -2600,9 +3289,12 @@ biblical_events:
       - MOSES
       - JOSHUA
       - AARON
+    tags:
+      - biblical
+      - moses
+      - warfare
     references:
       - EXO.17.8-16.KJV
-
   - id: JETHRO_VISITS
     name: Jethro Visits Moses
     date: "~1490 BC"
@@ -2612,9 +3304,11 @@ biblical_events:
       - MOSES
       - JETHRO
       - ZIPPORAH
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.18.1-27.KJV
-
   - id: ISRAEL_ARRIVES_SINAI
     name: Israel Arrives at Mount Sinai
     date: "~1490 BC"
@@ -2622,9 +3316,12 @@ biblical_events:
     description: "Israel arrives at Mount Sinai exactly three months after leaving Egypt"
     participants:
       - MOSES
+    tags:
+      - biblical
+      - moses
+      - sin
     references:
       - EXO.19.1-2.KJV
-
   - id: GOD_PROPOSES_COVENANT
     name: God Proposes Covenant with Israel
     date: "~1490 BC"
@@ -2633,9 +3330,13 @@ biblical_events:
     participants:
       - GOD_FATHER
       - MOSES
+    tags:
+      - biblical
+      - covenant
+      - kingdom
+      - moses
     references:
       - EXO.19.3-8.KJV
-
   - id: ISRAEL_PREPARES
     name: Israel Prepares to Meet God
     date: "~1490 BC"
@@ -2643,9 +3344,11 @@ biblical_events:
     description: "Moses sanctifies the people for three days to prepare to meet God"
     participants:
       - MOSES
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.19.9-15.KJV
-
   - id: GOD_DESCENDS_SINAI
     name: God Descends on Mount Sinai
     date: "~1490 BC"
@@ -2654,9 +3357,12 @@ biblical_events:
     participants:
       - GOD_FATHER
       - MOSES
+    tags:
+      - biblical
+      - moses
+      - sin
     references:
       - EXO.19.16-25.KJV
-
   - id: TEN_COMMANDMENTS_SPOKEN
     name: Ten Commandments Spoken
     date: "~1490 BC"
@@ -2665,9 +3371,12 @@ biblical_events:
     participants:
       - GOD_FATHER
       - MOSES
+    tags:
+      - biblical
+      - law
+      - moses
     references:
       - EXO.20.1-21.KJV
-
   - id: CIVIL_LAWS_GIVEN
     name: Civil Laws Given
     date: "~1490 BC"
@@ -2676,9 +3385,12 @@ biblical_events:
     participants:
       - GOD_FATHER
       - MOSES
+    tags:
+      - biblical
+      - law
+      - moses
     references:
       - EXO.21.1-23.33.KJV
-
   - id: COVENANT_RATIFIED
     name: Covenant Ratified with Blood
     date: "~1490 BC"
@@ -2687,9 +3399,12 @@ biblical_events:
     participants:
       - MOSES
       - AARON
+    tags:
+      - biblical
+      - covenant
+      - moses
     references:
       - EXO.24.1-11.KJV
-
   - id: MOSES_FORTY_DAYS
     name: Moses on Mountain Forty Days
     date: "~1490 BC"
@@ -2698,9 +3413,11 @@ biblical_events:
     participants:
       - MOSES
       - GOD_FATHER
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.24.12-18.KJV
-
   - id: TABERNACLE_INSTRUCTIONS
     name: Tabernacle Instructions Given
     date: "~1490 BC"
@@ -2709,9 +3426,12 @@ biblical_events:
     participants:
       - GOD_FATHER
       - MOSES
+    tags:
+      - biblical
+      - moses
+      - temple
     references:
       - EXO.25.1-31.18.KJV
-
   - id: MOSES_BREAKS_TABLETS
     name: Moses Breaks the Stone Tablets
     date: "~1490 BC"
@@ -2719,9 +3439,11 @@ biblical_events:
     description: "Moses breaks the stone tablets when he sees the golden calf"
     participants:
       - MOSES
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.32.15-20.KJV
-
   - id: LEVITES_SLAY_IDOLATERS
     name: Levites Slay the Idolaters
     date: "~1490 BC"
@@ -2730,9 +3452,11 @@ biblical_events:
     participants:
       - MOSES
       - LEVI
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.32.25-29.KJV
-
   - id: MOSES_INTERCEDES
     name: Moses Intercedes for Israel
     date: "~1490 BC"
@@ -2741,9 +3465,12 @@ biblical_events:
     participants:
       - MOSES
       - GOD_FATHER
+    tags:
+      - biblical
+      - judgment
+      - moses
     references:
       - EXO.32.30-35.KJV
-
   - id: NEW_TABLETS_WRITTEN
     name: New Tablets Written
     date: "~1489 BC"
@@ -2752,9 +3479,12 @@ biblical_events:
     participants:
       - MOSES
       - GOD_FATHER
+    tags:
+      - biblical
+      - law
+      - moses
     references:
       - EXO.34.1-28.KJV
-
   - id: MOSES_FACE_SHINES
     name: Moses' Face Shines
     date: "~1489 BC"
@@ -2762,6 +3492,9 @@ biblical_events:
     description: "Moses' face shines with God's glory; he must wear a veil"
     participants:
       - MOSES
+    tags:
+      - biblical
+      - moses
     references:
       - EXO.34.29-35.KJV
 
@@ -2774,9 +3507,11 @@ biblical_events:
     participants:
       - JOSHUA
       - GOD_FATHER
+    tags:
+      - biblical
+      - covenant
     references:
       - JOS.1.1-9.KJV
-
   - id: BATTLE_OF_AI
     name: Battle of Ai
     date: "~1450 BC"
@@ -2784,27 +3519,35 @@ biblical_events:
     description: "Israel defeats Ai after dealing with Achan's sin"
     participants:
       - JOSHUA
+    tags:
+      - biblical
+      - sin
+      - warfare
     references:
       - JOS.7.1-8.35.KJV
-
   - id: OTHNIEL_JUDGES
     name: Othniel Becomes First Judge
     date: "~1374 BC"
     location: CANAAN
     description: "Othniel delivers Israel from Mesopotamian oppression"
     participants: []
+    tags:
+      - biblical
     references:
       - JDG.3.7-11.KJV
-
   - id: EHUD_ASSASSINATES_EGLON
     name: Ehud Assassinates King Eglon
     date: "~1316 BC"
     location: MOAB
     description: "Left-handed judge Ehud kills Moabite king Eglon and delivers Israel"
     participants: []
+    tags:
+      - biblical
+      - kingdom
+      - new-testament
+      - sin
     references:
       - JDG.3.12-30.KJV
-
   - id: DEBORAH_AND_BARAK
     name: Deborah and Barak Defeat Sisera
     date: "~1256 BC"
@@ -2814,9 +3557,12 @@ biblical_events:
       - DEBORAH
       - BARAK
       - JAEL
+    tags:
+      - biblical
+      - prophecy
+      - warfare
     references:
       - JDG.4.1-24.KJV
-
   - id: GIDEON_CALLS
     name: Gideon Called by Angel
     date: "~1169 BC"
@@ -2824,9 +3570,10 @@ biblical_events:
     description: "An angel calls Gideon to deliver Israel from Midianite oppression"
     participants:
       - GIDEON
+    tags:
+      - biblical
     references:
       - JDG.6.11-24.KJV
-
   - id: GIDEON_THREE_HUNDRED
     name: Gideon's 300 Warriors
     date: "~1169 BC"
@@ -2834,27 +3581,36 @@ biblical_events:
     description: "Gideon defeats vast Midianite army with only 300 men using trumpets and torches"
     participants:
       - GIDEON
+    tags:
+      - biblical
+      - sin
+      - warfare
     references:
       - JDG.7.1-25.KJV
-
   - id: ABIMELECH_USURPS
     name: Abimelech's Usurpation
     date: "~1129 BC"
     location: SHECHEM
     description: "Gideon's son Abimelech kills his brothers and becomes king"
     participants: []
+    tags:
+      - biblical
+      - kingdom
+      - new-testament
     references:
       - JDG.9.1-57.KJV
-
   - id: JEPHTHAH_VOW
     name: Jephthah's Tragic Vow
     date: "~1088 BC"
     location: GILEAD
     description: "Jephthah makes a rash vow and sacrifices his daughter after defeating Ammonites"
     participants: []
+    tags:
+      - biblical
+      - sacrifice
+      - warfare
     references:
       - JDG.11.29-40.KJV
-
   - id: SAMSON_BIRTH
     name: Birth of Samson
     date: "~1075 BC"
@@ -2863,9 +3619,12 @@ biblical_events:
     participants:
       - MANOAH
       - SAMSON
+    tags:
+      - biblical
+      - birth
+      - noah
     references:
       - JDG.13.2-25.KJV
-
   - id: SAMSON_STRENGTH
     name: Samson's Great Strength
     date: "~1055 BC"
@@ -2873,9 +3632,10 @@ biblical_events:
     description: "Samson demonstrates supernatural strength against the Philistines"
     participants:
       - SAMSON
+    tags:
+      - biblical
     references:
       - JDG.14.1-15.20.KJV
-
   - id: SAMSON_DELILAH
     name: Samson and Delilah
     date: "~1045 BC"
@@ -2884,9 +3644,10 @@ biblical_events:
     participants:
       - SAMSON
       - DELILAH
+    tags:
+      - biblical
     references:
       - JDG.16.4-22.KJV
-
   - id: SAMSON_DEATH
     name: Death of Samson
     date: "~1045 BC"
@@ -2894,6 +3655,11 @@ biblical_events:
     description: "Samson destroys Philistine temple, killing himself and many enemies"
     participants:
       - SAMSON
+    tags:
+      - biblical
+      - death
+      - judgment
+      - temple
     references:
       - JDG.16.23-31.KJV
 
@@ -2905,9 +3671,12 @@ biblical_events:
     description: "Philistines return the ark after seven months of plagues"
     participants:
       - SAMUEL
+    tags:
+      - biblical
+      - flood
+      - judgment
     references:
       - 1SA.6.1-21.KJV
-
   - id: ISRAEL_DEMANDS_KING
     name: Israel Demands a King
     date: "~1043 BC"
@@ -2915,6 +3684,9 @@ biblical_events:
     description: "Elders of Israel ask Samuel to appoint a king to rule over them"
     participants:
       - SAMUEL
+    tags:
+      - biblical
+      - kingdom
     references:
       - 1SA.8.1-22.KJV
 
@@ -2927,9 +3699,11 @@ biblical_events:
     participants:
       - SAUL
       - SAMUEL
+    tags:
+      - biblical
+      - kingdom
     references:
       - 1SA.10.17-27.KJV
-
   - id: SAUL_REJECTED
     name: Saul Rejected by God
     date: "~1025 BC"
@@ -2939,10 +3713,12 @@ biblical_events:
       - SAUL
       - SAMUEL
       - GOD_FATHER
+    tags:
+      - biblical
+      - kingdom
     references:
       - 1SA.13.1-15.KJV
       - 1SA.15.1-35.KJV
-
   - id: DAVID_GOLIATH
     name: David Defeats Goliath
     date: "~1020 BC"
@@ -2950,9 +3726,12 @@ biblical_events:
     description: "Young David kills giant Goliath with a stone from his sling"
     participants:
       - DAVID
+    tags:
+      - biblical
+      - david
+      - warfare
     references:
       - 1SA.17.1-58.KJV
-
   - id: DAVID_JONATHAN_COVENANT
     name: David and Jonathan's Covenant
     date: "~1019 BC"
@@ -2961,9 +3740,12 @@ biblical_events:
     participants:
       - DAVID
       - JONATHAN
+    tags:
+      - biblical
+      - covenant
+      - david
     references:
       - 1SA.18.1-4.KJV
-
   - id: SAUL_PURSUES_DAVID
     name: Saul Pursues David
     date: "~1018-1011 BC"
@@ -2973,9 +3755,11 @@ biblical_events:
       - SAUL
       - DAVID
       - JONATHAN
+    tags:
+      - biblical
+      - david
     references:
       - 1SA.19.1-26.25.KJV
-
   - id: DAVID_KING_ALL_ISRAEL
     name: David Becomes King of All Israel
     date: "~1003 BC"
@@ -2983,9 +3767,13 @@ biblical_events:
     description: "All tribes of Israel anoint David as king over united Israel"
     participants:
       - DAVID
+    tags:
+      - biblical
+      - david
+      - kingdom
+      - return
     references:
       - 2SA.5.1-5.KJV
-
   - id: ARK_TO_JERUSALEM
     name: Ark Brought to Jerusalem
     date: "~1000 BC"
@@ -2993,9 +3781,14 @@ biblical_events:
     description: "David brings the ark of the covenant to Jerusalem with great celebration"
     participants:
       - DAVID
+    tags:
+      - biblical
+      - covenant
+      - david
+      - flood
+      - kingdom
     references:
       - 2SA.6.1-23.KJV
-
   - id: DAVID_BATHSHEBA
     name: David's Sin with Bathsheba
     date: "~995 BC"
@@ -3004,9 +3797,13 @@ biblical_events:
     participants:
       - DAVID
       - BATHSHEBA
+    tags:
+      - biblical
+      - david
+      - death
+      - sin
     references:
       - 2SA.11.1-27.KJV
-
   - id: NATHAN_CONFRONTS_DAVID
     name: Nathan Confronts David
     date: "~995 BC"
@@ -3015,9 +3812,14 @@ biblical_events:
     participants:
       - DAVID
       - NATHAN_PROPHET
+    tags:
+      - biblical
+      - david
+      - prophecy
+      - sacrifice
+      - sin
     references:
       - 2SA.12.1-25.KJV
-
   - id: SOLOMON_CROWNED
     name: Solomon Crowned King
     date: "~970 BC"
@@ -3026,9 +3828,13 @@ biblical_events:
     participants:
       - SOLOMON
       - DAVID
+    tags:
+      - biblical
+      - david
+      - kingdom
+      - solomon
     references:
       - 1KI.1.28-53.KJV
-
   - id: SOLOMONS_WISDOM
     name: God Grants Solomon Wisdom
     date: "~969 BC"
@@ -3037,9 +3843,12 @@ biblical_events:
     participants:
       - SOLOMON
       - GOD_FATHER
+    tags:
+      - biblical
+      - prophecy
+      - solomon
     references:
       - 1KI.3.1-28.KJV
-
   - id: TEMPLE_CONSTRUCTION_BEGINS
     name: Temple Construction Begins
     date: "~966 BC"
@@ -3047,10 +3856,13 @@ biblical_events:
     description: "Solomon begins building the temple on Mount Moriah"
     participants:
       - SOLOMON
+    tags:
+      - biblical
+      - solomon
+      - temple
     references:
       - 1KI.6.1.KJV
       - 2CH.3.1-2.KJV
-
   - id: SOLOMONS_APOSTASY
     name: Solomon's Apostasy
     date: "~940 BC"
@@ -3058,9 +3870,12 @@ biblical_events:
     description: "Solomon's foreign wives turn his heart to worship other gods"
     participants:
       - SOLOMON
+    tags:
+      - biblical
+      - kingdom
+      - solomon
     references:
       - 1KI.11.1-13.KJV
-
   - id: JEROBOAM_GOLDEN_CALVES
     name: Jeroboam Makes Golden Calves
     date: "~930 BC"
@@ -3068,9 +3883,12 @@ biblical_events:
     description: "King Jeroboam sets up golden calves at Dan and Bethel to prevent worship in Jerusalem"
     participants:
       - JEROBOAM_I
+    tags:
+      - biblical
+      - kingdom
+      - new-testament
     references:
       - 1KI.12.25-33.KJV
-
   - id: AHAB_BECOMES_KING
     name: Ahab Becomes King of Israel
     date: "~874 BC"
@@ -3079,9 +3897,11 @@ biblical_events:
     participants:
       - AHAB
       - JEZEBEL
+    tags:
+      - biblical
+      - kingdom
     references:
       - 1KI.16.28-33.KJV
-
   - id: ELIJAH_DROUGHT
     name: Elijah Declares Drought
     date: "~863 BC"
@@ -3090,9 +3910,11 @@ biblical_events:
     participants:
       - ELIJAH
       - AHAB
+    tags:
+      - biblical
+      - judgment
     references:
       - 1KI.17.1.KJV
-
   - id: ELIJAH_CARMEL
     name: Elijah's Contest on Mount Carmel
     date: "~860 BC"
@@ -3100,9 +3922,12 @@ biblical_events:
     description: "Elijah defeats 450 prophets of Baal in contest proving God's power"
     participants:
       - ELIJAH
+    tags:
+      - biblical
+      - prophecy
+      - warfare
     references:
       - 1KI.18.16-46.KJV
-
   - id: ELIJAH_STILL_VOICE
     name: God Speaks to Elijah in Still Small Voice
     date: "~860 BC"
@@ -3111,9 +3936,10 @@ biblical_events:
     participants:
       - ELIJAH
       - GOD_FATHER
+    tags:
+      - biblical
     references:
       - 1KI.19.9-18.KJV
-
   - id: ELIJAH_CALLS_ELISHA
     name: Elijah Calls Elisha
     date: "~855 BC"
@@ -3122,9 +3948,10 @@ biblical_events:
     participants:
       - ELIJAH
       - ELISHA
+    tags:
+      - biblical
     references:
       - 1KI.19.19-21.KJV
-
   - id: ELIJAH_TRANSLATED
     name: Translation of Elijah
     date: "~848 BC"
@@ -3133,9 +3960,10 @@ biblical_events:
     participants:
       - ELIJAH
       - ELISHA
+    tags:
+      - biblical
     references:
       - 2KI.2.1-18.KJV
-
   - id: ELISHA_DOUBLE_PORTION
     name: Elisha Receives Double Portion
     date: "~848 BC"
@@ -3143,9 +3971,12 @@ biblical_events:
     description: "Elisha receives Elijah's mantle and begins his prophetic ministry"
     participants:
       - ELISHA
+    tags:
+      - biblical
+      - ministry
+      - prophecy
     references:
       - 2KI.2.9-25.KJV
-
   - id: SENNACHERIB_INVASION
     name: Sennacherib Invades Judah
     date: "~701 BC"
@@ -3154,9 +3985,11 @@ biblical_events:
     participants:
       - HEZEKIAH
       - ISAIAH
+    tags:
+      - biblical
+      - kingdom
     references:
       - 2KI.18.13-19.37.KJV
-
   - id: JERUSALEM_FALLS
     name: Fall of Jerusalem
     date: "~586 BC"
@@ -3164,6 +3997,10 @@ biblical_events:
     description: "Babylonians destroy Jerusalem and temple, taking people into exile"
     participants:
       - JEREMIAH
+    tags:
+      - biblical
+      - kingdom
+      - temple
     references:
       - 2KI.25.1-21.KJV
 
@@ -3178,9 +4015,10 @@ biblical_events:
       - SHADRACH
       - MESHACH
       - ABEDNEGO
+    tags:
+      - biblical
     references:
       - DAN.1.1-21.KJV
-
   - id: TEMPLE_FOUNDATION
     name: Temple Foundation Laid
     date: "~536 BC"
@@ -3188,9 +4026,11 @@ biblical_events:
     description: "Returning exiles lay foundation of second temple"
     participants:
       - ZERUBBABEL
+    tags:
+      - biblical
+      - temple
     references:
       - EZR.3.8-13.KJV
-
   - id: NEHEMIAH_RETURNS
     name: Nehemiah Returns
     date: "~444 BC"
@@ -3198,9 +4038,10 @@ biblical_events:
     description: "Nehemiah returns as governor to rebuild Jerusalem's walls"
     participants:
       - NEHEMIAH
+    tags:
+      - biblical
     references:
       - NEH.2.1-20.KJV
-
   - id: WALLS_COMPLETED
     name: Jerusalem Walls Completed
     date: "~444 BC"
@@ -3208,9 +4049,10 @@ biblical_events:
     description: "Jerusalem's walls are rebuilt in 52 days despite opposition"
     participants:
       - NEHEMIAH
+    tags:
+      - biblical
     references:
       - NEH.6.15-16.KJV
-
   - id: ESTHER_QUEEN
     name: Esther Becomes Queen
     date: "~479 BC"
@@ -3219,9 +4061,11 @@ biblical_events:
     participants:
       - ESTHER
       - MORDECAI
+    tags:
+      - biblical
+      - kingdom
     references:
       - EST.2.1-18.KJV
-
   - id: PURIM_DELIVERANCE
     name: Purim Deliverance
     date: "~473 BC"
@@ -3230,9 +4074,11 @@ biblical_events:
     participants:
       - ESTHER
       - MORDECAI
+    tags:
+      - biblical
+      - redemption
     references:
       - EST.7.1-10.3.KJV
-
   - id: JESUS_PRESENTATION
     name: Presentation of Jesus
     date: "~4 BC"
@@ -3242,9 +4088,15 @@ biblical_events:
       - JESUS
       - MARY_MOTHER_OF_JESUS
       - JOSEPH_HUSBAND_OF_MARY
+    tags:
+      - biblical
+      - christ
+      - incarnation
+      - jesus
+      - messiah
+      - temple
     references:
       - LUK.2.21-38.KJV
-
   - id: JESUS_BOY_TEMPLE
     name: Boy Jesus at Temple
     date: "~8 AD"
@@ -3254,9 +4106,16 @@ biblical_events:
       - JESUS
       - MARY_MOTHER_OF_JESUS
       - JOSEPH_HUSBAND_OF_MARY
+    tags:
+      - biblical
+      - christ
+      - incarnation
+      - jesus
+      - messiah
+      - new-testament
+      - temple
     references:
       - LUK.2.41-52.KJV
-
   - id: JOHN_BAPTIST_MINISTRY
     name: John Baptist Begins Ministry
     date: "~26 AD"
@@ -3264,9 +4123,12 @@ biblical_events:
     description: "John the Baptist begins preaching repentance and baptizing"
     participants:
       - JOHN_THE_BAPTIST
+    tags:
+      - biblical
+      - ministry
+      - new-testament
     references:
       - MAT.3.1-12.KJV
-
   - id: BAPTISM_OF_JESUS
     name: Baptism of Jesus
     date: "~27 AD"
@@ -3275,9 +4137,15 @@ biblical_events:
     participants:
       - JESUS
       - JOHN_THE_BAPTIST
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - ministry
+      - new-testament
     references:
       - MAT.3.13-17.KJV
-
   - id: CALLING_DISCIPLES
     name: Calling of First Disciples
     date: "~27 AD"
@@ -3289,9 +4157,16 @@ biblical_events:
       - ANDREW
       - JAMES_SON_OF_ZEBEDEE
       - JOHN_THE_APOSTLE
+    tags:
+      - apostolic
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - ministry
+      - new-testament
     references:
       - MAT.4.18-22.KJV
-
   - id: WATER_TO_WINE
     name: Water Turned to Wine
     date: "~27 AD"
@@ -3300,9 +4175,16 @@ biblical_events:
     participants:
       - JESUS
       - MARY_MOTHER_OF_JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - ministry
+      - miracle
+      - new-testament
     references:
       - JOH.2.1-11.KJV
-
   - id: HEALING_NOBLEMAN_SON
     name: Healing the Nobleman's Son
     date: "~27 AD"
@@ -3310,9 +4192,15 @@ biblical_events:
     description: "Jesus heals a nobleman's son from a distance with just His word"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - miracle
+      - new-testament
     references:
       - JOH.4.46-54.KJV
-
   - id: CALLING_FISHERMEN
     name: Calling the Fishermen
     date: "~27 AD"
@@ -3324,10 +4212,17 @@ biblical_events:
       - ANDREW
       - JAMES_SON_OF_ZEBEDEE
       - JOHN_THE_APOSTLE
+    tags:
+      - apostolic
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - ministry
+      - new-testament
     references:
       - MAT.4.18-22.KJV
       - LUK.5.1-11.KJV
-
   - id: HEALING_LEPER
     name: Healing the Leper
     date: "~27 AD"
@@ -3335,9 +4230,15 @@ biblical_events:
     description: "Jesus cleanses a leper who kneels before Him in faith"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - miracle
+      - new-testament
     references:
       - MAT.8.1-4.KJV
-
   - id: HEALING_CENTURIONS_SERVANT
     name: Healing the Centurion's Servant
     date: "~28 AD"
@@ -3345,9 +4246,16 @@ biblical_events:
     description: "Jesus heals a centurion's servant, praising the centurion's great faith"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - miracle
+      - new-testament
+      - sin
     references:
       - MAT.8.5-13.KJV
-
   - id: HEALING_PARALYTIC
     name: Healing the Paralytic
     date: "~28 AD"
@@ -3355,9 +4263,16 @@ biblical_events:
     description: "Jesus heals a paralytic lowered through the roof, first forgiving his sins"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - miracle
+      - new-testament
+      - sin
     references:
       - MAR.2.1-12.KJV
-
   - id: RAISING_WIDOWS_SON
     name: Raising the Widow's Son
     date: "~28 AD"
@@ -3365,9 +4280,16 @@ biblical_events:
     description: "Jesus raises a widow's only son from the dead, having compassion on her"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - miracle
+      - new-testament
+      - sin
     references:
       - LUK.7.11-17.KJV
-
   - id: CALMING_THE_STORM
     name: Calming the Storm
     date: "~28 AD"
@@ -3375,9 +4297,14 @@ biblical_events:
     description: "Jesus calms a fierce storm, demonstrating His power over nature"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - new-testament
     references:
       - MAT.8.23-27.KJV
-
   - id: HEALING_BLIND_MAN_BETHSAIDA
     name: Healing Blind Man at Bethsaida
     date: "~29 AD"
@@ -3385,9 +4312,16 @@ biblical_events:
     description: "Jesus heals a blind man in two stages using spittle and touch"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - miracle
+      - new-testament
+      - sin
     references:
       - MAR.8.22-26.KJV
-
   - id: WALKING_ON_WATER
     name: Walking on Water
     date: "~29 AD"
@@ -3396,9 +4330,17 @@ biblical_events:
     participants:
       - JESUS
       - PETER
+    tags:
+      - apostolic
+      - biblical
+      - christ
+      - jesus
+      - kingdom
+      - messiah
+      - ministry
+      - new-testament
     references:
       - MAT.14.22-33.KJV
-
   - id: FEEDING_FIVE_THOUSAND
     name: Feeding the Five Thousand
     date: "~29 AD"
@@ -3406,9 +4348,14 @@ biblical_events:
     description: "Jesus miraculously feeds 5000 people with five loaves and two fish"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - new-testament
     references:
       - MAT.14.13-21.KJV
-
   - id: PARABLE_GOOD_SAMARITAN
     name: Parable of the Good Samaritan
     date: "~29 AD"
@@ -3416,9 +4363,15 @@ biblical_events:
     description: "Jesus teaches about loving one's neighbor through the parable of the Good Samaritan"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - ministry
+      - new-testament
     references:
       - LUK.10.25-37.KJV
-
   - id: PARABLE_PRODIGAL_SON
     name: Parable of the Prodigal Son
     date: "~29 AD"
@@ -3426,9 +4379,14 @@ biblical_events:
     description: "Jesus tells the parable of the prodigal son to illustrate God's forgiveness"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - new-testament
     references:
       - LUK.15.11-32.KJV
-
   - id: RAISING_LAZARUS
     name: Raising of Lazarus
     date: "~30 AD"
@@ -3439,9 +4397,16 @@ biblical_events:
       - LAZARUS
       - MARY_OF_BETHANY
       - MARTHA
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - miracle
+      - new-testament
+      - sin
     references:
       - JOH.11.1-44.KJV
-
   - id: HEALING_TEN_LEPERS
     name: Healing the Ten Lepers
     date: "~30 AD"
@@ -3449,9 +4414,15 @@ biblical_events:
     description: "Jesus heals ten lepers, but only one returns to thank Him"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - miracle
+      - new-testament
     references:
       - LUK.17.11-19.KJV
-
   - id: HEALING_BLIND_BARTIMAEUS
     name: Healing Blind Bartimaeus
     date: "~30 AD"
@@ -3459,9 +4430,15 @@ biblical_events:
     description: "Jesus heals blind Bartimaeus who cried out for mercy"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - miracle
+      - new-testament
     references:
       - MAR.10.46-52.KJV
-
   - id: HEALING_WITHERED_HAND
     name: Healing the Man with Withered Hand
     date: "~28 AD"
@@ -3469,10 +4446,16 @@ biblical_events:
     description: "Jesus heals a man with a withered hand on the Sabbath"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - miracle
+      - new-testament
     references:
       - MAT.12.9-14.KJV
       - MAR.3.1-6.KJV
-
   - id: HEALING_WOMAN_BLEEDING
     name: Healing Woman with Issue of Blood
     date: "~29 AD"
@@ -3480,10 +4463,16 @@ biblical_events:
     description: "Woman with 12-year bleeding issue is healed by touching Jesus' garment"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - miracle
+      - new-testament
     references:
       - MAT.9.20-22.KJV
       - MAR.5.25-34.KJV
-
   - id: HEALING_DEAF_MUTE
     name: Healing the Deaf and Mute Man
     date: "~29 AD"
@@ -3491,9 +4480,15 @@ biblical_events:
     description: "Jesus heals a deaf man with speech impediment"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - miracle
+      - new-testament
     references:
       - MAR.7.31-37.KJV
-
   - id: CASTING_OUT_LEGION
     name: Casting Out Legion of Demons
     date: "~28 AD"
@@ -3501,11 +4496,16 @@ biblical_events:
     description: "Jesus casts legion of demons from a man into swine"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - new-testament
     references:
       - MAT.8.28-34.KJV
       - MAR.5.1-20.KJV
       - LUK.8.26-39.KJV
-
   - id: HEALING_BLIND_BORN
     name: Healing Man Born Blind
     date: "~29 AD"
@@ -3513,9 +4513,17 @@ biblical_events:
     description: "Jesus heals a man born blind by making clay with spittle"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - birth
+      - christ
+      - jesus
+      - kingdom
+      - messiah
+      - miracle
+      - new-testament
     references:
       - JOH.9.1-41.KJV
-
   - id: HEALING_SYROPHOENICIAN_DAUGHTER
     name: Healing Syrophoenician Woman's Daughter
     date: "~29 AD"
@@ -3523,10 +4531,16 @@ biblical_events:
     description: "Jesus heals a Gentile woman's daughter possessed by demon"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - miracle
+      - new-testament
     references:
       - MAT.15.21-28.KJV
       - MAR.7.24-30.KJV
-
   - id: HEALING_DROPSICAL_MAN
     name: Healing Man with Dropsy
     date: "~29 AD"
@@ -3534,9 +4548,15 @@ biblical_events:
     description: "Jesus heals a man with dropsy on the Sabbath"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - miracle
+      - new-testament
     references:
       - LUK.14.1-6.KJV
-
   - id: CLEANSING_TEN_LEPERS
     name: Cleansing Ten Lepers
     date: "~30 AD"
@@ -3544,9 +4564,15 @@ biblical_events:
     description: "Jesus cleanses ten lepers, only one Samaritan returns to thank Him"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - new-testament
+      - sin
     references:
       - LUK.17.11-19.KJV
-
   - id: HEALING_SERVANTS_EAR
     name: Healing Malchus' Ear
     date: "~30 AD"
@@ -3555,10 +4581,17 @@ biblical_events:
     participants:
       - JESUS
       - PETER
+    tags:
+      - apostolic
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - miracle
+      - new-testament
     references:
       - LUK.22.50-51.KJV
       - JOH.18.10-11.KJV
-
   - id: TRANSFIGURATION
     name: Transfiguration of Jesus
     date: "~29 AD"
@@ -3569,9 +4602,15 @@ biblical_events:
       - PETER
       - JAMES_SON_OF_ZEBEDEE
       - JOHN_THE_APOSTLE
+    tags:
+      - apostolic
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - new-testament
     references:
       - MAT.17.1-13.KJV
-
   - id: GETHSEMANE_PRAYER
     name: Prayer in Gethsemane
     date: "~30 AD"
@@ -3579,9 +4618,14 @@ biblical_events:
     description: "Jesus prays in agony, sweating drops of blood before crucifixion"
     participants:
       - JESUS
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - new-testament
     references:
       - MAT.26.36-46.KJV
-
   - id: ARREST_OF_JESUS
     name: Arrest of Jesus
     date: "~30 AD"
@@ -3590,9 +4634,15 @@ biblical_events:
     participants:
       - JESUS
       - JUDAS_ISCARIOT
+    tags:
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - new-testament
+      - temple
     references:
       - MAT.26.47-56.KJV
-
   - id: PAUL_CONVERSION
     name: Conversion of Paul
     date: "~35 AD"
@@ -3601,9 +4651,15 @@ biblical_events:
     participants:
       - PAUL
       - JESUS
+    tags:
+      - apostolic
+      - biblical
+      - christ
+      - jesus
+      - messiah
+      - new-testament
     references:
       - ACT.9.1-19.KJV
-
   - id: PETERS_VISION_CORNELIUS
     name: Peter's Vision and Cornelius
     date: "~40 AD"
@@ -3612,9 +4668,13 @@ biblical_events:
     participants:
       - PETER
       - CORNELIUS
+    tags:
+      - apostolic
+      - biblical
+      - new-testament
+      - prophecy
     references:
       - ACT.10.1-48.KJV
-
   - id: CHURCH_AT_ANTIOCH
     name: Church Established at Antioch
     date: "~42 AD"
@@ -3623,9 +4683,12 @@ biblical_events:
     participants:
       - BARNABAS
       - PAUL
+    tags:
+      - apostolic
+      - biblical
+      - new-testament
     references:
       - ACT.11.19-30.KJV
-
   - id: JAMES_MARTYRED
     name: Martyrdom of James
     date: "~44 AD"
@@ -3633,9 +4696,13 @@ biblical_events:
     description: "James, brother of John, is killed by sword under Herod Agrippa"
     participants:
       - JAMES_SON_OF_ZEBEDEE
+    tags:
+      - apostolic
+      - biblical
+      - death
+      - new-testament
     references:
       - ACT.12.1-2.KJV
-
   - id: PETER_IMPRISONED_FREED
     name: Peter Imprisoned and Freed
     date: "~44 AD"
@@ -3643,9 +4710,12 @@ biblical_events:
     description: "Peter is imprisoned by Herod but miraculously freed by an angel"
     participants:
       - PETER
+    tags:
+      - apostolic
+      - biblical
+      - new-testament
     references:
       - ACT.12.3-19.KJV
-
   - id: FIRST_MISSIONARY_JOURNEY
     name: Paul's First Missionary Journey
     date: "~47-48 AD"
@@ -3654,9 +4724,12 @@ biblical_events:
     participants:
       - PAUL
       - BARNABAS
+    tags:
+      - apostolic
+      - biblical
+      - new-testament
     references:
       - ACT.13.1-14.28.KJV
-
   - id: SECOND_MISSIONARY_JOURNEY
     name: Paul's Second Missionary Journey
     date: "~50-52 AD"
@@ -3666,9 +4739,12 @@ biblical_events:
       - PAUL
       - SILAS
       - TIMOTHY
+    tags:
+      - apostolic
+      - biblical
+      - new-testament
     references:
       - ACT.15.36-18.22.KJV
-
   - id: THIRD_MISSIONARY_JOURNEY
     name: Paul's Third Missionary Journey
     date: "~53-57 AD"
@@ -3676,9 +4752,12 @@ biblical_events:
     description: "Paul spends three years in Ephesus and revisits churches in Asia Minor and Greece"
     participants:
       - PAUL
+    tags:
+      - apostolic
+      - biblical
+      - new-testament
     references:
       - ACT.18.23-21.17.KJV
-
   - id: PETER_CORNELIUS
     name: Peter and Cornelius
     date: "~40 AD"
@@ -3686,9 +4765,14 @@ biblical_events:
     description: "Peter receives vision and preaches to Gentile Cornelius"
     participants:
       - PETER
+    tags:
+      - apostolic
+      - biblical
+      - ministry
+      - new-testament
+      - prophecy
     references:
       - ACT.10.1-48.KJV
-
   - id: PAUL_APPEALS_CAESAR
     name: Paul Appeals to Caesar
     date: "~59 AD"
@@ -3696,6 +4780,17 @@ biblical_events:
     description: "Paul exercises right as Roman citizen to appeal to Caesar"
     participants:
       - PAUL
+    tags:
+      - abraham
+      - apostolic
+      - biblical
+      - christ
+      - david
+      - jesus
+      - messiah
+      - moses
+      - new-testament
+      - noah
     references:
       - ACT.25.10-12.KJV
 

@@ -1,0 +1,4139 @@
+biblical_persons:
+  - id: GOD_FATHER
+    name: God the Father
+    ethnicity: Divine
+    tags:
+      - divine
+      - creator
+      - eternal
+      - trinity
+      - almighty
+      - father
+      - biblical
+    names:
+      - name: Almighty
+        reference: GEN.17.1.KJV
+      - name: Creator
+        reference: GEN.1.1.KJV
+      - name: Father
+        reference: MAT.6.9.KJV
+      - name: I AM
+        reference: EXO.3.14.KJV
+      - name: Jehovah
+        reference: PSA.83.18.KJV
+      - name: Lord
+        reference: GEN.2.4.KJV
+  - id: JESUS
+    name: Jesus
+    ethnicity: Jewish
+    tags:
+      - messiah
+      - savior
+      - son-of-god
+      - redeemer
+      - king
+      - prophet
+      - priest
+      - lamb-of-god
+      - christ
+      - emmanuel
+      - lord
+      - divine
+      - incarnate
+      - biblical
+    names:
+      - name: Alpha and Omega
+        reference: REV.1.8.KJV
+      - name: Bread of Life
+        reference: JHN.6.35.KJV
+      - name: Christ
+        reference: MAT.1.16.KJV
+      - name: Emmanuel
+        reference: ISA.7.14.KJV
+      - name: Good Shepherd
+        reference: JHN.10.11.KJV
+      - name: Lamb of God
+        reference: JHN.1.29.KJV
+      - name: Light of the World
+        reference: JHN.8.12.KJV
+      - name: Lord
+        reference: JHN.21.7.KJV
+      - name: Messiah
+        reference: JHN.1.41.KJV
+      - name: Redeemer
+        reference: JOB.19.25.KJV
+      - name: Savior
+        reference: 1TI.4.10.KJV
+      - name: Son of the living God
+        reference: MAT.16.16.KJV
+    birth_date: ~4 BC
+    death_date: ~30 AD
+    parents:
+      - MARY_MOTHER_OF_JESUS
+    foster_father: JOSEPH_HUSBAND_OF_MARY
+    references:
+      - MAT.1.16.KJV
+      - LUK.3.23.KJV
+  - id: ADAM
+    name: Adam
+    gender: male
+    ethnicity: Antediluvian
+    tags:
+      - first-man
+      - created
+      - pre-flood
+      - father-of-humanity
+      - garden-of-eden
+      - fall
+      - biblical
+    age: 930y
+    birth_date: ~4004 BC
+    death_date: ~3074 BC
+    created: true
+    references:
+      - GEN.1.27.KJV
+      - GEN.2.20.KJV
+      - GEN.5.3.KJV
+  - id: EVE
+    name: Eve
+    gender: female
+    ethnicity: Antediluvian
+    tags:
+      - first-woman
+      - created
+      - pre-flood
+      - mother-of-humanity
+      - garden-of-eden
+      - fall
+      - biblical
+    spouses:
+      - ADAM
+    created: true
+    references:
+      - GEN.2.22.KJV
+      - GEN.3.20.KJV
+  - id: CAIN
+    name: Cain
+    gender: male
+    ethnicity: Antediluvian
+    tags:
+      - pre-flood
+      - firstborn
+      - farmer
+      - murderer
+      - wanderer
+      - city-builder
+      - biblical
+    parents:
+      - ADAM
+      - EVE
+    references:
+      - GEN.4.1.KJV
+  - id: ABEL
+    name: Abel
+    gender: male
+    ethnicity: Antediluvian
+    tags:
+      - pre-flood
+      - shepherd
+      - righteous
+      - murdered
+      - sacrifice
+      - martyr
+      - biblical
+    parents:
+      - ADAM
+      - EVE
+    references:
+      - GEN.4.2.KJV
+  - id: SETH
+    name: Seth
+    gender: male
+    ethnicity: Antediluvian
+    tags:
+      - pre-flood
+      - godly-line
+      - replacement
+      - father-of-nations
+      - biblical
+    age: 912y
+    parents:
+      - ADAM
+      - EVE
+    references:
+      - GEN.4.25.KJV
+      - GEN.5.6.KJV
+  - id: ENOS
+    name: Enos
+    gender: male
+    ethnicity: Antediluvian
+    tags:
+      - pre-flood
+      - godly-line
+      - worship
+      - calling-on-god
+      - biblical
+    age: 905y
+    parents:
+      - SETH
+    references:
+      - GEN.5.9.KJV
+  - id: CAINAN
+    name: Cainan
+    gender: male
+    ethnicity: Antediluvian
+    tags:
+      - pre-flood
+      - godly-line
+      - patriarch
+      - biblical
+    age: 910y
+    parents:
+      - ENOS
+    references:
+      - GEN.5.12.KJV
+  - id: MAHALALEEL
+    name: Mahalaleel
+    gender: male
+    ethnicity: Antediluvian
+    tags:
+      - pre-flood
+      - godly-line
+      - patriarch
+      - biblical
+    age: 895y
+    parents:
+      - CAINAN
+    references:
+      - GEN.5.15.KJV
+  - id: JARED
+    name: Jared
+    gender: male
+    ethnicity: Antediluvian
+    tags:
+      - pre-flood
+      - godly-line
+      - patriarch
+      - longevity
+      - biblical
+    age: 962y
+    parents:
+      - MAHALALEEL
+    references:
+      - GEN.5.18.KJV
+  - id: ENOCH
+    name: Enoch
+    gender: male
+    ethnicity: Antediluvian
+    tags:
+      - pre-flood
+      - godly-line
+      - translated
+      - walked-with-god
+      - prophet
+      - no-death
+      - biblical
+    age: 365y
+    parents:
+      - JARED
+    translated: true
+    references:
+      - GEN.5.21.KJV
+      - GEN.5.24.KJV
+  - id: METHUSELAH
+    name: Methuselah
+    gender: male
+    ethnicity: Antediluvian
+    tags:
+      - pre-flood
+      - godly-line
+      - patriarch
+      - longevity
+      - oldest-man
+      - biblical
+    age: 969y
+    birth_date: ~3317 BC
+    death_date: ~2348 BC
+    parents:
+      - ENOCH
+    references:
+      - GEN.5.25.KJV
+  - id: LAMECH_FATHER_OF_NOAH
+    name: Lamech
+    gender: male
+    ethnicity: Antediluvian
+    tags:
+      - pre-flood
+      - godly-line
+      - patriarch
+      - father-of-noah
+      - biblical
+    age: 777y
+    parents:
+      - METHUSELAH
+    references:
+      - GEN.5.28.KJV
+  - id: NOAH
+    name: Noah
+    gender: male
+    ethnicity: Antediluvian
+    tags:
+      - pre-flood
+      - righteous
+      - ark-builder
+      - flood-survivor
+      - covenant
+      - new-beginning
+      - patriarch
+      - biblical
+    age: 950y
+    birth_date: ~2948 BC
+    death_date: ~1998 BC
+    parents:
+      - LAMECH_FATHER_OF_NOAH
+    spouses:
+      - NOAH_WIFE
+    references:
+      - GEN.5.32.KJV
+      - GEN.6.8.KJV
+  - id: NOAH_WIFE
+    name: Noah's Wife
+    gender: female
+    ethnicity: Antediluvian
+    tags:
+      - pre-flood
+      - flood-survivor
+      - matriarch
+      - covenant
+      - biblical
+    spouses:
+      - NOAH
+    references:
+      - GEN.7.7.KJV
+  - id: SHEM
+    name: Shem
+    gender: male
+    ethnicity: Semitic
+    tags:
+      - post-flood
+      - blessed
+      - father-of-nations
+      - semitic-peoples
+      - covenant-line
+      - biblical
+    age: 600y
+    parents:
+      - NOAH
+      - NOAH_WIFE
+    references:
+      - GEN.5.32.KJV
+      - GEN.11.10.KJV
+  - id: HAM
+    name: Ham
+    gender: male
+    ethnicity: Hamitic
+    tags:
+      - post-flood
+      - father-of-nations
+      - hamitic-peoples
+      - cursed-line
+      - africa
+      - biblical
+    parents:
+      - NOAH
+      - NOAH_WIFE
+    references:
+      - GEN.5.32.KJV
+      - GEN.9.22.KJV
+  - id: JAPHETH
+    name: Japheth
+    gender: male
+    ethnicity: Japhetic
+    tags:
+      - post-flood
+      - blessed
+      - father-of-nations
+      - indo-european
+      - enlarged
+      - biblical
+    parents:
+      - NOAH
+      - NOAH_WIFE
+    references:
+      - GEN.5.32.KJV
+      - GEN.10.21.KJV
+  - id: ARPHAXAD
+    name: Arphaxad
+    gender: male
+    ethnicity: Semitic
+    tags:
+      - post-flood
+      - semitic
+      - covenant-line
+      - patriarch
+      - biblical
+    age: 438y
+    parents:
+      - SHEM
+    references:
+      - GEN.11.12.KJV
+  - id: SALAH
+    name: Salah
+    gender: male
+    ethnicity: Semitic
+    tags:
+      - post-flood
+      - semitic
+      - covenant-line
+      - patriarch
+      - biblical
+    age: 433y
+    parents:
+      - ARPHAXAD
+    references:
+      - GEN.11.14.KJV
+  - id: EBER
+    name: Eber
+    gender: male
+    ethnicity: Hebrew
+    tags:
+      - post-flood
+      - hebrew
+      - covenant-line
+      - patriarch
+      - father-of-hebrews
+      - biblical
+    age: 464y
+    parents:
+      - SALAH
+    references:
+      - GEN.11.16.KJV
+  - id: PELEG
+    name: Peleg
+    gender: male
+    ethnicity: Hebrew
+    tags:
+      - post-flood
+      - hebrew
+      - covenant-line
+      - patriarch
+      - division-of-earth
+      - biblical
+    age: 239y
+    parents:
+      - EBER
+    references:
+      - GEN.11.18.KJV
+  - id: REU
+    name: Reu
+    gender: male
+    ethnicity: Hebrew
+    tags:
+      - post-flood
+      - hebrew
+      - covenant-line
+      - patriarch
+      - biblical
+    age: 239y
+    parents:
+      - PELEG
+    references:
+      - GEN.11.20.KJV
+  - id: SERUG
+    name: Serug
+    gender: male
+    ethnicity: Hebrew
+    tags:
+      - post-flood
+      - hebrew
+      - covenant-line
+      - patriarch
+      - biblical
+    age: 230y
+    parents:
+      - REU
+    references:
+      - GEN.11.22.KJV
+  - id: NAHOR_GRANDFATHER_OF_ABRAHAM
+    name: Nahor
+    gender: male
+    ethnicity: Hebrew/Chaldean
+    tags:
+      - post-flood
+      - hebrew
+      - chaldean
+      - covenant-line
+      - patriarch
+      - biblical
+    age: 148y
+    parents:
+      - SERUG
+    references:
+      - GEN.11.24.KJV
+  - id: TERAH
+    name: Terah
+    gender: male
+    ethnicity: Hebrew/Chaldean
+    tags:
+      - post-flood
+      - hebrew
+      - chaldean
+      - covenant-line
+      - patriarch
+      - father-of-abraham
+      - biblical
+    age: 205y
+    parents:
+      - NAHOR_GRANDFATHER_OF_ABRAHAM
+    references:
+      - GEN.11.26.KJV
+  - id: ABRAHAM
+    name: Abraham
+    names:
+      - name: Abram
+        reference: GEN.11.26.KJV
+    gender: male
+    ethnicity: Hebrew
+    tags:
+      - patriarch
+      - covenant
+      - father-of-faith
+      - promised-land
+      - friend-of-god
+      - circumcision
+      - isaac-offering
+      - biblical
+    age: 175y
+    birth_date: 1951 BC
+    death_date: 1776 BC
+    parents:
+      - TERAH
+    spouses:
+      - SARAH
+      - HAGAR
+      - KETURAH
+    references:
+      - GEN.11.26.KJV
+      - GEN.17.5.KJV
+  - id: SARAH
+    name: Sarah
+    names:
+      - name: Sarai
+        reference: GEN.11.29.KJV
+    gender: female
+    ethnicity: Hebrew
+    tags:
+      - matriarch
+      - covenant
+      - miraculous-birth
+      - isaac-mother
+      - barren-then-fruitful
+      - biblical
+    age: 127y
+    spouses:
+      - ABRAHAM
+    references:
+      - GEN.11.29.KJV
+      - GEN.17.15.KJV
+  - id: HAGAR
+    name: Hagar
+    gender: female
+    ethnicity: Egyptian
+    tags:
+      - servant
+      - egyptian
+      - ishmael-mother
+      - wilderness
+      - angel-visitation
+      - biblical
+    spouses:
+      - ABRAHAM
+    references:
+      - GEN.16.1.KJV
+  - id: KETURAH
+    name: Keturah
+    gender: female
+    ethnicity: Arabian/Midianite
+    tags:
+      - wife
+      - arabian
+      - midianite
+      - mother-of-nations
+      - biblical
+    spouses:
+      - ABRAHAM
+    references:
+      - GEN.25.1.KJV
+  - id: ISAAC
+    name: Isaac
+    gender: male
+    ethnicity: Hebrew
+    tags:
+      - patriarch
+      - covenant
+      - promised-son
+      - miracle-birth
+      - sacrifice
+      - heir
+      - peaceful
+      - biblical
+    age: 180y
+    birth_date: ~2066 BC
+    death_date: ~1886 BC
+    parents:
+      - ABRAHAM
+      - SARAH
+    spouses:
+      - REBEKAH
+    references:
+      - GEN.21.3.KJV
+      - GEN.25.26.KJV
+  - id: ISHMAEL
+    name: Ishmael
+    gender: male
+    ethnicity: Hebrew/Egyptian
+    tags:
+      - abraham-son
+      - archer
+      - wilderness
+      - arab-nations
+      - covenant-blessing
+      - biblical
+    age: 137y
+    parents:
+      - ABRAHAM
+      - HAGAR
+    references:
+      - GEN.16.11.KJV
+      - GEN.25.17.KJV
+  - id: REBEKAH
+    name: Rebekah
+    gender: female
+    ethnicity: Aramean
+    tags:
+      - matriarch
+      - aramean
+      - isaac-wife
+      - twin-mother
+      - prophecy
+      - deception
+      - biblical
+    spouses:
+      - ISAAC
+    parents:
+      - BETHUEL
+    references:
+      - GEN.22.23.KJV
+      - GEN.24.15.KJV
+  - id: BETHUEL
+    name: Bethuel
+    gender: male
+    ethnicity: Aramean
+    tags:
+      - aramean
+      - rebekah-father
+      - nahor-son
+      - biblical
+    parents:
+      - NAHOR_BROTHER_OF_ABRAHAM
+      - MILCAH
+    references:
+      - GEN.22.22.KJV
+  - id: NAHOR_BROTHER_OF_ABRAHAM
+    name: Nahor
+    gender: male
+    ethnicity: Hebrew
+    tags:
+      - hebrew
+      - abraham-brother
+      - aramean-connection
+      - biblical
+    parents:
+      - TERAH
+    spouses:
+      - MILCAH
+    references:
+      - GEN.11.26.KJV
+      - GEN.22.20.KJV
+  - id: MILCAH
+    name: Milcah
+    gender: female
+    ethnicity: Hebrew
+    tags:
+      - hebrew
+      - nahor-wife
+      - bethuel-mother
+      - biblical
+    spouses:
+      - NAHOR_BROTHER_OF_ABRAHAM
+    references:
+      - GEN.11.29.KJV
+  - id: HARAN
+    name: Haran
+    gender: male
+    ethnicity: Hebrew
+    tags:
+      - hebrew
+      - abraham-brother
+      - lot-father
+      - early-death
+      - biblical
+    parents:
+      - TERAH
+    references:
+      - GEN.11.26.KJV
+  - id: LOT
+    name: Lot
+    gender: male
+    ethnicity: Hebrew
+    tags:
+      - hebrew
+      - abraham-nephew
+      - sodom
+      - escape
+      - moab-ammon-father
+      - biblical
+    parents:
+      - HARAN
+    references:
+      - GEN.11.27.KJV
+  - id: JACOB
+    name: Jacob
+    gender: male
+    ethnicity: Hebrew
+    tags:
+      - patriarch
+      - israel
+      - twelve-sons
+      - covenant
+      - wrestler-with-god
+      - deceiver
+      - father-of-tribes
+      - biblical
+    names:
+      - name: Israel
+        reference: GEN.32.28.KJV
+    age: 147y
+    birth_date: ~2006 BC
+    death_date: ~1859 BC
+    parents:
+      - ISAAC
+      - REBEKAH
+    spouses:
+      - LEAH
+      - RACHEL
+      - BILHAH
+      - ZILPAH
+    references:
+      - GEN.25.26.KJV
+      - GEN.32.28.KJV
+  - id: ESAU
+    name: Esau
+    gender: male
+    ethnicity: Hebrew/Edomite
+    tags:
+      - hunter
+      - red
+      - edom
+      - birthright-seller
+      - blessing-lost
+      - edomite-father
+      - biblical
+    names:
+      - name: Edom
+        reference: GEN.25.30.KJV
+    parents:
+      - ISAAC
+      - REBEKAH
+    references:
+      - GEN.25.25.KJV
+  - id: LABAN
+    name: Laban
+    gender: male
+    ethnicity: Aramean
+    tags:
+      - aramean
+      - deceiver
+      - rachel-leah-father
+      - jacob-employer
+      - biblical
+    parents:
+      - BETHUEL
+    references:
+      - GEN.24.29.KJV
+  - id: LEAH
+    name: leah
+    gender: female
+    ethnicity: Aramean
+    tags:
+      - matriarch
+      - aramean
+      - jacob-wife
+      - six-sons
+      - unloved
+      - mother-of-judah
+      - biblical
+    parents:
+      - LABAN
+    spouses:
+      - JACOB
+    references:
+      - GEN.29.16.KJV
+  - id: RACHEL
+    name: Rachel
+    gender: female
+    ethnicity: Aramean
+    tags:
+      - matriarch
+      - aramean
+      - jacob-beloved
+      - barren-then-fruitful
+      - joseph-benjamin-mother
+      - beautiful
+      - biblical
+    parents:
+      - LABAN
+    spouses:
+      - JACOB
+    references:
+      - GEN.29.16.KJV
+  - id: BILHAH
+    name: Bilhah
+    gender: female
+    ethnicity: Aramean
+    tags:
+      - servant
+      - aramean
+      - concubine
+      - dan-naphtali-mother
+      - biblical
+    spouses:
+      - JACOB
+    references:
+      - GEN.29.29.KJV
+  - id: ZILPAH
+    name: Zilpah
+    gender: female
+    ethnicity: Aramean
+    tags:
+      - servant
+      - aramean
+      - concubine
+      - gad-asher-mother
+      - biblical
+    spouses:
+      - JACOB
+    references:
+      - GEN.29.24.KJV
+  - id: REUBEN
+    name: Reuben
+    gender: male
+    ethnicity: Hebrew/Israelite
+    tags:
+      - tribe-founder
+      - firstborn
+      - lost-birthright
+      - unstable
+      - incest
+      - biblical
+    parents:
+      - JACOB
+      - LEAH
+    references:
+      - GEN.29.32.KJV
+  - id: SIMEON
+    name: Simeon
+    gender: male
+    ethnicity: Hebrew/Israelite
+    tags:
+      - tribe-founder
+      - violent
+      - shechem-revenge
+      - jacob-son
+      - biblical
+    parents:
+      - JACOB
+      - LEAH
+    references:
+      - GEN.29.33.KJV
+  - id: LEVI
+    name: Levi
+    gender: male
+    ethnicity: Hebrew/Israelite
+    tags:
+      - tribe-founder
+      - priest-tribe
+      - violent
+      - shechem-revenge
+      - moses-ancestor
+      - aaron-ancestor
+      - biblical
+    parents:
+      - JACOB
+      - LEAH
+    references:
+      - GEN.29.34.KJV
+  - id: JUDAH
+    name: Judah
+    gender: male
+    ethnicity: Hebrew/Israelite
+    tags:
+      - tribe-founder
+      - royal-line
+      - praise
+      - lion
+      - scepter
+      - messiah-line
+      - christ-ancestor
+      - biblical
+    parents:
+      - JACOB
+      - LEAH
+    spouses:
+      - TAMAR
+    references:
+      - GEN.29.35.KJV
+      - GEN.38.6.KJV
+  - id: DAN
+    name: Dan
+    gender: male
+    ethnicity: Hebrew/Israelite
+    tags:
+      - tribe-founder
+      - judge
+      - serpent
+      - bilhah-son
+      - biblical
+    parents:
+      - JACOB
+      - BILHAH
+    references:
+      - GEN.30.6.KJV
+  - id: NAPHTALI
+    name: Naphtali
+    gender: male
+    ethnicity: Hebrew/Israelite
+    tags:
+      - tribe-founder
+      - wrestling
+      - hind
+      - bilhah-son
+      - biblical
+    parents:
+      - JACOB
+      - BILHAH
+    references:
+      - GEN.30.8.KJV
+  - id: GAD
+    name: Gad
+    gender: male
+    ethnicity: Hebrew/Israelite
+    tags:
+      - tribe-founder
+      - troop
+      - warrior
+      - zilpah-son
+      - biblical
+    parents:
+      - JACOB
+      - ZILPAH
+    references:
+      - GEN.30.11.KJV
+  - id: ASHER
+    name: Asher
+    gender: male
+    ethnicity: Hebrew/Israelite
+    tags:
+      - tribe-founder
+      - happy
+      - blessed
+      - royal-dainties
+      - zilpah-son
+      - biblical
+    parents:
+      - JACOB
+      - ZILPAH
+    references:
+      - GEN.30.13.KJV
+  - id: ISSACHAR
+    name: Issachar
+    gender: male
+    ethnicity: Hebrew/Israelite
+    tags:
+      - tribe-founder
+      - strong-donkey
+      - service
+      - reward
+      - leah-son
+      - biblical
+    parents:
+      - JACOB
+      - LEAH
+    references:
+      - GEN.30.18.KJV
+  - id: ZEBULUN
+    name: Zebulun
+    gender: male
+    ethnicity: Hebrew/Israelite
+    tags:
+      - tribe-founder
+      - dwelling
+      - haven
+      - ships
+      - leah-son
+      - biblical
+    parents:
+      - JACOB
+      - LEAH
+    references:
+      - GEN.30.20.KJV
+  - id: JOSEPH
+    name: Joseph
+    gender: male
+    ethnicity: Hebrew/Israelite
+    tags:
+      - dreamer
+      - egypt
+      - prime-minister
+      - coat-of-colors
+      - forgiveness
+      - provider
+      - ephraim-manasseh-father
+      - biblical
+    parents:
+      - JACOB
+      - RACHEL
+    spouses:
+      - ASENATH
+    references:
+      - GEN.30.24.KJV
+      - GEN.41.45.KJV
+  - id: BENJAMIN
+    name: Benjamin
+    gender: male
+    ethnicity: Hebrew/Israelite
+    tags:
+      - tribe-founder
+      - beloved
+      - right-hand
+      - rachel-son
+      - youngest
+      - wolf
+      - biblical
+    parents:
+      - JACOB
+      - RACHEL
+    references:
+      - GEN.35.18.KJV
+  - id: DINAH
+    name: Dinah
+    gender: female
+    ethnicity: Hebrew/Israelite
+    tags:
+      - jacob-daughter
+      - shechem
+      - revenge
+      - leah-daughter
+      - biblical
+    parents:
+      - JACOB
+      - LEAH
+    references:
+      - GEN.30.21.KJV
+  - id: ASENATH
+    name: Asenath
+    gender: female
+    ethnicity: Egyptian
+    tags:
+      - egyptian
+      - priest-daughter
+      - joseph-wife
+      - ephraim-manasseh-mother
+      - biblical
+    spouses:
+      - JOSEPH
+    references:
+      - GEN.41.45.KJV
+  - id: MANASSEH
+    name: Manasseh
+    gender: male
+    ethnicity: Hebrew/Egyptian
+    tags:
+      - tribe-founder
+      - joseph-son
+      - forgetfulness
+      - half-tribe
+      - egypt-born
+      - biblical
+    parents:
+      - JOSEPH
+      - ASENATH
+    references:
+      - GEN.41.51.KJV
+  - id: EPHRAIM
+    name: Ephraim
+    gender: male
+    ethnicity: Hebrew/Egyptian
+    tags:
+      - tribe-founder
+      - joseph-son
+      - fruitful
+      - blessed
+      - younger-greater
+      - egypt-born
+      - biblical
+    parents:
+      - JOSEPH
+      - ASENATH
+    references:
+      - GEN.41.52.KJV
+  - id: TAMAR
+    name: Tamar
+    gender: female
+    ethnicity: Canaanite
+    tags:
+      - canaanite
+      - judah-wife
+      - twin-mother
+      - righteous
+      - messiah-line
+      - biblical
+    spouses:
+      - JUDAH
+    references:
+      - GEN.38.6.KJV
+  - id: PHAREZ
+    name: Pharez
+    gender: male
+    ethnicity: Hebrew/Canaanite
+    tags:
+      - twin
+      - breach
+      - judah-son
+      - messiah-line
+      - christ-ancestor
+      - biblical
+    parents:
+      - JUDAH
+      - TAMAR
+    references:
+      - GEN.38.29.KJV
+  - id: ZARAH
+    name: Zarah
+    gender: male
+    ethnicity: Hebrew/Canaanite
+    tags:
+      - twin
+      - scarlet-thread
+      - judah-son
+      - sunrise
+      - biblical
+    parents:
+      - JUDAH
+      - TAMAR
+    references:
+      - GEN.38.30.KJV
+  - id: HEZRON
+    name: Hezron
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - judah-line
+      - messiah-ancestor
+      - christ-line
+      - biblical
+    parents:
+      - PHAREZ
+    references:
+      - 1CH.2.5.KJV
+  - id: RAM
+    name: Ram
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - judah-line
+      - messiah-ancestor
+      - christ-line
+      - biblical
+    parents:
+      - HEZRON
+    references:
+      - 1CH.2.9.KJV
+  - id: AMMINADAB
+    name: Amminadab
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - judah-line
+      - messiah-ancestor
+      - christ-line
+      - biblical
+    parents:
+      - RAM
+    references:
+      - 1CH.2.10.KJV
+  - id: NAHSHON
+    name: Nahshon
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - judah-line
+      - messiah-ancestor
+      - christ-line
+      - prince
+      - biblical
+    parents:
+      - AMMINADAB
+    references:
+      - 1CH.2.10.KJV
+  - id: SALMON
+    name: Salmon
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - judah-line
+      - messiah-ancestor
+      - christ-line
+      - rahab-husband
+      - biblical
+    parents:
+      - NAHSHON
+    spouses:
+      - RAHAB
+    references:
+      - 1CH.2.11.KJV
+      - MAT.1.5.KJV
+  - id: RAHAB
+    name: Rahab
+    gender: female
+    ethnicity: Canaanite
+    tags:
+      - canaanite
+      - harlot
+      - faith
+      - spies
+      - jericho
+      - messiah-line
+      - christ-ancestor
+      - biblical
+    spouses:
+      - SALMON
+    references:
+      - MAT.1.5.KJV
+  - id: BOAZ
+    name: Boaz
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - kinsman-redeemer
+      - wealthy
+      - ruth-husband
+      - messiah-ancestor
+      - christ-line
+      - biblical
+    parents:
+      - SALMON
+      - RAHAB
+    spouses:
+      - RUTH
+    references:
+      - RUT.2.1.KJV
+      - MAT.1.5.KJV
+  - id: RUTH
+    name: Ruth
+    gender: female
+    ethnicity: Moabite
+    tags:
+      - moabite
+      - loyalty
+      - convert
+      - gleaner
+      - messiah-line
+      - christ-ancestor
+      - biblical
+    spouses:
+      - BOAZ
+    references:
+      - RUT.1.4.KJV
+  - id: OBED
+    name: Obed
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - servant
+      - messiah-ancestor
+      - christ-line
+      - david-grandfather
+      - biblical
+    parents:
+      - BOAZ
+      - RUTH
+    references:
+      - RUT.4.17.KJV
+  - id: JESSE
+    name: Jesse
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - david-father
+      - root
+      - stem
+      - messiah-ancestor
+      - christ-line
+      - biblical
+    parents:
+      - OBED
+    references:
+      - RUT.4.17.KJV
+      - 1SA.16.1.KJV
+  - id: DAVID
+    name: David
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - psalmist
+      - shepherd
+      - giant-killer
+      - man-after-gods-heart
+      - messiah-ancestor
+      - christ-line
+      - covenant
+      - biblical
+    birth_date: ~1040 BC
+    death_date: ~970 BC
+    age: 70y
+    parents:
+      - JESSE
+    spouses:
+      - MICHAL
+      - ABIGAIL
+      - AHINOAM
+      - MAACAH
+      - HAGGITH
+      - ABITAL
+      - EGLAH
+      - BATHSHEBA
+    references:
+      - 1SA.16.13.KJV
+      - 2SA.5.4.KJV
+  - id: MICHAL
+    name: Michal
+    gender: female
+    ethnicity: Hebrew/Benjamite
+    tags:
+      - saul-daughter
+      - david-wife
+      - childless
+      - despiser
+      - biblical
+    spouses:
+      - DAVID
+    parents:
+      - SAUL
+    references:
+      - 1SA.18.27.KJV
+  - id: ABIGAIL
+    name: Abigail
+    gender: female
+    ethnicity: Hebrew/Judean
+    tags:
+      - wise
+      - beautiful
+      - nabal-widow
+      - david-wife
+      - peacemaker
+      - biblical
+    spouses:
+      - DAVID
+    references:
+      - 1SA.25.42.KJV
+  - id: AHINOAM
+    name: Ahinoam
+    gender: female
+    ethnicity: Hebrew/Judean
+    tags:
+      - david-wife
+      - amnon-mother
+      - biblical
+    spouses:
+      - DAVID
+    references:
+      - 1SA.25.43.KJV
+  - id: MAACAH
+    name: Maacah
+    gender: female
+    ethnicity: Aramean
+    tags:
+      - aramean
+      - david-wife
+      - absalom-mother
+      - biblical
+    spouses:
+      - DAVID
+    references:
+      - 2SA.3.3.KJV
+  - id: HAGGITH
+    name: Haggith
+    gender: female
+    ethnicity: Hebrew/Judean
+    tags:
+      - david-wife
+      - adonijah-mother
+      - biblical
+    spouses:
+      - DAVID
+    references:
+      - 2SA.3.4.KJV
+  - id: ABITAL
+    name: Abital
+    gender: female
+    ethnicity: Hebrew/Judean
+    tags:
+      - david-wife
+      - shephatiah-mother
+      - biblical
+    spouses:
+      - DAVID
+    references:
+      - 2SA.3.4.KJV
+  - id: EGLAH
+    name: Eglah
+    gender: female
+    ethnicity: Hebrew/Judean
+    tags:
+      - david-wife
+      - ithream-mother
+      - biblical
+    spouses:
+      - DAVID
+    references:
+      - 2SA.3.5.KJV
+  - id: BATHSHEBA
+    name: Bathsheba
+    gender: female
+    ethnicity: Hebrew/Judean
+    tags:
+      - david-wife
+      - solomon-mother
+      - adultery
+      - uriah-widow
+      - messiah-line
+      - biblical
+    spouses:
+      - DAVID
+    references:
+      - 2SA.11.3.KJV
+  - id: SOLOMON
+    name: Solomon
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - wise
+      - temple-builder
+      - peaceful
+      - wealthy
+      - messiah-ancestor
+      - christ-line
+      - biblical
+    birth_date: ~990 BC
+    death_date: ~930 BC
+    age: 60y
+    parents:
+      - DAVID
+      - BATHSHEBA
+    references:
+      - 2SA.12.24.KJV
+      - 1KI.1.13.KJV
+  - id: AMNON
+    name: Amnon
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - david-son
+      - firstborn
+      - rapist
+      - murdered
+      - violent
+      - biblical
+    parents:
+      - DAVID
+      - AHINOAM
+    references:
+      - 2SA.3.2.KJV
+  - id: CHILEAB
+    name: Chileab
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - david-son
+      - abigail-son
+      - second-son
+      - biblical
+    parents:
+      - DAVID
+      - ABIGAIL
+    references:
+      - 2SA.3.3.KJV
+  - id: ABSALOM
+    name: Absalom
+    gender: male
+    ethnicity: Hebrew/Aramean
+    tags:
+      - david-son
+      - beautiful
+      - rebellious
+      - murderer
+      - usurper
+      - long-hair
+      - biblical
+    parents:
+      - DAVID
+      - MAACAH
+    references:
+      - 2SA.3.3.KJV
+  - id: ADONIJAH
+    name: Adonijah
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - david-son
+      - usurper
+      - ambitious
+      - executed
+      - biblical
+    parents:
+      - DAVID
+      - HAGGITH
+    references:
+      - 2SA.3.4.KJV
+  - id: SHEPHATIAH
+    name: Shephatiah
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - david-son
+      - abital-son
+      - biblical
+    parents:
+      - DAVID
+      - ABITAL
+    references:
+      - 2SA.3.4.KJV
+  - id: ITHREAM
+    name: Ithream
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - david-son
+      - eglah-son
+      - biblical
+    parents:
+      - DAVID
+      - EGLAH
+    references:
+      - 2SA.3.5.KJV
+  - id: REHOBOAM
+    name: Rehoboam
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - foolish
+      - kingdom-divided
+      - solomon-son
+      - biblical
+    parents:
+      - SOLOMON
+    references:
+      - 1KI.11.43.KJV
+  - id: ABIJAM
+    name: Abijam
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - rehoboam-son
+      - evil
+      - biblical
+    parents:
+      - REHOBOAM
+    references:
+      - 1KI.14.31.KJV
+  - id: ASA
+    name: Asa
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - good
+      - reformer
+      - abijam-son
+      - biblical
+    parents:
+      - ABIJAM
+    references:
+      - 1KI.15.8.KJV
+  - id: JEHOSHAPHAT
+    name: Jehoshaphat
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - good
+      - godly
+      - asa-son
+      - biblical
+    parents:
+      - ASA
+    references:
+      - 1KI.15.24.KJV
+  - id: JEHORAM_KING_OF_JUDAH
+    name: Jehoram
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - evil
+      - jehoshaphat-son
+      - biblical
+    parents:
+      - JEHOSHAPHAT
+    references:
+      - 1KI.22.50.KJV
+  - id: AHAZIAH_KING_OF_JUDAH
+    name: Ahaziah
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - evil
+      - jehoram-son
+      - murdered
+      - biblical
+    parents:
+      - JEHORAM_KING_OF_JUDAH
+    references:
+      - 2KI.8.24.KJV
+  - id: JOASH_KING_OF_JUDAH
+    name: Joash
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - child-king
+      - temple-repairer
+      - ahaziah-son
+      - biblical
+    parents:
+      - AHAZIAH_KING_OF_JUDAH
+    references:
+      - 2KI.11.2.KJV
+  - id: AMAZIAH
+    name: Amaziah
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - joash-son
+      - partial-obedience
+      - biblical
+    parents:
+      - JOASH_KING_OF_JUDAH
+    references:
+      - 2KI.12.21.KJV
+  - id: AZARIAH
+    name: Azariah
+    names:
+      - name: Uzziah
+        reference: 2CH.26.1.KJV
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - uzziah
+      - amaziah-son
+      - leprous
+      - proud
+      - biblical
+    parents:
+      - AMAZIAH
+    references:
+      - 2KI.14.21.KJV
+  - id: JOTHAM
+    name: Jotham
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - good
+      - azariah-son
+      - biblical
+    parents:
+      - AZARIAH
+    references:
+      - 2KI.15.7.KJV
+  - id: AHAZ
+    name: Ahaz
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - evil
+      - idolater
+      - jotham-son
+      - biblical
+    parents:
+      - JOTHAM
+    references:
+      - 2KI.15.38.KJV
+  - id: HEZEKIAH
+    name: Hezekiah
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - good
+      - reformer
+      - faithful
+      - ahaz-son
+      - biblical
+    parents:
+      - AHAZ
+    references:
+      - 2KI.16.20.KJV
+  - id: MANASSEH_KING_OF_JUDAH
+    name: Manasseh
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - evil
+      - repentant
+      - idolater
+      - hezekiah-son
+      - biblical
+    parents:
+      - HEZEKIAH
+    references:
+      - 2KI.20.21.KJV
+  - id: AMON
+    name: Amon
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - evil
+      - manasseh-son
+      - murdered
+      - biblical
+    parents:
+      - MANASSEH_KING_OF_JUDAH
+    references:
+      - 2KI.21.18.KJV
+  - id: JOSIAH
+    name: Josiah
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - good
+      - reformer
+      - law-finder
+      - amon-son
+      - biblical
+    parents:
+      - AMON
+    references:
+      - 2KI.21.24.KJV
+  - id: JEHOAHAZ
+    name: Jehoahaz
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - evil
+      - josiah-son
+      - captive
+      - biblical
+    parents:
+      - JOSIAH
+    references:
+      - 2KI.23.30.KJV
+  - id: JEHOIAKIM
+    name: Jehoiakim
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - evil
+      - josiah-son
+      - babylon
+      - biblical
+    parents:
+      - JOSIAH
+    references:
+      - 2KI.23.34.KJV
+  - id: JEHOIACHIN
+    name: Jehoiachin
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - evil
+      - jehoiakim-son
+      - exile
+      - captive
+      - biblical
+    parents:
+      - JEHOIAKIM
+    references:
+      - 2KI.24.6.KJV
+  - id: ZEDEKIAH
+    name: Zedekiah
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - king
+      - judah
+      - evil
+      - last-king
+      - josiah-son
+      - rebellion
+      - biblical
+    parents:
+      - JOSIAH
+    references:
+      - 2KI.24.17.KJV
+  - id: SHEALTIEL
+    name: Shealtiel
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - exile
+      - captivity
+      - jehoiachin-son
+      - zerubbabel-father
+      - biblical
+    parents:
+      - JEHOIACHIN
+    references:
+      - 1CH.3.17.KJV
+  - id: ZERUBBABEL
+    name: Zerubbabel
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - governor
+      - temple-builder
+      - return
+      - shealtiel-son
+      - messiah-line
+      - biblical
+    parents:
+      - SHEALTIEL
+    references:
+      - 1CH.3.19.KJV
+  - id: MOSES
+    name: Moses
+    gender: male
+    ethnicity: Hebrew/Levite
+    tags:
+      - lawgiver
+      - prophet
+      - deliverer
+      - mediator
+      - staff
+      - commandments
+      - exodus
+      - biblical
+    birth_date: ~1571 BC
+    death_date: ~1451 BC
+    age: 120y
+    parents:
+      - AMRAM
+      - JOCHEBED
+    spouses:
+      - ZIPPORAH
+    references:
+      - EXO.6.20.KJV
+      - EXO.2.21.KJV
+  - id: AARON
+    name: Aaron
+    gender: male
+    ethnicity: Hebrew/Levite
+    tags:
+      - high-priest
+      - spokesperson
+      - golden-calf
+      - rod
+      - moses-brother
+      - priesthood
+      - biblical
+    parents:
+      - AMRAM
+      - JOCHEBED
+    spouses:
+      - ELISHEBA
+    references:
+      - EXO.6.20.KJV
+      - EXO.6.23.KJV
+  - id: MIRIAM
+    name: Miriam
+    gender: female
+    ethnicity: Hebrew/Levite
+    tags:
+      - prophetess
+      - singer
+      - moses-sister
+      - aaron-sister
+      - leprosy
+      - biblical
+    parents:
+      - AMRAM
+      - JOCHEBED
+    references:
+      - NUM.26.59.KJV
+  - id: AMRAM
+    name: Amram
+    gender: male
+    ethnicity: Hebrew/Levite
+    tags:
+      - levite
+      - moses-father
+      - aaron-father
+      - miriam-father
+      - biblical
+    parents:
+      - KOHATH
+    spouses:
+      - JOCHEBED
+    references:
+      - EXO.6.18.KJV
+  - id: JOCHEBED
+    name: Jochebed
+    gender: female
+    ethnicity: Hebrew/Levite
+    tags:
+      - levite
+      - moses-mother
+      - aaron-mother
+      - miriam-mother
+      - faithful
+      - biblical
+    spouses:
+      - AMRAM
+    references:
+      - EXO.6.20.KJV
+  - id: KOHATH
+    name: Kohath
+    gender: male
+    ethnicity: Hebrew/Levite
+    tags:
+      - levite
+      - amram-father
+      - levi-son
+      - priestly-line
+      - biblical
+    parents:
+      - LEVI
+    references:
+      - EXO.6.16.KJV
+  - id: ZIPPORAH
+    name: Zipporah
+    gender: female
+    ethnicity: Midianite
+    tags:
+      - midianite
+      - moses-wife
+      - jethro-daughter
+      - circumcision
+      - biblical
+    parents:
+      - JETHRO
+    spouses:
+      - MOSES
+    references:
+      - EXO.2.21.KJV
+  - id: JETHRO
+    name: Jethro
+    names:
+      - name: Reuel
+        reference: EXO.2.18.KJV
+    gender: male
+    ethnicity: Midianite
+    tags:
+      - midianite
+      - priest
+      - moses-father-in-law
+      - counselor
+      - wise
+      - biblical
+    references:
+      - EXO.3.1.KJV
+  - id: ELISHEBA
+    name: Elisheba
+    gender: female
+    ethnicity: Hebrew/Judean
+    tags:
+      - aaron-wife
+      - priest-mother
+      - judean
+      - biblical
+    spouses:
+      - AARON
+    references:
+      - EXO.6.23.KJV
+  - id: NADAB
+    name: Nadab
+    gender: male
+    ethnicity: Hebrew/Levite
+    tags:
+      - priest
+      - aaron-son
+      - strange-fire
+      - judged
+      - died
+      - biblical
+    parents:
+      - AARON
+      - ELISHEBA
+    references:
+      - EXO.6.23.KJV
+  - id: ABIHU
+    name: Abihu
+    gender: male
+    ethnicity: Hebrew/Levite
+    tags:
+      - priest
+      - aaron-son
+      - strange-fire
+      - judged
+      - died
+      - biblical
+    parents:
+      - AARON
+      - ELISHEBA
+    references:
+      - EXO.6.23.KJV
+  - id: ELEAZAR
+    name: Eleazar
+    gender: male
+    ethnicity: Hebrew/Levite
+    tags:
+      - priest
+      - aaron-son
+      - faithful
+      - high-priest
+      - biblical
+    parents:
+      - AARON
+      - ELISHEBA
+    references:
+      - EXO.6.23.KJV
+  - id: ITHAMAR
+    name: Ithamar
+    gender: male
+    ethnicity: Hebrew/Levite
+    tags:
+      - priest
+      - aaron-son
+      - faithful
+      - tabernacle
+      - biblical
+    parents:
+      - AARON
+      - ELISHEBA
+    references:
+      - EXO.6.23.KJV
+  - id: SAUL
+    name: Saul
+    gender: male
+    ethnicity: Hebrew/Benjamite
+    tags:
+      - king
+      - first-king
+      - rejected
+      - disobedient
+      - tall
+      - benjamite
+      - biblical
+    parents:
+      - KISH
+    references:
+      - 1SA.9.1.KJV
+  - id: KISH
+    name: Kish
+    gender: male
+    ethnicity: Hebrew/Benjamite
+    tags:
+      - benjamite
+      - saul-father
+      - mighty-man
+      - biblical
+    parents:
+      - ABIEL
+    references:
+      - 1SA.9.1.KJV
+  - id: ABIEL
+    name: Abiel
+    gender: male
+    ethnicity: Hebrew/Benjamite
+    tags:
+      - benjamite
+      - kish-father
+      - saul-grandfather
+      - biblical
+    references:
+      - 1SA.9.1.KJV
+  - id: JONATHAN
+    name: Jonathan
+    gender: male
+    ethnicity: Hebrew/Benjamite
+    tags:
+      - prince
+      - david-friend
+      - loyal
+      - archer
+      - covenant
+      - saul-son
+      - biblical
+    parents:
+      - SAUL
+    references:
+      - 1SA.14.1.KJV
+  - id: ISHBOSHETH
+    name: Ishbosheth
+    names:
+      - name: Eshbaal
+        reference: 1CH.8.33.KJV
+    gender: male
+    ethnicity: Hebrew/Benjamite
+    tags:
+      - king
+      - israel
+      - saul-son
+      - murdered
+      - weak
+      - biblical
+    parents:
+      - SAUL
+    references:
+      - 2SA.2.8.KJV
+  - id: MALCHISHUA
+    name: Malchishua
+    gender: male
+    ethnicity: Hebrew/Benjamite
+    tags:
+      - prince
+      - saul-son
+      - died-in-battle
+      - biblical
+    parents:
+      - SAUL
+    references:
+      - 1SA.31.2.KJV
+  - id: ABINADAB_SON_OF_SAUL
+    name: Abinadab
+    gender: male
+    ethnicity: Hebrew/Benjamite
+    tags:
+      - prince
+      - saul-son
+      - died-in-battle
+      - biblical
+    parents:
+      - SAUL
+    references:
+      - 1SA.31.2.KJV
+  - id: SAMUEL
+    name: Samuel
+    gender: male
+    ethnicity: Hebrew/Levite
+    tags:
+      - prophet
+      - judge
+      - seer
+      - kingmaker
+      - dedicated
+      - nazarite
+      - biblical
+    parents:
+      - ELKANAH
+      - HANNAH
+    references:
+      - 1SA.1.20.KJV
+  - id: ELKANAH
+    name: Elkanah
+    gender: male
+    ethnicity: Hebrew/Levite
+    tags:
+      - levite
+      - samuel-father
+      - faithful
+      - two-wives
+      - biblical
+    spouses:
+      - HANNAH
+      - PENINNAH
+    references:
+      - 1SA.1.1.KJV
+  - id: HANNAH
+    name: Hannah
+    gender: female
+    ethnicity: Hebrew
+    tags:
+      - barren-then-fruitful
+      - prayer-warrior
+      - samuel-mother
+      - dedicated
+      - song
+      - biblical
+    spouses:
+      - ELKANAH
+    references:
+      - 1SA.1.2.KJV
+  - id: PENINNAH
+    name: Peninnah
+    gender: female
+    ethnicity: Hebrew
+    tags:
+      - elkanah-wife
+      - children
+      - rivalry
+      - biblical
+    spouses:
+      - ELKANAH
+    references:
+      - 1SA.1.2.KJV
+  - id: ELI
+    name: Eli
+    gender: male
+    ethnicity: Hebrew/Levite
+    tags:
+      - priest
+      - judge
+      - samuel-mentor
+      - weak-father
+      - honored-sons
+      - biblical
+    references:
+      - 1SA.1.9.KJV
+  - id: HOPHNI
+    name: Hophni
+    gender: male
+    ethnicity: Hebrew/Levite
+    tags:
+      - priest
+      - eli-son
+      - corrupt
+      - judged
+      - died
+      - biblical
+    parents:
+      - ELI
+    references:
+      - 1SA.1.3.KJV
+  - id: PHINEHAS_SON_OF_ELI
+    name: Phinehas
+    gender: male
+    ethnicity: Hebrew/Levite
+    tags:
+      - priest
+      - eli-son
+      - corrupt
+      - judged
+      - died
+      - biblical
+    parents:
+      - ELI
+    references:
+      - 1SA.1.3.KJV
+  - id: JOSEPH_HUSBAND_OF_MARY
+    name: Joseph
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - carpenter
+      - righteous
+      - mary-husband
+      - jesus-foster-father
+      - davidic-line
+      - biblical
+    parents:
+      - JACOB_FATHER_OF_JOSEPH
+    spouses:
+      - MARY_MOTHER_OF_JESUS
+    references:
+      - MAT.1.16.KJV
+  - id: JACOB_FATHER_OF_JOSEPH
+    name: Jacob
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - joseph-father
+      - davidic-line
+      - matthew-genealogy
+      - biblical
+    parents:
+      - MATTHAN
+    references:
+      - MAT.1.15.KJV
+  - id: MATTHAN
+    name: Matthan
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - jacob-father
+      - davidic-line
+      - matthew-genealogy
+      - biblical
+    parents:
+      - ELEAZAR_NT
+    references:
+      - MAT.1.15.KJV
+  - id: ELEAZAR_NT
+    name: Eleazar
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - matthan-father
+      - davidic-line
+      - matthew-genealogy
+      - biblical
+    parents:
+      - ELIUD
+    references:
+      - MAT.1.15.KJV
+  - id: ELIUD
+    name: Eliud
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - eleazar-father
+      - davidic-line
+      - matthew-genealogy
+      - biblical
+    parents:
+      - ACHIM
+    references:
+      - MAT.1.14.KJV
+  - id: ACHIM
+    name: Achim
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - eliud-father
+      - davidic-line
+      - matthew-genealogy
+      - biblical
+    parents:
+      - SADOC
+    references:
+      - MAT.1.14.KJV
+  - id: SADOC
+    name: Sadoc
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - achim-father
+      - davidic-line
+      - matthew-genealogy
+      - biblical
+    parents:
+      - AZOR
+    references:
+      - MAT.1.14.KJV
+  - id: AZOR
+    name: Azor
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - sadoc-father
+      - davidic-line
+      - matthew-genealogy
+      - biblical
+    parents:
+      - ELIAKIM
+    references:
+      - MAT.1.13.KJV
+  - id: ELIAKIM
+    name: Eliakim
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - azor-father
+      - davidic-line
+      - matthew-genealogy
+      - biblical
+    parents:
+      - ABIUD
+    references:
+      - MAT.1.13.KJV
+  - id: ABIUD
+    name: Abiud
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - eliakim-father
+      - davidic-line
+      - matthew-genealogy
+      - biblical
+    parents:
+      - ZERUBBABEL
+    references:
+      - MAT.1.13.KJV
+  - id: MARY_MOTHER_OF_JESUS
+    name: Mary
+    gender: female
+    ethnicity: Jewish
+    tags:
+      - virgin
+      - blessed
+      - jesus-mother
+      - favored
+      - pondering
+      - davidic-line
+      - handmaid
+      - biblical
+    spouses:
+      - JOSEPH_HUSBAND_OF_MARY
+    references:
+      - MAT.1.16.KJV
+      - LUK.1.27.KJV
+  - id: HELI
+    name: Heli
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - luke-genealogy
+      - davidic-line
+      - joseph-father
+      - biblical
+    references:
+      - LUK.3.23.KJV
+  - id: MATTHAT
+    name: Matthat
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - luke-genealogy
+      - davidic-line
+      - heli-son
+      - biblical
+    parents:
+      - HELI
+    references:
+      - LUK.3.24.KJV
+  - id: LEVI_LUKE_GENEALOGY
+    name: Levi
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - luke-genealogy
+      - davidic-line
+      - matthat-son
+      - biblical
+    parents:
+      - MATTHAT
+    references:
+      - LUK.3.24.KJV
+  - id: MELCHI
+    name: Melchi
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - luke-genealogy
+      - davidic-line
+      - levi-son
+      - biblical
+    parents:
+      - LEVI_LUKE_GENEALOGY
+    references:
+      - LUK.3.24.KJV
+  - id: JANNA
+    name: Janna
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - luke-genealogy
+      - davidic-line
+      - melchi-son
+      - biblical
+    parents:
+      - MELCHI
+    references:
+      - LUK.3.24.KJV
+  - id: JOSEPH_LUKE_GENEALOGY
+    name: Joseph
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - luke-genealogy
+      - davidic-line
+      - janna-son
+      - biblical
+    parents:
+      - JANNA
+    references:
+      - LUK.3.24.KJV
+  - id: JOHN_THE_BAPTIST
+    name: John the Baptist
+    gender: male
+    ethnicity: Jewish/Levite
+    tags:
+      - baptist
+      - forerunner
+      - prophet
+      - nazarite
+      - wilderness
+      - beheaded
+      - elijah-spirit
+      - biblical
+    parents:
+      - ZACHARIAS
+      - ELISABETH
+    references:
+      - LUK.1.13.KJV
+  - id: ZACHARIAS
+    name: Zacharias
+    gender: male
+    ethnicity: Jewish/Levite
+    tags:
+      - priest
+      - aged
+      - faithful
+      - mute
+      - john-father
+      - temple
+      - biblical
+    spouses:
+      - ELISABETH
+    references:
+      - LUK.1.5.KJV
+  - id: ELISABETH
+    name: Elisabeth
+    gender: female
+    ethnicity: Jewish/Levite
+    tags:
+      - priest-wife
+      - aged
+      - barren-then-fruitful
+      - john-mother
+      - mary-relative
+      - biblical
+    spouses:
+      - ZACHARIAS
+    references:
+      - LUK.1.5.KJV
+  - id: MELCHIZEDEK
+    name: Melchizedek
+    gender: male
+    ethnicity: Canaanite/Salem
+    tags:
+      - priest
+      - king
+      - salem
+      - tithe
+      - bread-wine
+      - christ-type
+      - mysterious
+      - biblical
+    references:
+      - GEN.14.18.KJV
+      - HEB.7.1.KJV
+  - id: JOB
+    name: Job
+    gender: male
+    ethnicity: Arabian/Edomite
+    tags:
+      - righteous
+      - suffering
+      - patience
+      - wealthy
+      - tested
+      - restored
+      - perfect
+      - biblical
+    references:
+      - JOB.1.1.KJV
+  - id: DANIEL
+    name: Daniel
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - prophet
+      - exile
+      - babylon
+      - lions-den
+      - visions
+      - faithful
+      - interpreter
+      - biblical
+    references:
+      - DAN.1.6.KJV
+  - id: SHADRACH
+    name: Shadrach
+    names:
+      - name: Hananiah
+        reference: DAN.1.7.KJV
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - exile
+      - babylon
+      - fiery-furnace
+      - faithful
+      - hebrew-name
+      - biblical
+    references:
+      - DAN.1.7.KJV
+  - id: MESHACH
+    name: Meshach
+    names:
+      - name: Mishael
+        reference: DAN.1.7.KJV
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - exile
+      - babylon
+      - fiery-furnace
+      - faithful
+      - hebrew-name
+      - biblical
+    references:
+      - DAN.1.7.KJV
+  - id: ABEDNEGO
+    name: Abednego
+    names:
+      - name: Azariah
+        reference: DAN.1.7.KJV
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - exile
+      - babylon
+      - fiery-furnace
+      - faithful
+      - hebrew-name
+      - biblical
+    references:
+      - DAN.1.7.KJV
+  - id: EZRA
+    name: Ezra
+    gender: male
+    ethnicity: Jewish/Levite
+    tags:
+      - scribe
+      - priest
+      - return
+      - law
+      - reformer
+      - teacher
+      - biblical
+    references:
+      - EZR.7.1.KJV
+  - id: NEHEMIAH
+    name: Nehemiah
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - governor
+      - wall-builder
+      - cupbearer
+      - reformer
+      - leader
+      - prayer
+      - biblical
+    references:
+      - NEH.1.1.KJV
+  - id: ESTHER
+    name: Esther
+    names:
+      - name: Hadassah
+        reference: EST.2.7.KJV
+    gender: female
+    ethnicity: Jewish
+    tags:
+      - queen
+      - persian
+      - deliverer
+      - beautiful
+      - brave
+      - for-such-a-time
+      - biblical
+    references:
+      - EST.2.7.KJV
+  - id: MORDECAI
+    name: Mordecai
+    gender: male
+    ethnicity: Jewish/Benjamite
+    tags:
+      - exile
+      - persian
+      - esther-guardian
+      - faithful
+      - honored
+      - jew
+      - biblical
+    references:
+      - EST.2.5.KJV
+  - id: ELIJAH
+    name: Elijah
+    gender: male
+    ethnicity: Hebrew/Israelite
+    tags:
+      - prophet
+      - fire
+      - ravens
+      - carmel
+      - translated
+      - forerunner
+      - drought
+      - biblical
+    references:
+      - 1KI.17.1.KJV
+  - id: ELISHA
+    name: Elisha
+    gender: male
+    ethnicity: Hebrew/Israelite
+    tags:
+      - prophet
+      - double-portion
+      - miracles
+      - elijah-successor
+      - healing
+      - biblical
+    references:
+      - 1KI.19.16.KJV
+  - id: ISAIAH
+    name: Isaiah
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - prophet
+      - messiah-prophet
+      - suffering-servant
+      - vision
+      - commission
+      - biblical
+    references:
+      - ISA.1.1.KJV
+  - id: JEREMIAH
+    name: jeremiah
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - prophet
+      - weeping-prophet
+      - judgment
+      - new-covenant
+      - suffering
+      - biblical
+    references:
+      - JER.1.1.KJV
+  - id: EZEKIEL
+    name: Ezekiel
+    gender: male
+    ethnicity: Jewish/Levite
+    tags:
+      - prophet
+      - priest
+      - exile
+      - visions
+      - watchman
+      - restoration
+      - biblical
+    references:
+      - EZE.1.3.KJV
+  - id: HOSEA
+    name: Hosea
+    gender: male
+    ethnicity: Hebrew/Israelite
+    tags:
+      - prophet
+      - love
+      - gomer
+      - unfaithful-wife
+      - restoration
+      - mercy
+      - biblical
+    references:
+      - HOS.1.1.KJV
+  - id: JOEL
+    name: Joel
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - prophet
+      - day-of-lord
+      - spirit-outpouring
+      - locusts
+      - restoration
+      - biblical
+    references:
+      - JOE.1.1.KJV
+  - id: AMOS
+    name: Amos
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - prophet
+      - shepherd
+      - justice
+      - judgment
+      - social-reform
+      - biblical
+    references:
+      - AMO.1.1.KJV
+  - id: OBADIAH
+    name: Obadiah
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - prophet
+      - edom
+      - judgment
+      - shortest-book
+      - biblical
+    references:
+      - OBA.1.1.KJV
+  - id: JONAH
+    name: Jonah
+    gender: male
+    ethnicity: Hebrew/Israelite
+    tags:
+      - prophet
+      - whale
+      - nineveh
+      - reluctant
+      - mercy
+      - gourd
+      - biblical
+    references:
+      - JON.1.1.KJV
+  - id: MICAH
+    name: Micah
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - prophet
+      - bethlehem
+      - messiah
+      - justice
+      - humble
+      - biblical
+    references:
+      - MIC.1.1.KJV
+  - id: NAHUM
+    name: Nahum
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - prophet
+      - nineveh
+      - judgment
+      - comfort
+      - biblical
+    references:
+      - NAH.1.1.KJV
+  - id: HABAKKUK
+    name: Habakkuk
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - prophet
+      - questions
+      - faith
+      - just-shall-live
+      - watchtower
+      - biblical
+    references:
+      - HAB.1.1.KJV
+  - id: ZEPHANIAH
+    name: Zephaniah
+    gender: male
+    ethnicity: Hebrew/Judean
+    tags:
+      - prophet
+      - day-of-lord
+      - judgment
+      - remnant
+      - joy
+      - biblical
+    references:
+      - ZEP.1.1.KJV
+  - id: HAGGAI
+    name: Haggai
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - prophet
+      - temple-builder
+      - return
+      - priorities
+      - glory
+      - biblical
+    references:
+      - HAG.1.1.KJV
+  - id: ZECHARIAH_PROPHET
+    name: Zechariah
+    gender: male
+    ethnicity: Jewish/Levite
+    tags:
+      - prophet
+      - visions
+      - messiah
+      - temple
+      - restoration
+      - biblical
+    references:
+      - ZEC.1.1.KJV
+  - id: MALACHI
+    name: Malachi
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - prophet
+      - last-prophet
+      - messenger
+      - tithe
+      - elijah-coming
+      - biblical
+    references:
+      - MAL.1.1.KJV
+  - id: PETER
+    name: Peter
+    names:
+      - name: Simon
+        reference: MAT.4.18.KJV
+      - name: Cephas
+        reference: JHN.1.42.KJV
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - apostle
+      - fisherman
+      - rock
+      - impulsive
+      - denial
+      - restoration
+      - church-leader
+      - biblical
+    birth_date: ~1 BC
+    death_date: ~64 AD
+    references:
+      - MAT.4.18.KJV
+  - id: ANDREW
+    name: Andrew
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - apostle
+      - fisherman
+      - peter-brother
+      - first-called
+      - bringer
+      - biblical
+    parents:
+      - JONAS
+    references:
+      - MAT.4.18.KJV
+  - id: JONAS
+    name: Jonas
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - fisherman
+      - peter-father
+      - andrew-father
+      - biblical
+    references:
+      - JHN.21.15.KJV
+  - id: JAMES_SON_OF_ZEBEDEE
+    name: James
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - apostle
+      - fisherman
+      - thunder-son
+      - zealous
+      - martyred
+      - inner-circle
+      - biblical
+    parents:
+      - ZEBEDEE
+    references:
+      - MAT.4.21.KJV
+  - id: JOHN_THE_APOSTLE
+    name: John
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - apostle
+      - beloved
+      - fisherman
+      - thunder-son
+      - gospel-writer
+      - revelation
+      - love
+      - biblical
+    parents:
+      - ZEBEDEE
+    references:
+      - MAT.4.21.KJV
+  - id: ZEBEDEE
+    name: Zebedee
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - fisherman
+      - james-father
+      - john-father
+      - wealthy
+      - biblical
+    references:
+      - MAT.4.21.KJV
+  - id: PHILIP_APOSTLE
+    name: Philip
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - apostle
+      - practical
+      - bethsaida
+      - nathanael-bringer
+      - biblical
+    references:
+      - JHN.1.43.KJV
+  - id: BARTHOLOMEW
+    name: Bartholomew
+    names:
+      - name: Nathanael
+        reference: JHN.1.45.KJV
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - apostle
+      - nathanael
+      - israelite-indeed
+      - fig-tree
+      - biblical
+    references:
+      - MAT.10.3.KJV
+  - id: MATTHEW
+    name: Matthew
+    names:
+      - name: Levi
+        reference: MAR.2.14.KJV
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - apostle
+      - tax-collector
+      - levi
+      - gospel-writer
+      - feast-giver
+      - biblical
+    references:
+      - MAT.9.9.KJV
+  - id: THOMAS
+    name: Thomas
+    names:
+      - name: Didymus
+        reference: JHN.11.16.KJV
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - apostle
+      - doubter
+      - twin
+      - my-lord-my-god
+      - devoted
+      - biblical
+    references:
+      - MAT.10.3.KJV
+  - id: JAMES_SON_OF_ALPHAEUS
+    name: James
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - apostle
+      - james-less
+      - alphaeus-son
+      - biblical
+    parents:
+      - ALPHAEUS
+    references:
+      - MAT.10.3.KJV
+  - id: ALPHAEUS
+    name: Alphaeus
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - james-father
+      - matthew-father
+      - biblical
+    references:
+      - MAT.10.3.KJV
+  - id: THADDAEUS
+    name: Thaddaeus
+    names:
+      - name: Judas
+        reference: LUK.6.16.KJV
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - apostle
+      - judas-not-iscariot
+      - thaddaeus
+      - biblical
+    references:
+      - MAT.10.3.KJV
+  - id: SIMON_THE_CANAANITE
+    name: Simon the Canaanite
+    names:
+      - name: Simon Zelotes
+        reference: LUK.6.15.KJV
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - apostle
+      - zealot
+      - canaanite
+      - zealous
+      - biblical
+    references:
+      - MAT.10.4.KJV
+  - id: JUDAS_ISCARIOT
+    name: Judas Iscariot
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - apostle
+      - betrayer
+      - iscariot
+      - treasurer
+      - thirty-pieces
+      - suicide
+      - biblical
+    parents:
+      - SIMON_ISCARIOT
+    references:
+      - MAT.10.4.KJV
+      - JHN.6.71.KJV
+  - id: SIMON_ISCARIOT
+    name: Simon Iscariot
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - judas-father
+      - iscariot
+      - biblical
+    references:
+      - JHN.6.71.KJV
+  - id: MATTHIAS
+    name: Matthias
+    gender: male
+    ethnicity: Jewish
+    tags:
+      - apostle
+      - replacement
+      - judas-replacement
+      - lot-chosen
+      - biblical
+    references:
+      - ACT.1.26.KJV
+  - id: PAUL
+    name: Paul
+    names:
+      - name: Saul
+        reference: ACT.7.58.KJV
+    gender: male
+    ethnicity: Jewish/Roman
+    tags:
+      - apostle
+      - missionary
+      - persecutor
+      - converted
+      - tentmaker
+      - gentile-apostle
+      - writer
+      - biblical
+    birth_date: ~5 AD
+    death_date: ~67 AD
+    references:
+      - ACT.13.9.KJV
+  - id: BARNABAS
+    name: Barnabas
+    names:
+      - name: Joses
+        reference: ACT.4.36.KJV
+    gender: male
+    ethnicity: Jewish/Levite
+    tags:
+      - encourager
+      - levite
+      - missionary
+      - paul-partner
+      - mark-defender
+      - biblical
+    references:
+      - ACT.4.36.KJV
+  - id: TIMOTHY
+    name: Timothy
+    gender: male
+    ethnicity: Jewish/Greek
+    tags:
+      - pastor
+      - paul-son
+      - faithful
+      - young
+      - circumcised
+      - biblical
+    parents:
+      - EUNICE
+    references:
+      - ACT.16.1.KJV
+  - id: EUNICE
+    name: Eunice
+    gender: female
+    ethnicity: Jewish
+    tags:
+      - timothy-mother
+      - faithful
+      - teacher
+      - lois-daughter
+      - biblical
+    parents:
+      - LOIS
+    references:
+      - 2TI.1.5.KJV
+  - id: LOIS
+    name: Lois
+    gender: female
+    ethnicity: Jewish
+    tags:
+      - timothy-grandmother
+      - faithful
+      - teacher
+      - eunice-mother
+      - biblical
+    references:
+      - 2TI.1.5.KJV
+  - id: TITUS
+    name: Titus
+    gender: male
+    ethnicity: Greek
+    tags:
+      - pastor
+      - greek
+      - uncircumcised
+      - paul-son
+      - organizer
+      - biblical
+    references:
+      - 2CO.2.13.KJV
+  - id: SILAS
+    name: Silas
+    names:
+      - name: Silvanus
+        reference: 1TH.1.1.KJV
+    gender: male
+    ethnicity: Jewish/Roman
+    tags:
+      - missionary
+      - prophet
+      - paul-partner
+      - roman-citizen
+      - singer
+      - biblical
+    references:
+      - ACT.15.22.KJV
+  - id: CUSH
+    name: Cush
+    gender: male
+    ethnicity: Cushite/Ethiopian
+    tags:
+      - ham-son
+      - ethiopia
+      - africa
+      - nimrod-father
+      - biblical
+    parents:
+      - HAM
+    references:
+      - GEN.10.6.KJV
+  - id: MIZRAIM
+    name: Mizraim
+    gender: male
+    ethnicity: Egyptian
+    tags:
+      - ham-son
+      - egypt
+      - africa
+      - egyptian-father
+      - biblical
+    parents:
+      - HAM
+    references:
+      - GEN.10.6.KJV
+  - id: PHUT
+    name: Phut
+    gender: male
+    ethnicity: Libyan
+    tags:
+      - ham-son
+      - libya
+      - africa
+      - biblical
+    parents:
+      - HAM
+    references:
+      - GEN.10.6.KJV
+  - id: CANAAN
+    name: Canaan
+    gender: male
+    ethnicity: Canaanite
+    tags:
+      - ham-son
+      - cursed
+      - canaan-land
+      - canaanite-father
+      - biblical
+    parents:
+      - HAM
+    references:
+      - GEN.10.6.KJV
+  - id: NIMROD
+    name: Nimrod
+    gender: male
+    ethnicity: Babylonian/Cushite
+    tags:
+      - mighty-hunter
+      - babel
+      - babylon
+      - cush-son
+      - rebel
+      - biblical
+    birth_date: ~2800 BC
+    death_date: ~2700 BC
+    parents:
+      - CUSH
+    references:
+      - GEN.10.8.KJV
+  - id: GOMER
+    name: Gomer
+    gender: male
+    ethnicity: Indo-European
+    tags:
+      - japheth-son
+      - europe
+      - germanic
+      - indo-european
+      - biblical
+    parents:
+      - JAPHETH
+    references:
+      - GEN.10.2.KJV
+  - id: MAGOG
+    name: Magog
+    gender: male
+    ethnicity: Scythian
+    tags:
+      - japheth-son
+      - scythia
+      - russia
+      - gog-magog
+      - biblical
+    parents:
+      - JAPHETH
+    references:
+      - GEN.10.2.KJV
+  - id: MADAI
+    name: Madai
+    gender: male
+    ethnicity: Median
+    tags:
+      - japheth-son
+      - media
+      - medes
+      - persia
+      - biblical
+    parents:
+      - JAPHETH
+    references:
+      - GEN.10.2.KJV
+  - id: JAVAN
+    name: Javan
+    gender: male
+    ethnicity: Greek/Ionian
+    tags:
+      - japheth-son
+      - greece
+      - ionia
+      - greek-father
+      - biblical
+    parents:
+      - JAPHETH
+    references:
+      - GEN.10.2.KJV
+  - id: TUBAL
+    name: Tubal
+    gender: male
+    ethnicity: Anatolian
+    tags:
+      - japheth-son
+      - anatolia
+      - turkey
+      - biblical
+    parents:
+      - JAPHETH
+    references:
+      - GEN.10.2.KJV
+  - id: MESHECH
+    name: Meshech
+    gender: male
+    ethnicity: Anatolian
+    tags:
+      - japheth-son
+      - anatolia
+      - moscow
+      - russia
+      - biblical
+    parents:
+      - JAPHETH
+    references:
+      - GEN.10.2.KJV
+  - id: TIRAS
+    name: Tiras
+    gender: male
+    ethnicity: Thracian
+    tags:
+      - japheth-son
+      - thrace
+      - balkans
+      - biblical
+    parents:
+      - JAPHETH
+    references:
+      - GEN.10.2.KJV
+ethnicities:
+  - id: DIVINE
+    name: Divine
+    description: The eternal, uncreated nature of God - transcending all human ethnic categories
+    begin_date: Eternal past
+    end_date: Eternal future
+    tags:
+      - eternal
+      - uncreated
+      - trinity
+      - divine-nature
+      - transcendent
+    notable_people:
+      - GOD_FATHER
+      - JESUS
+    regions:
+      - Heaven
+      - everywhere
+    characteristics:
+      - Omnipresent
+      - Omniscient
+      - Omnipotent
+      - Holy
+      - Love
+  - id: ANTEDILUVIAN
+    name: Antediluvian
+    description: Pre-flood humanity from Adam to Noah - the original human race before ethnic divisions
+    begin_date: 4004 BC
+    end_date: 2348 BC
+    tags:
+      - pre-flood
+      - original-humanity
+      - longevity
+      - giants
+      - corruption
+    notable_people:
+      - ADAM
+      - EVE
+      - NOAH
+      - ENOCH
+      - METHUSELAH
+    regions:
+      - Eden
+      - Earth
+    characteristics:
+      - Long lifespans
+      - Direct creation
+      - Pre-flood world
+      - Godly and ungodly lines
+  - id: SEMITIC
+    name: Semitic
+    description: Descendants of Shem - including Hebrews, Arabs, and other Middle Eastern peoples
+    begin_date: 2348 BC
+    end_date: Present
+    tags:
+      - post-flood
+      - blessed
+      - covenant-line
+      - middle-east
+      - semites
+    notable_people:
+      - SHEM
+      - ABRAHAM
+      - ISAAC
+      - JACOB
+    regions:
+      - Middle East
+      - Mesopotamia
+      - Canaan
+    characteristics:
+      - Blessed by Noah
+      - Covenant bearers
+      - Monotheistic tendency
+  - id: HAMITIC
+    name: Hamitic
+    description: Descendants of Ham - African and some Middle Eastern peoples, including Egyptians and Canaanites
+    begin_date: 2348 BC
+    end_date: Present
+    tags:
+      - post-flood
+      - africa
+      - egypt
+      - canaan
+      - cursed-line
+    notable_people:
+      - HAM
+      - NIMROD
+      - MIZRAIM
+      - CANAAN
+    regions:
+      - Africa
+      - Egypt
+      - Canaan
+      - Babylon
+    characteristics:
+      - Skilled builders
+      - Great civilizations
+      - Often opposed to God's people
+  - id: JAPHETIC
+    name: Japhetic
+    description: Descendants of Japheth - Indo-European peoples, including Europeans and many Asian groups
+    begin_date: 2348 BC
+    end_date: Present
+    tags:
+      - post-flood
+      - enlarged
+      - europe
+      - asia
+      - indo-european
+    notable_people:
+      - JAPHETH
+      - GOMER
+      - MAGOG
+      - JAVAN
+    regions:
+      - Europe
+      - Asia
+      - Islands
+    characteristics:
+      - Enlarged territories
+      - Seafaring
+      - Dwelling in Shem's tents
+  - id: HEBREW
+    name: Hebrew
+    description: Descendants of Eber through Abraham - the chosen people, later called Israelites and Jews
+    begin_date: 2000 BC
+    end_date: Present
+    tags:
+      - covenant-people
+      - chosen
+      - abraham-descendants
+      - promised-land
+      - monotheistic
+    notable_people:
+      - ABRAHAM
+      - ISAAC
+      - JACOB
+      - MOSES
+      - DAVID
+    regions:
+      - Canaan
+      - Egypt
+      - Promised Land
+    characteristics:
+      - Covenant relationship with God
+      - Monotheistic
+      - Circumcision
+      - Law of Moses
+  - id: ISRAELITE
+    name: Israelite
+    description: The twelve tribes descended from Jacob/Israel - God's chosen nation
+    begin_date: 1800 BC
+    end_date: 586 BC
+    tags:
+      - twelve-tribes
+      - kingdom
+      - temple
+      - law
+      - covenant
+    notable_people:
+      - JACOB
+      - MOSES
+      - JOSHUA
+      - DAVID
+      - SOLOMON
+    regions:
+      - Promised Land
+      - Egypt
+      - Wilderness
+    characteristics:
+      - Twelve tribal divisions
+      - Theocracy
+      - Temple worship
+      - Mosaic Law
+  - id: JEWISH
+    name: Jewish
+    description: Post-exile descendants of the Israelites, maintaining Jewish faith and culture
+    begin_date: 586 BC
+    end_date: Present
+    tags:
+      - post-exile
+      - synagogue
+      - torah
+      - messiah-expectation
+      - diaspora
+    notable_people:
+      - JESUS
+      - MARY
+      - JOSEPH
+      - PETER
+      - PAUL
+    regions:
+      - Judea
+      - Galilee
+      - Diaspora
+    characteristics:
+      - Synagogue worship
+      - Torah study
+      - Messianic expectation
+      - Strict monotheism
+  - id: EGYPTIAN
+    name: Egyptian
+    description: Descendants of Mizraim (Ham) - the great civilization of the Nile River
+    begin_date: 2300 BC
+    end_date: Present
+    tags:
+      - nile
+      - pharaohs
+      - pyramids
+      - slavery
+      - plagues
+    notable_people:
+      - HAGAR
+      - ASENATH
+      - PHARAOHS_DAUGHTER
+    regions:
+      - Egypt
+      - Nile River
+    characteristics:
+      - Pyramid builders
+      - Advanced civilization
+      - Polytheistic
+      - Enslaved Israelites
+  - id: CANAANITE
+    name: Canaanite
+    description: Descendants of Canaan (Ham) - inhabitants of the Promised Land before Israel
+    begin_date: 2200 BC
+    end_date: 1000 BC
+    tags:
+      - promised-land
+      - idolatry
+      - conquest
+      - dispossessed
+      - giants
+    notable_people:
+      - TAMAR
+      - RAHAB
+      - MELCHIZEDEK
+    regions:
+      - Canaan
+      - Palestine
+    characteristics:
+      - Idol worship
+      - Immoral practices
+      - Conquered by Israel
+      - City-states
+  - id: ARAMEAN
+    name: Aramean
+    description: Semitic people from northern Mesopotamia - relatives of the Hebrews
+    begin_date: 2000 BC
+    end_date: 500 BC
+    tags:
+      - mesopotamia
+      - syria
+      - relatives
+      - language
+      - traders
+    notable_people:
+      - REBEKAH
+      - LABAN
+      - LEAH
+      - RACHEL
+    regions:
+      - Aram
+      - Syria
+      - Mesopotamia
+    characteristics:
+      - Semitic language
+      - Trading people
+      - Related to Hebrews
+      - Cultural exchange
+  - id: PHILISTINE
+    name: Philistine
+    description: Sea peoples who settled on the coastal plain of Canaan - enemies of Israel
+    begin_date: 1200 BC
+    end_date: 500 BC
+    tags:
+      - sea-peoples
+      - coast
+      - enemies
+      - giants
+      - uncircumcised
+    notable_people:
+      - GOLIATH
+      - DELILAH
+    regions:
+      - Coastal Palestine
+      - Gaza
+    characteristics:
+      - Sea peoples
+      - Iron weapons
+      - Uncircumcised
+      - Enemies of Israel
+  - id: MOABITE
+    name: Moabite
+    description: Descendants of Lot through his daughter - neighbors and sometimes enemies of Israel
+    begin_date: 1800 BC
+    end_date: 500 BC
+    tags:
+      - lot-descendants
+      - neighbors
+      - enemies
+      - ruth
+      - exclusion
+    notable_people:
+      - RUTH
+      - ORPAH
+    regions:
+      - Moab
+      - East of Dead Sea
+    characteristics:
+      - Lot's descendants
+      - Sometimes hostile to Israel
+      - Excluded from assembly
+  - id: EDOMITE
+    name: Edomite
+    description: Descendants of Esau - brother nation to Israel, often antagonistic
+    begin_date: 1800 BC
+    end_date: 400 BC
+    tags:
+      - esau-descendants
+      - brothers
+      - enemies
+      - red
+      - mountain-dwellers
+    notable_people:
+      - ESAU
+      - DOEG
+    regions:
+      - Edom
+      - Mount Seir
+    characteristics:
+      - Esau's descendants
+      - Mountain dwellers
+      - Hostile to Israel
+      - Skilled warriors
+  - id: MIDIANITE
+    name: Midianite
+    description: Descendants of Abraham through Keturah - desert nomads and traders
+    begin_date: 1900 BC
+    end_date: 1000 BC
+    tags:
+      - abraham-descendants
+      - nomads
+      - traders
+      - desert
+      - moses-connection
+    notable_people:
+      - ZIPPORAH
+      - JETHRO
+    regions:
+      - Midian
+      - Sinai
+      - Arabian Desert
+    characteristics:
+      - Desert nomads
+      - Traders
+      - Moses' connection
+      - Pastoral lifestyle
+  - id: AMALEKITE
+    name: Amalekite
+    description: Nomadic descendants of Esau - persistent enemies of Israel
+    begin_date: 1700 BC
+    end_date: 500 BC
+    tags:
+      - esau-descendants
+      - nomads
+      - enemies
+      - wilderness
+      - judgment
+    notable_people:
+      - AGAG
+    regions:
+      - Wilderness
+      - Negev
+    characteristics:
+      - Nomadic raiders
+      - First to attack Israel
+      - Under divine judgment
+  - id: AMORITE
+    name: Amorite
+    description: Canaanite mountain dwellers - one of the major Canaanite groups
+    begin_date: 2000 BC
+    end_date: 1000 BC
+    tags:
+      - canaanites
+      - mountains
+      - giants
+      - conquest
+      - kings
+    notable_people:
+      - OG
+      - SIHON
+    regions:
+      - Canaan
+      - Mountains
+    characteristics:
+      - Mountain dwellers
+      - Powerful kings
+      - Part of Canaanite confederation
+  - id: HITTITE
+    name: Hittite
+    description: Indo-European people who established a great empire in Anatolia
+    begin_date: 1800 BC
+    end_date: 1200 BC
+    tags:
+      - indo-european
+      - empire
+      - anatolia
+      - iron
+      - treaties
+    notable_people:
+      - URIAH_THE_HITTITE
+    regions:
+      - Anatolia
+      - Syria
+    characteristics:
+      - Great empire
+      - Iron technology
+      - Treaty makers
+      - Warriors
+  - id: PHOENICIAN
+    name: Phoenician
+    description: Canaanite seafaring traders and colonizers of the Mediterranean
+    begin_date: 1500 BC
+    end_date: 300 BC
+    tags:
+      - canaanites
+      - seafaring
+      - traders
+      - colonies
+      - alphabet
+    notable_people:
+      - JEZEBEL
+      - HIRAM_KING_OF_TYRE
+    regions:
+      - Lebanon
+      - Mediterranean
+    characteristics:
+      - Master sailors
+      - Trading empire
+      - Alphabet inventors
+      - City-states
+  - id: ASSYRIAN
+    name: Assyrian
+    description: Mesopotamian empire that conquered the northern kingdom of Israel
+    begin_date: 1400 BC
+    end_date: 600 BC
+    tags:
+      - mesopotamia
+      - empire
+      - conquest
+      - cruel
+      - exile
+    notable_people: []
+    regions:
+      - Assyria
+      - Mesopotamia
+    characteristics:
+      - Military empire
+      - Cruel tactics
+      - Conquered Israel
+      - Administrative skill
+  - id: BABYLONIAN
+    name: Babylonian
+    description: Mesopotamian empire that conquered Judah and destroyed the temple
+    begin_date: 1800 BC
+    end_date: 539 BC
+    tags:
+      - mesopotamia
+      - empire
+      - exile
+      - temple-destruction
+      - learning
+    notable_people:
+      - NEBUCHADNEZZAR
+      - BELSHAZZAR
+    regions:
+      - Babylon
+      - Mesopotamia
+    characteristics:
+      - Great empire
+      - Learning and astronomy
+      - Conquered Judah
+      - Exile
+  - id: PERSIAN
+    name: Persian
+    description: Indo-Iranian empire that allowed the Jews to return from exile
+    begin_date: 550 BC
+    end_date: 331 BC
+    tags:
+      - indo-iranian
+      - empire
+      - return
+      - restoration
+      - tolerance
+    notable_people:
+      - CYRUS
+      - DARIUS_THE_MEDE
+    regions:
+      - Persia
+      - Iran
+    characteristics:
+      - Tolerant rule
+      - Allowed return from exile
+      - Great empire
+      - Administrative skill
+  - id: GREEK
+    name: Greek
+    description: Indo-European people who created Hellenistic culture and conquered the Persian Empire
+    begin_date: 800 BC
+    end_date: 146 BC
+    tags:
+      - indo-european
+      - hellenistic
+      - culture
+      - philosophy
+      - conquest
+    notable_people:
+      - LUKE
+      - TITUS
+    regions:
+      - Greece
+      - Mediterranean
+    characteristics:
+      - Philosophy and learning
+      - Cultural influence
+      - City-states
+      - Alexander's empire
+  - id: ROMAN
+    name: Roman
+    description: Indo-European empire that ruled the Mediterranean world during New Testament times
+    begin_date: 753 BC
+    end_date: 476 AD
+    tags:
+      - indo-european
+      - empire
+      - law
+      - roads
+      - crucifixion
+    notable_people:
+      - PONTIUS_PILATE
+      - CORNELIUS
+      - PAUL
+    regions:
+      - Rome
+      - Mediterranean
+    characteristics:
+      - Great empire
+      - Roman law
+      - Road builders
+      - Military organization
+family_groups:
+  - name: Tribe of Reuben
+    founder: REUBEN
+    territory: East of Jordan
+    characteristics:
+      - Firstborn
+      - Lost birthright
+      - Unstable
+      - Pastoral
+    references:
+      - NUM.32.1.KJV
+  - name: Tribe of Simeon
+    founder: SIMEON
+    territory: Southern Canaan
+    characteristics:
+      - Violent
+      - Scattered
+      - Absorbed into Judah
+    references:
+      - JOS.19.1.KJV
+  - name: Tribe of Levi
+    founder: LEVI
+    territory: Scattered cities (priestly tribe)
+    special_role: Priesthood
+    characteristics:
+      - Priests
+      - No inheritance
+      - Temple service
+      - Tithed
+    references:
+      - NUM.18.2.KJV
+  - name: Tribe of Judah
+    founder: JUDAH
+    territory: Southern Canaan
+    special_role: Royal line
+    characteristics:
+      - Royal tribe
+      - Lion
+      - Praise
+      - Messiah's line
+      - Leadership
+    references:
+      - GEN.49.10.KJV
+  - name: Tribe of Dan
+    founder: DAN
+    territory: Western coast/Northern
+    characteristics:
+      - Judge
+      - Serpent
+      - Idolatry
+      - Migration
+    references:
+      - JOS.19.40.KJV
+  - name: Tribe of Naphtali
+    founder: NAPHTALI
+    territory: Northern Galilee
+    characteristics:
+      - Wrestling
+      - Hind
+      - Good words
+      - Blessing
+    references:
+      - JOS.19.32.KJV
+  - name: Tribe of Gad
+    founder: GAD
+    territory: East of Jordan
+    characteristics:
+      - Troop
+      - Warriors
+      - Cattle
+      - Courage
+    references:
+      - NUM.32.34.KJV
+  - name: Tribe of Asher
+    founder: ASHER
+    territory: Northwestern coast
+    characteristics:
+      - Happy
+      - Rich food
+      - Royal dainties
+      - Oil
+    references:
+      - JOS.19.24.KJV
+  - name: Tribe of Issachar
+    founder: ISSACHAR
+    territory: Northern central
+    characteristics:
+      - Strong donkey
+      - Service
+      - Understanding times
+    references:
+      - JOS.19.17.KJV
+  - name: Tribe of Zebulun
+    founder: ZEBULUN
+    territory: Northern central
+    characteristics:
+      - Dwelling
+      - Haven
+      - Ships
+      - Commerce
+    references:
+      - JOS.19.10.KJV
+  - name: Tribe of Joseph (Ephraim)
+    founder: EPHRAIM
+    territory: Central hill country
+    characteristics:
+      - Fruitful
+      - Younger blessed
+      - Northern kingdom leadership
+    references:
+      - JOS.16.5.KJV
+  - name: Tribe of Joseph (Manasseh)
+    founder: MANASSEH
+    territory: Central/East of Jordan
+    characteristics:
+      - Forgetfulness
+      - Half tribe
+      - Inheritance on both sides
+    references:
+      - JOS.17.1.KJV
+  - name: Tribe of Benjamin
+    founder: BENJAMIN
+    territory: Central (Jerusalem area)
+    characteristics:
+      - Right hand
+      - Wolf
+      - Beloved
+      - Warriors
+      - Jerusalem
+    references:
+      - JOS.18.11.KJV
+notes:
+  - The genealogies in Matthew and Luke differ, likely representing different lineages (paternal vs maternal or legal vs biological)
+  - Ages listed are from the Hebrew text as recorded in the KJV
+  - Some relationships may be adoptive or legal rather than biological
+  - The term "begat" in Hebrew can mean immediate father-son or ancestor-descendant
+  - Gaps in genealogies were common in ancient records
+  - Women are mentioned less frequently but play crucial roles in the lineage
+  - The genealogies serve theological purposes beyond mere historical record
+  - Ethnicity classifications are based on biblical, historical, and geographical context
+  - Some ethnic designations may overlap or change over time periods
+  - Divine classification is used for God the Father as He transcends ethnicity
+  - Antediluvian refers to pre-flood humanity before ethnic distinctions
+  - Hebrew/Israelite/Jewish terms reflect different time periods and contexts
+  - Tags help categorize people by role, significance, and characteristics
+  - Ethnicities section provides historical and cultural context for understanding biblical peoples

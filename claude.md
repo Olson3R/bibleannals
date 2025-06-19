@@ -48,9 +48,9 @@ A comprehensive interactive timeline website showcasing biblical people, events,
 - **Data Format**: YAML files for structured biblical data
 
 ### Data Structure
-- **Events** (`data/claude/events.yaml`): biblical events with dates, locations, participants
-- **Persons** (`data/claude/persons.yaml`): Biblical figures with relationships and references
-- **Regions** (`data/claude/regions.yaml`): geographic locations with historical context
+- **Events** (`data/events.yaml`): biblical events with dates, locations, participants
+- **Persons** (`data/people.yaml`): Biblical figures with relationships and references
+- **Regions** (`data/regions.yaml`): geographic locations with historical context
 
 ### Key Components
 - **BiblicalTimeline.tsx**: Main timeline interface component

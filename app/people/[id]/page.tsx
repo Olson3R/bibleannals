@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { loadTimelineData, getPersonById, getRegionById } from '../../utils/data-loader';
+import { loadTimelineData, getPersonById, getRegionById, getPersonFamilyGroup } from '../../utils/data-loader';
 import { getPersonPeriod } from '../../utils/period-detection';
 import { generateMetaTags } from '../../utils/meta-tags';
 import { getPersonCrossReferences } from '../../utils/cross-references';
@@ -61,6 +61,9 @@ export default function PersonPage({ params }: PersonPageProps) {
   // Get comprehensive cross-references
   const crossRefs = getPersonCrossReferences(person, data.persons, data.events, data.regions);
 
+  // Get family group information
+  const familyGroup = getPersonFamilyGroup(person.id);
+
   // Create location names mapping for events
   const eventLocationNames = Object.fromEntries(
     crossRefs.relatedEvents.map(event => [event.id, getRegionById(event.location)?.name || event.location])
@@ -75,6 +78,7 @@ export default function PersonPage({ params }: PersonPageProps) {
         relatedRegions={crossRefs.relatedRegions}
         eventLocationNames={eventLocationNames}
         personPeriod={personPeriod}
+        familyGroup={familyGroup}
       />
     </Suspense>
   );
