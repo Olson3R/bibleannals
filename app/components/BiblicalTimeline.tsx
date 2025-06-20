@@ -698,7 +698,7 @@ export function BiblicalTimeline({
             )
           )
           .map((period, index) => (
-          <article key={index} id={`period-${period.slug}`} className="relative mb-16" aria-labelledby={`period-${period.slug}-heading`}>
+          <article key={index} id={`period-${period.slug}`} className="relative mb-6" aria-labelledby={`period-${period.slug}-heading`}>
             {/* Timeline dot */}
             <div className="absolute left-6 w-5 h-5 bg-white dark:bg-gray-800 border-4 border-gray-600 dark:border-gray-400 rounded-full z-10 shadow-lg" aria-hidden="true"></div>
             

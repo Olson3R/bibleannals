@@ -70,7 +70,7 @@ export const timelinePeriods: TimelinePeriod[] = [
   {
     name: "Intertestamental Period",
     slug: "intertestamental-period",
-    dateRange: "430-6 BC",
+    dateRange: "430-5 BC",
     description: "Between Old and New Testaments",
     colorIndex: 8, // Slate - Silent Period
     primaryBooks: ["Historical period between testaments - no canonical biblical books"]
@@ -78,7 +78,7 @@ export const timelinePeriods: TimelinePeriod[] = [
   {
     name: "New Testament Era",
     slug: "new-testament-era",
-    dateRange: "6 BC-60 AD",
+    dateRange: "4 BC-60 AD",
     description: "Life of Christ and early church",
     colorIndex: 9, // Teal - New Testament & Life
     primaryBooks: ["Matthew", "Mark", "Luke", "John", "Acts", "Romans", "1-2 Corinthians", "Galatians", "Ephesians", "Philippians", "Colossians", "1-2 Thessalonians", "1-2 Timothy", "Titus", "Philemon", "Hebrews", "James", "1-2 Peter", "1-3 John", "Jude", "Revelation"]

@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { NavLink } from '../ui';
 import type { BiblicalPerson, BiblicalEvent, BiblicalRegion, TimelinePeriod } from '../../types/biblical';
-import { getBibleUrl, getRegionStudyUrl, isElementVisible, scrollToElementWithOffset } from '../../utils';
+import { getRegionStudyUrl, isElementVisible, scrollToElementWithOffset } from '../../utils';
 import { getPeriodColors } from '../../utils/color-palette';
 import { isWithinDateRange, parseDate } from '../../utils/date-parsing';
 import { isRelevantToPeriod, getCombinedRelevance } from '../../utils/period-relevance';
@@ -36,7 +36,6 @@ function PersonCard({ person, periodSlug, allPeriods }: { person: BiblicalPerson
   };
   
   const colors = getColorScheme(person);
-  const displayTags = person.tags?.filter(tag => tag !== 'biblical').slice(0, 2) || [];
   
   // Get relevance info for this person in current period
   const relevanceInfo = allPeriods && periodSlug ? 
@@ -52,41 +51,24 @@ function PersonCard({ person, periodSlug, allPeriods }: { person: BiblicalPerson
   };
   
   return (
-    <div className="inline-block mb-2">
-      <NavLink 
-        href={`/people/${person.id}?from=timeline&period=${periodSlug || ''}`}
-        className={`block px-2 py-1 rounded border cursor-pointer transition-all duration-200 hover:shadow-md text-xs ${colors.bg} ${colors.border} ${colors.text}`}
-        data-person-id={person.id}
-      >
-        <div className="flex flex-col">
-          <div className="flex items-center">
-            <span className="font-medium">{person.name}</span>
-            {person.created && <span className="ml-1 text-orange-600 dark:text-orange-400" title="Created by God">⭐</span>}
-            {person.translated && <span className="ml-1 text-cyan-600 dark:text-cyan-400" title="Translated (taken up without death)">↗️</span>}
-            {getRelevanceIndicator() && (
-              <span 
-                className="ml-1" 
-                title={relevanceInfo ? `${relevanceInfo.reason.replace('-', ' ')} (${Math.round(relevanceInfo.relevance * 100)}% relevance)` : ''}
-              >
-                {getRelevanceIndicator()}
-              </span>
-            )}
-          </div>
-          {displayTags.length > 0 && (
-            <div className="flex flex-wrap gap-1 mt-1">
-              {displayTags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="px-1 py-0.5 text-xs bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-30 rounded"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-      </NavLink>
-    </div>
+    <NavLink 
+      href={`/people/${person.id}?from=timeline&period=${periodSlug || ''}`}
+      className={`inline-block px-2 py-1 rounded border cursor-pointer transition-all duration-200 hover:shadow-sm text-xs ${colors.bg} ${colors.border} ${colors.text}`}
+      data-person-id={person.id}
+    >
+      <div className="flex items-center gap-1">
+        <span className="font-medium">{person.name}</span>
+        {person.created && <span className="text-orange-600 dark:text-orange-400" title="Created by God">⭐</span>}
+        {person.translated && <span className="text-cyan-600 dark:text-cyan-400" title="Translated (taken up without death)">↗️</span>}
+        {getRelevanceIndicator() && (
+          <span 
+            title={relevanceInfo ? `${relevanceInfo.reason.replace('-', ' ')} (${Math.round(relevanceInfo.relevance * 100)}% relevance)` : ''}
+          >
+            {getRelevanceIndicator()}
+          </span>
+        )}
+      </div>
+    </NavLink>
   );
 }
 
@@ -524,133 +506,100 @@ export function TimelinePeriodCard({
   }, [searchParams, periodSlug, periodEvents, relevantRegions]);
 
   return (
-    <div className={`rounded-lg border-2 ${getPeriodColors(period.colorIndex)} shadow-lg mb-8`} data-period-id={periodSlug} id={`period-${periodSlug}`}>
-      {/* Sticky Period Header */}
-      <div className="sticky top-[120px] lg:top-[180px] z-20 bg-white dark:bg-gray-800 border-b-2 border-gray-200 dark:border-gray-700 rounded-t-lg">
-        <div className={`p-4 ${getPeriodColors(period.colorIndex)} rounded-t-lg relative group`}>
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
-            <NavLink
-              href={`/periods/${periodSlug}`}
-              className="text-left hover:text-blue-600 dark:hover:text-blue-400 hover:underline cursor-pointer"
+    <div className={`rounded-lg border ${getPeriodColors(period.colorIndex)} shadow-md mb-4`} data-period-id={periodSlug} id={`period-${periodSlug}`}>
+      {/* Compact Period Header */}
+      <div className="sticky top-[120px] lg:top-[180px] z-20 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 rounded-t-lg">
+        <div className={`px-4 py-2 ${getPeriodColors(period.colorIndex)} rounded-t-lg relative group`}>
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                <NavLink
+                  href={`/periods/${periodSlug}`}
+                  className="text-left hover:text-blue-600 dark:hover:text-blue-400 hover:underline cursor-pointer"
+                >
+                  {period.name}
+                </NavLink>
+              </h3>
+              <p className="text-sm font-semibold text-gray-800 dark:text-gray-100">{period.dateRange}</p>
+            </div>
+            
+            {/* Copy Link Button */}
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                const url = `${window.location.origin}/#period-${periodSlug}`;
+                navigator.clipboard.writeText(url);
+                
+                // Show temporary feedback
+                const button = e.currentTarget as HTMLButtonElement;
+                const originalText = button.innerHTML;
+                button.innerHTML = '✓';
+                button.classList.add('bg-green-100', 'text-green-600');
+                setTimeout(() => {
+                  button.innerHTML = originalText;
+                  button.classList.remove('bg-green-100', 'text-green-600');
+                }, 1000);
+              }}
+              className="w-6 h-6 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full shadow-sm hover:shadow-md transition-all duration-200 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xs text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100"
+              title="Copy link to this period on timeline"
             >
-              {period.name}
-            </NavLink>
-          </h3>
-          <p className="text-lg font-semibold text-gray-800 dark:text-gray-100">{period.dateRange}</p>
-          
-          {/* Copy Link Button */}
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              const url = `${window.location.origin}/#period-${periodSlug}`;
-              navigator.clipboard.writeText(url);
-              
-              // Show temporary feedback
-              const button = e.currentTarget as HTMLButtonElement;
-              const originalText = button.innerHTML;
-              button.innerHTML = '✓';
-              button.classList.add('bg-green-100', 'text-green-600');
-              setTimeout(() => {
-                button.innerHTML = originalText;
-                button.classList.remove('bg-green-100', 'text-green-600');
-              }, 1000);
-            }}
-            className="absolute top-2 right-2 w-6 h-6 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full shadow-sm hover:shadow-md transition-all duration-200 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xs text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100"
-            title="Copy link to this period on timeline"
-          >
-            🔗
-          </button>
+              🔗
+            </button>
+          </div>
         </div>
       </div>
       
-      {/* Period Content */}
-      <div className="p-6">
-        <p className="text-gray-600 dark:text-gray-300 mb-4">{period.description}</p>
+      {/* Compact Period Content */}
+      <div className="px-4 py-3">
+        <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{period.description}</p>
 
-        <div className={`grid grid-cols-1 gap-6 ${
-          [showEvents, showPeople, showRegions].filter(Boolean).length === 3 ? 'lg:grid-cols-3' :
-          [showEvents, showPeople, showRegions].filter(Boolean).length === 2 ? 'lg:grid-cols-2' :
-          'lg:grid-cols-1'
-        }`}>
-          {/* Events Column */}
+        <div className="space-y-3">{/* Changed from grid to vertical stacking for more compact layout */}
+          {/* Events Section - Compact Horizontal Layout */}
           {showEvents && (
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <h4 className="font-bold text-gray-800 dark:text-gray-200 text-lg">📅 Key Events</h4>
+            <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3">
+              <div className="flex items-center justify-between mb-2">
+                <h4 className="font-semibold text-gray-800 dark:text-gray-200 text-sm">📅 Events ({periodEvents.length})</h4>
                 {allPeriodEvents.length > MAX_EVENTS_DISPLAY && (
                   <button
                     onClick={() => showPeriodEvents(period.name)}
-                    className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                    className="text-xs text-blue-600 hover:text-blue-800 hover:underline"
                   >
-                    View all {allPeriodEvents.length} events →
+                    View all {allPeriodEvents.length} →
                   </button>
                 )}
               </div>
-              <div className="space-y-3">
+              <div className="flex flex-wrap gap-2">
                 {periodEvents.map((event) => {
                   const selectedEventId = searchParams.get('selected')?.split(':')[1];
                   const isEventSelected = selectedEventId === event.id;
                   return (
-                    <div key={event.id} className={`rounded-lg p-3 border transition-all duration-200 ${
+                    <div key={event.id} className={`rounded-md p-2 border text-xs transition-all duration-200 cursor-pointer hover:shadow-sm ${
                       isEventSelected 
-                        ? 'bg-green-50 dark:bg-green-900/20 border-green-500 dark:border-green-400 shadow-lg ring-2 ring-green-300 dark:ring-green-600' 
-                        : 'bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-90 border-gray-200 dark:border-gray-600'
-                    }`} data-event-id={event.id}>
-                      <h5 className={`font-semibold text-sm mb-1 ${
-                        isEventSelected ? 'text-green-900 dark:text-green-100' : 'text-gray-800 dark:text-gray-200'
+                        ? 'bg-green-100 dark:bg-green-900/30 border-green-400 dark:border-green-500 text-green-800 dark:text-green-200' 
+                        : 'bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600'
+                    }`} data-event-id={event.id} onClick={() => onEventClick(event, periodSlug)}>
+                      <div className={`font-medium mb-1 ${
+                        isEventSelected ? 'text-green-800 dark:text-green-200' : 'text-gray-800 dark:text-gray-200'
                       }`}>
-                        <button
-                          className={`text-left hover:underline cursor-pointer ${
-                            isEventSelected ? 'text-green-900 dark:text-green-100 hover:text-green-700 dark:hover:text-green-200' : 'hover:text-blue-600'
-                          }`}
-                          onClick={() => onEventClick(event, periodSlug)}
-                        >
-                          {event.name}
-                        </button>
-                      </h5>
-                      <p className={`text-xs mb-2 ${
-                        isEventSelected ? 'text-green-700 dark:text-green-200' : 'text-gray-600 dark:text-gray-400'
-                      }`}>{event.date}</p>
-                      <p className={`text-xs mb-2 ${
-                        isEventSelected ? 'text-green-800 dark:text-green-300' : 'text-gray-700 dark:text-gray-300'
-                      }`}>{event.description}</p>
-                      {event.references && event.references.length > 0 && (
-                        <div className="mb-2">
-                          <span className="text-xs text-gray-500 dark:text-gray-400">References: </span>
-                          {event.references.slice(0, 2).map((ref, refIndex) => (
-                            <span key={refIndex}>
-                              <a 
-                                href={getBibleUrl(ref)}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-xs text-blue-600 hover:text-blue-800 underline"
-                              >
-                                {ref.replace('.KJV', '')}
-                              </a>
-                              {refIndex < event.references.slice(0, 2).length - 1 && ', '}
-                            </span>
-                          ))}
-                          {event.references.length > 2 && (
-                            <span className="text-xs text-gray-500 dark:text-gray-400"> +{event.references.length - 2} more</span>
-                          )}
-                        </div>
-                      )}
-                      {showPeople && event.participants.length > 0 && (
-                        <div className="flex flex-wrap">
-                          {event.participants.slice(0, 3).map(participantId => {
+                        {event.name}
+                      </div>
+                      <div className={`text-xs opacity-75 ${
+                        isEventSelected ? 'text-green-700 dark:text-green-300' : 'text-gray-600 dark:text-gray-400'
+                      }`}>
+                        {event.date}
+                      </div>
+                      {event.participants.length > 0 && (
+                        <div className="flex flex-wrap gap-1 mt-1">
+                          {event.participants.slice(0, 2).map(participantId => {
                             const person = getPersonById(participantId);
                             return person ? (
-                              <NavLink
-                                key={participantId}
-                                href={`/people/${person.id}?from=timeline&period=${periodSlug}`}
-                                className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded mr-1 mb-1 hover:bg-blue-200 inline-block"
-                              >
+                              <span key={participantId} className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-1 py-0.5 rounded">
                                 {person.name}
-                              </NavLink>
+                              </span>
                             ) : null;
                           })}
-                          {event.participants.length > 3 && (
-                            <span className="text-xs text-gray-500 dark:text-gray-400 ml-1">+{event.participants.length - 3} more</span>
+                          {event.participants.length > 2 && (
+                            <span className="text-xs opacity-75">+{event.participants.length - 2}</span>
                           )}
                         </div>
                       )}
@@ -661,101 +610,91 @@ export function TimelinePeriodCard({
             </div>
           )}
 
-          {/* People Column */}
+          {/* People Section - Compact */}
           {showPeople && (
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <h4 className="font-bold text-gray-800 dark:text-gray-200 text-lg">👥 Key Figures</h4>
+            <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3">
+              <div className="flex items-center justify-between mb-2">
+                <h4 className="font-semibold text-gray-800 dark:text-gray-200 text-sm">👥 People ({allParticipants.size})</h4>
                 {allParticipants.size > MAX_PEOPLE_DISPLAY && (
                   <button
                     onClick={() => showPeriodPeople(period.name)}
-                    className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                    className="text-xs text-blue-600 hover:text-blue-800 hover:underline"
                   >
-                    View all {allParticipants.size} people →
+                    View all {allParticipants.size} →
                   </button>
                 )}
               </div>
-              <div className="bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-90 rounded-lg p-3 border border-gray-200 dark:border-gray-600">
-                <div className="space-y-2">
-                  {displayedParticipants.map(participantId => {
-                    const person = getPersonById(participantId);
-                    return person ? (
-                      <PersonCard key={participantId} person={person} periodSlug={periodSlug} allPeriods={allPeriods} />
-                    ) : null;
-                  })}
-                  {!hasAdvancedFilters && allParticipants.size > MAX_PEOPLE_DISPLAY && (
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">+{allParticipants.size - MAX_PEOPLE_DISPLAY} more people</p>
-                  )}
-                </div>
+              <div className="flex flex-wrap gap-1">
+                {displayedParticipants.map(participantId => {
+                  const person = getPersonById(participantId);
+                  return person ? (
+                    <PersonCard key={participantId} person={person} periodSlug={periodSlug} allPeriods={allPeriods} />
+                  ) : null;
+                })}
+                {!hasAdvancedFilters && allParticipants.size > MAX_PEOPLE_DISPLAY && (
+                  <span className="text-xs text-gray-500 dark:text-gray-400 self-center ml-1">+{allParticipants.size - MAX_PEOPLE_DISPLAY} more</span>
+                )}
               </div>
             </div>
           )}
 
-          {/* Regions Column */}
+          {/* Regions Section - Compact */}
           {showRegions && (
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <h4 className="font-bold text-gray-800 dark:text-gray-200 text-lg">🗺️ Regions</h4>
+            <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3">
+              <div className="flex items-center justify-between mb-2">
+                <h4 className="font-semibold text-gray-800 dark:text-gray-200 text-sm">🗺️ Regions ({allRelevantRegions.length})</h4>
                 {allRelevantRegions.length > MAX_REGIONS_DISPLAY && (
                   <button
                     onClick={() => showPeriodRegions(period.name)}
-                    className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                    className="text-xs text-blue-600 hover:text-blue-800 hover:underline"
                   >
-                    View all {allRelevantRegions.length} regions →
+                    View all {allRelevantRegions.length} →
                   </button>
                 )}
               </div>
-              <div className="space-y-3">
+              <div className="flex flex-wrap gap-2">
                 {relevantRegions.map(region => {
                   const selectedRegionId = searchParams.get('selected')?.split(':')[1];
                   const isRegionSelected = selectedRegionId === region.id;
                   return (
-                    <div key={region.id} className={`rounded-lg p-3 border transition-all duration-200 ${
+                    <div key={region.id} className={`rounded-md p-2 border text-xs transition-all duration-200 cursor-pointer hover:shadow-sm ${
                       isRegionSelected 
-                        ? 'bg-purple-50 dark:bg-purple-900/20 border-purple-500 dark:border-purple-400 shadow-lg ring-2 ring-purple-300 dark:ring-purple-600' 
-                        : 'bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-90 border-gray-200 dark:border-gray-600'
-                    }`} data-region-id={region.id}>
-                      <h5 className={`font-semibold text-sm mb-1 flex items-center gap-2 ${
-                        isRegionSelected ? 'text-purple-900 dark:text-purple-100' : 'text-gray-800 dark:text-gray-200'
+                        ? 'bg-purple-100 dark:bg-purple-900/30 border-purple-400 dark:border-purple-500 text-purple-800 dark:text-purple-200' 
+                        : 'bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600'
+                    }`} data-region-id={region.id} onClick={() => onRegionClick(region, periodSlug)}>
+                      <div className={`font-medium mb-1 flex items-center gap-1 ${
+                        isRegionSelected ? 'text-purple-800 dark:text-purple-200' : 'text-gray-800 dark:text-gray-200'
                       }`}>
-                        <button
-                          className={`text-left hover:underline cursor-pointer ${
-                            isRegionSelected ? 'text-purple-900 dark:text-purple-100 hover:text-purple-700 dark:hover:text-purple-200' : 'hover:text-blue-600'
-                          }`}
-                          onClick={() => onRegionClick(region, periodSlug)}
-                        >
-                          {region.name}
-                        </button>
+                        {region.name}
                         <a 
                           href={getRegionStudyUrl(region.name)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-600 hover:text-blue-800 text-xs"
                           title="Study this region in the Bible"
+                          onClick={(e) => e.stopPropagation()}
                         >
                           📖
                         </a>
-                      </h5>
-                      <p className={`text-xs mb-1 ${
-                        isRegionSelected ? 'text-purple-700 dark:text-purple-200' : 'text-gray-600 dark:text-gray-400'
-                      }`}>{region.location}</p>
-                      <p className={`text-xs mb-2 ${
-                        isRegionSelected ? 'text-purple-800 dark:text-purple-300' : 'text-gray-700 dark:text-gray-300'
-                      }`}>{region.description}</p>
-                      {showPeople && region.notable_people.length > 0 && (
-                        <div className="flex flex-wrap">
-                          {region.notable_people.slice(0, 3).map(personId => {
+                      </div>
+                      <div className={`text-xs opacity-75 ${
+                        isRegionSelected ? 'text-purple-700 dark:text-purple-300' : 'text-gray-600 dark:text-gray-400'
+                      }`}>
+                        {region.location}
+                      </div>
+                      {region.notable_people.length > 0 && (
+                        <div className="flex flex-wrap gap-1 mt-1">
+                          {region.notable_people.slice(0, 2).map(personId => {
                             const person = getPersonById(personId);
                             return person ? (
-                              <NavLink
-                                key={personId}
-                                href={`/people/${person.id}?from=timeline&period=${periodSlug}`}
-                                className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded mr-1 mb-1 hover:bg-blue-200 inline-block"
-                              >
+                              <span key={personId} className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-1 py-0.5 rounded">
                                 {person.name}
-                              </NavLink>
+                              </span>
                             ) : null;
                           })}
+                          {region.notable_people.length > 2 && (
+                            <span className="text-xs opacity-75">+{region.notable_people.length - 2}</span>
+                          )}
                         </div>
                       )}
                     </div>

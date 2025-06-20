@@ -1,5 +1,5 @@
 import type { BiblicalPerson, BiblicalEvent, BiblicalRegion, TimelinePeriod, PeriodRelevance } from '../types/biblical';
-import { parseDate } from './date-parsing';
+import { parseDate, parseDateRange } from './date-parsing';
 
 /**
  * Calculate temporal distance between an entity date and a period
@@ -10,31 +10,19 @@ const calculateTemporalDistance = (entityDate: string, period: TimelinePeriod): 
   const parsedEntityDate = parseDate(entityDate);
   if (parsedEntityDate === null) return Infinity;
   
-  // Parse period date range
-  const periodRange = period.dateRange;
-  const rangeParts = periodRange.split('-').map(part => part.trim());
+  // Parse period date range using proper date range parser
+  const { startYear, endYear } = parseDateRange(period.dateRange);
   
-  let periodStart: number | null = null;
-  let periodEnd: number | null = null;
-  
-  if (rangeParts.length >= 2) {
-    periodStart = parseDate(rangeParts[0]);
-    periodEnd = parseDate(rangeParts[1]);
-  } else if (rangeParts.length === 1) {
-    periodStart = parseDate(rangeParts[0]);
-    periodEnd = periodStart;
-  }
-  
-  if (periodStart === null || periodEnd === null) return Infinity;
+  if (startYear === null || endYear === null) return Infinity;
   
   // Return 0 if within period, otherwise minimum distance to period boundaries
-  if (parsedEntityDate >= periodStart && parsedEntityDate <= periodEnd) {
+  if (parsedEntityDate >= startYear && parsedEntityDate <= endYear) {
     return 0;
   }
   
   return Math.min(
-    Math.abs(parsedEntityDate - periodStart),
-    Math.abs(parsedEntityDate - periodEnd)
+    Math.abs(parsedEntityDate - startYear),
+    Math.abs(parsedEntityDate - endYear)
   );
 };
 
