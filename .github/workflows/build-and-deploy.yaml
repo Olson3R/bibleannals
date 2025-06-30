@@ -22,21 +22,27 @@ jobs:
         run: npm install
 
       - name: Build Next.js app
-        run: npm run build # or your build command
+        run: npm run build
 
-      - name: Copy files via SFTP
+      - name: Create deployment package
+        run: |
+          cd out
+          zip -r ../bible-annals-deploy.zip . -x "*.DS_Store" "*.log"
+          cd ..
+
+      - name: Upload deployment package via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           username: ${{ secrets.SFTP_USERNAME }}
           server: ${{ secrets.SFTP_HOST }}
           password: ${{ secrets.SFTP_PASSWORD }}
-          local_path: './out/*'
+          local_path: './bible-annals-deploy.zip'
           remote_path: '/home/${{ secrets.SFTP_USERNAME }}/uploads/'
           sftpArgs: '-o ConnectTimeout=5'
           sftp_only: true
           delete_remote_files: false
         
-      - name: Publish site
+      - name: Unzip and publish site
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SFTP_HOST }}
@@ -44,7 +50,17 @@ jobs:
           password: ${{ secrets.SFTP_PASSWORD }}
           script: |
             timestamp=$(date +%Y%m%d-%H%M%S)
-            echo "Created $timestamp"
+            echo "Creating deployment directory: $timestamp"
             mkdir "$timestamp"
-            mv uploads/* "$timestamp/"
+            
+            echo "Unzipping deployment package..."
+            unzip -o uploads/bible-annals-deploy.zip -d "$timestamp/"
+            
+            echo "Cleaning up zip file..."
+            rm uploads/bible-annals-deploy.zip
+            
+            echo "Updating symlink to new deployment..."
             ln -snf "$timestamp" bibleannals.com
+            
+            echo "Deployment completed successfully!"
+            ls -la bibleannals.com
