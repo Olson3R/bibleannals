@@ -67,7 +67,9 @@ biblical_persons:
       - name: Son of the living God
         reference: MAT.16.16.KJV
     birth_date: ~4 BC
+    birth_date_source: "Traditional dating based on Herod's death and Luke's census"
     death_date: ~30 AD
+    death_date_source: "Traditional dating based on Luke 3:23 and length of ministry"
     parents:
       - MARY_MOTHER_OF_JESUS
     foster_father: JOSEPH_HUSBAND_OF_MARY
@@ -88,7 +90,9 @@ biblical_persons:
       - biblical
     age: 930y
     birth_date: ~4004 BC
+    birth_date_source: "Ussher's Chronology - year of creation"
     death_date: ~3074 BC
+    death_date_source: "Biblical record - lived 930 years (Gen 5:5)"
     created: true
     references:
       - GEN.1.27.KJV
@@ -253,7 +257,9 @@ biblical_persons:
       - biblical
     age: 969y
     birth_date: ~3317 BC
+    birth_date_source: "Genesis genealogy - calculated from patriarchal ages"
     death_date: ~2348 BC
+    death_date_source: "Traditional chronology - died in the year of the flood"
     parents:
       - ENOCH
     references:
@@ -288,7 +294,9 @@ biblical_persons:
       - biblical
     age: 950y
     birth_date: ~2948 BC
+    birth_date_source: "Genesis genealogy - 600 years before the flood (Gen 7:6)"
     death_date: ~1998 BC
+    death_date_source: "Biblical record - lived 950 years (Gen 9:29)"
     parents:
       - LAMECH_FATHER_OF_NOAH
     spouses:
@@ -505,7 +513,9 @@ biblical_persons:
       - biblical
     age: 175y
     birth_date: 1951 BC
+    birth_date_source: "Traditional chronology - born when Terah was 70 (Gen 11:26)"
     death_date: 1776 BC
+    death_date_source: "Biblical record - lived 175 years (Gen 25:7)"
     parents:
       - TERAH
     spouses:
@@ -579,7 +589,9 @@ biblical_persons:
       - biblical
     age: 180y
     birth_date: ~2066 BC
+    birth_date_source: "Biblical record - born when Abraham was 100 (Gen 21:5)"
     death_date: ~1886 BC
+    death_date_source: "Biblical record - lived 180 years (Gen 35:28)"
     parents:
       - ABRAHAM
       - SARAH
@@ -715,7 +727,9 @@ biblical_persons:
         reference: GEN.32.28.KJV
     age: 147y
     birth_date: ~2006 BC
+    birth_date_source: "Biblical record - born when Isaac was 60 (Gen 25:26)"
     death_date: ~1859 BC
+    death_date_source: "Biblical record - lived 147 years (Gen 47:28)"
     parents:
       - ISAAC
       - REBEKAH
@@ -1301,7 +1315,9 @@ biblical_persons:
       - covenant
       - biblical
     birth_date: ~1040 BC
+    birth_date_source: "Traditional chronology - based on reign dates and age at death"
     death_date: ~970 BC
+    death_date_source: "Historical records - reigned 40 years (1 Kings 2:11)"
     age: 70y
     parents:
       - JESSE
@@ -1438,7 +1454,9 @@ biblical_persons:
       - christ-line
       - biblical
     birth_date: ~990 BC
+    birth_date_source: "Traditional chronology - based on reign dates"
     death_date: ~930 BC
+    death_date_source: "Historical records - reigned 40 years (1 Kings 11:42)"
     age: 60y
     parents:
       - DAVID
@@ -1867,7 +1885,9 @@ biblical_persons:
       - exodus
       - biblical
     birth_date: ~1571 BC
+    birth_date_source: "Traditional chronology - 80 years before the Exodus (Ex 7:7)"
     death_date: ~1451 BC
+    death_date_source: "Biblical record - died at 120 years (Deut 34:7)"
     age: 120y
     parents:
       - AMRAM
@@ -2941,7 +2961,9 @@ biblical_persons:
       - church-leader
       - biblical
     birth_date: ~1 BC
+    birth_date_source: "Traditional dating - contemporary with Jesus"
     death_date: ~64 AD
+    death_date_source: "Church tradition - martyred under Nero"
     references:
       - MAT.4.18.KJV
   - id: ANDREW
@@ -3182,7 +3204,9 @@ biblical_persons:
       - writer
       - biblical
     birth_date: ~5 AD
+    birth_date_source: "Traditional dating - young man during Jesus' ministry"
     death_date: ~67 AD
+    death_date_source: "Church tradition - martyred in Rome"
     references:
       - ACT.13.9.KJV
   - id: BARNABAS
@@ -3338,7 +3362,9 @@ biblical_persons:
       - rebel
       - biblical
     birth_date: ~2800 BC
+    birth_date_source: "Traditional chronology - post-flood generation"
     death_date: ~2700 BC
+    death_date_source: "Estimated based on traditional chronology"
     parents:
       - CUSH
     references:
@@ -3439,6 +3465,679 @@ biblical_persons:
       - JAPHETH
     references:
       - GEN.10.2.KJV
+  - id: CLEMENT_OF_ROME
+    name: Clement of Rome
+    gender: male
+    ethnicity: Roman
+    birth_date: ~35 AD
+    birth_date_source: "Historical estimation - early church tradition"
+    death_date: ~99 AD
+    death_date_source: "Historical estimation - martyred during persecution"
+    tags:
+      - church-father
+      - apostolic-father
+      - pope
+      - martyred
+      - early-church
+      - post-biblical
+    references:
+      - "First Epistle of Clement"
+  - id: IGNATIUS_OF_ANTIOCH
+    name: Ignatius of Antioch
+    gender: male
+    ethnicity: Greek/Syrian
+    birth_date: ~35 AD
+    birth_date_source: "Historical estimation - contemporary of apostles"
+    death_date: ~108 AD
+    death_date_source: "Historical record - martyred in Rome under Trajan"
+    tags:
+      - church-father
+      - apostolic-father
+      - bishop
+      - martyred
+      - antioch
+      - early-church
+      - post-biblical
+    references:
+      - "Letters of Ignatius"
+  - id: POLYCARP
+    name: Polycarp
+    gender: male
+    ethnicity: Greek
+    birth_date: ~69 AD
+    birth_date_source: "Historical estimation - disciple of John the Apostle"
+    death_date: ~155 AD
+    death_date_source: "Historical record - martyred in Smyrna"
+    tags:
+      - church-father
+      - apostolic-father
+      - bishop
+      - martyred
+      - smyrna
+      - john-disciple
+      - early-church
+      - post-biblical
+    references:
+      - "Martyrdom of Polycarp"
+  - id: JUSTIN_MARTYR
+    name: Justin Martyr
+    gender: male
+    ethnicity: Greek/Roman
+    birth_date: ~100 AD
+    birth_date_source: "Historical estimation - early 2nd century"
+    death_date: ~165 AD
+    death_date_source: "Historical record - martyred in Rome"
+    tags:
+      - church-father
+      - apologist
+      - philosopher
+      - martyred
+      - defender-of-faith
+      - early-church
+      - post-biblical
+    references:
+      - "First Apology"
+      - "Dialogue with Trypho"
+  - id: IRENAEUS
+    name: Irenaeus
+    gender: male
+    ethnicity: Greek
+    birth_date: ~130 AD
+    birth_date_source: "Historical estimation - mid 2nd century"
+    death_date: ~202 AD
+    death_date_source: "Historical estimation - late 2nd century"
+    tags:
+      - church-father
+      - bishop
+      - theologian
+      - heresy-fighter
+      - lyon
+      - early-church
+      - post-biblical
+    references:
+      - "Against Heresies"
+  - id: ORIGEN
+    name: Origen
+    gender: male
+    ethnicity: Egyptian/Greek
+    birth_date: ~185 AD
+    birth_date_source: "Historical record - born in Alexandria"
+    death_date: ~254 AD
+    death_date_source: "Historical record - died from persecution wounds"
+    tags:
+      - church-father
+      - theologian
+      - scholar
+      - alexandria
+      - biblical-commentator
+      - early-church
+      - post-biblical
+    references:
+      - "Hexapla"
+      - "On First Principles"
+  - id: TERTULLIAN
+    name: Tertullian
+    gender: male
+    ethnicity: Roman/African
+    birth_date: ~155 AD
+    birth_date_source: "Historical estimation - mid 2nd century"
+    death_date: ~240 AD
+    death_date_source: "Historical estimation - early 3rd century"
+    tags:
+      - church-father
+      - apologist
+      - theologian
+      - lawyer
+      - carthage
+      - trinity-term
+      - early-church
+      - post-biblical
+    references:
+      - "Apologeticus"
+      - "Against Praxeas"
+  - id: CONSTANTINE_THE_GREAT
+    name: Constantine the Great
+    gender: male
+    ethnicity: Roman
+    birth_date: ~272 AD
+    birth_date_source: "Historical record - born in Naissus"
+    death_date: 337 AD
+    death_date_source: "Historical record - died in Constantinople"
+    tags:
+      - emperor
+      - christian-emperor
+      - nicaea
+      - constantinople
+      - legalized-christianity
+      - imperial-christianity
+      - post-biblical
+    references:
+      - "Edict of Milan"
+      - "Council of Nicaea"
+  - id: AUGUSTINE_OF_HIPPO
+    name: Augustine of Hippo
+    gender: male
+    ethnicity: Roman/African
+    birth_date: 354 AD
+    birth_date_source: "Historical record - born in Thagaste, North Africa"
+    death_date: 430 AD
+    death_date_source: "Historical record - died during Vandal siege of Hippo"
+    tags:
+      - church-father
+      - bishop
+      - theologian
+      - philosopher
+      - hippo
+      - confessions
+      - imperial-christianity
+      - post-biblical
+    references:
+      - "Confessions"
+      - "City of God"
+  - id: JEROME
+    name: Jerome
+    gender: male
+    ethnicity: Roman
+    birth_date: ~347 AD
+    birth_date_source: "Historical estimation - mid 4th century"
+    death_date: 420 AD
+    death_date_source: "Historical record - died in Bethlehem"
+    tags:
+      - church-father
+      - translator
+      - scholar
+      - vulgate
+      - bethlehem
+      - biblical-scholar
+      - imperial-christianity
+      - post-biblical
+    references:
+      - "Vulgate Bible"
+  - id: JOHN_CHRYSOSTOM
+    name: John Chrysostom
+    gender: male
+    ethnicity: Greek
+    birth_date: ~349 AD
+    birth_date_source: "Historical estimation - mid 4th century"
+    death_date: 407 AD
+    death_date_source: "Historical record - died in exile"
+    tags:
+      - church-father
+      - archbishop
+      - preacher
+      - golden-mouthed
+      - constantinople
+      - homilies
+      - imperial-christianity
+      - post-biblical
+    references:
+      - "Homilies on Scripture"
+  - id: GREGORY_THE_GREAT
+    name: Gregory the Great
+    gender: male
+    ethnicity: Roman
+    birth_date: ~540 AD
+    birth_date_source: "Historical estimation - mid 6th century"
+    death_date: 604 AD
+    death_date_source: "Historical record - died in Rome"
+    tags:
+      - pope
+      - doctor-of-church
+      - gregorian-chant
+      - missionary
+      - pastoral-care
+      - medieval
+      - post-biblical
+    references:
+      - "Pastoral Rule"
+      - "Dialogues"
+  - id: THOMAS_AQUINAS
+    name: Thomas Aquinas
+    gender: male
+    ethnicity: Italian
+    birth_date: ~1225 AD
+    birth_date_source: "Historical record - born in Roccasecca, Italy"
+    death_date: 1274 AD
+    death_date_source: "Historical record - died en route to Council of Lyon"
+    tags:
+      - doctor-of-church
+      - theologian
+      - philosopher
+      - scholastic
+      - summa-theologica
+      - dominican
+      - medieval
+      - post-biblical
+    references:
+      - "Summa Theologica"
+      - "Summa Contra Gentiles"
+  - id: ANSELM_OF_CANTERBURY
+    name: Anselm of Canterbury
+    gender: male
+    ethnicity: Italian/Norman
+    birth_date: ~1033 AD
+    birth_date_source: "Historical record - born in Aosta, Italy"
+    death_date: 1109 AD
+    death_date_source: "Historical record - died in Canterbury"
+    tags:
+      - archbishop
+      - theologian
+      - philosopher
+      - ontological-argument
+      - canterbury
+      - scholastic
+      - medieval
+      - post-biblical
+    references:
+      - "Proslogion"
+      - "Cur Deus Homo"
+  - id: MARTIN_LUTHER
+    name: Martin Luther
+    gender: male
+    ethnicity: German
+    birth_date: 1483 AD
+    birth_date_source: "Historical record - born in Eisleben, Germany"
+    death_date: 1546 AD
+    death_date_source: "Historical record - died in Eisleben, Germany"
+    tags:
+      - reformer
+      - theologian
+      - professor
+      - ninety-five-theses
+      - protestant-reformation
+      - sola-scriptura
+      - wittenberg
+      - post-biblical
+    references:
+      - "Ninety-Five Theses"
+      - "Luther's Small Catechism"
+  - id: JOHN_CALVIN
+    name: John Calvin
+    gender: male
+    ethnicity: French
+    birth_date: 1509 AD
+    birth_date_source: "Historical record - born in Noyon, France"
+    death_date: 1564 AD
+    death_date_source: "Historical record - died in Geneva, Switzerland"
+    tags:
+      - reformer
+      - theologian
+      - pastor
+      - institutes
+      - geneva
+      - calvinism
+      - predestination
+      - protestant-reformation
+      - post-biblical
+    references:
+      - "Institutes of the Christian Religion"
+  - id: HULDRYCH_ZWINGLI
+    name: Huldrych Zwingli
+    gender: male
+    ethnicity: Swiss
+    birth_date: 1484 AD
+    birth_date_source: "Historical record - born in Wildhaus, Switzerland"
+    death_date: 1531 AD
+    death_date_source: "Historical record - killed in battle at Kappel"
+    tags:
+      - reformer
+      - theologian
+      - pastor
+      - zurich
+      - reformed-tradition
+      - protestant-reformation
+      - swiss-reformation
+      - post-biblical
+    references:
+      - "Sixty-seven Articles"
+  - id: WILLIAM_CAREY
+    name: William Carey
+    gender: male
+    ethnicity: English
+    birth_date: 1761 AD
+    birth_date_source: "Historical record - born in Paulerspury, England"
+    death_date: 1834 AD
+    death_date_source: "Historical record - died in Serampore, India"
+    tags:
+      - missionary
+      - baptist
+      - translator
+      - india
+      - father-of-modern-missions
+      - bible-translation
+      - modern-missions
+      - post-biblical
+    references:
+      - "An Enquiry into the Obligations of Christians"
+  - id: HUDSON_TAYLOR
+    name: Hudson Taylor
+    gender: male
+    ethnicity: English
+    birth_date: 1832 AD
+    birth_date_source: "Historical record - born in Barnsley, England"
+    death_date: 1905 AD
+    death_date_source: "Historical record - died in Changsha, China"
+    tags:
+      - missionary
+      - china
+      - china-inland-mission
+      - faith-mission
+      - indigenous-methods
+      - modern-missions
+      - post-biblical
+    references:
+      - "China Inland Mission"
+  - id: ADONIRAM_JUDSON
+    name: Adoniram Judson
+    gender: male
+    ethnicity: American
+    birth_date: 1788 AD
+    birth_date_source: "Historical record - born in Malden, Massachusetts"
+    death_date: 1850 AD
+    death_date_source: "Historical record - died at sea near Burma"
+    tags:
+      - missionary
+      - baptist
+      - burma
+      - myanmar
+      - translator
+      - perseverance
+      - modern-missions
+      - post-biblical
+    references:
+      - "Burmese Bible Translation"
+  - id: WILLIAM_SEYMOUR
+    name: William Joseph Seymour
+    gender: male
+    ethnicity: African-American
+    birth_date: 1870 AD
+    birth_date_source: "Historical record - born in Centerville, Louisiana"
+    death_date: 1922 AD
+    death_date_source: "Historical record - died in Los Angeles, California"
+    tags:
+      - pentecostal-leader
+      - preacher
+      - azusa-street
+      - holy-spirit
+      - racial-reconciliation
+      - revival
+      - 20th-century
+      - post-biblical
+    references:
+      - "Azusa Street Revival"
+  - id: BILLY_GRAHAM
+    name: Billy Graham
+    gender: male
+    ethnicity: American
+    birth_date: 1918 AD
+    birth_date_source: "Historical record - born in Charlotte, North Carolina"
+    death_date: 2018 AD
+    death_date_source: "Historical record - died in Montreat, North Carolina"
+    tags:
+      - evangelist
+      - preacher
+      - crusades
+      - baptist
+      - worldwide-ministry
+      - media-ministry
+      - 20th-century
+      - post-biblical
+    references:
+      - "Billy Graham Evangelistic Association"
+  - id: MOTHER_TERESA
+    name: Mother Teresa
+    gender: female
+    ethnicity: Albanian/Macedonian
+    birth_date: 1910 AD
+    birth_date_source: "Historical record - born in Skopje, Macedonia"
+    death_date: 1997 AD
+    death_date_source: "Historical record - died in Calcutta, India"
+    tags:
+      - missionary
+      - catholic
+      - saint
+      - calcutta
+      - poor
+      - charity
+      - nobel-peace-prize
+      - 20th-century
+      - post-biblical
+    references:
+      - "Missionaries of Charity"
+  - id: WATCHMAN_NEE
+    name: Watchman Nee
+    gender: male
+    ethnicity: Chinese
+    birth_date: 1903 AD
+    birth_date_source: "Historical record - born in Shantou, China"
+    death_date: 1972 AD
+    death_date_source: "Historical record - died in prison in China"
+    tags:
+      - evangelist
+      - church-leader
+      - writer
+      - local-church-movement
+      - persecution
+      - china
+      - spiritual-life
+      - 20th-century
+      - post-biblical
+    references:
+      - "The Normal Christian Life"
+      - "The Spiritual Man"
+  - id: JOHN_SUNG
+    name: John Sung
+    gender: male
+    ethnicity: Chinese
+    birth_date: 1901 AD
+    birth_date_source: "Historical record - born in Hinghwa, China"
+    death_date: 1944 AD
+    death_date_source: "Historical record - died in Beijing, China"
+    tags:
+      - revivalist
+      - evangelist
+      - preacher
+      - china
+      - southeast-asia
+      - revival
+      - methodist
+      - 20th-century
+      - post-biblical
+    references:
+      - "Bethel Mission"
+      - "Revival in China"
+  - id: SADHU_SUNDAR_SINGH
+    name: Sadhu Sundar Singh
+    gender: male
+    ethnicity: Indian
+    birth_date: 1889 AD
+    birth_date_source: "Historical record - born in Punjab, India"
+    death_date: 1929 AD
+    death_date_source: "Historical estimation - disappeared in Himalayas"
+    tags:
+      - mystic
+      - evangelist
+      - sadhu
+      - india
+      - tibet
+      - spiritual-seeker
+      - indigenous-christianity
+      - 20th-century
+      - post-biblical
+    references:
+      - "At the Master's Feet"
+      - "The Cross is Heaven"
+  - id: DESMOND_TUTU
+    name: Desmond Tutu
+    gender: male
+    ethnicity: South African
+    birth_date: 1931 AD
+    birth_date_source: "Historical record - born in Klerksdorp, South Africa"
+    death_date: 2021 AD
+    death_date_source: "Historical record - died in Cape Town, South Africa"
+    tags:
+      - archbishop
+      - anglican
+      - anti-apartheid
+      - social-justice
+      - human-rights
+      - south-africa
+      - nobel-peace-prize
+      - 20th-century
+      - 21st-century
+      - post-biblical
+    references:
+      - "Truth and Reconciliation Commission"
+      - "No Future Without Forgiveness"
+  - id: DAVID_LIVINGSTONE
+    name: David Livingstone
+    gender: male
+    ethnicity: Scottish
+    birth_date: 1813 AD
+    birth_date_source: "Historical record - born in Blantyre, Scotland"
+    death_date: 1873 AD
+    death_date_source: "Historical record - died in Chitambo, Zambia"
+    tags:
+      - missionary
+      - explorer
+      - africa
+      - medical-missionary
+      - anti-slavery
+      - scotland
+      - zambezi
+      - 19th-century
+      - post-biblical
+    references:
+      - "Missionary Travels and Researches"
+      - "London Missionary Society"
+  - id: WILLIAM_WADE_HARRIS
+    name: William Wade Harris
+    gender: male
+    ethnicity: Liberian
+    birth_date: 1865 AD
+    birth_date_source: "Historical record - born in Grebo territory, Liberia"
+    death_date: 1929 AD
+    death_date_source: "Historical record - died in Liberia"
+    tags:
+      - prophet
+      - evangelist
+      - liberia
+      - ivory-coast
+      - west-africa
+      - indigenous-christianity
+      - mass-conversion
+      - 20th-century
+      - post-biblical
+    references:
+      - "Harris Movement"
+      - "West African Christianity"
+  - id: OSCAR_ROMERO
+    name: Óscar Romero
+    gender: male
+    ethnicity: Salvadoran
+    birth_date: 1917 AD
+    birth_date_source: "Historical record - born in Ciudad Barrios, El Salvador"
+    death_date: 1980 AD
+    death_date_source: "Historical record - assassinated in San Salvador"
+    tags:
+      - archbishop
+      - catholic
+      - martyr
+      - liberation-theology
+      - social-justice
+      - el-salvador
+      - saint
+      - 20th-century
+      - post-biblical
+    references:
+      - "Voice of the Voiceless"
+      - "Beatification"
+  - id: LUIS_PALAU
+    name: Luis Palau
+    gender: male
+    ethnicity: Argentine
+    birth_date: 1934 AD
+    birth_date_source: "Historical record - born in Ingeniero Maschwitz, Argentina"
+    death_date: 2021 AD
+    death_date_source: "Historical record - died in Portland, Oregon"
+    tags:
+      - evangelist
+      - preacher
+      - latin-america
+      - worldwide-ministry
+      - festivals
+      - argentina
+      - spanish-speaking
+      - 20th-century
+      - 21st-century
+      - post-biblical
+    references:
+      - "Luis Palau Association"
+      - "Festival Evangelism"
+  - id: CORRIE_TEN_BOOM
+    name: Corrie ten Boom
+    gender: female
+    ethnicity: Dutch
+    birth_date: 1892 AD
+    birth_date_source: "Historical record - born in Haarlem, Netherlands"
+    death_date: 1983 AD
+    death_date_source: "Historical record - died in Placentia, California"
+    tags:
+      - holocaust-survivor
+      - evangelist
+      - writer
+      - concentration-camp
+      - forgiveness
+      - netherlands
+      - hiding-place
+      - 20th-century
+      - post-biblical
+    references:
+      - "The Hiding Place"
+      - "Tramp for the Lord"
+  - id: BROTHER_ANDREW
+    name: Brother Andrew
+    gender: male
+    ethnicity: Dutch
+    birth_date: 1928 AD
+    birth_date_source: "Historical record - born in Sint-Pancras, Netherlands"
+    death_date: 2022 AD
+    death_date_source: "Historical record - died in Harderwijk, Netherlands"
+    tags:
+      - missionary
+      - smuggler
+      - communist-countries
+      - bible-smuggling
+      - open-doors
+      - netherlands
+      - persecution
+      - 20th-century
+      - 21st-century
+      - post-biblical
+    references:
+      - "God's Smuggler"
+      - "Open Doors International"
+  - id: NICKY_CRUZ
+    name: Nicky Cruz
+    gender: male
+    ethnicity: Puerto Rican
+    birth_date: 1938 AD
+    birth_date_source: "Historical record - born in San Juan, Puerto Rico"
+    death_date: 
+    death_date_source: 
+    tags:
+      - evangelist
+      - gang-member-converted
+      - puerto-rico
+      - new-york
+      - street-ministry
+      - youth-ministry
+      - 20th-century
+      - 21st-century
+      - post-biblical
+    references:
+      - "Run Baby Run"
+      - "Teen Challenge"
 ethnicities:
   - id: DIVINE
     name: Divine
@@ -4122,6 +4821,30 @@ family_groups:
       - Jerusalem
     references:
       - JOS.18.11.KJV
+  - id: PETER_WALDO
+    name: Peter Waldo
+    ethnicity: French
+    birth_date: "~1140 AD"
+    birth_date_source: "Estimated from historical records of his merchant activities"
+    death_date: "~1205 AD"
+    death_date_source: "Traditional dating based on historical chronicles"
+    tags:
+      - medieval
+      - reformer
+      - merchant
+      - waldensian
+      - founder
+      - bible-translator
+      - lay-preacher
+      - poor-men-of-lyon
+      - pre-reformation
+      - heretic
+      - religious-leader
+      - post-biblical
+    references:
+      - "Chronicles of Laon"
+      - "Anonymous of Laon"
+      - "Bernard of Fontcaude writings"
 notes:
   - The genealogies in Matthew and Luke differ, likely representing different lineages (paternal vs maternal or legal vs biological)
   - Ages listed are from the Hebrew text as recorded in the KJV

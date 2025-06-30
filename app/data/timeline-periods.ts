@@ -70,7 +70,7 @@ export const timelinePeriods: TimelinePeriod[] = [
   {
     name: "Intertestamental Period",
     slug: "intertestamental-period",
-    dateRange: "430-5 BC",
+    dateRange: "430-6 BC",
     description: "Between Old and New Testaments",
     colorIndex: 8, // Slate - Silent Period
     primaryBooks: ["Historical period between testaments - no canonical biblical books"]
@@ -82,5 +82,85 @@ export const timelinePeriods: TimelinePeriod[] = [
     description: "Life of Christ and early church",
     colorIndex: 9, // Teal - New Testament & Life
     primaryBooks: ["Matthew", "Mark", "Luke", "John", "Acts", "Romans", "1-2 Corinthians", "Galatians", "Ephesians", "Philippians", "Colossians", "1-2 Thessalonians", "1-2 Timothy", "Titus", "Philemon", "Hebrews", "James", "1-2 Peter", "1-3 John", "Jude", "Revelation"]
+  },
+  {
+    name: "Apostolic Age",
+    slug: "apostolic-age",
+    dateRange: "60-100 AD",
+    description: "Completion of New Testament and apostolic ministry",
+    colorIndex: 0, // Emerald - Growth & Foundation
+    primaryBooks: ["Canonical completion of New Testament scriptures"]
+  },
+  {
+    name: "Early Church Fathers",
+    slug: "early-church-fathers",
+    dateRange: "100-325 AD",
+    description: "Church fathers and early Christian theology",
+    colorIndex: 1, // Blue - Doctrine & Teaching
+    primaryBooks: ["Writings of Clement, Ignatius, Polycarp, Justin Martyr, Irenaeus, Origen, Tertullian"]
+  },
+  {
+    name: "Imperial Christianity",
+    slug: "imperial-christianity", 
+    dateRange: "325-500 AD",
+    description: "Constantine's conversion and early Christian empire",
+    colorIndex: 2, // Amber - Empire & Establishment
+    primaryBooks: ["Council of Nicaea (325), Writings of Augustine, Jerome, Chrysostom"]
+  },
+  {
+    name: "Medieval Period",
+    slug: "medieval-period",
+    dateRange: "500-1054 AD", 
+    description: "Rise of papal authority and monasticism",
+    colorIndex: 3, // Orange - Medieval & Monasticism
+    primaryBooks: ["Writings of Gregory the Great, Bede, monasticism"]
+  },
+  {
+    name: "Great Schism Era",
+    slug: "great-schism-era",
+    dateRange: "1054-1517 AD",
+    description: "East-West church division and medieval scholasticism",
+    colorIndex: 4, // Purple - Division & Scholasticism  
+    primaryBooks: ["Aquinas, Anselm, scholastic theology"]
+  },
+  {
+    name: "Protestant Reformation",
+    slug: "protestant-reformation",
+    dateRange: "1517-1648 AD",
+    description: "Luther's reforms and Protestant denominations",
+    colorIndex: 5, // Red - Reformation & Revival
+    primaryBooks: ["Luther's 95 Theses, Calvin's Institutes, Reformation confessions"]
+  },
+  {
+    name: "Age of Exploration & Missions",
+    slug: "age-exploration-missions",
+    dateRange: "1648-1800 AD", 
+    description: "Global missions and religious expansion",
+    colorIndex: 6, // Pink - Missions & Expansion
+    primaryBooks: ["Missionary accounts, Pietist writings, Great Awakening"]
+  },
+  {
+    name: "Modern Missions Movement",
+    slug: "modern-missions-movement",
+    dateRange: "1800-1900 AD",
+    description: "Global evangelization and Bible translation",
+    colorIndex: 7, // Indigo - Global Missions
+    primaryBooks: ["William Carey, Hudson Taylor, missionary biographies"]
+  },
+  {
+    name: "20th Century Christianity",
+    slug: "twentieth-century-christianity",
+    dateRange: "1900-2000 AD",
+    description: "Pentecostalism, ecumenism, and global Christianity",
+    colorIndex: 8, // Slate - Modern & Contemporary
+    primaryBooks: ["Pentecostal movement, World Council of Churches, evangelical growth"]
+  },
+  {
+    name: "Contemporary Era",
+    slug: "contemporary-era", 
+    dateRange: "2000-2025 AD",
+    description: "Digital age Christianity and global missions",
+    colorIndex: 9, // Teal - Digital & Global
+    primaryBooks: ["Digital evangelization, global south Christianity, biblical archaeology"]
   }
 ];

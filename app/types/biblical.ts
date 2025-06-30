@@ -16,7 +16,9 @@ export interface BiblicalPerson {
   ethnicity?: string;
   age?: string;
   birth_date?: string;
+  birth_date_source?: string;
   death_date?: string;
+  death_date_source?: string;
   parents?: string[];
   spouses?: string[];
   references?: string[];
@@ -41,6 +43,7 @@ export interface BiblicalEvent {
   id: string;
   name: string;
   date: string;
+  date_source?: string;
   location: string;
   description: string;
   participants: string[];

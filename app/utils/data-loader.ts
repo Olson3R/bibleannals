@@ -78,30 +78,40 @@ export function getPeriodEvents(periodName: string): BiblicalEvent[] {
   if (!period) return [];
   
   return data.events.filter(event => {
-    // Same filtering logic as in TimelinePeriodCard
+    // Parse event date - convert to negative for BC, positive for AD
     let eventYear = parseInt(event.date.replace(/[^\d-]/g, ''));
-    const isAD = event.date.includes('AD');
-    if (isAD) eventYear = -eventYear;
+    if (event.date.includes('BC')) {
+      eventYear = -eventYear; // BC dates are negative
+    }
+    // AD dates stay positive (no conversion needed)
     
+    // Parse period range - assume BC for start unless specified as AD
     const [startStr, endStr] = period.dateRange.split('-');
     let startYear = parseInt(startStr.replace(/[^\d]/g, ''));
     let endYear = parseInt(endStr.replace(/[^\d]/g, ''));
     
-    if (startStr.includes('BC')) startYear = Math.abs(startYear);
-    if (endStr.includes('BC')) endYear = Math.abs(endYear);
-    if (startStr.includes('AD')) startYear = -Math.abs(startYear);
-    if (endStr.includes('AD')) endYear = -Math.abs(endYear);
-    
-    if (period.dateRange === "6 BC-60 AD") {
-      const eventYearOriginal = parseInt(event.date.replace(/[^\d-]/g, ''));
-      if (event.date.includes('BC')) {
-        return eventYearOriginal <= 6;
-      } else if (event.date.includes('AD')) {
-        return eventYearOriginal <= 60;
-      }
+    // Convert start year based on explicit BC/AD
+    if (startStr.includes('BC')) {
+      startYear = -startYear;
+    }
+    // For periods like "60-100 AD", if endStr has AD but startStr doesn't,
+    // assume startStr is also AD
+    else if (endStr.includes('AD') && !startStr.includes('BC')) {
+      // Start year stays positive (AD)
+    }
+    // Default assumption for ancient periods - start is BC
+    else if (!startStr.includes('AD') && !endStr.includes('AD')) {
+      startYear = -startYear;
     }
     
-    return eventYear >= endYear && eventYear <= startYear;
+    // Convert end year based on explicit BC/AD  
+    if (endStr.includes('BC')) {
+      endYear = -endYear;
+    }
+    // AD end dates stay positive
+    
+    // Check if event falls within the period range
+    return eventYear >= startYear && eventYear <= endYear;
   });
 }
 
@@ -128,7 +138,7 @@ export function getPeriodRegions(periodName: string): BiblicalRegion[] {
     const regionDates = region.estimated_dates.toLowerCase();
     
     // For New Testament period, specifically include NT regions
-    if (period.dateRange === "6 BC-60 AD") {
+    if (period.dateRange === "4 BC-60 AD") {
       return regionDates.includes('ad') || 
              regionDates.includes('testament') ||
              region.time_period.toLowerCase().includes('testament');

@@ -33,7 +33,6 @@ A comprehensive interactive timeline website showcasing biblical people, events,
 
 ### Mobile Experience
 - **Responsive Design**: Optimized layouts for mobile, tablet, and desktop
-- **Modal Interface**: Person details appear in bottom modal on mobile
 - **Compact Controls**: Condensed search and filter controls for mobile screens
 - **Touch-friendly**: Large tap targets and smooth scroll behavior
 

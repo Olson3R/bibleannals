@@ -46,7 +46,9 @@ export function PersonCard({ person, className = '', showDates = false, showTags
         <div className="flex-1">
           <span className="font-medium">{person.name}</span>
           {showDates && person.birth_date && (
-            <div className="text-xs opacity-75 mt-1">{person.birth_date}</div>
+            <div className="text-xs opacity-75 mt-1" title={person.birth_date_source || 'Date source not specified'}>
+              {person.birth_date}
+            </div>
           )}
           {showTags && displayTags.length > 0 && (
             <div className="flex flex-wrap gap-1 mt-1">

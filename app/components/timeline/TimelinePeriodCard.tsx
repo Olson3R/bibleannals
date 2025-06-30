@@ -10,6 +10,7 @@ import { getRegionStudyUrl, isElementVisible, scrollToElementWithOffset } from '
 import { getPeriodColors } from '../../utils/color-palette';
 import { isWithinDateRange, parseDate } from '../../utils/date-parsing';
 import { isRelevantToPeriod, getCombinedRelevance } from '../../utils/period-relevance';
+import { getEventPeriod } from '../../utils/event-period-assignment';
 
 
 function PersonCard({ person, periodSlug, allPeriods }: { person: BiblicalPerson; periodSlug?: string; allPeriods?: TimelinePeriod[] }) {
@@ -121,8 +122,9 @@ export function hasDisplayableContent(
 ): boolean {
   // Apply the same filtering logic as in TimelinePeriodCard
   const periodEvents = events.filter(event => {
-    // Check if event is relevant to this specific period using period relevance
-    if (!isRelevantToPeriod(event, period.slug, allPeriods, 0.3)) {
+    // Check if event belongs to this specific period using exact period assignment
+    const eventPeriod = getEventPeriod(event, allPeriods);
+    if (!eventPeriod || eventPeriod.slug !== period.slug) {
       return false;
     }
     
@@ -196,7 +198,7 @@ export function hasDisplayableContent(
     const hasRelevantRegions = regions.some(region => {
       const regionDates = region.estimated_dates.toLowerCase();
       
-      if (period.dateRange === "6 BC-60 AD") {
+      if (period.dateRange === "4 BC-60 AD") {
         return regionDates.includes('ad') || 
                regionDates.includes('testament') ||
                region.time_period.toLowerCase().includes('testament') ||
@@ -246,8 +248,9 @@ export function TimelinePeriodCard({
   const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
   const filteredPeriodEvents = events.filter(event => {
-    // Check if event is relevant to this specific period using period relevance
-    if (!isRelevantToPeriod(event, period.slug, allPeriods, 0.3)) {
+    // Check if event belongs to this specific period using exact period assignment
+    const eventPeriod = getEventPeriod(event, allPeriods);
+    if (!eventPeriod || eventPeriod.slug !== period.slug) {
       return false;
     }
     
@@ -304,8 +307,9 @@ export function TimelinePeriodCard({
 
   // Get ALL participants from all events in this period (for filtering and counting)
   const allPeriodEvents = events.filter(event => {
-    // Check if event is relevant to this specific period using period relevance
-    if (!isRelevantToPeriod(event, period.slug, allPeriods, 0.3)) {
+    // Check if event belongs to this specific period using exact period assignment
+    const eventPeriod = getEventPeriod(event, allPeriods);
+    if (!eventPeriod || eventPeriod.slug !== period.slug) {
       return false;
     }
     
@@ -437,7 +441,7 @@ export function TimelinePeriodCard({
     const regionDates = region.estimated_dates.toLowerCase();
     
     // For New Testament period, specifically include NT regions
-    if (period.dateRange === "6 BC-60 AD") {
+    if (period.dateRange === "4 BC-60 AD") {
       return regionDates.includes('ad') || 
              regionDates.includes('testament') ||
              region.time_period.toLowerCase().includes('testament') ||

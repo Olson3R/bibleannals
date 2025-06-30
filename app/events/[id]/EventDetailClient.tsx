@@ -94,6 +94,11 @@ export function EventDetailClient({
                 <div>
                   <span className="font-semibold text-gray-600 dark:text-gray-400">Date:</span>
                   <span className="ml-2 text-gray-800 dark:text-gray-200">{event.date}</span>
+                  {event.date_source && (
+                    <div className="text-sm text-gray-500 dark:text-gray-400 mt-1 italic">
+                      Source: {event.date_source}
+                    </div>
+                  )}
                 </div>
                 <div>
                   <span className="font-semibold text-gray-600 dark:text-gray-400">Location:</span>

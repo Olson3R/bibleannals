@@ -5,6 +5,7 @@ biblical_events:
   - id: CREATION_OF_WORLD
     name: Creation of the World
     date: "~4004 BC"
+    date_source: "Ussher's Chronology - traditional biblical chronology placing creation at 4004 BC"
     location: EARTH
     description: "God creates the heavens and the earth in six days"
     participants:
@@ -19,6 +20,7 @@ biblical_events:
   - id: CREATION_OF_ADAM
     name: Creation of Adam
     date: "~4004 BC"
+    date_source: "Ussher's Chronology - placed on the sixth day of creation"
     location: GARDEN_OF_EDEN
     description: "God forms man from the dust of the ground and breathes life into him"
     participants:
@@ -33,6 +35,7 @@ biblical_events:
   - id: CREATION_OF_EVE
     name: Creation of Eve
     date: "~4004 BC"
+    date_source: "Ussher's Chronology - shortly after Adam's creation"
     location: GARDEN_OF_EDEN
     description: "God creates woman from Adam's rib to be his companion"
     participants:
@@ -48,6 +51,7 @@ biblical_events:
   - id: THE_FALL
     name: The Fall of Man
     date: "~4004 BC"
+    date_source: "Traditional chronology - shortly after creation"
     location: GARDEN_OF_EDEN
     description: "Adam and Eve disobey God by eating from the tree of knowledge of good and evil"
     participants:
@@ -63,6 +67,7 @@ biblical_events:
   - id: CAIN_KILLS_ABEL
     name: Cain Murders Abel
     date: "~3875 BC"
+    date_source: "Ussher's Chronology - calculated from Adam's age at Seth's birth"
     location: FIELD
     description: "Cain kills his brother Abel out of jealousy over God's acceptance of Abel's sacrifice"
     participants:
@@ -79,6 +84,7 @@ biblical_events:
   - id: BIRTH_OF_SETH
     name: Birth of Seth
     date: "~3874 BC"
+    date_source: "Biblical genealogy - Adam was 130 years old (Gen 5:3)"
     location: EARTH
     description: "God gives Adam and Eve another son to replace Abel"
     participants:
@@ -94,6 +100,7 @@ biblical_events:
   - id: ENOCH_TRANSLATED
     name: Translation of Enoch
     date: "~3017 BC"
+    date_source: "Genesis genealogy - calculated from patriarchal ages in Genesis 5"
     location: EARTH
     description: "Enoch walks with God and is taken up without experiencing death"
     participants:
@@ -109,6 +116,7 @@ biblical_events:
   - id: THE_FLOOD
     name: The Great Flood
     date: "~2348 BC"
+    date_source: "Ussher's Chronology - calculated from Genesis genealogies"
     location: EARTH
     description: "God destroys the world with a flood, saving only Noah's family and the animals in the ark"
     participants:
@@ -128,7 +136,8 @@ biblical_events:
       - GEN.6.5-8.21.KJV
   - id: NOAH_BUILDS_ARK
     name: Noah Builds the Ark
-    date: "~2349-2348 BC"
+    date: "~2469-2349 BC"
+    date_source: "Traditional chronology - 120 year construction period (Gen 6:3)"
     location: EARTH
     description: "Noah obeys God's command to build an ark to save his family and animals"
     participants:
@@ -144,6 +153,7 @@ biblical_events:
   - id: RAINBOW_COVENANT
     name: God's Covenant with Noah
     date: "~2348 BC"
+    date_source: "Traditional chronology - immediately after the flood"
     location: MOUNT_ARARAT
     description: "God establishes a covenant with Noah, promising never to destroy the earth by flood again"
     participants:
@@ -162,6 +172,7 @@ biblical_events:
   - id: TOWER_OF_BABEL
     name: Tower of Babel
     date: "~2247 BC"
+    date_source: "Ussher's Chronology - calculated from post-flood genealogies"
     location: BABYLON
     description: "Humanity attempts to build a tower to reach heaven; God confuses their language and scatters them"
     participants:
@@ -173,6 +184,7 @@ biblical_events:
   - id: CALL_OF_ABRAHAM
     name: Call of Abraham
     date: "~2091 BC"
+    date_source: "Traditional chronology - Abraham was 75 years old (Gen 12:4)"
     location: UR_OF_CHALDEES
     description: "God calls Abram to leave his country and go to a land He will show him"
     participants:
@@ -186,6 +198,7 @@ biblical_events:
   - id: ABRAHAM_ENTERS_CANAAN
     name: Abraham Enters Canaan
     date: "~2091 BC"
+    date_source: "Traditional chronology - same year as Abraham's call"
     location: CANAAN
     description: "Abraham arrives in the promised land and builds an altar to the Lord"
     participants:
@@ -203,6 +216,7 @@ biblical_events:
   - id: COVENANT_WITH_ABRAHAM
     name: God's Covenant with Abraham
     date: "1876 BC"
+    date_source: "Calculated from Exodus 12:40 - 430 years before the Exodus (1446 BC)"
     location: CANAAN
     description: "God makes a covenant with Abraham, promising to make him a great nation and that his descendants would leave Egypt after 430 years"
     participants:
@@ -219,6 +233,7 @@ biblical_events:
   - id: ABRAHAM_NAME_CHANGE
     name: Abraham's Name Changed
     date: "~2067 BC"
+    date_source: "Traditional chronology - Abraham was 99 years old (Gen 17:1)"
     location: CANAAN
     description: "God changes Abram's name to Abraham and establishes circumcision as a sign of the covenant"
     participants:
@@ -233,6 +248,7 @@ biblical_events:
   - id: SODOM_GOMORRAH_DESTROYED
     name: Destruction of Sodom and Gomorrah
     date: "~2067 BC"
+    date_source: "Traditional chronology - shortly before Isaac's birth"
     location: SODOM_AND_GOMORRAH
     description: "God destroys the cities of Sodom and Gomorrah for their wickedness"
     participants:
@@ -248,6 +264,7 @@ biblical_events:
   - id: BIRTH_OF_ISAAC
     name: Birth of Isaac
     date: "~2066 BC"
+    date_source: "Traditional chronology - Abraham was 100 years old (Gen 21:5)"
     location: CANAAN
     description: "Sarah gives birth to Isaac in her old age, fulfilling God's promise"
     participants:
@@ -264,6 +281,7 @@ biblical_events:
   - id: SACRIFICE_OF_ISAAC
     name: Sacrifice of Isaac
     date: "~2041 BC"
+    date_source: "Traditional chronology - Isaac was a young man"
     location: MOUNT_MORIAH
     description: "God tests Abraham by commanding him to sacrifice Isaac; provides a ram instead"
     participants:
@@ -279,6 +297,7 @@ biblical_events:
   - id: DEATH_OF_SARAH
     name: Death of Sarah
     date: "~2029 BC"
+    date_source: "Biblical record - Sarah lived 127 years (Gen 23:1)"
     location: HEBRON
     description: "Sarah dies at age 127; Abraham purchases a burial place in the cave of Machpelah"
     participants:
@@ -294,6 +313,7 @@ biblical_events:
   - id: ISAAC_MARRIES_REBEKAH
     name: Isaac Marries Rebekah
     date: "~2026 BC"
+    date_source: "Traditional chronology - Isaac was 40 years old (Gen 25:20)"
     location: CANAAN
     description: "Abraham's servant finds Rebekah to be Isaac's wife"
     participants:
@@ -309,6 +329,7 @@ biblical_events:
   - id: BIRTH_OF_JACOB_ESAU
     name: Birth of Jacob and Esau
     date: "~2006 BC"
+    date_source: "Traditional chronology - Isaac was 60 years old (Gen 25:26)"
     location: CANAAN
     description: "Isaac and Rebekah have twin sons: Esau and Jacob"
     participants:
@@ -325,6 +346,7 @@ biblical_events:
   - id: ESAU_SELLS_BIRTHRIGHT
     name: Esau Sells His Birthright
     date: "~1980 BC"
+    date_source: "Traditional chronology - when the brothers were young men"
     location: CANAAN
     description: "Esau sells his birthright to Jacob for a meal of lentils"
     participants:
@@ -338,6 +360,7 @@ biblical_events:
   - id: JACOB_DECEIVES_ISAAC
     name: Jacob Deceives Isaac
     date: "~1929 BC"
+    date_source: "Traditional chronology - Jacob was 77 years old"
     location: CANAAN
     description: "Jacob, with Rebekah's help, deceives Isaac and steals Esau's blessing"
     participants:
@@ -354,6 +377,7 @@ biblical_events:
   - id: JACOBS_LADDER
     name: Jacob's Ladder
     date: "~1929 BC"
+    date_source: "Traditional chronology - during Jacob's flight to Haran"
     location: BETHEL
     description: "Jacob dreams of a ladder reaching to heaven with angels ascending and descending"
     participants:
@@ -368,6 +392,7 @@ biblical_events:
   - id: JACOB_MEETS_RACHEL
     name: Jacob Meets Rachel
     date: "~1929 BC"
+    date_source: "Traditional chronology - upon arrival in Haran"
     location: HARAN
     description: "Jacob arrives in Haran and meets Rachel at the well"
     participants:
@@ -382,6 +407,7 @@ biblical_events:
   - id: JACOB_MARRIES_LEAH_RACHEL
     name: Jacob Marries Leah and Rachel
     date: "~1922 BC"
+    date_source: "Traditional chronology - after seven years of service"
     location: HARAN
     description: "Jacob works 14 years for Laban to marry both Leah and Rachel"
     participants:
@@ -396,6 +422,7 @@ biblical_events:
   - id: BIRTH_OF_TWELVE_SONS
     name: Birth of Jacob's Twelve Sons
     date: "~1922-1909 BC"
+    date_source: "Biblical genealogy - during Jacob's years in Haran and return to Canaan"
     location: HARAN
     description: "Jacob's twelve sons are born, who become the fathers of the twelve tribes of Israel"
     participants:
@@ -425,6 +452,7 @@ biblical_events:
   - id: JACOB_WRESTLES_ANGEL
     name: Jacob Wrestles with the Angel
     date: "~1909 BC"
+    date_source: "Traditional chronology - during Jacob's return to Canaan"
     location: PENIEL
     description: "Jacob wrestles with an angel all night and his name is changed to Israel"
     participants:
@@ -437,6 +465,7 @@ biblical_events:
   - id: JOSEPH_SOLD_INTO_SLAVERY
     name: Joseph Sold into Slavery
     date: "~1898 BC"
+    date_source: "Traditional chronology - Joseph was 17 years old (Gen 37:2)"
     location: DOTHAN
     description: "Joseph's brothers sell him to Ishmaelite traders who take him to Egypt"
     participants:
@@ -644,6 +673,7 @@ biblical_events:
   - id: THE_EXODUS
     name: The Exodus from Egypt
     date: "1446 BC"
+    date_source: "Calculated from 1 Kings 6:1 - 480 years before Solomon's temple (966 BC)"
     location: EGYPT
     description: "The Israelites leave Egypt after 430 years from God's covenant with Abraham (1876-1446 BC)"
     participants:
@@ -2057,20 +2087,6 @@ biblical_events:
       - prophecy
     references:
       - ACT.10.1-48.KJV
-  - id: PAUL_FIRST_MISSIONARY_JOURNEY
-    name: Paul's First Missionary Journey
-    date: "~47-49 AD"
-    location: ASIA_MINOR
-    description: "Paul and Barnabas embark on the first missionary journey to spread the Gospel"
-    participants:
-      - PAUL
-      - BARNABAS
-    tags:
-      - apostolic
-      - biblical
-      - new-testament
-    references:
-      - ACT.13.1-14.28.KJV
   - id: JERUSALEM_COUNCIL
     name: Jerusalem Council
     date: "~50 AD"
@@ -4730,49 +4746,6 @@ biblical_events:
       - new-testament
     references:
       - ACT.13.1-14.28.KJV
-  - id: SECOND_MISSIONARY_JOURNEY
-    name: Paul's Second Missionary Journey
-    date: "~50-52 AD"
-    location: GREECE
-    description: "Paul travels through Asia Minor and Greece, establishing churches"
-    participants:
-      - PAUL
-      - SILAS
-      - TIMOTHY
-    tags:
-      - apostolic
-      - biblical
-      - new-testament
-    references:
-      - ACT.15.36-18.22.KJV
-  - id: THIRD_MISSIONARY_JOURNEY
-    name: Paul's Third Missionary Journey
-    date: "~53-57 AD"
-    location: EPHESUS
-    description: "Paul spends three years in Ephesus and revisits churches in Asia Minor and Greece"
-    participants:
-      - PAUL
-    tags:
-      - apostolic
-      - biblical
-      - new-testament
-    references:
-      - ACT.18.23-21.17.KJV
-  - id: PETER_CORNELIUS
-    name: Peter and Cornelius
-    date: "~40 AD"
-    location: CAESAREA
-    description: "Peter receives vision and preaches to Gentile Cornelius"
-    participants:
-      - PETER
-    tags:
-      - apostolic
-      - biblical
-      - ministry
-      - new-testament
-      - prophecy
-    references:
-      - ACT.10.1-48.KJV
   - id: PAUL_APPEALS_CAESAR
     name: Paul Appeals to Caesar
     date: "~59 AD"
@@ -4793,6 +4766,578 @@ biblical_events:
       - noah
     references:
       - ACT.25.10-12.KJV
+
+  # Post-Biblical Historical Events
+  # Events from church history and Christian tradition
+
+  # Apostolic Age (60-100 AD)
+  - id: DESTRUCTION_OF_JERUSALEM
+    name: Destruction of Jerusalem
+    date: "70 AD"
+    date_source: "Historical records - Roman historian Josephus and Tacitus document the siege and destruction"
+    location: JERUSALEM
+    description: "Roman armies under Titus destroy Jerusalem and the Second Temple, ending the Jewish revolt"
+    participants: []
+    tags:
+      - post-biblical
+      - apostolic-age
+      - persecution
+      - prophecy-fulfillment
+    references: []
+
+  - id: PERSECUTION_UNDER_NERO
+    name: Persecution under Nero
+    date: "64-68 AD"
+    date_source: "Historical records - Roman historians Tacitus and Suetonius document Nero's persecution"
+    location: ROME
+    description: "Emperor Nero blames Christians for the Great Fire of Rome, beginning systematic persecution"
+    participants: []
+    tags:
+      - post-biblical
+      - apostolic-age
+      - persecution
+      - martyrdom
+    references: []
+
+  - id: DEATH_OF_PETER
+    name: Death of Apostle Peter
+    date: "~64 AD"
+    date_source: "Church tradition - recorded by early church fathers including Clement of Rome and Origen"
+    location: ROME
+    description: "Peter is crucified upside-down during Nero's persecution, fulfilling Jesus' prophecy"
+    participants:
+      - PETER
+    tags:
+      - post-biblical
+      - apostolic-age
+      - martyrdom
+      - apostle
+    references: []
+
+  - id: DEATH_OF_PAUL
+    name: Death of Apostle Paul
+    date: "~67 AD"
+    date_source: "Church tradition - recorded by early church fathers including Clement of Rome and Eusebius"
+    location: ROME
+    description: "Paul is beheaded during Nero's persecution, completing his apostolic ministry"
+    participants:
+      - PAUL
+    tags:
+      - post-biblical
+      - apostolic-age
+      - martyrdom
+      - apostle
+    references: []
+
+  - id: DEATH_OF_JOHN
+    name: Death of Apostle John
+    date: "~100 AD"
+    date_source: "Church tradition - recorded by Irenaeus and other early church fathers"
+    location: EPHESUS
+    description: "John, the last surviving apostle, dies peacefully in Ephesus after writing his Gospel and letters"
+    participants:
+      - JOHN
+    tags:
+      - post-biblical
+      - apostolic-age
+      - apostle
+      - natural-death
+    references: []
+
+  # Early Church Fathers (100-325 AD)
+  - id: PERSECUTION_UNDER_DIOCLETIAN
+    name: Persecution under Diocletian
+    date: "303-311 AD"
+    date_source: "Historical records - documented by Eusebius and Lactantius"
+    location: ROMAN_EMPIRE
+    description: "The Great Persecution - most severe and systematic persecution of Christians in Roman Empire"
+    participants: []
+    tags:
+      - post-biblical
+      - early-church
+      - persecution
+      - martyrdom
+    references: []
+
+  - id: COUNCIL_OF_JERUSALEM_POST_BIBLICAL
+    name: Later Council Meetings
+    date: "140-200 AD"
+    date_source: "Church tradition - various local councils addressing heresies and doctrine"
+    location: JERUSALEM
+    description: "Various church councils meet to address growing heresies and establish orthodox doctrine"
+    participants: []
+    tags:
+      - post-biblical
+      - early-church
+      - doctrine
+      - councils
+    references: []
+
+  - id: WRITINGS_OF_CHURCH_FATHERS
+    name: Writings of Early Church Fathers
+    date: "100-325 AD"
+    date_source: "Historical records - documented works of Justin Martyr, Irenaeus, Tertullian, Origen, and others"
+    location: VARIOUS
+    description: "Church fathers write extensive works defending Christianity and establishing doctrine"
+    participants: []
+    tags:
+      - post-biblical
+      - early-church
+      - writings
+      - doctrine
+      - apologetics
+    references: []
+
+  # Imperial Christianity (325-500 AD)
+  - id: EDICT_OF_MILAN
+    name: Edict of Milan
+    date: "313 AD"
+    date_source: "Historical records - imperial proclamation documented by Lactantius and Eusebius"
+    location: MILAN
+    description: "Constantine and Licinius grant religious tolerance throughout the Roman Empire"
+    participants: []
+    tags:
+      - post-biblical
+      - imperial-christianity
+      - constantine
+      - religious-freedom
+    references: []
+
+  - id: COUNCIL_OF_NICAEA
+    name: Council of Nicaea
+    date: "325 AD"
+    date_source: "Historical records - documented by Eusebius and other contemporary historians"
+    location: NICAEA
+    description: "First ecumenical council convened by Constantine to address Arianism and establish the Nicene Creed"
+    participants: []
+    tags:
+      - post-biblical
+      - imperial-christianity
+      - councils
+      - doctrine
+      - constantine
+    references: []
+
+  - id: FALL_OF_ROME
+    name: Fall of Rome
+    date: "476 AD"
+    date_source: "Historical records - documented by Byzantine and Western historians"
+    location: ROME
+    description: "Odoacer deposes Romulus Augustulus, ending the Western Roman Empire"
+    participants: []
+    tags:
+      - post-biblical
+      - imperial-christianity
+      - political
+      - empire-fall
+    references: []
+
+  # Medieval Period (500-1054 AD)
+  - id: RISE_OF_MONASTICISM
+    name: Rise of Monasticism
+    date: "500-800 AD"
+    date_source: "Historical records - documented growth of monastic orders and Rule of St. Benedict"
+    location: EUROPE
+    description: "Monastic movement spreads throughout Europe, preserving learning and Christian culture"
+    participants: []
+    tags:
+      - post-biblical
+      - medieval
+      - monasticism
+      - preservation
+      - culture
+    references: []
+
+  - id: GREAT_SCHISM_PREPARATION
+    name: Growing East-West Tensions
+    date: "800-1054 AD"
+    date_source: "Historical records - documented theological and political disputes"
+    location: CONSTANTINOPLE
+    description: "Increasing tensions between Eastern and Western churches over authority and doctrine"
+    participants: []
+    tags:
+      - post-biblical
+      - medieval
+      - schism-preparation
+      - east-west
+      - tensions
+    references: []
+
+  # Great Schism Era (1054-1517 AD)
+  - id: GREAT_SCHISM
+    name: Great Schism
+    date: "1054 AD"
+    date_source: "Historical records - documented by both Eastern and Western church historians"
+    location: CONSTANTINOPLE
+    description: "Final break between Eastern Orthodox and Roman Catholic churches"
+    participants: []
+    tags:
+      - post-biblical
+      - great-schism
+      - east-west
+      - church-division
+    references: []
+
+  - id: CRUSADES
+    name: The Crusades
+    date: "1095-1291 AD"
+    date_source: "Historical records - extensively documented by medieval chroniclers"
+    location: HOLY_LAND
+    description: "Series of military campaigns to reclaim the Holy Land from Muslim control"
+    participants: []
+    tags:
+      - post-biblical
+      - great-schism-era
+      - crusades
+      - holy-land
+      - military
+    references: []
+
+  - id: SCHOLASTICISM
+    name: Rise of Scholasticism
+    date: "1100-1300 AD"
+    date_source: "Historical records - documented works of Aquinas, Anselm, and other scholars"
+    location: EUROPE
+    description: "Intellectual movement combining Christian theology with classical philosophy"
+    participants: []
+    tags:
+      - post-biblical
+      - great-schism-era
+      - scholasticism
+      - theology
+      - philosophy
+    references: []
+
+  # Protestant Reformation (1517-1648 AD)
+  - id: LUTHERS_95_THESES
+    name: Luther's 95 Theses
+    date: "1517 AD"
+    date_source: "Historical records - documented by Luther himself and contemporary witnesses"
+    location: WITTENBERG
+    description: "Martin Luther posts his 95 Theses challenging papal authority and indulgences"
+    participants: []
+    tags:
+      - post-biblical
+      - protestant-reformation
+      - luther
+      - reformation
+      - protest
+    references: []
+
+  - id: DIET_OF_WORMS
+    name: Diet of Worms
+    date: "1521 AD"
+    date_source: "Historical records - imperial proceedings documented by multiple witnesses"
+    location: WORMS
+    description: "Luther refuses to recant his teachings before Holy Roman Emperor Charles V"
+    participants: []
+    tags:
+      - post-biblical
+      - protestant-reformation
+      - luther
+      - imperial
+      - defiance
+    references: []
+
+  - id: PEACE_OF_WESTPHALIA
+    name: Peace of Westphalia
+    date: "1648 AD"
+    date_source: "Historical records - international treaty documents"
+    location: WESTPHALIA
+    description: "Treaties ending the Thirty Years' War and establishing religious tolerance"
+    participants: []
+    tags:
+      - post-biblical
+      - protestant-reformation
+      - peace
+      - religious-tolerance
+      - treaties
+    references: []
+
+  # Age of Exploration (1648-1800 AD)
+  - id: GREAT_AWAKENING
+    name: Great Awakening
+    date: "1730-1760 AD"
+    date_source: "Historical records - documented by Jonathan Edwards, George Whitefield, and others"
+    location: AMERICA
+    description: "Religious revival movement in colonial America emphasizing personal conversion"
+    participants: []
+    tags:
+      - post-biblical
+      - age-of-exploration
+      - revival
+      - awakening
+      - america
+    references: []
+
+  - id: PIETIST_MOVEMENT
+    name: Pietist Movement
+    date: "1670-1750 AD"
+    date_source: "Historical records - documented by Philipp Spener, August Francke, and others"
+    location: GERMANY
+    description: "Religious reform movement emphasizing personal piety and Bible study"
+    participants: []
+    tags:
+      - post-biblical
+      - age-of-exploration
+      - pietism
+      - personal-piety
+      - reform
+    references: []
+
+  - id: MISSIONARY_EXPANSION
+    name: Early Missionary Expansion
+    date: "1700-1800 AD"
+    date_source: "Historical records - missionary society documents and reports"
+    location: GLOBAL
+    description: "Christian missions expand globally through trading companies and exploration"
+    participants: []
+    tags:
+      - post-biblical
+      - age-of-exploration
+      - missions
+      - global
+      - expansion
+    references: []
+
+  # Modern Missions (1800-1900 AD)
+  - id: WILLIAM_CAREY_INDIA
+    name: William Carey to India
+    date: "1793 AD"
+    date_source: "Historical records - Carey's own writings and Baptist Missionary Society documents"
+    location: INDIA
+    description: "William Carey, 'Father of Modern Missions,' begins missionary work in India"
+    participants: []
+    tags:
+      - post-biblical
+      - modern-missions
+      - carey
+      - india
+      - missionary
+    references: []
+
+  - id: HUDSON_TAYLOR_CHINA
+    name: Hudson Taylor to China
+    date: "1853 AD"
+    date_source: "Historical records - Taylor's writings and China Inland Mission documents"
+    location: CHINA
+    description: "Hudson Taylor begins missionary work in China, founding China Inland Mission"
+    participants: []
+    tags:
+      - post-biblical
+      - modern-missions
+      - taylor
+      - china
+      - missionary
+    references: []
+
+  - id: BIBLE_SOCIETIES
+    name: Formation of Bible Societies
+    date: "1804-1850 AD"
+    date_source: "Historical records - founding documents of various Bible societies"
+    location: GLOBAL
+    description: "Bible societies formed to translate and distribute Scriptures worldwide"
+    participants: []
+    tags:
+      - post-biblical
+      - modern-missions
+      - bible-societies
+      - translation
+      - distribution
+    references: []
+
+  # 20th Century (1900-2000 AD)
+  - id: PENTECOSTAL_MOVEMENT
+    name: Pentecostal Movement
+    date: "1906 AD"
+    date_source: "Historical records - documented by participants at Azusa Street Revival"
+    location: LOS_ANGELES
+    description: "Pentecostal revival begins at Azusa Street, emphasizing gifts of the Holy Spirit"
+    participants: []
+    tags:
+      - post-biblical
+      - 20th-century
+      - pentecostal
+      - revival
+      - holy-spirit
+    references: []
+
+  - id: WORLD_COUNCIL_OF_CHURCHES
+    name: World Council of Churches
+    date: "1948 AD"
+    date_source: "Historical records - founding documents and assembly proceedings"
+    location: AMSTERDAM
+    description: "Formation of World Council of Churches to promote Christian unity"
+    participants: []
+    tags:
+      - post-biblical
+      - 20th-century
+      - ecumenical
+      - unity
+      - council
+    references: []
+
+  - id: GLOBAL_EVANGELIZATION
+    name: Global Evangelization Movement
+    date: "1974 AD"
+    date_source: "Historical records - Lausanne Covenant and Congress documents"
+    location: LAUSANNE
+    description: "Lausanne Congress on World Evangelization launches global missions strategy"
+    participants: []
+    tags:
+      - post-biblical
+      - 20th-century
+      - evangelization
+      - global
+      - missions
+    references: []
+
+  # Contemporary (2000-2025 AD)
+  - id: DIGITAL_EVANGELIZATION
+    name: Digital Evangelization
+    date: "2000-2025 AD"
+    date_source: "Contemporary records - internet usage statistics and digital ministry reports"
+    location: GLOBAL
+    description: "Christianity spreads through internet, social media, and digital platforms"
+    participants: []
+    tags:
+      - post-biblical
+      - contemporary
+      - digital
+      - internet
+      - technology
+    references: []
+
+  - id: GLOBAL_CHRISTIANITY
+    name: Global Christianity Growth
+    date: "2000-2025 AD"
+    date_source: "Contemporary records - Pew Research Center and World Christian Database statistics"
+    location: GLOBAL
+    description: "Christianity becomes truly global religion with majority in Global South"
+    participants: []
+    tags:
+      - post-biblical
+      - contemporary
+      - global
+      - growth
+      - demographics
+    references: []
+
+  - id: BIBLICAL_ARCHAEOLOGY
+    name: Modern Biblical Archaeology
+    date: "2000-2025 AD"
+    date_source: "Contemporary records - archaeological discoveries and scholarly publications"
+    location: MIDDLE_EAST
+    description: "Archaeological discoveries continue to illuminate biblical history and culture"
+    participants: []
+    tags:
+      - post-biblical
+      - contemporary
+      - archaeology
+      - discovery
+      - biblical-history
+    references: []
+
+  - id: PETER_WALDO_CONVERSION
+    name: Peter Waldo's Conversion and Commission
+    date: "~1173 AD"
+    date_source: "Historical chronicles and church records"
+    location: LYON
+    description: "Wealthy merchant Peter Waldo gives away his possessions and begins preaching in the vernacular after hearing a minstrel's song about Saint Alexis"
+    participants:
+      - PETER_WALDO
+    tags:
+      - medieval
+      - waldensian
+      - conversion
+      - poverty
+      - pre-reformation
+      - post-biblical
+    references:
+      - "Chronicles of Laon"
+      - "Anonymous of Laon account"
+
+  - id: FORMATION_POOR_MEN_OF_LYON
+    name: Formation of the Poor Men of Lyon
+    date: "1173-1176 AD"
+    date_source: "Historical documentation from church authorities"
+    location: LYON
+    description: "Peter Waldo and followers form a movement dedicated to apostolic poverty, vernacular preaching, and Bible translation"
+    participants:
+      - PETER_WALDO
+    tags:
+      - medieval
+      - waldensian
+      - religious-movement
+      - apostolic-poverty
+      - vernacular-preaching
+      - pre-reformation
+      - post-biblical
+    references:
+      - "Chronicle of the Anonymous of Laon"
+      - "Bernard of Fontcaude treatise"
+
+  - id: WALDENSIAN_BIBLE_TRANSLATION
+    name: First Vernacular Bible Translation by Waldensians
+    date: "1175-1180 AD"
+    date_source: "Medieval church records and manuscript evidence"
+    location: LYON
+    description: "Waldensians commission translation of Bible portions into Provençal/Franco-Provençal vernacular language for lay preaching"
+    participants:
+      - PETER_WALDO
+    tags:
+      - medieval
+      - waldensian
+      - bible-translation
+      - vernacular
+      - literacy
+      - pre-reformation
+      - post-biblical
+    references:
+      - "Medieval manuscript evidence"
+      - "Inquisition records"
+
+  - id: PAPAL_PROHIBITION_WALDENSIANS
+    name: Papal Prohibition of Waldensian Preaching
+    date: "1179 AD"
+    date_source: "Third Lateran Council records"
+    location: ROME
+    description: "Pope Alexander III prohibits unauthorized lay preaching after initially approving Waldensian vow of poverty at Third Lateran Council"
+    participants:
+      - PETER_WALDO
+    tags:
+      - medieval
+      - waldensian
+      - papal-authority
+      - prohibition
+      - lay-preaching
+      - ecclesiastical-conflict
+      - pre-reformation
+      - post-biblical
+    references:
+      - "Third Lateran Council Acts"
+      - "Papal decrees"
+
+  - id: WALDENSIAN_EXCOMMUNICATION
+    name: Excommunication of Waldensians
+    date: "1184 AD"
+    date_source: "Papal bull Ad abolendam"
+    location: ROME
+    description: "Pope Lucius III formally excommunicates Waldensians as heretics in papal bull Ad abolendam for continuing unauthorized preaching"
+    participants:
+      - PETER_WALDO
+    tags:
+      - medieval
+      - waldensian
+      - excommunication
+      - heresy
+      - papal-bull
+      - persecution
+      - pre-reformation
+      - post-biblical
+    references:
+      - "Papal bull Ad abolendam"
+      - "Church records"
 
   # Location References
 locations:
@@ -4847,6 +5392,8 @@ locations:
   GREECE: "Region Paul evangelized"
   MALTA: "Island where Paul was shipwrecked"
   ROME: "Capital of Roman Empire where Paul preached"
+  LYON: "City in France where Peter Waldo founded the Waldensian movement"
+  MIDDLE_EAST: "Region of biblical lands and modern archaeological discoveries"
   MOUNT_OF_TRANSFIGURATION: "Mountain where Jesus was transfigured"
 
 # Notes on Biblical Chronology

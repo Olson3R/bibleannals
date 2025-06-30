@@ -146,6 +146,9 @@ export function PersonDetails({
     personsData.find(p => p.id === id)
   ).filter((p): p is BiblicalPerson => p !== undefined) || [];
   
+  const fosterFather = person.foster_father ? 
+    personsData.find(p => p.id === person.foster_father) : undefined;
+  
   // Use pre-calculated events or filter from all events
   const personEvents = eventsData;
 
@@ -175,6 +178,11 @@ export function PersonDetails({
               <div>
                 <span className="font-medium text-gray-700 dark:text-gray-300">Born:</span>
                 <div className="text-gray-600 dark:text-gray-400">{person.birth_date}</div>
+                {person.birth_date_source && (
+                  <div className="text-xs text-gray-500 dark:text-gray-500 italic mt-1">
+                    {person.birth_date_source}
+                  </div>
+                )}
               </div>
             </div>
           )}
@@ -184,6 +192,11 @@ export function PersonDetails({
               <div>
                 <span className="font-medium text-gray-700 dark:text-gray-300">Died:</span>
                 <div className="text-gray-600 dark:text-gray-400">{person.death_date}</div>
+                {person.death_date_source && (
+                  <div className="text-xs text-gray-500 dark:text-gray-500 italic mt-1">
+                    {person.death_date_source}
+                  </div>
+                )}
               </div>
             </div>
           )}
@@ -214,12 +227,14 @@ export function PersonDetails({
               </div>
             </div>
           )}
-          {person.foster_father && (
+          {fosterFather && (
             <div className="flex items-start space-x-2">
               <span className="text-gray-500 dark:text-gray-400">👨‍👧</span>
               <div>
                 <span className="font-medium text-gray-700 dark:text-gray-300">Foster Father:</span>
-                <div className="text-gray-600 dark:text-gray-400">{person.foster_father}</div>
+                <div className="mt-2">
+                  <PersonCard person={fosterFather} className="text-sm" />
+                </div>
               </div>
             </div>
           )}
@@ -311,7 +326,7 @@ export function PersonDetails({
       )}
 
       {/* Family Relationships */}
-      {(parents.length > 0 || children.length > 0 || spouses.length > 0) && (
+      {(parents.length > 0 || children.length > 0 || spouses.length > 0 || fosterFather) && (
         <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
           <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">👨‍👩‍👧‍👦 Family</h3>
           
@@ -322,6 +337,15 @@ export function PersonDetails({
                 {parents.map(parent => (
                   <PersonCard key={parent.id} person={parent} className="text-sm" />
                 ))}
+              </div>
+            </div>
+          )}
+
+          {fosterFather && (
+            <div className="mb-4">
+              <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">Foster Father:</h4>
+              <div className="flex flex-wrap gap-2">
+                <PersonCard person={fosterFather} className="text-sm" />
               </div>
             </div>
           )}
