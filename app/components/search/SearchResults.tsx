@@ -93,10 +93,7 @@ export function SearchResultsDisplay({
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {searchResults.periods.map((period, index) => {
-              const periodSlug = period.name.toLowerCase()
-                .replace(/[^a-z0-9]+/g, '-')
-                .replace(/-+/g, '-')
-                .replace(/^-|-$/g, '');
+              const periodSlug = period.slug;
               return (
                 <Link
                   key={index}

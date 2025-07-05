@@ -182,19 +182,16 @@ export function BiblicalTimeline({
 
 
   // Navigation functions
-  const showPeriodEvents = (periodName: string) => {
-    const slug = periodName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-    router.push(`/periods/${slug}/events?from=timeline`);
+  const showPeriodEvents = (periodSlug: string) => {
+    router.push(`/periods/${periodSlug}/events?from=timeline`);
   };
 
-  const showPeriodPeople = (periodName: string) => {
-    const slug = periodName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-    router.push(`/periods/${slug}/people?from=timeline`);
+  const showPeriodPeople = (periodSlug: string) => {
+    router.push(`/periods/${periodSlug}/people?from=timeline`);
   };
 
-  const showPeriodRegions = (periodName: string) => {
-    const slug = periodName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-    router.push(`/periods/${slug}/regions?from=timeline`);
+  const showPeriodRegions = (periodSlug: string) => {
+    router.push(`/periods/${periodSlug}/regions?from=timeline`);
   };
 
   const showEventDetail = (event: BiblicalEvent, periodSlug?: string) => {
@@ -643,7 +640,7 @@ export function BiblicalTimeline({
                 return (
                 <div key={index} className="relative group">
                   <NavLink
-                    href={`/periods/${period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')}`}
+                    href={`/periods/${period.slug}`}
                     className={`block px-3 py-3 sm:px-4 sm:py-2 rounded-full border-2 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer min-h-[44px] flex items-center justify-center ${getPeriodColors(period.colorIndex)}`}
                   >
                     <div className="text-center">
@@ -656,7 +653,7 @@ export function BiblicalTimeline({
                   <button
                     onClick={(e) => {
                       e.preventDefault();
-                      const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+                      const periodSlug = period.slug;
                       const url = `${window.location.origin}/#period-${periodSlug}`;
                       navigator.clipboard.writeText(url);
                       
@@ -684,8 +681,8 @@ export function BiblicalTimeline({
           {/* Main Timeline Content */}
         <main className="relative" role="main" aria-labelledby="main-timeline-heading">
         <h2 id="main-timeline-heading" className="sr-only">Detailed Biblical Timeline</h2>
-        {/* Vertical Timeline Line */}
-        <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-gray-600" aria-hidden="true"></div>
+        {/* Vertical Timeline Line - centered under the dots */}
+        <div className="absolute top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-gray-600" style={{ left: '35px' }} aria-hidden="true"></div>
         
         {timelinePeriods
           .filter(period => 
@@ -699,8 +696,8 @@ export function BiblicalTimeline({
           )
           .map((period, index) => (
           <article key={index} id={`period-${period.slug}`} className="relative mb-6" aria-labelledby={`period-${period.slug}-heading`}>
-            {/* Timeline dot */}
-            <div className="absolute left-6 w-5 h-5 bg-white dark:bg-gray-800 border-4 border-gray-600 dark:border-gray-400 rounded-full z-10 shadow-lg" aria-hidden="true"></div>
+            {/* Timeline dot - centered on the vertical line */}
+            <div className="absolute w-5 h-5 bg-white dark:bg-gray-800 border-4 border-gray-600 dark:border-gray-400 rounded-full z-10 shadow-lg" style={{ left: '25px' }} aria-hidden="true"></div>
             
             {/* Content */}
             <div className="ml-20">

@@ -245,7 +245,7 @@ export function TimelinePeriodCard({
   advancedFilters
 }: TimelinePeriodCardProps) {
   const searchParams = useSearchParams();
-  const periodSlug = period.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+  const periodSlug = period.slug;
 
   const filteredPeriodEvents = events.filter(event => {
     // Check if event belongs to this specific period using exact period assignment
@@ -565,7 +565,7 @@ export function TimelinePeriodCard({
                 <h4 className="font-semibold text-gray-800 dark:text-gray-200 text-sm">📅 Events ({periodEvents.length})</h4>
                 {allPeriodEvents.length > MAX_EVENTS_DISPLAY && (
                   <button
-                    onClick={() => showPeriodEvents(period.name)}
+                    onClick={() => showPeriodEvents(period.slug)}
                     className="text-xs text-blue-600 hover:text-blue-800 hover:underline"
                   >
                     View all {allPeriodEvents.length} →
@@ -621,7 +621,7 @@ export function TimelinePeriodCard({
                 <h4 className="font-semibold text-gray-800 dark:text-gray-200 text-sm">👥 People ({allParticipants.size})</h4>
                 {allParticipants.size > MAX_PEOPLE_DISPLAY && (
                   <button
-                    onClick={() => showPeriodPeople(period.name)}
+                    onClick={() => showPeriodPeople(period.slug)}
                     className="text-xs text-blue-600 hover:text-blue-800 hover:underline"
                   >
                     View all {allParticipants.size} →
@@ -649,7 +649,7 @@ export function TimelinePeriodCard({
                 <h4 className="font-semibold text-gray-800 dark:text-gray-200 text-sm">🗺️ Regions ({allRelevantRegions.length})</h4>
                 {allRelevantRegions.length > MAX_REGIONS_DISPLAY && (
                   <button
-                    onClick={() => showPeriodRegions(period.name)}
+                    onClick={() => showPeriodRegions(period.slug)}
                     className="text-xs text-blue-600 hover:text-blue-800 hover:underline"
                   >
                     View all {allRelevantRegions.length} →
