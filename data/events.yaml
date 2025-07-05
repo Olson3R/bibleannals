@@ -1368,6 +1368,37 @@ biblical_events:
       - new-testament
     references:
       - 1KI.12.1-24.KJV
+  - id: ASA_REFORMS
+    name: Asa's Religious Reforms
+    date: "~895 BC"
+    location: JUDAH
+    description: "King Asa removes idols and foreign altars, restores worship of God in Judah"
+    participants:
+      - ASA
+      - GOD_FATHER
+    tags:
+      - biblical
+      - kingdom
+      - asa
+      - reforms
+    references:
+      - 1KI.15.9-24.KJV
+      - 2CH.14.1-15.19.KJV
+  - id: JEHOSHAPHAT_REIGN
+    name: Jehoshaphat's Righteous Reign
+    date: "~872 BC"
+    location: JUDAH
+    description: "Jehoshaphat becomes king and strengthens Judah's relationship with God"
+    participants:
+      - JEHOSHAPHAT
+      - GOD_FATHER
+    tags:
+      - biblical
+      - kingdom
+      - jehoshaphat
+    references:
+      - 1KI.22.41-50.KJV
+      - 2CH.17.1-20.37.KJV
   - id: ELIJAH_CHALLENGES_PROPHETS
     name: Elijah Challenges the Prophets of Baal
     date: "~862 BC"
@@ -1395,6 +1426,52 @@ biblical_events:
       - biblical
     references:
       - 2KI.2.1-18.KJV
+  - id: JONAH_CALLED_TO_NINEVEH
+    name: Jonah Called to Preach to Nineveh
+    date: "~780 BC"
+    location: ISRAEL
+    description: "God calls Jonah to preach to Nineveh, but Jonah flees to Tarshish instead"
+    participants:
+      - JONAH
+      - GOD_FATHER
+    tags:
+      - biblical
+      - jonah
+      - prophecy
+      - missions
+    references:
+      - JON.1.1-3.KJV
+  - id: JONAH_AND_THE_WHALE
+    name: Jonah and the Great Fish
+    date: "~780 BC"
+    location: MEDITERRANEAN_SEA
+    description: "God sends a great fish to swallow Jonah; Jonah prays from the fish's belly for three days"
+    participants:
+      - JONAH
+      - GOD_FATHER
+    tags:
+      - biblical
+      - jonah
+      - miracle
+      - prophecy
+    references:
+      - JON.1.4-2.10.KJV
+  - id: JONAH_PREACHES_NINEVEH
+    name: Jonah Preaches to Nineveh
+    date: "~780 BC"
+    location: NINEVEH
+    description: "Jonah preaches God's judgment to Nineveh; the city repents and God spares them"
+    participants:
+      - JONAH
+      - GOD_FATHER
+    tags:
+      - biblical
+      - jonah
+      - prophecy
+      - repentance
+      - missions
+    references:
+      - JON.3.1-4.11.KJV
   - id: FALL_OF_SAMARIA
     name: Fall of Samaria
     date: "~722 BC"
@@ -2625,6 +2702,67 @@ biblical_events:
       - death
     references:
       - GEN.35.27-29.KJV
+  - id: JOB_TRIALS_BEGIN
+    name: Job's Trials Begin
+    date: "~1880 BC"
+    location: UZ
+    description: "Satan is permitted to test Job's faith through loss of wealth, family, and health"
+    participants:
+      - JOB
+      - GOD_FATHER
+    tags:
+      - biblical
+      - job
+      - trials
+      - faith
+    references:
+      - JOB.1.1-2.13.KJV
+  - id: JOB_FRIENDS_ARRIVE
+    name: Job's Friends Arrive
+    date: "~1880 BC"
+    location: UZ
+    description: "Eliphaz, Bildad, and Zophar come to comfort Job in his affliction"
+    participants:
+      - JOB
+      - ELIPHAZ
+      - BILDAD
+      - ZOPHAR
+    tags:
+      - biblical
+      - job
+      - friends
+    references:
+      - JOB.2.11-3.26.KJV
+  - id: GOD_SPEAKS_TO_JOB
+    name: God Speaks to Job from the Whirlwind
+    date: "~1880 BC"
+    location: UZ
+    description: "God answers Job out of the whirlwind, revealing His power and wisdom"
+    participants:
+      - JOB
+      - GOD_FATHER
+    tags:
+      - biblical
+      - job
+      - theophany
+      - wisdom
+    references:
+      - JOB.38.1-42.6.KJV
+  - id: JOB_RESTORATION
+    name: Job's Restoration
+    date: "~1880 BC"
+    location: UZ
+    description: "God restores Job's health, wealth, and family, blessing his latter end more than his beginning"
+    participants:
+      - JOB
+      - GOD_FATHER
+    tags:
+      - biblical
+      - job
+      - restoration
+      - blessing
+    references:
+      - JOB.42.7-17.KJV
   - id: JOSEPH_DREAMS
     name: Joseph's Dreams
     date: "~1898 BC"
